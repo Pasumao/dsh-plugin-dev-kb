@@ -1,0 +1,12 @@
+# dsh-plugin-dev-kb bundle patch：DeepSeek Harness 官方文档知识库
+#
+# 挂载为 profile 根层的一个插件行（与 dsh-base / dsh-web-app 同一平面）。
+# 插件无 JS 代码（纯文档数据），skills/ 下的 dsh-plugin-dev-kb 技能进入全局层，
+# 每个会话的 agent 在插件开发 / 查询 dsh 能力 / 写 Tool / 配置 cordis.yml 类任务时，
+# 会根据技能 description 自动加载本技能，从而获知知识库位置与阅读路径。
+#
+# 知识库数据在插件内 kb/ 目录（site/ 站点镜像 + extra/ 补充文档 + meta/ 主题导航与索引）。
+# 更新知识库：见 kb/README.md（重新克隆 deepseek-ai/deepseek-harness 并运行站点投影器）。
+- insert:
+    - id: dsh-plugin-dev-kb
+      name: dsh-plugin-dev-kb

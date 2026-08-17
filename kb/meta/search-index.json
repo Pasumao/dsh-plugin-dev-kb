@@ -1,0 +1,1328 @@
+[
+ {
+  "path": "kb/extra/AGENTS.md",
+  "url": "",
+  "title": "AGENTS.md — The documentation standard",
+  "chars": 10587
+ },
+ {
+  "path": "kb/extra/api-gateway.md",
+  "url": "",
+  "title": "API Gateway",
+  "chars": 17878
+ },
+ {
+  "path": "kb/extra/api-gateway.zh.md",
+  "url": "",
+  "title": "API Gateway",
+  "chars": 9850
+ },
+ {
+  "path": "kb/extra/cookbook/adding-a-vendored-package.md",
+  "url": "",
+  "title": "Cookbook: adding a vendored package",
+  "chars": 4194
+ },
+ {
+  "path": "kb/extra/cookbook/adding-a-vendored-package.zh.md",
+  "url": "",
+  "title": "实操手册：添加一个 vendored 包",
+  "chars": 2968
+ },
+ {
+  "path": "kb/extra/cookbook/maintaining-dsh-code-review.md",
+  "url": "",
+  "title": "Maintaining the dsh-code-review skill",
+  "chars": 7421
+ },
+ {
+  "path": "kb/extra/cookbook/maintaining-dsh-code-review.zh.md",
+  "url": "",
+  "title": "维护 dsh-code-review skill",
+  "chars": 3495
+ },
+ {
+  "path": "kb/extra/cookbook/responding-to-pr-review-on-a-stack.md",
+  "url": "",
+  "title": "Responding to review across a stacked PR chain",
+  "chars": 3992
+ },
+ {
+  "path": "kb/extra/cookbook/responding-to-pr-review-on-a-stack.zh.md",
+  "url": "",
+  "title": "在堆叠 PR 链中回应评审意见",
+  "chars": 2030
+ },
+ {
+  "path": "kb/extra/defensive-patterns.md",
+  "url": "",
+  "title": "Defensive patterns",
+  "chars": 3639
+ },
+ {
+  "path": "kb/extra/defensive-patterns.zh.md",
+  "url": "",
+  "title": "防御性模式",
+  "chars": 1779
+ },
+ {
+  "path": "kb/extra/development.md",
+  "url": "",
+  "title": "Development guide",
+  "chars": 15675
+ },
+ {
+  "path": "kb/extra/development.zh.md",
+  "url": "",
+  "title": "开发指南",
+  "chars": 8803
+ },
+ {
+  "path": "kb/extra/event-producer-consumer.md",
+  "url": "",
+  "title": "Event Producer And Consumer Matrix",
+  "chars": 20208
+ },
+ {
+  "path": "kb/extra/event-producer-consumer.zh.md",
+  "url": "",
+  "title": "事件生产方与消费方矩阵",
+  "chars": 19941
+ },
+ {
+  "path": "kb/extra/glossary.md",
+  "url": "",
+  "title": "Glossary",
+  "chars": 6471
+ },
+ {
+  "path": "kb/extra/glossary.zh.md",
+  "url": "",
+  "title": "术语表",
+  "chars": 3336
+ },
+ {
+  "path": "kb/extra/graph-atlas.md",
+  "url": "",
+  "title": "Documentation Graph Index",
+  "chars": 1634
+ },
+ {
+  "path": "kb/extra/graph-atlas.zh.md",
+  "url": "",
+  "title": "文档图索引",
+  "chars": 1267
+ },
+ {
+  "path": "kb/extra/i18n/README.md",
+  "url": "",
+  "title": "Bilingual documentation",
+  "chars": 11523
+ },
+ {
+  "path": "kb/extra/i18n/README.zh.md",
+  "url": "",
+  "title": "双语文档",
+  "chars": 5522
+ },
+ {
+  "path": "kb/extra/i18n/style-samples.md",
+  "url": "",
+  "title": "翻译语体样例（style samples）",
+  "chars": 8265
+ },
+ {
+  "path": "kb/extra/i18n/terminology.md",
+  "url": "",
+  "title": "Terminology",
+  "chars": 9082
+ },
+ {
+  "path": "kb/extra/i18n/translation-prompt.md",
+  "url": "",
+  "title": "Translation prompt (pipeline asset)",
+  "chars": 20519
+ },
+ {
+  "path": "kb/extra/i18n/translation-rules.md",
+  "url": "",
+  "title": "Translation rules",
+  "chars": 9364
+ },
+ {
+  "path": "kb/extra/i18n/translation-rules.zh.md",
+  "url": "",
+  "title": "翻译规则",
+  "chars": 4327
+ },
+ {
+  "path": "kb/extra/module-graph.md",
+  "url": "",
+  "title": "Module dependency graph",
+  "chars": 125044
+ },
+ {
+  "path": "kb/extra/module-graph.zh.md",
+  "url": "",
+  "title": "模块依赖关系图",
+  "chars": 124977
+ },
+ {
+  "path": "kb/extra/postmortem/0001-acp-default-export-drops-inject.md",
+  "url": "",
+  "title": "Post-mortem 0001: ACP server crashed on connect — `export default` dropped the plugin's `inject`",
+  "chars": 11137
+ },
+ {
+  "path": "kb/extra/postmortem/0001-acp-default-export-drops-inject.zh.md",
+  "url": "",
+  "title": "事故复盘（postmortem）0001：ACP（Agent Client Protocol）服务器在连接时崩溃——`export default` 丢弃了插件的 `inject`",
+  "chars": 6859
+ },
+ {
+  "path": "kb/extra/postmortem/0002-js-expression-disabled-filesystem-tools.md",
+  "url": "",
+  "title": "Post-mortem 0002: Filesystem snapshot tools were permanently disabled",
+  "chars": 4309
+ },
+ {
+  "path": "kb/extra/postmortem/0002-js-expression-disabled-filesystem-tools.zh.md",
+  "url": "",
+  "title": "事故复盘（postmortem） 0002：文件系统快照工具被永久禁用",
+  "chars": 2058
+ },
+ {
+  "path": "kb/extra/postmortem/0003-web-agent-gui-feedback-loop.md",
+  "url": "",
+  "title": "Post-mortem 0003: Web agent validated a replacement server instead of its current GUI",
+  "chars": 5934
+ },
+ {
+  "path": "kb/extra/postmortem/0003-web-agent-gui-feedback-loop.zh.md",
+  "url": "",
+  "title": "事故复盘（postmortem） 0003：Web agent（智能体）验收了替代服务器，而非其当前 GUI",
+  "chars": 2743
+ },
+ {
+  "path": "kb/extra/postmortem/0004-landlock-partial-notice-misclassified-child-failures.md",
+  "url": "",
+  "title": "Post-mortem 0004: Landlock partial-enforcement notice misclassified child failures",
+  "chars": 6894
+ },
+ {
+  "path": "kb/extra/postmortem/0004-landlock-partial-notice-misclassified-child-failures.zh.md",
+  "url": "",
+  "title": "事故复盘（postmortem） 0004：Landlock 部分强制执行通知导致子进程失败被误归类",
+  "chars": 3345
+ },
+ {
+  "path": "kb/extra/postmortem/README.md",
+  "url": "",
+  "title": "Post-mortems",
+  "chars": 1834
+ },
+ {
+  "path": "kb/extra/postmortem/README.zh.md",
+  "url": "",
+  "title": "事故复盘（postmortem）",
+  "chars": 1023
+ },
+ {
+  "path": "kb/extra/rescope.md",
+  "url": "",
+  "title": "Vendored package rescope",
+  "chars": 4566
+ },
+ {
+  "path": "kb/extra/rescope.zh.md",
+  "url": "",
+  "title": "Vendored 包改名",
+  "chars": 3304
+ },
+ {
+  "path": "kb/extra/subsystems/attachment.md",
+  "url": "",
+  "title": "Durable Image Attachments",
+  "chars": 6239
+ },
+ {
+  "path": "kb/extra/subsystems/attachment.zh.md",
+  "url": "",
+  "title": "持久图片附件",
+  "chars": 5093
+ },
+ {
+  "path": "kb/extra/subsystems/extensions.md",
+  "url": "",
+  "title": "Extensions",
+  "chars": 15858
+ },
+ {
+  "path": "kb/extra/subsystems/extensions.zh.md",
+  "url": "",
+  "title": "扩展",
+  "chars": 15712
+ },
+ {
+  "path": "kb/extra/subsystems/feedback.md",
+  "url": "",
+  "title": "Message Feedback",
+  "chars": 14053
+ },
+ {
+  "path": "kb/extra/subsystems/feedback.zh.md",
+  "url": "",
+  "title": "消息反馈",
+  "chars": 10951
+ },
+ {
+  "path": "kb/extra/testing.md",
+  "url": "",
+  "title": "Testing policy",
+  "chars": 9263
+ },
+ {
+  "path": "kb/extra/testing.zh.md",
+  "url": "",
+  "title": "测试策略",
+  "chars": 5286
+ },
+ {
+  "path": "kb/extra/web-styling.md",
+  "url": "",
+  "title": "Web UI style reference",
+  "chars": 2330
+ },
+ {
+  "path": "kb/extra/web-styling.zh.md",
+  "url": "",
+  "title": "Web UI 样式参考",
+  "chars": 1035
+ },
+ {
+  "path": "kb/INDEX.md",
+  "url": "",
+  "title": "DeepSeek Harness 文档索引",
+  "chars": 299
+ },
+ {
+  "path": "kb/meta/topics.md",
+  "url": "",
+  "title": "主题导航（Topics）",
+  "chars": 4181
+ },
+ {
+  "path": "kb/README.md",
+  "url": "",
+  "title": "DeepSeek Harness 文档知识库",
+  "chars": 3248
+ },
+ {
+  "path": "kb/site/develop/basic/config.md",
+  "url": "https://deepseek-harness.github.io/deepseek-harness/develop/basic/config",
+  "title": "插件配置",
+  "chars": 2269
+ },
+ {
+  "path": "kb/site/develop/basic/index.md",
+  "url": "https://deepseek-harness.github.io/deepseek-harness/develop/basic",
+  "title": "第一个插件",
+  "chars": 2847
+ },
+ {
+  "path": "kb/site/develop/basic/publish.md",
+  "url": "https://deepseek-harness.github.io/deepseek-harness/develop/basic/publish",
+  "title": "打包与安装插件",
+  "chars": 5620
+ },
+ {
+  "path": "kb/site/develop/basic/tool.md",
+  "url": "https://deepseek-harness.github.io/deepseek-harness/develop/basic/tool",
+  "title": "开发一个工具",
+  "chars": 1399
+ },
+ {
+  "path": "kb/site/develop/cordis-tutorial/01-first-plugin.md",
+  "url": "https://deepseek-harness.github.io/deepseek-harness/develop/cordis-tutorial/01-first-plugin",
+  "title": "1. 编写第一个插件",
+  "chars": 2120
+ },
+ {
+  "path": "kb/site/develop/cordis-tutorial/02-lifecycle-and-effects.md",
+  "url": "https://deepseek-harness.github.io/deepseek-harness/develop/cordis-tutorial/02-lifecycle-and-effects",
+  "title": "2. 生命周期与 effect",
+  "chars": 2699
+ },
+ {
+  "path": "kb/site/develop/cordis-tutorial/03-services.md",
+  "url": "https://deepseek-harness.github.io/deepseek-harness/develop/cordis-tutorial/03-services",
+  "title": "3. 服务",
+  "chars": 2550
+ },
+ {
+  "path": "kb/site/develop/cordis-tutorial/04-events.md",
+  "url": "https://deepseek-harness.github.io/deepseek-harness/develop/cordis-tutorial/04-events",
+  "title": "4. 事件",
+  "chars": 3992
+ },
+ {
+  "path": "kb/site/develop/cordis-tutorial/05-config.md",
+  "url": "https://deepseek-harness.github.io/deepseek-harness/develop/cordis-tutorial/05-config",
+  "title": "5. 配置",
+  "chars": 1955
+ },
+ {
+  "path": "kb/site/develop/cordis-tutorial/06-composition-and-hmr.md",
+  "url": "https://deepseek-harness.github.io/deepseek-harness/develop/cordis-tutorial/06-composition-and-hmr",
+  "title": "6. 组合与 HMR（热模块替换）",
+  "chars": 3247
+ },
+ {
+  "path": "kb/site/develop/cordis-tutorial/07-into-the-harness.md",
+  "url": "https://deepseek-harness.github.io/deepseek-harness/develop/cordis-tutorial/07-into-the-harness",
+  "title": "7. 进入 harness",
+  "chars": 3420
+ },
+ {
+  "path": "kb/site/develop/cordis-tutorial/index.md",
+  "url": "https://deepseek-harness.github.io/deepseek-harness/develop/cordis-tutorial",
+  "title": "Cordis 教程",
+  "chars": 2489
+ },
+ {
+  "path": "kb/site/develop/framework/events.md",
+  "url": "https://deepseek-harness.github.io/deepseek-harness/develop/framework/events",
+  "title": "事件系统",
+  "chars": 3133
+ },
+ {
+  "path": "kb/site/develop/framework/index.md",
+  "url": "https://deepseek-harness.github.io/deepseek-harness/develop/framework",
+  "title": "插件与生命周期",
+  "chars": 2515
+ },
+ {
+  "path": "kb/site/develop/framework/service.md",
+  "url": "https://deepseek-harness.github.io/deepseek-harness/develop/framework/service",
+  "title": "服务与依赖",
+  "chars": 2813
+ },
+ {
+  "path": "kb/site/develop/practice/index.md",
+  "url": "https://deepseek-harness.github.io/deepseek-harness/develop/practice",
+  "title": "能力的三种角色设计",
+  "chars": 3802
+ },
+ {
+  "path": "kb/site/develop/practice/llm-adapter.md",
+  "url": "https://deepseek-harness.github.io/deepseek-harness/develop/practice/llm-adapter",
+  "title": "LLM 适配器",
+  "chars": 5069
+ },
+ {
+  "path": "kb/site/en/develop/basic/config.md",
+  "url": "https://deepseek-harness.github.io/deepseek-harness/en/develop/basic/config",
+  "title": "Plugin configuration",
+  "chars": 3179
+ },
+ {
+  "path": "kb/site/en/develop/basic/index.md",
+  "url": "https://deepseek-harness.github.io/deepseek-harness/en/develop/basic",
+  "title": "Your first plugin",
+  "chars": 3992
+ },
+ {
+  "path": "kb/site/en/develop/basic/publish.md",
+  "url": "https://deepseek-harness.github.io/deepseek-harness/en/develop/basic/publish",
+  "title": "Package and install a plugin",
+  "chars": 9125
+ },
+ {
+  "path": "kb/site/en/develop/basic/tool.md",
+  "url": "https://deepseek-harness.github.io/deepseek-harness/en/develop/basic/tool",
+  "title": "Build a tool",
+  "chars": 1840
+ },
+ {
+  "path": "kb/site/en/develop/cordis-tutorial/01-first-plugin.md",
+  "url": "https://deepseek-harness.github.io/deepseek-harness/en/develop/cordis-tutorial/01-first-plugin",
+  "title": "1. Your first plugin",
+  "chars": 3329
+ },
+ {
+  "path": "kb/site/en/develop/cordis-tutorial/02-lifecycle-and-effects.md",
+  "url": "https://deepseek-harness.github.io/deepseek-harness/en/develop/cordis-tutorial/02-lifecycle-and-effects",
+  "title": "2. Lifecycle and effects",
+  "chars": 3997
+ },
+ {
+  "path": "kb/site/en/develop/cordis-tutorial/03-services.md",
+  "url": "https://deepseek-harness.github.io/deepseek-harness/en/develop/cordis-tutorial/03-services",
+  "title": "3. Services",
+  "chars": 4056
+ },
+ {
+  "path": "kb/site/en/develop/cordis-tutorial/04-events.md",
+  "url": "https://deepseek-harness.github.io/deepseek-harness/en/develop/cordis-tutorial/04-events",
+  "title": "4. Events",
+  "chars": 5478
+ },
+ {
+  "path": "kb/site/en/develop/cordis-tutorial/05-config.md",
+  "url": "https://deepseek-harness.github.io/deepseek-harness/en/develop/cordis-tutorial/05-config",
+  "title": "5. Configuration",
+  "chars": 2745
+ },
+ {
+  "path": "kb/site/en/develop/cordis-tutorial/06-composition-and-hmr.md",
+  "url": "https://deepseek-harness.github.io/deepseek-harness/en/develop/cordis-tutorial/06-composition-and-hmr",
+  "title": "6. Composition and HMR",
+  "chars": 4765
+ },
+ {
+  "path": "kb/site/en/develop/cordis-tutorial/07-into-the-harness.md",
+  "url": "https://deepseek-harness.github.io/deepseek-harness/en/develop/cordis-tutorial/07-into-the-harness",
+  "title": "7. Into the harness",
+  "chars": 4543
+ },
+ {
+  "path": "kb/site/en/develop/cordis-tutorial/index.md",
+  "url": "https://deepseek-harness.github.io/deepseek-harness/en/develop/cordis-tutorial",
+  "title": "Cordis tutorial",
+  "chars": 4328
+ },
+ {
+  "path": "kb/site/en/develop/framework/events.md",
+  "url": "https://deepseek-harness.github.io/deepseek-harness/en/develop/framework/events",
+  "title": "Event system",
+  "chars": 4099
+ },
+ {
+  "path": "kb/site/en/develop/framework/index.md",
+  "url": "https://deepseek-harness.github.io/deepseek-harness/en/develop/framework",
+  "title": "Plugins and lifecycle",
+  "chars": 3837
+ },
+ {
+  "path": "kb/site/en/develop/framework/service.md",
+  "url": "https://deepseek-harness.github.io/deepseek-harness/en/develop/framework/service",
+  "title": "Services and dependencies",
+  "chars": 3786
+ },
+ {
+  "path": "kb/site/en/develop/practice/index.md",
+  "url": "https://deepseek-harness.github.io/deepseek-harness/en/develop/practice",
+  "title": "Three-role capability design",
+  "chars": 4976
+ },
+ {
+  "path": "kb/site/en/develop/practice/llm-adapter.md",
+  "url": "https://deepseek-harness.github.io/deepseek-harness/en/develop/practice/llm-adapter",
+  "title": "LLM adapters",
+  "chars": 6469
+ },
+ {
+  "path": "kb/site/en/guide/providers.md",
+  "url": "https://deepseek-harness.github.io/deepseek-harness/en/guide/providers",
+  "title": "Configure models",
+  "chars": 6196
+ },
+ {
+  "path": "kb/site/en/guide/python-sdk.md",
+  "url": "https://deepseek-harness.github.io/deepseek-harness/en/guide/python-sdk",
+  "title": "Get started with the Python SDK",
+  "chars": 4935
+ },
+ {
+  "path": "kb/site/en/guide/quickstart.md",
+  "url": "https://deepseek-harness.github.io/deepseek-harness/en/guide/quickstart",
+  "title": "Use the Web UI",
+  "chars": 1441
+ },
+ {
+  "path": "kb/site/en/index.md",
+  "url": "https://deepseek-harness.github.io/deepseek-harness/en",
+  "title": "",
+  "chars": 139
+ },
+ {
+  "path": "kb/site/en/reference/agent-lifecycle.md",
+  "url": "https://deepseek-harness.github.io/deepseek-harness/en/reference/agent-lifecycle",
+  "title": "Agent Turn And Step Lifecycle",
+  "chars": 4566
+ },
+ {
+  "path": "kb/site/en/reference/capability-seams.md",
+  "url": "https://deepseek-harness.github.io/deepseek-harness/en/reference/capability-seams",
+  "title": "Capability Seams And Core Services",
+  "chars": 49859
+ },
+ {
+  "path": "kb/site/en/reference/config-catalog.md",
+  "url": "https://deepseek-harness.github.io/deepseek-harness/en/reference/config-catalog",
+  "title": "Plugin Config Catalog",
+  "chars": 145664
+ },
+ {
+  "path": "kb/site/en/reference/cookbook/adding-a-conversation-node.md",
+  "url": "https://deepseek-harness.github.io/deepseek-harness/en/reference/cookbook/adding-a-conversation-node",
+  "title": "Add a Web Client conversation node",
+  "chars": 13190
+ },
+ {
+  "path": "kb/site/en/reference/cookbook/adding-a-package.md",
+  "url": "https://deepseek-harness.github.io/deepseek-harness/en/reference/cookbook/adding-a-package",
+  "title": "Cookbook: adding a workspace package",
+  "chars": 12575
+ },
+ {
+  "path": "kb/site/en/reference/cookbook/adding-a-settings-card.md",
+  "url": "https://deepseek-harness.github.io/deepseek-harness/en/reference/cookbook/adding-a-settings-card",
+  "title": "Cookbook: adding a settings card",
+  "chars": 5994
+ },
+ {
+  "path": "kb/site/en/reference/cookbook/adding-a-tool.md",
+  "url": "https://deepseek-harness.github.io/deepseek-harness/en/reference/cookbook/adding-a-tool",
+  "title": "Tool authoring reference",
+  "chars": 12853
+ },
+ {
+  "path": "kb/site/en/reference/cookbook/adding-an-llm-adapter.md",
+  "url": "https://deepseek-harness.github.io/deepseek-harness/en/reference/cookbook/adding-an-llm-adapter",
+  "title": "Cookbook: adding an LLM adapter",
+  "chars": 4089
+ },
+ {
+  "path": "kb/site/en/reference/cookbook/extension-cookbook.md",
+  "url": "https://deepseek-harness.github.io/deepseek-harness/en/reference/cookbook/extension-cookbook",
+  "title": "Cookbook: extension plugin shapes",
+  "chars": 11706
+ },
+ {
+  "path": "kb/site/en/reference/cordis-api/context.md",
+  "url": "https://deepseek-harness.github.io/deepseek-harness/en/reference/cordis-api/context",
+  "title": "Context",
+  "chars": 13255
+ },
+ {
+  "path": "kb/site/en/reference/cordis-api/events.md",
+  "url": "https://deepseek-harness.github.io/deepseek-harness/en/reference/cordis-api/events",
+  "title": "Events",
+  "chars": 7876
+ },
+ {
+  "path": "kb/site/en/reference/cordis-api/fiber.md",
+  "url": "https://deepseek-harness.github.io/deepseek-harness/en/reference/cordis-api/fiber",
+  "title": "Fiber",
+  "chars": 12697
+ },
+ {
+  "path": "kb/site/en/reference/cordis-api/inherited.md",
+  "url": "https://deepseek-harness.github.io/deepseek-harness/en/reference/cordis-api/inherited",
+  "title": "Inherited Cordis API",
+  "chars": 6430
+ },
+ {
+  "path": "kb/site/en/reference/cordis-api/registry.md",
+  "url": "https://deepseek-harness.github.io/deepseek-harness/en/reference/cordis-api/registry",
+  "title": "Registry",
+  "chars": 5519
+ },
+ {
+  "path": "kb/site/en/reference/cordis-api/service.md",
+  "url": "https://deepseek-harness.github.io/deepseek-harness/en/reference/cordis-api/service",
+  "title": "Service",
+  "chars": 3211
+ },
+ {
+  "path": "kb/site/en/reference/cordis-primer.md",
+  "url": "https://deepseek-harness.github.io/deepseek-harness/en/reference/cordis-primer",
+  "title": "Cordis Primer",
+  "chars": 4090
+ },
+ {
+  "path": "kb/site/en/reference/index.md",
+  "url": "https://deepseek-harness.github.io/deepseek-harness/en/reference",
+  "title": "DeepSeek Harness Architecture",
+  "chars": 9563
+ },
+ {
+  "path": "kb/site/en/reference/persistence-catalog.md",
+  "url": "https://deepseek-harness.github.io/deepseek-harness/en/reference/persistence-catalog",
+  "title": "Session Persistence Event Catalog",
+  "chars": 36126
+ },
+ {
+  "path": "kb/site/en/reference/subsystems/approval.md",
+  "url": "https://deepseek-harness.github.io/deepseek-harness/en/reference/subsystems/approval",
+  "title": "User Approval",
+  "chars": 9691
+ },
+ {
+  "path": "kb/site/en/reference/subsystems/client-modules.md",
+  "url": "https://deepseek-harness.github.io/deepseek-harness/en/reference/subsystems/client-modules",
+  "title": "Client Modules",
+  "chars": 9218
+ },
+ {
+  "path": "kb/site/en/reference/subsystems/code-runtime.md",
+  "url": "https://deepseek-harness.github.io/deepseek-harness/en/reference/subsystems/code-runtime",
+  "title": "Code Runtime",
+  "chars": 11818
+ },
+ {
+  "path": "kb/site/en/reference/subsystems/commands.md",
+  "url": "https://deepseek-harness.github.io/deepseek-harness/en/reference/subsystems/commands",
+  "title": "Human Commands",
+  "chars": 8397
+ },
+ {
+  "path": "kb/site/en/reference/subsystems/compaction.md",
+  "url": "https://deepseek-harness.github.io/deepseek-harness/en/reference/subsystems/compaction",
+  "title": "Compaction",
+  "chars": 17902
+ },
+ {
+  "path": "kb/site/en/reference/subsystems/core.md",
+  "url": "https://deepseek-harness.github.io/deepseek-harness/en/reference/subsystems/core",
+  "title": "Core",
+  "chars": 58429
+ },
+ {
+  "path": "kb/site/en/reference/subsystems/credentials.md",
+  "url": "https://deepseek-harness.github.io/deepseek-harness/en/reference/subsystems/credentials",
+  "title": "User Credentials",
+  "chars": 7526
+ },
+ {
+  "path": "kb/site/en/reference/subsystems/filesystem.md",
+  "url": "https://deepseek-harness.github.io/deepseek-harness/en/reference/subsystems/filesystem",
+  "title": "Filesystem",
+  "chars": 29367
+ },
+ {
+  "path": "kb/site/en/reference/subsystems/goal.md",
+  "url": "https://deepseek-harness.github.io/deepseek-harness/en/reference/subsystems/goal",
+  "title": "Same-session goals",
+  "chars": 10843
+ },
+ {
+  "path": "kb/site/en/reference/subsystems/index.md",
+  "url": "https://deepseek-harness.github.io/deepseek-harness/en/reference/subsystems",
+  "title": "Subsystems",
+  "chars": 8589
+ },
+ {
+  "path": "kb/site/en/reference/subsystems/invariants.md",
+  "url": "https://deepseek-harness.github.io/deepseek-harness/en/reference/subsystems/invariants",
+  "title": "Runtime Invariants",
+  "chars": 7291
+ },
+ {
+  "path": "kb/site/en/reference/subsystems/jobs.md",
+  "url": "https://deepseek-harness.github.io/deepseek-harness/en/reference/subsystems/jobs",
+  "title": "Background Task Runtime",
+  "chars": 14920
+ },
+ {
+  "path": "kb/site/en/reference/subsystems/llm-streaming.md",
+  "url": "https://deepseek-harness.github.io/deepseek-harness/en/reference/subsystems/llm-streaming",
+  "title": "LLM Streaming",
+  "chars": 49530
+ },
+ {
+  "path": "kb/site/en/reference/subsystems/lsp.md",
+  "url": "https://deepseek-harness.github.io/deepseek-harness/en/reference/subsystems/lsp",
+  "title": "LSP navigation",
+  "chars": 10936
+ },
+ {
+  "path": "kb/site/en/reference/subsystems/permission-presets.md",
+  "url": "https://deepseek-harness.github.io/deepseek-harness/en/reference/subsystems/permission-presets",
+  "title": "Permission Presets",
+  "chars": 8247
+ },
+ {
+  "path": "kb/site/en/reference/subsystems/persistence.md",
+  "url": "https://deepseek-harness.github.io/deepseek-harness/en/reference/subsystems/persistence",
+  "title": "Session Persistence",
+  "chars": 24764
+ },
+ {
+  "path": "kb/site/en/reference/subsystems/plan.md",
+  "url": "https://deepseek-harness.github.io/deepseek-harness/en/reference/subsystems/plan",
+  "title": "Plan Mode",
+  "chars": 8173
+ },
+ {
+  "path": "kb/site/en/reference/subsystems/sandbox.md",
+  "url": "https://deepseek-harness.github.io/deepseek-harness/en/reference/subsystems/sandbox",
+  "title": "Process Sandbox",
+  "chars": 13121
+ },
+ {
+  "path": "kb/site/en/reference/subsystems/schedule.md",
+  "url": "https://deepseek-harness.github.io/deepseek-harness/en/reference/subsystems/schedule",
+  "title": "Session-local Schedule",
+  "chars": 11353
+ },
+ {
+  "path": "kb/site/en/reference/subsystems/scope.md",
+  "url": "https://deepseek-harness.github.io/deepseek-harness/en/reference/subsystems/scope",
+  "title": "Scoped Registration",
+  "chars": 4281
+ },
+ {
+  "path": "kb/site/en/reference/subsystems/session-projection.md",
+  "url": "https://deepseek-harness.github.io/deepseek-harness/en/reference/subsystems/session-projection",
+  "title": "Session Projections",
+  "chars": 16265
+ },
+ {
+  "path": "kb/site/en/reference/subsystems/session-query.md",
+  "url": "https://deepseek-harness.github.io/deepseek-harness/en/reference/subsystems/session-query",
+  "title": "Session Query",
+  "chars": 20966
+ },
+ {
+  "path": "kb/site/en/reference/subsystems/session-reference.md",
+  "url": "https://deepseek-harness.github.io/deepseek-harness/en/reference/subsystems/session-reference",
+  "title": "Session References",
+  "chars": 5169
+ },
+ {
+  "path": "kb/site/en/reference/subsystems/session-telemetry.md",
+  "url": "https://deepseek-harness.github.io/deepseek-harness/en/reference/subsystems/session-telemetry",
+  "title": "SessionTelemetryBackend",
+  "chars": 13012
+ },
+ {
+  "path": "kb/site/en/reference/subsystems/session-title.md",
+  "url": "https://deepseek-harness.github.io/deepseek-harness/en/reference/subsystems/session-title",
+  "title": "Session Titles",
+  "chars": 8795
+ },
+ {
+  "path": "kb/site/en/reference/subsystems/session.md",
+  "url": "https://deepseek-harness.github.io/deepseek-harness/en/reference/subsystems/session",
+  "title": "Sessions",
+  "chars": 51662
+ },
+ {
+  "path": "kb/site/en/reference/subsystems/settings.md",
+  "url": "https://deepseek-harness.github.io/deepseek-harness/en/reference/subsystems/settings",
+  "title": "User Settings",
+  "chars": 16706
+ },
+ {
+  "path": "kb/site/en/reference/subsystems/shell.md",
+  "url": "https://deepseek-harness.github.io/deepseek-harness/en/reference/subsystems/shell",
+  "title": "Bash Executor",
+  "chars": 17880
+ },
+ {
+  "path": "kb/site/en/reference/subsystems/skills.md",
+  "url": "https://deepseek-harness.github.io/deepseek-harness/en/reference/subsystems/skills",
+  "title": "Skills",
+  "chars": 23730
+ },
+ {
+  "path": "kb/site/en/reference/subsystems/spill.md",
+  "url": "https://deepseek-harness.github.io/deepseek-harness/en/reference/subsystems/spill",
+  "title": "Spill Storage",
+  "chars": 7796
+ },
+ {
+  "path": "kb/site/en/reference/subsystems/storage.md",
+  "url": "https://deepseek-harness.github.io/deepseek-harness/en/reference/subsystems/storage",
+  "title": "Storage",
+  "chars": 16119
+ },
+ {
+  "path": "kb/site/en/reference/subsystems/subagent.md",
+  "url": "https://deepseek-harness.github.io/deepseek-harness/en/reference/subsystems/subagent",
+  "title": "Subagent",
+  "chars": 52384
+ },
+ {
+  "path": "kb/site/en/reference/subsystems/subprocess.md",
+  "url": "https://deepseek-harness.github.io/deepseek-harness/en/reference/subsystems/subprocess",
+  "title": "Subprocess",
+  "chars": 18274
+ },
+ {
+  "path": "kb/site/en/reference/subsystems/system-prompt.md",
+  "url": "https://deepseek-harness.github.io/deepseek-harness/en/reference/subsystems/system-prompt",
+  "title": "System Prompt Assembly",
+  "chars": 9881
+ },
+ {
+  "path": "kb/site/en/reference/subsystems/terminal.md",
+  "url": "https://deepseek-harness.github.io/deepseek-harness/en/reference/subsystems/terminal",
+  "title": "Persistent PTY Sessions",
+  "chars": 8638
+ },
+ {
+  "path": "kb/site/en/reference/subsystems/token-meter.md",
+  "url": "https://deepseek-harness.github.io/deepseek-harness/en/reference/subsystems/token-meter",
+  "title": "Token Meter",
+  "chars": 4674
+ },
+ {
+  "path": "kb/site/en/reference/subsystems/tools.md",
+  "url": "https://deepseek-harness.github.io/deepseek-harness/en/reference/subsystems/tools",
+  "title": "Tools",
+  "chars": 43396
+ },
+ {
+  "path": "kb/site/en/reference/subsystems/typert.md",
+  "url": "https://deepseek-harness.github.io/deepseek-harness/en/reference/subsystems/typert",
+  "title": "Typert remote calls",
+  "chars": 14685
+ },
+ {
+  "path": "kb/site/en/reference/subsystems/user-questions.md",
+  "url": "https://deepseek-harness.github.io/deepseek-harness/en/reference/subsystems/user-questions",
+  "title": "User Interaction",
+  "chars": 8156
+ },
+ {
+  "path": "kb/site/en/reference/subsystems/web-server.md",
+  "url": "https://deepseek-harness.github.io/deepseek-harness/en/reference/subsystems/web-server",
+  "title": "HTTP Server",
+  "chars": 7166
+ },
+ {
+  "path": "kb/site/en/reference/subsystems/web.md",
+  "url": "https://deepseek-harness.github.io/deepseek-harness/en/reference/subsystems/web",
+  "title": "Web Access",
+  "chars": 12306
+ },
+ {
+  "path": "kb/site/en/reference/subsystems/workflow.md",
+  "url": "https://deepseek-harness.github.io/deepseek-harness/en/reference/subsystems/workflow",
+  "title": "Workflow",
+  "chars": 16516
+ },
+ {
+  "path": "kb/site/en/reference/subsystems/workspace.md",
+  "url": "https://deepseek-harness.github.io/deepseek-harness/en/reference/subsystems/workspace",
+  "title": "Workspaces",
+  "chars": 14470
+ },
+ {
+  "path": "kb/site/en/reference/tool-catalog.md",
+  "url": "https://deepseek-harness.github.io/deepseek-harness/en/reference/tool-catalog",
+  "title": "Tool Schema Catalog",
+  "chars": 83980
+ },
+ {
+  "path": "kb/site/en/reference/tool-execution-pipeline.md",
+  "url": "https://deepseek-harness.github.io/deepseek-harness/en/reference/tool-execution-pipeline",
+  "title": "Tool Execution Pipeline",
+  "chars": 4093
+ },
+ {
+  "path": "kb/site/guide/providers.md",
+  "url": "https://deepseek-harness.github.io/deepseek-harness/guide/providers",
+  "title": "配置模型",
+  "chars": 3174
+ },
+ {
+  "path": "kb/site/guide/python-sdk.md",
+  "url": "https://deepseek-harness.github.io/deepseek-harness/guide/python-sdk",
+  "title": "Python SDK 快速上手",
+  "chars": 3229
+ },
+ {
+  "path": "kb/site/guide/quickstart.md",
+  "url": "https://deepseek-harness.github.io/deepseek-harness/guide/quickstart",
+  "title": "使用 Web UI",
+  "chars": 834
+ },
+ {
+  "path": "kb/site/index.md",
+  "url": "https://deepseek-harness.github.io/deepseek-harness",
+  "title": "",
+  "chars": 142
+ },
+ {
+  "path": "kb/site/reference/agent-lifecycle.md",
+  "url": "https://deepseek-harness.github.io/deepseek-harness/reference/agent-lifecycle",
+  "title": "Agent 轮次与步骤生命周期",
+  "chars": 3899
+ },
+ {
+  "path": "kb/site/reference/capability-seams.md",
+  "url": "https://deepseek-harness.github.io/deepseek-harness/reference/capability-seams",
+  "title": "能力 Seams 与核心服务",
+  "chars": 44420
+ },
+ {
+  "path": "kb/site/reference/config-catalog.md",
+  "url": "https://deepseek-harness.github.io/deepseek-harness/reference/config-catalog",
+  "title": "插件配置目录",
+  "chars": 143005
+ },
+ {
+  "path": "kb/site/reference/cookbook/adding-a-conversation-node.md",
+  "url": "https://deepseek-harness.github.io/deepseek-harness/reference/cookbook/adding-a-conversation-node",
+  "title": "添加 Web Client Conversation Node",
+  "chars": 9555
+ },
+ {
+  "path": "kb/site/reference/cookbook/adding-a-package.md",
+  "url": "https://deepseek-harness.github.io/deepseek-harness/reference/cookbook/adding-a-package",
+  "title": "实操手册：添加 workspace 包",
+  "chars": 7494
+ },
+ {
+  "path": "kb/site/reference/cookbook/adding-a-settings-card.md",
+  "url": "https://deepseek-harness.github.io/deepseek-harness/reference/cookbook/adding-a-settings-card",
+  "title": "Cookbook: 新增设置卡片",
+  "chars": 4252
+ },
+ {
+  "path": "kb/site/reference/cookbook/adding-a-tool.md",
+  "url": "https://deepseek-harness.github.io/deepseek-harness/reference/cookbook/adding-a-tool",
+  "title": "工具编写参考",
+  "chars": 7420
+ },
+ {
+  "path": "kb/site/reference/cookbook/adding-an-llm-adapter.md",
+  "url": "https://deepseek-harness.github.io/deepseek-harness/reference/cookbook/adding-an-llm-adapter",
+  "title": "实操手册：添加 LLM（大语言模型）适配器",
+  "chars": 2383
+ },
+ {
+  "path": "kb/site/reference/cookbook/extension-cookbook.md",
+  "url": "https://deepseek-harness.github.io/deepseek-harness/reference/cookbook/extension-cookbook",
+  "title": "实操手册：扩展插件形态",
+  "chars": 7945
+ },
+ {
+  "path": "kb/site/reference/cordis-api/context.md",
+  "url": "https://deepseek-harness.github.io/deepseek-harness/reference/cordis-api/context",
+  "title": "上下文",
+  "chars": 10848
+ },
+ {
+  "path": "kb/site/reference/cordis-api/events.md",
+  "url": "https://deepseek-harness.github.io/deepseek-harness/reference/cordis-api/events",
+  "title": "事件",
+  "chars": 6797
+ },
+ {
+  "path": "kb/site/reference/cordis-api/fiber.md",
+  "url": "https://deepseek-harness.github.io/deepseek-harness/reference/cordis-api/fiber",
+  "title": "Fiber",
+  "chars": 10845
+ },
+ {
+  "path": "kb/site/reference/cordis-api/inherited.md",
+  "url": "https://deepseek-harness.github.io/deepseek-harness/reference/cordis-api/inherited",
+  "title": "Inherited Cordis API",
+  "chars": 6430
+ },
+ {
+  "path": "kb/site/reference/cordis-api/registry.md",
+  "url": "https://deepseek-harness.github.io/deepseek-harness/reference/cordis-api/registry",
+  "title": "注册表",
+  "chars": 5087
+ },
+ {
+  "path": "kb/site/reference/cordis-api/service.md",
+  "url": "https://deepseek-harness.github.io/deepseek-harness/reference/cordis-api/service",
+  "title": "Service",
+  "chars": 2746
+ },
+ {
+  "path": "kb/site/reference/cordis-primer.md",
+  "url": "https://deepseek-harness.github.io/deepseek-harness/reference/cordis-primer",
+  "title": "Cordis 入门",
+  "chars": 2108
+ },
+ {
+  "path": "kb/site/reference/index.md",
+  "url": "https://deepseek-harness.github.io/deepseek-harness/reference",
+  "title": "DeepSeek Harness 架构",
+  "chars": 5891
+ },
+ {
+  "path": "kb/site/reference/persistence-catalog.md",
+  "url": "https://deepseek-harness.github.io/deepseek-harness/reference/persistence-catalog",
+  "title": "会话持久化事件目录",
+  "chars": 34988
+ },
+ {
+  "path": "kb/site/reference/subsystems/approval.md",
+  "url": "https://deepseek-harness.github.io/deepseek-harness/reference/subsystems/approval",
+  "title": "用户审批",
+  "chars": 8161
+ },
+ {
+  "path": "kb/site/reference/subsystems/client-modules.md",
+  "url": "https://deepseek-harness.github.io/deepseek-harness/reference/subsystems/client-modules",
+  "title": "Client 模块",
+  "chars": 6805
+ },
+ {
+  "path": "kb/site/reference/subsystems/code-runtime.md",
+  "url": "https://deepseek-harness.github.io/deepseek-harness/reference/subsystems/code-runtime",
+  "title": "代码运行时",
+  "chars": 10077
+ },
+ {
+  "path": "kb/site/reference/subsystems/commands.md",
+  "url": "https://deepseek-harness.github.io/deepseek-harness/reference/subsystems/commands",
+  "title": "用户命令",
+  "chars": 7531
+ },
+ {
+  "path": "kb/site/reference/subsystems/compaction.md",
+  "url": "https://deepseek-harness.github.io/deepseek-harness/reference/subsystems/compaction",
+  "title": "压缩（compaction）",
+  "chars": 14454
+ },
+ {
+  "path": "kb/site/reference/subsystems/core.md",
+  "url": "https://deepseek-harness.github.io/deepseek-harness/reference/subsystems/core",
+  "title": "核心",
+  "chars": 52671
+ },
+ {
+  "path": "kb/site/reference/subsystems/credentials.md",
+  "url": "https://deepseek-harness.github.io/deepseek-harness/reference/subsystems/credentials",
+  "title": "用户凭据",
+  "chars": 6385
+ },
+ {
+  "path": "kb/site/reference/subsystems/filesystem.md",
+  "url": "https://deepseek-harness.github.io/deepseek-harness/reference/subsystems/filesystem",
+  "title": "文件系统",
+  "chars": 24038
+ },
+ {
+  "path": "kb/site/reference/subsystems/goal.md",
+  "url": "https://deepseek-harness.github.io/deepseek-harness/reference/subsystems/goal",
+  "title": "同会话目标",
+  "chars": 9711
+ },
+ {
+  "path": "kb/site/reference/subsystems/index.md",
+  "url": "https://deepseek-harness.github.io/deepseek-harness/reference/subsystems",
+  "title": "子系统",
+  "chars": 5655
+ },
+ {
+  "path": "kb/site/reference/subsystems/invariants.md",
+  "url": "https://deepseek-harness.github.io/deepseek-harness/reference/subsystems/invariants",
+  "title": "运行时不变式",
+  "chars": 5320
+ },
+ {
+  "path": "kb/site/reference/subsystems/jobs.md",
+  "url": "https://deepseek-harness.github.io/deepseek-harness/reference/subsystems/jobs",
+  "title": "后台任务运行时",
+  "chars": 13841
+ },
+ {
+  "path": "kb/site/reference/subsystems/llm-streaming.md",
+  "url": "https://deepseek-harness.github.io/deepseek-harness/reference/subsystems/llm-streaming",
+  "title": "LLM（大语言模型）流式输出",
+  "chars": 41458
+ },
+ {
+  "path": "kb/site/reference/subsystems/lsp.md",
+  "url": "https://deepseek-harness.github.io/deepseek-harness/reference/subsystems/lsp",
+  "title": "LSP 导航",
+  "chars": 9621
+ },
+ {
+  "path": "kb/site/reference/subsystems/permission-presets.md",
+  "url": "https://deepseek-harness.github.io/deepseek-harness/reference/subsystems/permission-presets",
+  "title": "权限预设",
+  "chars": 6639
+ },
+ {
+  "path": "kb/site/reference/subsystems/persistence.md",
+  "url": "https://deepseek-harness.github.io/deepseek-harness/reference/subsystems/persistence",
+  "title": "会话持久化",
+  "chars": 20195
+ },
+ {
+  "path": "kb/site/reference/subsystems/plan.md",
+  "url": "https://deepseek-harness.github.io/deepseek-harness/reference/subsystems/plan",
+  "title": "计划模式",
+  "chars": 5530
+ },
+ {
+  "path": "kb/site/reference/subsystems/sandbox.md",
+  "url": "https://deepseek-harness.github.io/deepseek-harness/reference/subsystems/sandbox",
+  "title": "进程沙箱",
+  "chars": 10889
+ },
+ {
+  "path": "kb/site/reference/subsystems/schedule.md",
+  "url": "https://deepseek-harness.github.io/deepseek-harness/reference/subsystems/schedule",
+  "title": "仅限 Session 内的 Schedule",
+  "chars": 8072
+ },
+ {
+  "path": "kb/site/reference/subsystems/scope.md",
+  "url": "https://deepseek-harness.github.io/deepseek-harness/reference/subsystems/scope",
+  "title": "作用域注册",
+  "chars": 3011
+ },
+ {
+  "path": "kb/site/reference/subsystems/session-projection.md",
+  "url": "https://deepseek-harness.github.io/deepseek-harness/reference/subsystems/session-projection",
+  "title": "会话投影",
+  "chars": 14925
+ },
+ {
+  "path": "kb/site/reference/subsystems/session-query.md",
+  "url": "https://deepseek-harness.github.io/deepseek-harness/reference/subsystems/session-query",
+  "title": "会话查询",
+  "chars": 19216
+ },
+ {
+  "path": "kb/site/reference/subsystems/session-reference.md",
+  "url": "https://deepseek-harness.github.io/deepseek-harness/reference/subsystems/session-reference",
+  "title": "会话引用",
+  "chars": 4534
+ },
+ {
+  "path": "kb/site/reference/subsystems/session-telemetry.md",
+  "url": "https://deepseek-harness.github.io/deepseek-harness/reference/subsystems/session-telemetry",
+  "title": "遥测（telemetry）",
+  "chars": 11429
+ },
+ {
+  "path": "kb/site/reference/subsystems/session-title.md",
+  "url": "https://deepseek-harness.github.io/deepseek-harness/reference/subsystems/session-title",
+  "title": "会话标题",
+  "chars": 8082
+ },
+ {
+  "path": "kb/site/reference/subsystems/session.md",
+  "url": "https://deepseek-harness.github.io/deepseek-harness/reference/subsystems/session",
+  "title": "会话",
+  "chars": 43091
+ },
+ {
+  "path": "kb/site/reference/subsystems/settings.md",
+  "url": "https://deepseek-harness.github.io/deepseek-harness/reference/subsystems/settings",
+  "title": "用户设置",
+  "chars": 15084
+ },
+ {
+  "path": "kb/site/reference/subsystems/shell.md",
+  "url": "https://deepseek-harness.github.io/deepseek-harness/reference/subsystems/shell",
+  "title": "Bash 执行器",
+  "chars": 15416
+ },
+ {
+  "path": "kb/site/reference/subsystems/skills.md",
+  "url": "https://deepseek-harness.github.io/deepseek-harness/reference/subsystems/skills",
+  "title": "Skills",
+  "chars": 18238
+ },
+ {
+  "path": "kb/site/reference/subsystems/spill.md",
+  "url": "https://deepseek-harness.github.io/deepseek-harness/reference/subsystems/spill",
+  "title": "spill 存储",
+  "chars": 6377
+ },
+ {
+  "path": "kb/site/reference/subsystems/storage.md",
+  "url": "https://deepseek-harness.github.io/deepseek-harness/reference/subsystems/storage",
+  "title": "存储",
+  "chars": 12786
+ },
+ {
+  "path": "kb/site/reference/subsystems/subagent.md",
+  "url": "https://deepseek-harness.github.io/deepseek-harness/reference/subsystems/subagent",
+  "title": "Subagent",
+  "chars": 41549
+ },
+ {
+  "path": "kb/site/reference/subsystems/subprocess.md",
+  "url": "https://deepseek-harness.github.io/deepseek-harness/reference/subsystems/subprocess",
+  "title": "子进程",
+  "chars": 16006
+ },
+ {
+  "path": "kb/site/reference/subsystems/system-prompt.md",
+  "url": "https://deepseek-harness.github.io/deepseek-harness/reference/subsystems/system-prompt",
+  "title": "系统提示词组装",
+  "chars": 9095
+ },
+ {
+  "path": "kb/site/reference/subsystems/terminal.md",
+  "url": "https://deepseek-harness.github.io/deepseek-harness/reference/subsystems/terminal",
+  "title": "持久 PTY 会话",
+  "chars": 7643
+ },
+ {
+  "path": "kb/site/reference/subsystems/token-meter.md",
+  "url": "https://deepseek-harness.github.io/deepseek-harness/reference/subsystems/token-meter",
+  "title": "Token 计量",
+  "chars": 4068
+ },
+ {
+  "path": "kb/site/reference/subsystems/tools.md",
+  "url": "https://deepseek-harness.github.io/deepseek-harness/reference/subsystems/tools",
+  "title": "工具",
+  "chars": 36978
+ },
+ {
+  "path": "kb/site/reference/subsystems/typert.md",
+  "url": "https://deepseek-harness.github.io/deepseek-harness/reference/subsystems/typert",
+  "title": "Typert 远程调用",
+  "chars": 13369
+ },
+ {
+  "path": "kb/site/reference/subsystems/user-questions.md",
+  "url": "https://deepseek-harness.github.io/deepseek-harness/reference/subsystems/user-questions",
+  "title": "用户交互",
+  "chars": 6797
+ },
+ {
+  "path": "kb/site/reference/subsystems/web-server.md",
+  "url": "https://deepseek-harness.github.io/deepseek-harness/reference/subsystems/web-server",
+  "title": "HTTP 服务器",
+  "chars": 5759
+ },
+ {
+  "path": "kb/site/reference/subsystems/web.md",
+  "url": "https://deepseek-harness.github.io/deepseek-harness/reference/subsystems/web",
+  "title": "Web 访问",
+  "chars": 10261
+ },
+ {
+  "path": "kb/site/reference/subsystems/workflow.md",
+  "url": "https://deepseek-harness.github.io/deepseek-harness/reference/subsystems/workflow",
+  "title": "工作流",
+  "chars": 13597
+ },
+ {
+  "path": "kb/site/reference/subsystems/workspace.md",
+  "url": "https://deepseek-harness.github.io/deepseek-harness/reference/subsystems/workspace",
+  "title": "工作区",
+  "chars": 12143
+ },
+ {
+  "path": "kb/site/reference/tool-catalog.md",
+  "url": "https://deepseek-harness.github.io/deepseek-harness/reference/tool-catalog",
+  "title": "工具 Schema 目录",
+  "chars": 64523
+ },
+ {
+  "path": "kb/site/reference/tool-execution-pipeline.md",
+  "url": "https://deepseek-harness.github.io/deepseek-harness/reference/tool-execution-pipeline",
+  "title": "工具执行流水线",
+  "chars": 3457
+ }
+]
