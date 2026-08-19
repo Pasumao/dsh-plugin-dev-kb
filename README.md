@@ -1,7 +1,12 @@
 # dsh-plugin-dev-kb
 
-DeepSeek Harness（dsh）**插件开发知识库**：把官方文档站点
-<https://deepseek-harness.github.io/deepseek-harness/> 的全部内容整理为 dsh 原生可用的形态。
+![npm version](https://img.shields.io/npm/v/dsh-plugin-dev-kb)
+![License](https://img.shields.io/github/license/Pasumao/dsh-plugin-dev-kb)
+![AI Assisted](https://img.shields.io/badge/AI-Assisted-8A2BE2)
+
+**写 dsh 插件时的随身官方文档**：把 DeepSeek Harness 官方文档站点
+<https://deepseek-harness.github.io/deepseek-harness/> 的全部内容整理为 dsh 原生可用的形态——
+装了这个插件，agent 写插件时自动加载知识库，按任务场景定位文档，不用再翻网页。
 
 ## 这是什么
 
