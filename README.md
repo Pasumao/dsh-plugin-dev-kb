@@ -18,9 +18,21 @@
 
 ## 安装 / 挂载
 
-插件目录放在 `D:\dsh\plugins\dsh-plugin-dev-kb\`（与本机其他 dsh 插件同级）。
-`cordis.patch.yml` 声明 `- insert: { id: dsh-plugin-dev-kb, name: dsh-plugin-dev-kb }`，
-挂载为 profile 根层插件行；其 `skills/` 技能进入全局层。
+```powershell
+# npm（推荐）
+dsh plugin --profile web add dsh-plugin-dev-kb
+# 或 GitHub
+dsh plugin --profile web add github:Pasumao/dsh-plugin-dev-kb
+```
+
+本插件是「纯数据 + 技能」插件，不自带 bundle 自动挂载，装完后在 profile 的
+`cordis.patch.yml` 末尾加一行手动挂载（挂载为 profile 根层插件行，其 `skills/` 技能进入全局层）：
+
+```yaml
+- insert:
+    - id: dsh-plugin-dev-kb
+      name: dsh-plugin-dev-kb
+```
 
 > 重新启动 / 新建 dsh 会话后，`dsh-plugin-dev-kb` 技能才会出现在可用技能列表中（技能清单在会话启动时快照）。
 
@@ -53,8 +65,9 @@ dsh-plugin-dev-kb/
 
 ## 更新知识库
 
-见 `kb/README.md`：重新克隆 `deepseek-ai/deepseek-harness`，安装投影依赖后运行
-`scripts/project-doc-site.ts` 生成 `website/.generated/`，覆盖 `kb/site/`，再重新生成索引。
+见 `kb/README.md`：重新克隆 `deepseek-ai/deepseek-harness`（master 分支），安装投影依赖后
+在仓库内运行 `node --experimental-strip-types run-projector.ts` 生成 `website/.generated/`，
+覆盖本插件的 `kb/site/`，再在本插件根目录运行 `node scripts/rebuild-index.mjs` 重建索引与 INDEX.md。
 
 ## License
 
