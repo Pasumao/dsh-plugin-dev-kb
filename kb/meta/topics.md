@@ -70,6 +70,6 @@
 - 英文站：`site/en/`（结构与中文站一致：`guide/`、`develop/`、`reference/`）；`INDEX.md` 有全部 URL ↔ 文件对照
 
 ## 检索技巧
-- 全量索引：`meta/search-index.json`（220 个文件的 path/url/title/字符数）
+- 全量索引：`meta/search-index.json`（223 个文件的 path/url/title/字符数）
 - 大文件（config-catalog / tool-catalog / module-graph / subsystems/session 等 ≥100KB）先用 grep 定位关键行，再 read 局部，不要整读
 - 常用检索关键词：`ctx.effect`、`ctx.on`、`ctx.tools.register`、`inject`、`Service Definition`、`cordis.yml`、`SessionEventMap`

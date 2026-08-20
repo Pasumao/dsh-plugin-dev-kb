@@ -72,8 +72,9 @@ const table = (rows) => rows.length === 0
     .join('\n')
 
 const md = []
+const extraCount = entries.filter(e => e.rel.startsWith('extra/')).length
 md.push('# DeepSeek Harness 文档索引', '')
-md.push(`> 由 \`scripts/rebuild-index.mjs\` 自动生成。共 ${siteRows.length} 个站点页面（中英双语），另有 ${entries.length - siteRows.length} 个补充文档在 \`extra/\`。`, '')
+md.push(`> 由 \`scripts/rebuild-index.mjs\` 自动生成。共 ${siteRows.length} 个站点页面（中英双语），另有 ${extraCount} 个补充文档在 \`extra/\`。`, '')
 md.push('## 中文站点（根路径）', '')
 md.push('### 首页', '', table(group(rel => rel === 'site/index.md')), '')
 md.push('### 入门（/guide/）', '', table(group(rel => !en(rel) && rel.startsWith('site/guide/'))), '')

@@ -70,6 +70,9 @@ flowchart LR
   svc_sessionQuery["ctx.sessionQuery<br/>Session reads, traces, filters, and search"]
   pkg_session_reference["session-reference"]
   pkg_tool_session_query["tool-session-query"]
+  pkg_file_reference["file-reference"]
+  svc_fileReferences["ctx.fileReferences<br/>File reference discovery"]
+  pkg_file_reference_local["file-reference-local"]
   svc_sessionReferenceResolver["ctx.sessionReferenceResolver<br/>Cross-session snapshot preparation"]
   pkg_session_title["session-title"]
   svc_sessionTitle["ctx.sessionTitle<br/>Log-backed session titles"]
@@ -161,6 +164,9 @@ flowchart LR
   pkg_subagent_dsh_sdk["subagent-dsh-sdk"]
   pkg_tool_subagent_control["tool-subagent-control"]
   pkg_tool_ralph["tool-ralph"]
+  pkg_agent_team["agent-team"]
+  svc_agentTeams["ctx.agentTeams<br/>Agent Teams coordination domain"]
+  pkg_tool_agent_team["tool-agent-team"]
   pkg_jobs["jobs"]
   svc_jobs["ctx.jobs<br/>Background job registry"]
   pkg_jobs_local["jobs-local"]
@@ -202,6 +208,7 @@ flowchart LR
   pkg_agent_default_model --> svc_agentDefaultModel
   pkg_agent_loop --> svc_agentLoop
   pkg_agent_presets --> svc_agentPresets
+  pkg_agent_team --> svc_agentTeams
   pkg_api_gateway --> svc_typertGateway
   pkg_apiproxy --> svc_apiProxy
   pkg_approval --> svc_approval
@@ -223,6 +230,8 @@ flowchart LR
   pkg_directory_picker_browse --> svc_directoryPicker
   pkg_directory_picker_native --> svc_directoryPicker
   pkg_e2b --> svc_e2b
+  pkg_file_reference --> svc_fileReferences
+  pkg_file_reference_local --> svc_fileReferences
   pkg_fs --> svc_fs
   pkg_fs_e2b --> svc_fs
   pkg_fs_local --> svc_fs
@@ -301,6 +310,7 @@ flowchart LR
   svc_agentDefaultModel --> pkg_headless
   svc_agentDefaultModel --> pkg_host_apiproxy
   svc_agentLoop --> pkg_agent_spine_demo
+  svc_agentTeams --> pkg_tool_agent_team
   svc_agents --> pkg_acp
   svc_agents --> pkg_agent_loop
   svc_agents --> pkg_subagent_inprocess
@@ -432,6 +442,7 @@ flowchart LR
 | `ctx.messageFeedback` | `core` | [`message-feedback`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/feedback/message-feedback) | - | - | - | Owns local per-assistant-message feedback, lifecycle and target validation, per-item compare-and-set, and the Host unary Remote contract without entering Session history or telemetry. |
 | `ctx.workspaceRegistry` | `core` | [`workspace`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/workspace/workspace) | - | `apiproxy` | - | Owns WorkspaceId-branded records over the domain facility; stable sessionIds accounts drive Host RPC and GUI projections. |
 | `ctx.sessionQuery` | `seam` | [`session-query`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/session-query/session-query) | [`session-query-sqlite`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/session-query/session-query-sqlite) | [`session-reference`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/context/session-reference), [`tool-session-query`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/session-query/tool-session-query) | - | The interface supplies exact reads, filters, and traces; its concrete backend adds full-text reconciliation, ranking, snippets, and cursor generations, while the model consumer owns workspace authority and cursor-free rendering. |
+| `ctx.fileReferences` | `seam` | [`file-reference`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/context/file-reference) | [`file-reference-local`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/context/file-reference-local) | - | - | The interface returns path-only completion candidates within the addressed Agent cwd through its unary Remote contract; providers own namespace access and ranking without reading file contents. |
 | `ctx.sessionReferenceResolver` | `core` | [`session-reference`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/context/session-reference) | - | - | - | Projects bounded current-surface conversation snapshots into durable untrusted message context; host adapters own mention syntax. |
 | `ctx.sessionTitle` | `seam` | [`session-title`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/session/session-title) | [`session-title-first-prompt-llm`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/session/session-title-first-prompt-llm), [`session-title-all-prompts-llm`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/session/session-title-all-prompts-llm) | - | - | Owns the deterministic fallback, latest-title fold, and sole optional asynchronous provider registration. |
 | `ctx.systemPrompt` | `core` | [`system-prompt`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/core/system-prompt) | - | [`agent-loop`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/core/agent-loop), [`tools`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/core/tools), [`tool-fs`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/fs/tool-fs), [`tool-terminal`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/terminal/tool-terminal), [`tool-web`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/web/tool-web) | - | Collects prompt sections and model-facing tool schemas for each step. |
@@ -460,6 +471,7 @@ flowchart LR
 | `ctx.fs` | `seam` | [`fs`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/fs/fs) | [`fs-local`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/fs/fs-local), [`fs-sandbox`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/fs/fs-sandbox), [`fs-e2b`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/e2b/fs-e2b) | [`tool-fs`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/fs/tool-fs) | [`fs-observation-policy`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/fs/fs-observation-policy) | tool-fs executes read/write/edit through ctx.fs; fs-sandbox fences mutations by the shared sandbox mode; fs-observation-policy contributes observed-state checks through the fs/* event gate. |
 | `ctx.compaction` | `seam` | [`compaction`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/compaction/compaction) | [`compaction-basic`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/compaction/compaction-basic) | [`compaction-basic`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/compaction/compaction-basic) | - | The basic backend consumes post-step pressure and request-error recovery events; there is no model-facing compact tool. |
 | `ctx.subagents` | `seam` | [`subagent`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/subagent/subagent) | [`subagent-spawn-in-process`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/subagent/subagent-spawn-in-process), [`subagent-fork-in-process`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/subagent/subagent-fork-in-process), [`subagent-acp`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/subagent/subagent-acp), [`subagent-codex`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/subagent/subagent-codex), [`subagent-claude-code`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/subagent/subagent-claude-code), [`subagent-dsh-sdk`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/subagent/subagent-dsh-sdk) | [`tool-subagent`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/subagent/tool-subagent), [`tool-subagent-control`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/subagent/tool-subagent-control), [`tool-ralph`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/workflow/tool-ralph) | - | Providers implement transports; the service also owns optional Activation-based continuation orchestration, tool-subagent selects one-shot or continuable delegation, tool-subagent-control delivers follow-ups, and tool-ralph requires one fresh structured-output route. |
+| `ctx.agentTeams` | `core` | `agent-team` | - | `tool-agent-team` | - | Owns the implicit-root roster, durable peer mailbox, shared task DAG, and continuable-child lifecycle; tool-agent-team contributes the scoped model policy and controls. |
 | `ctx.jobs` | `seam` | [`jobs`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/jobs/jobs) | [`jobs-local`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/jobs/jobs-local) | [`tool-bash`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/shell/tool-bash), [`tool-terminal`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/terminal/tool-terminal), [`tool-subagent`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/subagent/tool-subagent), [`tool-jobs`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/jobs/tool-jobs) | - | Producers (background bash, PTY sends, and subagent delegations) register running work; tool-jobs is the model-facing controller that reads, lists, and kills it; jobs-local is the process-local registry. |
 | `ctx.web` | `seam` | [`web`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/web/web) | [`web-search-exa`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/web/web-search-exa), [`web-search-perplexity`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/web/web-search-perplexity), [`web-search-deepseek`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/web/web-search-deepseek), [`web-fetch-http`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/web/web-fetch-http) | [`tool-web`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/web/tool-web) | - | Search and fetch providers register into one ctx.web seam; tool-web owns the stable model-facing names. |
 | `ctx.spillStore` | `seam` | [`spill`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/spill/spill) | [`spill-local`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/spill/spill-local) | [`spill-policy`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/spill/spill-policy) | - | The backend saves oversized tool text and returns a model-facing locator plus retrieval hint; spill-policy is the tools/post-execute consumer that decides when to spill. |

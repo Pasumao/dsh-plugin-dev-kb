@@ -86,5 +86,5 @@ set(agent: Agent, active: boolean): 'committed' | 'queued' | 'cancelled' | 'noop
 
 Types: [Agent](./core.md)
 
-Source: [`packages/plan/plan-mode/src/index.ts:184`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/plan/plan-mode/src/index.ts)
+Source: [`packages/plan/plan-mode/src/index.ts:188`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/plan/plan-mode/src/index.ts)
 <!-- END GENERATED cordis-surface -->

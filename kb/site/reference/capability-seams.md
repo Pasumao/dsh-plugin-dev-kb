@@ -70,6 +70,9 @@ flowchart LR
   svc_sessionQuery["ctx.sessionQuery<br/>Session reads, traces, filters, and search"]
   pkg_session_reference["session-reference"]
   pkg_tool_session_query["tool-session-query"]
+  pkg_file_reference["file-reference"]
+  svc_fileReferences["ctx.fileReferences<br/>File reference discovery"]
+  pkg_file_reference_local["file-reference-local"]
   svc_sessionReferenceResolver["ctx.sessionReferenceResolver<br/>Cross-session snapshot preparation"]
   pkg_session_title["session-title"]
   svc_sessionTitle["ctx.sessionTitle<br/>Log-backed session titles"]
@@ -161,6 +164,9 @@ flowchart LR
   pkg_subagent_dsh_sdk["subagent-dsh-sdk"]
   pkg_tool_subagent_control["tool-subagent-control"]
   pkg_tool_ralph["tool-ralph"]
+  pkg_agent_team["agent-team"]
+  svc_agentTeams["ctx.agentTeams<br/>Agent Teams coordination domain"]
+  pkg_tool_agent_team["tool-agent-team"]
   pkg_jobs["jobs"]
   svc_jobs["ctx.jobs<br/>Background job registry"]
   pkg_jobs_local["jobs-local"]
@@ -202,6 +208,7 @@ flowchart LR
   pkg_agent_default_model --> svc_agentDefaultModel
   pkg_agent_loop --> svc_agentLoop
   pkg_agent_presets --> svc_agentPresets
+  pkg_agent_team --> svc_agentTeams
   pkg_api_gateway --> svc_typertGateway
   pkg_apiproxy --> svc_apiProxy
   pkg_approval --> svc_approval
@@ -223,6 +230,8 @@ flowchart LR
   pkg_directory_picker_browse --> svc_directoryPicker
   pkg_directory_picker_native --> svc_directoryPicker
   pkg_e2b --> svc_e2b
+  pkg_file_reference --> svc_fileReferences
+  pkg_file_reference_local --> svc_fileReferences
   pkg_fs --> svc_fs
   pkg_fs_e2b --> svc_fs
   pkg_fs_local --> svc_fs
@@ -301,6 +310,7 @@ flowchart LR
   svc_agentDefaultModel --> pkg_headless
   svc_agentDefaultModel --> pkg_host_apiproxy
   svc_agentLoop --> pkg_agent_spine_demo
+  svc_agentTeams --> pkg_tool_agent_team
   svc_agents --> pkg_acp
   svc_agents --> pkg_agent_loop
   svc_agents --> pkg_subagent_inprocess
@@ -432,6 +442,7 @@ flowchart LR
 | `ctx.messageFeedback` | `core` | [`message-feedback`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/feedback/message-feedback) | - | - | - | 拥有本地逐 assistant 消息反馈、生命周期与目标校验、逐条目 compare-and-set 及 Host 一元 Remote 契约，且不进入 Session 历史或遥测。 |
 | `ctx.workspaceRegistry` | `core` | [`workspace`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/workspace/workspace) | - | `apiproxy` | - | 通过领域设施拥有带 WorkspaceId 品牌类型的记录；稳定的 sessionIds 账户驱动 Host RPC 与 GUI 投影。 |
 | `ctx.sessionQuery` | `seam` | [`session-query`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/session-query/session-query) | [`session-query-sqlite`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/session-query/session-query-sqlite) | [`session-reference`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/context/session-reference), [`tool-session-query`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/session-query/tool-session-query) | - | 该接口提供精确读取、过滤和追踪；具体后端还提供全文协调、排序、摘要片段和游标世代，而模型消费方负责工作区权限与不含游标的渲染。 |
+| `ctx.fileReferences` | `seam` | [`file-reference`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/context/file-reference) | [`file-reference-local`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/context/file-reference-local) | - | - | 该接口通过其一元 Remote 契约返回指定 Agent cwd 内仅含路径的补全候选；提供方负责命名空间访问和排序，但不会读取文件内容。 |
 | `ctx.sessionReferenceResolver` | `core` | [`session-reference`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/context/session-reference) | - | - | - | 将当前表层中有界的对话快照投影为持久但不可信的消息上下文；Host 适配器负责提及语法。 |
 | `ctx.sessionTitle` | `seam` | [`session-title`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/session/session-title) | [`session-title-first-prompt-llm`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/session/session-title-first-prompt-llm), [`session-title-all-prompts-llm`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/session/session-title-all-prompts-llm) | - | - | 负责确定性回退、最新标题折叠区，以及唯一的可选异步提供方注册。 |
 | `ctx.systemPrompt` | `core` | [`system-prompt`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/core/system-prompt) | - | [`agent-loop`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/core/agent-loop), [`tools`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/core/tools), [`tool-fs`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/fs/tool-fs), [`tool-terminal`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/terminal/tool-terminal), [`tool-web`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/web/tool-web) | - | 为每个步骤收集提示词各部分和面向模型的工具 schema。 |
@@ -460,6 +471,7 @@ flowchart LR
 | `ctx.fs` | `seam` | [`fs`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/fs/fs) | [`fs-local`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/fs/fs-local), [`fs-sandbox`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/fs/fs-sandbox), [`fs-e2b`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/e2b/fs-e2b) | [`tool-fs`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/fs/tool-fs) | [`fs-observation-policy`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/fs/fs-observation-policy) | tool-fs 通过 ctx.fs 执行读取／写入／编辑；fs-sandbox 按共享沙箱模式限制变更；fs-observation-policy 通过 fs/* 事件门禁贡献基于观测状态的检查。 |
 | `ctx.compaction` | `seam` | [`compaction`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/compaction/compaction) | [`compaction-basic`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/compaction/compaction-basic) | [`compaction-basic`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/compaction/compaction-basic) | - | 基础后端消费步骤后的压力事件和请求错误恢复事件；不存在面向模型的压缩工具。 |
 | `ctx.subagents` | `seam` | [`subagent`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/subagent/subagent) | [`subagent-spawn-in-process`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/subagent/subagent-spawn-in-process), [`subagent-fork-in-process`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/subagent/subagent-fork-in-process), [`subagent-acp`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/subagent/subagent-acp), [`subagent-codex`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/subagent/subagent-codex), [`subagent-claude-code`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/subagent/subagent-claude-code), [`subagent-dsh-sdk`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/subagent/subagent-dsh-sdk) | [`tool-subagent`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/subagent/tool-subagent), [`tool-subagent-control`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/subagent/tool-subagent-control), [`tool-ralph`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/workflow/tool-ralph) | - | 提供方实现传输；该服务还负责可选的、基于 Activation 的延续编排，tool-subagent 选择一次性或可延续委派，tool-subagent-control 传递后续消息，而 tool-ralph 要求一条全新的结构化输出路由。 |
+| `ctx.agentTeams` | `core` | `agent-team` | - | `tool-agent-team` | - | 负责隐式 Root roster、持久 peer mailbox、共享任务 DAG 与 continuable child 生命周期；tool-agent-team 提供作用域化模型策略和控制工具。 |
 | `ctx.jobs` | `seam` | [`jobs`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/jobs/jobs) | [`jobs-local`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/jobs/jobs-local) | [`tool-bash`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/shell/tool-bash), [`tool-terminal`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/terminal/tool-terminal), [`tool-subagent`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/subagent/tool-subagent), [`tool-jobs`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/jobs/tool-jobs) | - | 生产方（后台 bash、PTY 发送和 subagent 委派）登记正在运行的工作；tool-jobs 是面向模型的控制器，用于读取、列出和终止这些工作；jobs-local 是进程本地注册表。 |
 | `ctx.web` | `seam` | [`web`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/web/web) | [`web-search-exa`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/web/web-search-exa), [`web-search-perplexity`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/web/web-search-perplexity), [`web-search-deepseek`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/web/web-search-deepseek), [`web-fetch-http`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/web/web-fetch-http) | [`tool-web`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/web/tool-web) | - | 搜索和抓取提供方注册到同一个 ctx.web seam；tool-web 负责稳定的面向模型名称。 |
 | `ctx.spillStore` | `seam` | [`spill`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/spill/spill) | [`spill-local`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/spill/spill-local) | [`spill-policy`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/spill/spill-policy) | - | 后端保存过大的工具文本，并返回面向模型的定位信息和取回提示；spill-policy 是 tools/post-execute 消费方，负责决定何时 spill。 |

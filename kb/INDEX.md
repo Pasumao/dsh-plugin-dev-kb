@@ -1,6 +1,6 @@
 # DeepSeek Harness 文档索引
 
-> 由 `scripts/rebuild-index.mjs` 自动生成。共 168 个站点页面（中英双语），另有 53 个补充文档在 `extra/`。
+> 由 `scripts/rebuild-index.mjs` 自动生成。共 168 个站点页面（中英双语），另有 52 个补充文档在 `extra/`。
 
 ## 中文站点（根路径）
 
