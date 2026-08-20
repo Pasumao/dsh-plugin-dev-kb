@@ -1,6 +1,6 @@
 # 主题导航（Topics）
 
-> 用途：按**任务场景**快速定位要读的文档。路径相对于知识库根 `kb/`（绝对路径：`D:\dsh\plugins\dsh-plugin-dev-kb\kb\`）。
+> 用途：按**任务场景**快速定位要读的文档。路径相对于知识库根 `kb/`（知识库绝对路径见技能正文注入的 `{{KB_ROOT}}`，不在此写死机器路径）。
 > 中文优先读 `site/` 下的文件；英文原文在 `site/en/` 对应路径（如 `site/en/develop/basic/index.md`）。
 > 每个主题：**核心** = 先读这些；**扩展** = 需要细节时再读。
 
@@ -44,7 +44,7 @@
 - 核心：`site/reference/cookbook/adding-a-package.md`、`site/reference/cookbook/adding-a-settings-card.md`、`site/reference/cookbook/adding-a-conversation-node.md`
 
 ## 11. 子系统能力速查（按需）
-- 总览：`site/reference/subsystems/index.md`；README 约定见 `site/reference/subsystems/README.md`
+- 总览：`site/reference/subsystems/index.md`
 - 内核与作用域：`core.md`、`scope.md`、`invariants.md`（运行时不变式）
 - 会话与持久化：`session.md`、`session-query.md`、`session-reference.md`、`session-title.md`、`session-projection.md`、`persistence.md`、`spill.md`、`session-telemetry.md`
 - 模型与上下文：`llm-streaming.md`、`token-meter.md`、`system-prompt.md`、`compaction.md`（上下文压缩）

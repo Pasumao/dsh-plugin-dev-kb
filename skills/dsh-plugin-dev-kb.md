@@ -9,7 +9,7 @@ whenToUse: 开发 dsh 插件、查询 dsh 能力与 API、写 Tool、配置 cord
 
 ## 0. 知识库位置
 
-- **知识库根**：`D:\dsh\plugins\dsh-plugin-dev-kb\kb\`（绝对路径，可直接 read/glob/grep）
+- **知识库根**：`{{KB_ROOT}}`（插件挂载时由 lib/index.js 自动替换为插件内 kb/ 目录的实际绝对路径，可直接 read/glob/grep；正斜杠路径，跨机器/安装位置始终有效）
 - 数据来源：官方文档站点（VitePress）的仓库原始 Markdown，链接已按站点路由重写，与线上站点逐字一致（见 `kb/meta/source.json` 的 commit）
 
 ## 1. 目录结构

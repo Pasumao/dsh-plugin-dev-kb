@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.0.3] - 2026-08-20
+
+- 修复知识库路径硬编码：技能正文中的 `D:\dsh\plugins\dsh-plugin-dev-kb\kb\` 改为
+  `{{KB_ROOT}}` 占位符，`lib/index.js` 挂载时按插件实际安装位置动态注入绝对路径，
+  并声明 `resourceBase`（directory）让 skill 工具渲染相对资源引导——第三方用户
+  从 npm 安装后技能同样能正确定位知识库（此前发布版会指向不存在的机器路径）。
+- 修复 `kb/meta/topics.md` 断链：删除对不存在的 `site/reference/subsystems/README.md`
+  的引用；顶部的知识库绝对路径一并改为相对表述。
+
 ## [1.0.2] - 2026-08-20
 
 - 知识库刷新至上游 master `141eb6f`（2026-08-19）：站点镜像 32 个页面（16 页 × 中英）内容更新

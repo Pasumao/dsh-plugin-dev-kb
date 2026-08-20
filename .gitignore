@@ -2,7 +2,6 @@
 node_modules/
 
 # Build output
-lib/
 dist/
 
 # Logs & misc
