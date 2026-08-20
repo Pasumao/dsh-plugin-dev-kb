@@ -16,6 +16,24 @@
 - **agent 友好**：`skills/dsh-plugin-dev-kb.md` 技能让 dsh 在插件开发任务中自动加载，获知知识库位置、
   主题导航与检索策略；`kb/meta/topics.md` 按任务场景映射要读的文件；`kb/meta/search-index.json` 提供全量检索。
 
+## 功能
+
+- **官方文档完整镜像**：deepseek-ai/deepseek-harness 官方文档站全部内容整理为 dsh 原生可用的形态，
+  中英双语共 168 页，链接按站点路由重写，与线上逐字一致；
+- **仓库补充文档**：未发布到站点的 50 篇开发参考（术语表、防御模式、模块图、测试策略、事故复盘、i18n 规范等）；
+- **agent 友好**：`dsh-plugin-dev-kb` 技能让 dsh 在插件开发任务中自动加载知识库；
+  `kb/meta/topics.md` 按任务场景映射要读的文件，`kb/meta/search-index.json` 提供全量检索；
+- **人侧可用**：直接浏览 `kb/` 目录，或打开 `kb/INDEX.md` 按 URL 对照查阅；
+- 纯数据插件，零运行时依赖，不注册任何工具。
+
+## 配置
+
+无需任何配置，安装即用：
+
+- 不读取环境变量，不需要 API Key / token，不写配置文件；
+- 挂载后 `skills/dsh-plugin-dev-kb.md` 技能在会话启动时进入可用技能列表，自动生效；
+- 知识库更新走 `npm run rebuild-index`（见「更新知识库」），无手动配置项。
+
 ## 安装 / 挂载
 
 ```powershell
@@ -23,6 +41,15 @@
 dsh plugin --profile web add dsh-plugin-dev-kb
 # 或 GitHub
 dsh plugin --profile web add github:Pasumao/dsh-plugin-dev-kb
+```
+
+源码安装（本地开发 / 调试）：
+
+```bash
+git clone https://github.com/Pasumao/dsh-plugin-dev-kb.git
+cd dsh-plugin-dev-kb
+npm install
+# 以 link: 方式挂载进 profile
 ```
 
 本插件是「纯数据 + 技能」插件，不自带 bundle 自动挂载，装完后在 profile 的
@@ -68,6 +95,11 @@ dsh-plugin-dev-kb/
 见 `kb/README.md`：重新克隆 `deepseek-ai/deepseek-harness`（master 分支），安装投影依赖后
 在仓库内运行 `node --experimental-strip-types run-projector.ts` 生成 `website/.generated/`，
 覆盖本插件的 `kb/site/`，再在本插件根目录运行 `node scripts/rebuild-index.mjs` 重建索引与 INDEX.md。
+
+## AI 生成声明
+
+知识库内容为官方文档的镜像整理（来源标注于 `kb/meta/source.json`），索引与
+导航由 AI 辅助生成（DeepSeek Harness），均经人工核对。
 
 ## License
 

@@ -38,6 +38,12 @@
     "url": "https://github.com/Pasumao/dsh-plugin-dev-kb/issues"
   },
   "license": "MIT",
+  "peerDependencies": {
+    "@deepseek-ai/cordis": "^4.0.1"
+  },
+  "engines": {
+    "node": ">=18"
+  },
   "dsh": {
     "bundle": {
       "patch": "./cordis.patch.yml"
