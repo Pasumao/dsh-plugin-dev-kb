@@ -1,5 +1,10 @@
 # Changelog
 
+## [1.0.6] - 2026-08-21
+
+- 整理：package.json 补 `selfcheck` / `rebuild-index` npm 脚本（发布前可一键自检）；
+  `.gitignore` 补 `*.tgz` / `*.orig` / `*.rej` / `.vscode/`；README 新增「自检」小节。
+
 ## [1.0.5] - 2026-08-21
 
 - README 新增「相关插件」互相引用段（列出同系列已发布插件，npm / GitHub 链接 + 一句话说明），互相引流。
