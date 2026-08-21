@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.0.4] - 2026-08-21
+
+- 知识库同步至上游 master `b150a551`（2026-08-21，对应 dsh `0.1.1-rc.2`）：站点镜像 104 个页面内容更新
+  （config-catalog、tool-catalog、capability-seams、persistence-catalog、cookbook、subsystems 若干页等）；
+  补充文档 32 篇内容更新（module-graph、event-producer-consumer、i18n、postmortem、subsystems 扩展等）。
+  页面结构与中英 84/84 分档不变，仅内容对齐新版本。
+- 更新 `kb/meta/source.json` 的 commit 与抓取时间；重建检索索引与 INDEX.md。
+
 ## [1.0.3] - 2026-08-20
 
 - 修复知识库路径硬编码：技能正文中的 `D:\dsh\plugins\dsh-plugin-dev-kb\kb\` 改为
