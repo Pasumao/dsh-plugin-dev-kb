@@ -90,6 +90,14 @@ dsh-plugin-dev-kb/
   `dsh-plugin-dev-kb` 技能 → 读 `kb/meta/topics.md` 定位 → 按需 read/grep。
 - **人侧**：直接浏览 `kb/` 目录，或打开 `kb/INDEX.md` 按 URL 对照查阅。
 
+## 自检
+
+发布前跑结构自检（离线、零依赖）：
+
+```powershell
+npm run selfcheck   # 结构完整 + 入口 / bundle patch 存在性
+```
+
 ## 更新知识库
 
 见 `kb/README.md`：重新克隆 `deepseek-ai/deepseek-harness`（master 分支），安装投影依赖后

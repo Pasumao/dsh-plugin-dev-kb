@@ -4,6 +4,12 @@ node_modules/
 # Build output
 dist/
 
+# Packaging & editor artifacts
+*.tgz
+*.orig
+*.rej
+.vscode/
+
 # Logs & misc
 *.log
 npm-debug.log*

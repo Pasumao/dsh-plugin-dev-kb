@@ -18,6 +18,10 @@
     "CHANGELOG.md",
     "LICENSE"
   ],
+  "scripts": {
+    "selfcheck": "node scripts/selfcheck.mjs",
+    "rebuild-index": "node scripts/rebuild-index.mjs"
+  },
   "keywords": [
     "dsh",
     "dsh-plugin",
