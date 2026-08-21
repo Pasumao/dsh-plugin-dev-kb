@@ -476,7 +476,7 @@ The full presentation field docs live in [`packages/core/tools/src/presentation.
 
 ## Cordis API
 
-Generated from source by `scripts/gen-cordis-catalog.ts` (verified fresh by `pnpm run verify-cordis-catalog` in doc-sync; regenerate with `pnpm run gen-cordis-catalog`) — this section is byte-identical in both language sides of the page. Signature blocks use a `ts cordis-catalog` fence and keep the original source JSDoc; dispatch modes are defined in the [primer](../cordis-primer.md#dispatch-modes), and the framework-inherited `ctx` API lives in [cordis-api/inherited.md](../cordis-api/inherited.md).
+Generated from source by `scripts/gen-cordis-catalog.ts` (verified fresh by `pnpm run verify-cordis-catalog` in doc-sync; regenerate with `pnpm run gen-cordis-catalog`) — the language sides differ only in locale-specific paired document paths. Signature blocks use a `ts cordis-catalog` fence and keep the original source JSDoc; dispatch modes are defined in the [primer](../cordis-primer.md#dispatch-modes), and the framework-inherited `ctx` API lives in [cordis-api/inherited.md](../cordis-api/inherited.md).
 
 <a id="ctxtools--toolruntime"></a>
 
@@ -574,7 +574,7 @@ async execute(exec: ToolExecutionInput): Promise<ToolExecutionResult>
 
 Types: [ScopeKey](./scope.md)
 
-Source: [`packages/core/tools/src/index.ts:787`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/core/tools/src/index.ts)
+Source: [`packages/core/tools/src/index.ts`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/core/tools/src/index.ts)
 
 <a id="tools-events"></a>
 
@@ -599,7 +599,7 @@ A tool was registered or unregistered, or a scoped restriction changed (the avai
 'tools/change'(): void
 ```
 
-Source: [`packages/core/tools/src/index.ts:207`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/core/tools/src/index.ts)
+Source: [`packages/core/tools/src/index.ts`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/core/tools/src/index.ts)
 
 <a id="toolscode-dispatch-log--waterfall"></a>
 
@@ -626,7 +626,7 @@ Allow a listener to replace content in the DURABLE LOG COPY of one `run_code` su
 
 Types: [ContentBlock](./llm-streaming.md) · [Scoped](./scope.md)
 
-Source: [`packages/core/tools/src/index.ts:189`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/core/tools/src/index.ts)
+Source: [`packages/core/tools/src/index.ts`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/core/tools/src/index.ts)
 
 <a id="toolsexecute--waterfall"></a>
 
@@ -650,7 +650,7 @@ Around-dispatch waterfall for timeout, retry, or metrics. `next()` returns a nor
 
 Types: [Scoped](./scope.md)
 
-Source: [`packages/core/tools/src/index.ts:163`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/core/tools/src/index.ts)
+Source: [`packages/core/tools/src/index.ts`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/core/tools/src/index.ts)
 
 <a id="toolspost-execute--waterfall"></a>
 
@@ -675,7 +675,7 @@ Accept, replace, enrich, or block a normalized dispatch result. `next()` accepts
 
 Types: [Scoped](./scope.md)
 
-Source: [`packages/core/tools/src/index.ts:175`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/core/tools/src/index.ts)
+Source: [`packages/core/tools/src/index.ts`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/core/tools/src/index.ts)
 
 <a id="toolspre-execute--waterfall"></a>
 
@@ -698,7 +698,7 @@ Allow, deny, or ask before dispatch. `next()` delegates to allow; missing approv
 
 Types: [Scoped](./scope.md)
 
-Source: [`packages/core/tools/src/index.ts:152`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/core/tools/src/index.ts)
+Source: [`packages/core/tools/src/index.ts`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/core/tools/src/index.ts)
 
 <a id="toolsresult--emit"></a>
 
@@ -719,5 +719,5 @@ Observe the frozen, lossless-JSON final outcome. Listener failures are contained
 
 Types: [Scoped](./scope.md)
 
-Source: [`packages/core/tools/src/index.ts:197`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/core/tools/src/index.ts)
+Source: [`packages/core/tools/src/index.ts`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/core/tools/src/index.ts)
 <!-- END GENERATED cordis-surface -->

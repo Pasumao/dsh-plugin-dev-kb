@@ -4,7 +4,7 @@ editSource: "docs/user/develop/basic/index.zh.md"
 
 # 第一个插件
 
-本教程会创建一个最小的 Harness 插件，并将其加载到 Web UI 中。请从已完成[从源码运行路径](https://github.com/deepseek-ai/deepseek-harness/blob/master/README.md#run-from-source)的仓库检出开始。
+本教程会创建一个最小的 Harness 插件，并将其加载到 Web UI 中。请从已完成[从源码运行路径](https://github.com/deepseek-ai/deepseek-harness/blob/master/README.zh.md#run-from-source)的仓库检出开始。
 
 ## 创建本地项目
 

@@ -5,7 +5,7 @@ outline: [2,3]
 
 # Web 访问
 
-Web 访问 seam 是一个[能力 seam](https://github.com/deepseek-ai/deepseek-harness/blob/master/.agents/notes/implemented/architecture/2026-06-24-web-capability-seam.md)，在同一个 `ctx.web` 服务上横跨**两项操作**（search 与 fetch），并拆分到多个包：Service Definition（[dsh-web](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/web/web)，`ctx.web` + 提供方注册表）、Service Provider（[dsh-web-search-exa](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/web/web-search-exa)、[dsh-web-search-perplexity](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/web/web-search-perplexity)、[dsh-web-search-deepseek](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/web/web-search-deepseek)、[dsh-web-fetch-http](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/web/web-fetch-http)）与 Consumer（[dsh-tool-web](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/web/tool-web)，即 `web_search`/`web_fetch` 工具 schema）。Web 是**一项可选能力**，不属于 agent loop（智能体循环）主干，因此其词汇定义在此而非 [core.md](./core.md) 中。更换 search 提供方不会改变模型提交查询的方式，更换 fetch 提供方也不会改变模型请求 URL 的方式。
+Web 访问 seam 是一个[能力 seam](https://github.com/deepseek-ai/deepseek-harness/blob/master/.agents/notes/implemented/architecture/2026-06-24-web-capability-seam.zh.md)，在同一个 `ctx.web` 服务上横跨**两项操作**（search 与 fetch），并拆分到多个包：Service Definition（[dsh-web](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/web/web)，`ctx.web` + 提供方注册表）、Service Provider（[dsh-web-search-exa](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/web/web-search-exa)、[dsh-web-search-perplexity](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/web/web-search-perplexity)、[dsh-web-search-deepseek](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/web/web-search-deepseek)、[dsh-web-fetch-http](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/web/web-fetch-http)）与 Consumer（[dsh-tool-web](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/web/tool-web)，即 `web_search`/`web_fetch` 工具 schema）。Web 是**一项可选能力**，不属于 agent loop（智能体循环）主干，因此其词汇定义在此而非 [core.md](./core.md) 中。更换 search 提供方不会改变模型提交查询的方式，更换 fetch 提供方也不会改变模型请求 URL 的方式。
 
 源码：[`packages/web/web/src/types.ts`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/web/web/src/types.ts)
 
@@ -141,7 +141,7 @@ type WebFetchBody =
 
 ## Cordis API
 
-Generated from source by `scripts/gen-cordis-catalog.ts` (verified fresh by `pnpm run verify-cordis-catalog` in doc-sync; regenerate with `pnpm run gen-cordis-catalog`) — this section is byte-identical in both language sides of the page. Signature blocks use a `ts cordis-catalog` fence and keep the original source JSDoc; dispatch modes are defined in the [primer](../cordis-primer.md#dispatch-modes), and the framework-inherited `ctx` API lives in [cordis-api/inherited.md](../cordis-api/inherited.md).
+Generated from source by `scripts/gen-cordis-catalog.ts` (verified fresh by `pnpm run verify-cordis-catalog` in doc-sync; regenerate with `pnpm run gen-cordis-catalog`) — the language sides differ only in locale-specific paired document paths. Signature blocks use a `ts cordis-catalog` fence and keep the original source JSDoc; dispatch modes are defined in the [primer](../cordis-primer.md#dispatch-modes), and the framework-inherited `ctx` API lives in [cordis-api/inherited.md](../cordis-api/inherited.md).
 
 <a id="ctxweb--webruntime"></a>
 
@@ -199,5 +199,5 @@ async search(request: WebSearchRequest, signal?: AbortSignal): Promise<WebSearch
 async fetch(request: WebFetchRequest, signal?: AbortSignal): Promise<WebFetchResult>
 ```
 
-Source: [`packages/web/web/src/index.ts:74`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/web/web/src/index.ts)
+Source: [`packages/web/web/src/index.ts`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/web/web/src/index.ts)
 <!-- END GENERATED cordis-surface -->

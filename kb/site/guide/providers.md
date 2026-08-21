@@ -4,7 +4,7 @@ editSource: "docs/user/guide/providers.zh.md"
 
 # 配置模型
 
-本指南假定你已按照[根 README](https://github.com/deepseek-ai/deepseek-harness/blob/master/README.md#run)启动 Web UI。模型变更会在下一次请求时生效，不需要重启服务器。
+本指南假定你已按照[根 README](https://github.com/deepseek-ai/deepseek-harness/blob/master/README.zh.md#run)启动 Web UI。模型变更会在下一次请求时生效，不需要重启服务器。
 
 ## 配置 DeepSeek
 
@@ -136,4 +136,4 @@ llm-pi-ai:
 
 ## 进阶配置
 
-自动生成的[插件配置目录](../reference/config-catalog.md)列出每个插件的所有受支持字段与默认值；[`dsh-llm-pi-ai`](../reference/config-catalog.md#deepseek-aidsh-llm-pi-ai) 就是本页所配置的那个提供方段落。[`dsh-llm-pi-ai`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/llm/llm-pi-ai/README.md) 和 [`dsh-llm-deepseek`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/llm/llm-deepseek/README.md) 参考文档负责直接 `settings.yaml` 配置、目录解析、推理控制、凭据与适配器错误。
+自动生成的[插件配置目录](../reference/config-catalog.md)列出每个插件的所有受支持字段与默认值；[`dsh-llm-pi-ai`](../reference/config-catalog.md#deepseek-aidsh-llm-pi-ai) 就是本页所配置的那个提供方段落。[`dsh-llm-pi-ai`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/llm/llm-pi-ai/README.zh.md) 和 [`dsh-llm-deepseek`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/llm/llm-deepseek/README.zh.md) 参考文档负责直接 `settings.yaml` 配置、目录解析、推理控制、凭据与适配器错误。

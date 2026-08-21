@@ -26,7 +26,7 @@ python -m venv .venv
 python -m pip install deepseek-harness-sdk
 ```
 
-安装后的运行时不需要系统提供 Node.js。需要从源码构建运行时或 wheel 包的仓库贡献者应使用 [Python 贡献者工作流](https://github.com/deepseek-ai/deepseek-harness/blob/master/python/development.md)。
+安装后的运行时不需要系统提供 Node.js。需要从源码构建运行时或 wheel 包的仓库贡献者应使用 [Python 贡献者工作流](https://github.com/deepseek-ai/deepseek-harness/blob/master/python/development.zh.md)。
 
 ## 运行仓库内置示例
 
@@ -103,4 +103,4 @@ print(result.final_response)
 
 该组合使用 `danger-full-access`。只能在可丢弃的 checkout 或容器内运行：Bash 与编辑器可以修改运行时进程有权访问的任何路径。持久 PTY 后端需要 POSIX 终端环境，因此该组合不支持 Windows agent。
 
-准确的组合内容归 [`jsonrpc-agent` 示例参考](https://github.com/deepseek-ai/deepseek-harness/blob/master/examples/jsonrpc-agent/README.md)所有。[Python SDK 参考](https://github.com/deepseek-ai/deepseek-harness/blob/master/python/sdk/README.md)介绍生命周期、结果、通知、运行时选择和配置；[Cordis primer](../reference/cordis-primer.md)介绍组合语法。
+准确的组合内容归 [`jsonrpc-agent` 示例参考](https://github.com/deepseek-ai/deepseek-harness/blob/master/examples/jsonrpc-agent/README.zh.md)所有。[Python SDK 参考](https://github.com/deepseek-ai/deepseek-harness/blob/master/python/sdk/README.zh.md)介绍生命周期、结果、通知、运行时选择和配置；[Cordis primer](../reference/cordis-primer.md)介绍组合语法。

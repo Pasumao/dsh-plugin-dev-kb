@@ -4,7 +4,7 @@ editSource: "docs/user/guide/index.zh.md"
 
 # 使用 Web UI
 
-请先按照[根目录 README](https://github.com/deepseek-ai/deepseek-harness/blob/master/README.md#run) 中的说明启动 Web UI；命令会打印其访问地址。本指南从服务器已经运行的状态开始。`dsh` 进程会把启动时所在的目录作为默认文件系统位置；全新的 Web UI 则不会选中任何工作区，你需要添加一个工作区。
+请先按照[根目录 README](https://github.com/deepseek-ai/deepseek-harness/blob/master/README.zh.md#run) 中的说明启动 Web UI；命令会打印其访问地址。本指南从服务器已经运行的状态开始。`dsh` 进程会把启动时所在的目录作为默认文件系统位置；全新的 Web UI 则不会选中任何工作区，你需要添加一个工作区。
 
 ## 配置模型
 
@@ -28,5 +28,5 @@ Agent（智能体）可以读取和编辑工作区文件、运行命令、委派
 
 - [配置模型](./providers.md)
 - [使用 Python SDK](./python-sdk.md)
-- [使用其他 CLI 模式](https://github.com/deepseek-ai/deepseek-harness/blob/master/apps/cli/README.md)
+- [使用其他 CLI 模式](https://github.com/deepseek-ai/deepseek-harness/blob/master/apps/cli/README.zh.md)
 - [开发插件](../develop/basic/index.md)

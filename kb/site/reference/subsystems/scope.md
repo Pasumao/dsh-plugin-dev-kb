@@ -5,7 +5,7 @@ outline: [2,3]
 
 # 作用域注册
 
-[scope 包](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/core/scope)提供身份、载体与作用域层词汇，使同一注册上下文同时表达每个 agent（智能体）的可见性和共享生命周期所有权。它是库原语，而不是 Cordis 服务；生命周期设计理由由 [agent-scope 运行时设计 Agent Note](https://github.com/deepseek-ai/deepseek-harness/blob/master/.agents/notes/implemented/architecture/2026-07-12-agent-scope-runtime-design.md#scope-routing-one-opaque-key-selects-one-layer)规定，注册表层决策由[共享存储 Agent Note](https://github.com/deepseek-ai/deepseek-harness/blob/master/.agents/notes/implemented/architecture/2026-07-12-scoped-layers-store.md)规定，可调用 API 与过滤语义则由包 [README](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/core/scope/README.md)规定。
+[scope 包](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/core/scope)提供身份、载体与作用域层词汇，使同一注册上下文同时表达每个 agent（智能体）的可见性和共享生命周期所有权。它是库原语，而不是 Cordis 服务；生命周期设计理由由 [agent-scope 运行时设计 Agent Note](https://github.com/deepseek-ai/deepseek-harness/blob/master/.agents/notes/implemented/architecture/2026-07-12-agent-scope-runtime-design.zh.md#scope-routing-one-opaque-key-selects-one-layer)规定，注册表层决策由[共享存储 Agent Note](https://github.com/deepseek-ai/deepseek-harness/blob/master/.agents/notes/implemented/architecture/2026-07-12-scoped-layers-store.zh.md)规定，可调用 API 与过滤语义则由包 [README](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/core/scope/README.zh.md)规定。
 
 源码：[`packages/core/scope/src/index.ts`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/core/scope/src/index.ts) 与 [`packages/core/scope/src/store.ts`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/core/scope/src/store.ts)。
 

@@ -55,6 +55,8 @@ flowchart LR
   pkg_credentials["credentials"]
   svc_credentials["ctx.credentials<br/>Credential seam"]
   pkg_credentials_local["credentials-local"]
+  pkg_authorization["authorization"]
+  svc_authorization["ctx.authorization<br/>Authorization flow registry"]
   pkg_session_telemetry["session-telemetry"]
   svc_sessionTelemetry["ctx.sessionTelemetry<br/>Session telemetry seam"]
   pkg_session_telemetry_otel["session-telemetry-otel"]
@@ -214,6 +216,7 @@ flowchart LR
   pkg_approval --> svc_approval
   pkg_attachment --> svc_attachments
   pkg_attachment_local --> svc_attachments
+  pkg_authorization --> svc_authorization
   pkg_bash_local --> svc_shell
   pkg_bash_sandbox --> svc_shell
   pkg_code_runtime --> svc_codeRuntime
@@ -319,6 +322,7 @@ flowchart LR
   svc_approval --> pkg_tools
   svc_attachments --> pkg_host_runtime
   svc_attachments --> pkg_llm_pi_ai
+  svc_authorization --> pkg_llm_pi_ai
   svc_clientModules --> pkg_hmr
   svc_codeRuntime --> pkg_tools
   svc_compaction --> pkg_compaction_basic
@@ -436,6 +440,7 @@ flowchart LR
 | `ctx.sessionPersistence` | `seam` | [`session-persistence`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/session/session-persistence) | [`session-persistence-jsonl`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/session/session-persistence-jsonl), [`session-persistence-sqlite`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/session/session-persistence-sqlite) | [`agent-loop`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/core/agent-loop), [`tool-bash`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/shell/tool-bash), [`hooks-claude-code`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/hooks/hooks-claude-code), [`hooks-codex`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/hooks/hooks-codex), [`session-query`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/session-query/session-query), [`session-query-sqlite`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/session-query/session-query-sqlite), [`message-feedback`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/feedback/message-feedback) | - | 各后端持久化同一套 SessionEvent 词汇；应用在组合时选择后端。 |
 | `ctx.settings` | `seam` | [`settings`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/settings/settings) | [`settings-file`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/settings/settings-file) | [`llm-deepseek`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/llm/llm-deepseek), [`llm-pi-ai`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/llm/llm-pi-ai), `apiproxy` | - | 插件注册命名空间 schema 并解析分层值；提供方存储原始文档。LLM（大语言模型）适配器在用户分区下将其入口配置注册为组合基础；Web 网关提供经过脱敏的分层描述符，并写入用户层。 |
 | `ctx.credentials` | `seam` | [`credentials`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/credentials/credentials) | [`credentials-local`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/credentials/credentials-local) | [`llm-deepseek`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/llm/llm-deepseek), [`llm-pi-ai`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/llm/llm-pi-ai), `apiproxy` | - | 配置携带对机密信息的引用；提供方拥有实际值。消费方按操作解析，因此轮换后的凭据会在紧接着的下一次请求中生效；Web 网关提供不含实际值的视图和只写存储。 |
+| `ctx.authorization` | `seam` | [`authorization`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/credentials/authorization) | - | [`llm-pi-ai`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/llm/llm-pi-ai) | - | flow 由知道如何取得某份凭据的插件注册，并以其写入的记录为键；seam 拥有这段对话与"每个键同时只跑一次尝试"的生命周期，而非协议本身。 |
 | `ctx.sessionTelemetry` | `seam` | [`session-telemetry`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/session/session-telemetry) | [`session-telemetry-otel`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/session/session-telemetry-otel) | - | - | 该 seam 捕获会话记录、进行脱敏并交给一个后端；没有其他组件消费该服务，其输出会离开当前进程。 |
 | `ctx.storage` | `seam` | [`storage`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/storage/storage) | [`storage-json`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/storage/storage-json), [`storage-sqlite`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/storage/storage-sqlite) | [`storage-domain`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/storage/storage-domain) | - | 各后端以不同名称并列注册；数据形态（领域优先）挂载到枢纽上，并将类型化操作转换为不透明的 KV 单元原语。 |
 | `ctx.storageDomain` | `core` | [`storage-domain`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/storage/storage-domain) | - | [`workspace`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/workspace/workspace), [`message-feedback`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/feedback/message-feedback) | - | 等待所有已配置后端就绪，然后将领域形态发布为一个受生命周期约束的服务，用于类型化持久状态。 |

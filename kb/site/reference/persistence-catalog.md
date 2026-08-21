@@ -536,7 +536,7 @@ export type SessionEvent<T extends SessionEventType = SessionEventType> = {
 'plan/mode': { active: boolean }
 ```
 
-来源：[`packages/plan/plan-mode/src/index.ts:54`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/plan/plan-mode/src/index.ts)
+来源：[`packages/plan/plan-mode/src/index.ts:53`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/plan/plan-mode/src/index.ts)
 
 ### `request/*`
 
@@ -726,7 +726,7 @@ export type SessionEvent<T extends SessionEventType = SessionEventType> = {
 'team/member': { version: 1; teamId: TeamId; member: TeamMemberSnapshot }
 ```
 
-类型：[TeamId](https://github.com/deepseek-ai/deepseek-harness/blob/master/docs/subsystems/agent-team.md) · [TeamMemberSnapshot](https://github.com/deepseek-ai/deepseek-harness/blob/master/docs/subsystems/agent-team.md)
+类型：[TeamId](https://github.com/deepseek-ai/deepseek-harness/blob/master/docs/subsystems/agent-team.zh.md) · [TeamMemberSnapshot](https://github.com/deepseek-ai/deepseek-harness/blob/master/docs/subsystems/agent-team.zh.md)
 
 来源：[`packages/experimental/agent-team/src/types.ts:206`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/experimental/agent-team/src/types.ts)
 
@@ -744,7 +744,7 @@ export type SessionEvent<T extends SessionEventType = SessionEventType> = {
 }
 ```
 
-类型：[TeamId](https://github.com/deepseek-ai/deepseek-harness/blob/master/docs/subsystems/agent-team.md) · [TeamMessageId](https://github.com/deepseek-ai/deepseek-harness/blob/master/docs/subsystems/agent-team.md)
+类型：[TeamId](https://github.com/deepseek-ai/deepseek-harness/blob/master/docs/subsystems/agent-team.zh.md) · [TeamMessageId](https://github.com/deepseek-ai/deepseek-harness/blob/master/docs/subsystems/agent-team.zh.md)
 
 来源：[`packages/experimental/agent-team/src/types.ts:212`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/experimental/agent-team/src/types.ts)
 
@@ -757,7 +757,7 @@ export type SessionEvent<T extends SessionEventType = SessionEventType> = {
 'team/message/queued': { version: 1; teamId: TeamId; message: TeamMessageSnapshot }
 ```
 
-类型：[TeamId](https://github.com/deepseek-ai/deepseek-harness/blob/master/docs/subsystems/agent-team.md) · [TeamMessageSnapshot](https://github.com/deepseek-ai/deepseek-harness/blob/master/docs/subsystems/agent-team.md)
+类型：[TeamId](https://github.com/deepseek-ai/deepseek-harness/blob/master/docs/subsystems/agent-team.zh.md) · [TeamMessageSnapshot](https://github.com/deepseek-ai/deepseek-harness/blob/master/docs/subsystems/agent-team.zh.md)
 
 来源：[`packages/experimental/agent-team/src/types.ts:210`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/experimental/agent-team/src/types.ts)
 
@@ -770,7 +770,7 @@ export type SessionEvent<T extends SessionEventType = SessionEventType> = {
 'team/task': { version: 1; teamId: TeamId; task: TeamTaskSnapshot }
 ```
 
-类型：[TeamId](https://github.com/deepseek-ai/deepseek-harness/blob/master/docs/subsystems/agent-team.md) · [TeamTaskSnapshot](https://github.com/deepseek-ai/deepseek-harness/blob/master/docs/subsystems/agent-team.md)
+类型：[TeamId](https://github.com/deepseek-ai/deepseek-harness/blob/master/docs/subsystems/agent-team.zh.md) · [TeamTaskSnapshot](https://github.com/deepseek-ai/deepseek-harness/blob/master/docs/subsystems/agent-team.zh.md)
 
 来源：[`packages/experimental/agent-team/src/types.ts:208`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/experimental/agent-team/src/types.ts)
 

@@ -5,7 +5,7 @@ outline: [2,3]
 
 # 同会话目标
 
-事件溯源目标服务及其策略消费方共享的类型。[目标领域 Agent Note](https://github.com/deepseek-ai/deepseek-harness/blob/master/.agents/notes/implemented/feature/2026-07-19-persisted-same-session-goal-domain.md) 负责记录持久化与激活决策；本页记录 [`packages/goal/goal/src/types.ts`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/goal/goal/src/types.ts) 中的确切字段和变体。
+事件溯源目标服务及其策略消费方共享的类型。[目标领域 Agent Note](https://github.com/deepseek-ai/deepseek-harness/blob/master/.agents/notes/implemented/feature/2026-07-19-persisted-same-session-goal-domain.zh.md) 负责记录持久化与激活决策；本页记录 [`packages/goal/goal/src/types.ts`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/goal/goal/src/types.ts) 中的确切字段和变体。
 
 ## 标识与生命周期
 
@@ -145,7 +145,7 @@ interface GoalChanged {
 
 ## 服务行为
 
-[`GoalService`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/goal/goal/src/index.ts) 解析创建默认值、从持久 `goal/change` 事件执行严格回放折叠、校验传入的 agent（智能体）是注册表中的确切活跃实例、以比较并设置方式执行变更，并发出 `goal/changed` 通知；监听器故障会被隔离。包 [README](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/goal/goal/README.md) 定义可调用 API 和面向模型的约定。
+[`GoalService`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/goal/goal/src/index.ts) 解析创建默认值、从持久 `goal/change` 事件执行严格回放折叠、校验传入的 agent（智能体）是注册表中的确切活跃实例、以比较并设置方式执行变更，并发出 `goal/changed` 通知；监听器故障会被隔离。包 [README](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/goal/goal/README.zh.md) 定义可调用 API 和面向模型的约定。
 
 <!-- BEGIN GENERATED cordis-surface (gen-cordis-catalog.ts) — do not edit between markers -->
 
@@ -153,7 +153,7 @@ interface GoalChanged {
 
 ## Cordis API
 
-Generated from source by `scripts/gen-cordis-catalog.ts` (verified fresh by `pnpm run verify-cordis-catalog` in doc-sync; regenerate with `pnpm run gen-cordis-catalog`) — this section is byte-identical in both language sides of the page. Signature blocks use a `ts cordis-catalog` fence and keep the original source JSDoc; dispatch modes are defined in the [primer](../cordis-primer.md#dispatch-modes), and the framework-inherited `ctx` API lives in [cordis-api/inherited.md](../cordis-api/inherited.md).
+Generated from source by `scripts/gen-cordis-catalog.ts` (verified fresh by `pnpm run verify-cordis-catalog` in doc-sync; regenerate with `pnpm run gen-cordis-catalog`) — the language sides differ only in locale-specific paired document paths. Signature blocks use a `ts cordis-catalog` fence and keep the original source JSDoc; dispatch modes are defined in the [primer](../cordis-primer.md#dispatch-modes), and the framework-inherited `ctx` API lives in [cordis-api/inherited.md](../cordis-api/inherited.md).
 
 <a id="ctxgoals--goalservice"></a>
 
@@ -250,7 +250,7 @@ block(agent: Agent, ref: GoalRef, reason: GoalBlockReason): GoalView
 
 Types: [Agent](./core.md)
 
-Source: [`packages/goal/goal/src/index.ts:183`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/goal/goal/src/index.ts)
+Source: [`packages/goal/goal/src/index.ts`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/goal/goal/src/index.ts)
 
 <a id="goal-events"></a>
 
@@ -276,5 +276,5 @@ Goal mutation accepted by one live agent. The matching `goal/change` session eve
 
 Types: [Agent](./core.md) · [Scoped](./scope.md)
 
-Source: [`packages/goal/goal/src/domain.ts:114`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/goal/goal/src/domain.ts)
+Source: [`packages/goal/goal/src/domain.ts`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/goal/goal/src/domain.ts)
 <!-- END GENERATED cordis-surface -->
