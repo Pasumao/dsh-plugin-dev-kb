@@ -97,6 +97,20 @@ dsh-plugin-dev-kb/
 覆盖本插件的 `kb/site/`（并按发布清单同步 `kb/extra/`），再在本插件根目录运行
 `node scripts/rebuild-index.mjs` 重建索引与 INDEX.md。
 
+## 相关插件
+
+本插件属于 **Pasumao 的 dsh 插件生态**，同系列已发布插件可搭配使用：
+
+| 插件（npm） | GitHub | 说明 |
+|---|---|---|
+| [dsh-notify](https://www.npmjs.com/package/dsh-notify) | [GitHub 仓库](https://github.com/Pasumao/dsh-plugin-notify) | Windows 原生通知 + 系统托盘 |
+| [dsh-plugin-choice-refresh](https://www.npmjs.com/package/dsh-plugin-choice-refresh) | [GitHub 仓库](https://github.com/Pasumao/dsh-plugin-choice-refresh) | 选择增强：重新生成选项 / 更多选项 |
+| [dsh-plugin-image-tools](https://www.npmjs.com/package/dsh-plugin-image-tools) | [GitHub 仓库](https://github.com/Pasumao/dsh-plugin-image-tools) | 图片选择卡 + 回复内嵌图片 + 盲模型收图 |
+| [dsh-plugin-table-zoom](https://www.npmjs.com/package/dsh-plugin-table-zoom) | [GitHub 仓库](https://github.com/Pasumao/dsh-plugin-table-zoom) | 聊天长表格浮窗查看 + 一键复制 Markdown |
+| [dsh-plugin-workbench](https://www.npmjs.com/package/dsh-plugin-workbench) | [GitHub 仓库](https://github.com/Pasumao/dsh-plugin-workbench) | VS Code 风格文件浏览器 + 可编辑预览 |
+
+> 本系列其余插件见 [Pasumao · dsh 插件](https://github.com/Pasumao)；觉得好用欢迎到 GitHub 点 ⭐。
+
 ## AI 生成声明
 
 知识库内容为官方文档的镜像整理（来源标注于 `kb/meta/source.json`），索引与
