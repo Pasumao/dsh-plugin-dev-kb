@@ -1,5 +1,10 @@
 # Changelog
 
+## [1.0.7] - 2026-08-25
+
+- 相关插件段新增 dsh-plugin-windows-guard（Windows 环境防坑守则 skill 插件，互相引流）。
+
+
 ## [1.0.6] - 2026-08-21
 
 - 整理：package.json 补 `selfcheck` / `rebuild-index` npm 脚本（发布前可一键自检）；
