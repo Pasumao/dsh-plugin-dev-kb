@@ -1,5 +1,10 @@
 # Changelog
 
+## [1.0.8] - 2026-08-29
+
+- 文档：首屏数字带（168 页 · 52 篇 · 223 索引 · 0 依赖）；安装 yaml 标注「唯一的一步，复制即用」；新增「5 分钟验证」节；
+- 元数据：description/keywords 搜索工程（keywords 10 → 17）；
+- 新增英文版 README.en.md 与双语切换行。
 ## [1.0.7] - 2026-08-25
 
 - 相关插件段新增 dsh-plugin-windows-guard（Windows 环境防坑守则 skill 插件，互相引流）。

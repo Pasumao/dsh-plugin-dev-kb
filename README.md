@@ -4,6 +4,8 @@
 ![License](https://img.shields.io/github/license/Pasumao/dsh-plugin-dev-kb)
 ![AI Assisted](https://img.shields.io/badge/AI-Assisted-8A2BE2)
 
+[**中文**](./README.md) | [English](./README.en.md)
+
 > **168 页官方镜像 · 52 篇补充文档 · 223 文件搜索索引 · 0 运行时依赖**
 
 **写 dsh 插件时的随身官方文档**：把 DeepSeek Harness 官方文档站点
