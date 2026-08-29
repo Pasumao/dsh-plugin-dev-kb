@@ -4,6 +4,8 @@
 ![License](https://img.shields.io/github/license/Pasumao/dsh-plugin-dev-kb)
 ![AI Assisted](https://img.shields.io/badge/AI-Assisted-8A2BE2)
 
+> **168 页官方镜像 · 52 篇补充文档 · 223 文件搜索索引 · 0 运行时依赖**
+
 **写 dsh 插件时的随身官方文档**：把 DeepSeek Harness 官方文档站点
 <https://deepseek-harness.github.io/deepseek-harness/> 的全部内容整理为 dsh 原生可用的形态——
 装了这个插件，agent 写插件时自动加载知识库，按任务场景定位文档，不用再翻网页。
@@ -53,7 +55,8 @@ npm install
 ```
 
 本插件是「纯数据 + 技能」插件，不自带 bundle 自动挂载，装完后在 profile 的
-`cordis.patch.yml` 末尾加一行手动挂载（挂载为 profile 根层插件行，其 `skills/` 技能进入全局层）：
+`cordis.patch.yml` 末尾加一行手动挂载（**唯一的一次性步骤，复制即用**；
+挂载为 profile 根层插件行，其 `skills/` 技能进入全局层）：
 
 ```yaml
 - insert:
@@ -62,6 +65,15 @@ npm install
 ```
 
 > 重新启动 / 新建 dsh 会话后，`dsh-plugin-dev-kb` 技能才会出现在可用技能列表中（技能清单在会话启动时快照）。
+
+## 5 分钟验证
+
+重启后开一个新会话，直接问：
+
+> 帮我写一个最小的 dsh 插件
+
+agent 会自动加载 `dsh-plugin-dev-kb` 技能（技能清单里可见），按 `kb/meta/topics.md`
+定位文档后再动手——看到它引用 `kb/site/...` 路径即验证通过。
 
 ## 目录结构
 
@@ -115,7 +127,7 @@ npm run selfcheck   # 结构完整 + 入口 / bundle patch 存在性
 | [dsh-plugin-choice-refresh](https://www.npmjs.com/package/dsh-plugin-choice-refresh) | [GitHub 仓库](https://github.com/Pasumao/dsh-plugin-choice-refresh) | 选择增强：重新生成选项 / 更多选项 |
 | [dsh-plugin-image-tools](https://www.npmjs.com/package/dsh-plugin-image-tools) | [GitHub 仓库](https://github.com/Pasumao/dsh-plugin-image-tools) | 图片选择卡 + 回复内嵌图片 + 盲模型收图 |
 | [dsh-plugin-table-zoom](https://www.npmjs.com/package/dsh-plugin-table-zoom) | [GitHub 仓库](https://github.com/Pasumao/dsh-plugin-table-zoom) | 聊天长表格浮窗查看 + 一键复制 Markdown |
-| [dsh-plugin-windows-guard](https://www.npmjs.com/package/dsh-plugin-windows-guard) | [GitHub 仓库](https://github.com/Pasumao/dsh-plugin-windows-guard) | Windows 环境防坑守则 skill（编码/转义/路径/进程/乱码预防） |
+| [dsh-plugin-windows-guard](https://www.npmjs.com/package/dsh-plugin-windows-guard) | [GitHub 仓库](https://github.com/Pasumao/dsh-plugin-windows-guard) | Windows 环境防坑：守则技能 + 乱码检测 / 危险写拦截 / 编码诊断修复 |
 | [dsh-plugin-workbench](https://www.npmjs.com/package/dsh-plugin-workbench) | [GitHub 仓库](https://github.com/Pasumao/dsh-plugin-workbench) | VS Code 风格文件浏览器 + 可编辑预览 |
 
 > 本系列其余插件见 [Pasumao · dsh 插件](https://github.com/Pasumao)；觉得好用欢迎到 GitHub 点 ⭐。

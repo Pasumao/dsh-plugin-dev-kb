@@ -1,6 +1,6 @@
 {
   "name": "dsh-plugin-dev-kb",
-  "description": "DeepSeek Harness (dsh) 插件开发知识库：官方文档站点的完整 Markdown 镜像（中英双语 168 页）+ 仓库补充文档（52 篇）+ 主题导航与搜索索引，以 dsh-plugin-dev-kb 技能形式让 agent 在插件开发任务中自动加载定位文档。纯数据插件，无运行时依赖。",
+  "description": "dsh 插件开发知识库：DeepSeek Harness 官方文档站完整 Markdown 镜像（中英双语 168 页）+ 52 篇仓库补充开发参考 + 主题导航与 223 文件全量搜索索引；以 dsh-plugin-dev-kb 技能让 agent 在插件开发任务中自动加载定位文档。纯数据插件，零运行时依赖。",
   "version": "1.0.7",
   "type": "module",
   "main": "lib/index.js",
@@ -30,9 +30,16 @@
     "cordis",
     "plugin",
     "knowledge",
+    "knowledge-base",
     "documentation",
+    "official-docs",
+    "documentation-mirror",
     "kb",
-    "plugin-development"
+    "plugin-development",
+    "agent-skills",
+    "skills",
+    "retrieval",
+    "rag"
   ],
   "repository": {
     "type": "git",
