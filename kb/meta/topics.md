@@ -38,24 +38,28 @@
 
 ## 9. 扩展点与能力分层
 - 核心：`site/develop/practice/index.md`（能力三层拆分）、`site/reference/capability-seams.md`
-- 扩展：`site/reference/cookbook/extension-cookbook.md`（扩展模式）、`site/reference/cookbook/adding-a-conversation-node.md`
+- 扩展：`site/reference/cookbook/extension-cookbook.md`（扩展模式）、`site/develop/practice/dynamic-cordis.md`（运行时动态装配 Cordis）
 
-## 10. 新增 Package / 设置卡片 / Conversation Node
-- 核心：`site/reference/cookbook/adding-a-package.md`、`site/reference/cookbook/adding-a-settings-card.md`、`site/reference/cookbook/adding-a-conversation-node.md`
+## 10. 新增 Package / 设置卡片
+- 核心：`site/reference/cookbook/adding-a-package.md`、`site/reference/cookbook/adding-a-settings-card.md`
 
 ## 11. 子系统能力速查（按需）
 - 总览：`site/reference/subsystems/index.md`
 - 内核与作用域：`core.md`、`scope.md`、`invariants.md`（运行时不变式）
-- 会话与持久化：`session.md`、`session-query.md`、`session-reference.md`、`session-title.md`、`session-projection.md`、`persistence.md`、`spill.md`、`session-telemetry.md`
+- 会话与持久化：`session.md`、`session-query.md`、`session-reference.md`、`session-title.md`、`session-projection.md`、`conversation.md`（Conversation Node 渲染）、`persistence.md`、`spill.md`、`session-telemetry.md`
 - 模型与上下文：`llm-streaming.md`、`token-meter.md`、`system-prompt.md`、`compaction.md`（上下文压缩）
 - 执行与工具：`tools.md`、`shell.md`（Bash）、`subprocess.md`、`terminal.md`（PTY）、`jobs.md`（后台任务）、`filesystem.md`、`lsp.md`、`code-runtime.md`、`web.md`、`skills.md`、`workflow.md`、`subagent.md`
 - 策略与交互：`approval.md`（审批）、`permission-presets.md`、`sandbox.md`、`plan.md`（计划模式）、`user-questions.md`、`commands.md`、`goal.md`、`schedule.md`
-- 平台与接入：`web-server.md`（HTTP 服务器）、`typert.md`、`client-modules.md`、`storage.md`、`workspace.md`、`settings.md`、`credentials.md`
+- 平台与接入：`web-server.md`（HTTP 服务器）、`web-client.md`（Web 客户端注入）、`slots.md`（UI 插槽系统）、`typert.md`、`client-modules.md`、`storage.md`、`workspace.md`、`settings.md`、`credentials.md`
 - 以上均在 `site/reference/subsystems/` 下（如 `site/reference/subsystems/session.md`）
 
 ## 12. 架构与核心概念
 - 核心：`site/reference/index.md`（架构总览：组合、核心包、循环、seam、扩展点）、`site/reference/cordis-primer.md`（Cordis 入门）
 - 扩展：`extra/glossary.md`（术语表：capability seam 等）、`extra/module-graph.md`（模块依赖全景图，大文件请 grep）、`extra/graph-atlas.md`
+
+## 12b. API Gateway 与服务接入
+- 核心：`site/reference/api-gateway.md`（Typert API Gateway：Remote 方法声明、Host/Client 约定、RPC 与 `/api` 路由复用）
+- 扩展：`extra/subsystems/webhook.md`（webhook 接入，仓库文档）、`site/reference/subsystems/typert.md`
 
 ## 13. 系统提示词 / Token / 上下文压缩
 - `site/reference/subsystems/system-prompt.md`、`token-meter.md`、`compaction.md`
@@ -69,7 +73,11 @@
 ## 16. 中英对照
 - 英文站：`site/en/`（结构与中文站一致：`guide/`、`develop/`、`reference/`）；`INDEX.md` 有全部 URL ↔ 文件对照
 
+## 17. 使用指南进阶（GitHub Review / 定时任务 / MCP 记忆）
+- `site/guide/github-review.md`（用 dsh 做 GitHub 代码评审）、`site/guide/schedule.md`（定时任务）、`site/guide/mcp-memory.md`（MCP 与长期记忆）
+- 扩展：`site/reference/subsystems/schedule.md`、`extra/subsystems/todo.md`（仓库文档）
+
 ## 检索技巧
-- 全量索引：`meta/search-index.json`（223 个文件的 path/url/title/字符数）
+- 全量索引：`meta/search-index.json`（241 个文件的 path/url/title/字符数）
 - 大文件（config-catalog / tool-catalog / module-graph / subsystems/session 等 ≥100KB）先用 grep 定位关键行，再 read 局部，不要整读
 - 常用检索关键词：`ctx.effect`、`ctx.on`、`ctx.tools.register`、`inject`、`Service Definition`、`cordis.yml`、`SessionEventMap`

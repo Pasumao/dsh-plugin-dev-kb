@@ -1,6 +1,6 @@
 # DeepSeek Harness 文档索引
 
-> 由 `scripts/rebuild-index.mjs` 自动生成。共 168 个站点页面（中英双语），另有 52 个补充文档在 `extra/`。
+> 由 `scripts/rebuild-index.mjs` 自动生成。共 182 个站点页面（中英双语），另有 56 个补充文档在 `extra/`。
 
 ## 中文站点（根路径）
 
@@ -14,9 +14,12 @@
 
 | 页面 | 站点 URL | 本地文件 |
 | --- | --- | --- |
+| 通过 GitHub Webhook 创建评审会话 | [https://deepseek-harness.github.io/deepseek-harness/guide/github-review](https://deepseek-harness.github.io/deepseek-harness/guide/github-review) | `site/guide/github-review.md` |
+| 连接第三方记忆 MCP 服务 | [https://deepseek-harness.github.io/deepseek-harness/guide/mcp-memory](https://deepseek-harness.github.io/deepseek-harness/guide/mcp-memory) | `site/guide/mcp-memory.md` |
 | 配置模型 | [https://deepseek-harness.github.io/deepseek-harness/guide/providers](https://deepseek-harness.github.io/deepseek-harness/guide/providers) | `site/guide/providers.md` |
-| Python SDK 快速上手 | [https://deepseek-harness.github.io/deepseek-harness/guide/python-sdk](https://deepseek-harness.github.io/deepseek-harness/guide/python-sdk) | `site/guide/python-sdk.md` |
+| Python SDK 入门 | [https://deepseek-harness.github.io/deepseek-harness/guide/python-sdk](https://deepseek-harness.github.io/deepseek-harness/guide/python-sdk) | `site/guide/python-sdk.md` |
 | 使用 Web UI | [https://deepseek-harness.github.io/deepseek-harness/guide/quickstart](https://deepseek-harness.github.io/deepseek-harness/guide/quickstart) | `site/guide/quickstart.md` |
+| 安排会话内提醒 | [https://deepseek-harness.github.io/deepseek-harness/guide/schedule](https://deepseek-harness.github.io/deepseek-harness/guide/schedule) | `site/guide/schedule.md` |
 
 ### 开发（/develop/）
 
@@ -37,6 +40,7 @@
 | 事件系统 | [https://deepseek-harness.github.io/deepseek-harness/develop/framework/events](https://deepseek-harness.github.io/deepseek-harness/develop/framework/events) | `site/develop/framework/events.md` |
 | 插件与生命周期 | [https://deepseek-harness.github.io/deepseek-harness/develop/framework](https://deepseek-harness.github.io/deepseek-harness/develop/framework) | `site/develop/framework/index.md` |
 | 服务与依赖 | [https://deepseek-harness.github.io/deepseek-harness/develop/framework/service](https://deepseek-harness.github.io/deepseek-harness/develop/framework/service) | `site/develop/framework/service.md` |
+| 用 Cordis 工具扩展运行中的智能体 | [https://deepseek-harness.github.io/deepseek-harness/develop/practice/dynamic-cordis](https://deepseek-harness.github.io/deepseek-harness/develop/practice/dynamic-cordis) | `site/develop/practice/dynamic-cordis.md` |
 | 能力的三种角色设计 | [https://deepseek-harness.github.io/deepseek-harness/develop/practice](https://deepseek-harness.github.io/deepseek-harness/develop/practice) | `site/develop/practice/index.md` |
 | LLM 适配器 | [https://deepseek-harness.github.io/deepseek-harness/develop/practice/llm-adapter](https://deepseek-harness.github.io/deepseek-harness/develop/practice/llm-adapter) | `site/develop/practice/llm-adapter.md` |
 
@@ -45,9 +49,9 @@
 | 页面 | 站点 URL | 本地文件 |
 | --- | --- | --- |
 | Agent 轮次与步骤生命周期 | [https://deepseek-harness.github.io/deepseek-harness/reference/agent-lifecycle](https://deepseek-harness.github.io/deepseek-harness/reference/agent-lifecycle) | `site/reference/agent-lifecycle.md` |
+| API Gateway | [https://deepseek-harness.github.io/deepseek-harness/reference/api-gateway](https://deepseek-harness.github.io/deepseek-harness/reference/api-gateway) | `site/reference/api-gateway.md` |
 | 能力 Seams 与核心服务 | [https://deepseek-harness.github.io/deepseek-harness/reference/capability-seams](https://deepseek-harness.github.io/deepseek-harness/reference/capability-seams) | `site/reference/capability-seams.md` |
 | 插件配置目录 | [https://deepseek-harness.github.io/deepseek-harness/reference/config-catalog](https://deepseek-harness.github.io/deepseek-harness/reference/config-catalog) | `site/reference/config-catalog.md` |
-| 添加 Web Client Conversation Node | [https://deepseek-harness.github.io/deepseek-harness/reference/cookbook/adding-a-conversation-node](https://deepseek-harness.github.io/deepseek-harness/reference/cookbook/adding-a-conversation-node) | `site/reference/cookbook/adding-a-conversation-node.md` |
 | 实操手册：添加 workspace 包 | [https://deepseek-harness.github.io/deepseek-harness/reference/cookbook/adding-a-package](https://deepseek-harness.github.io/deepseek-harness/reference/cookbook/adding-a-package) | `site/reference/cookbook/adding-a-package.md` |
 | Cookbook: 新增设置卡片 | [https://deepseek-harness.github.io/deepseek-harness/reference/cookbook/adding-a-settings-card](https://deepseek-harness.github.io/deepseek-harness/reference/cookbook/adding-a-settings-card) | `site/reference/cookbook/adding-a-settings-card.md` |
 | 工具编写参考 | [https://deepseek-harness.github.io/deepseek-harness/reference/cookbook/adding-a-tool](https://deepseek-harness.github.io/deepseek-harness/reference/cookbook/adding-a-tool) | `site/reference/cookbook/adding-a-tool.md` |
@@ -67,6 +71,7 @@
 | 代码运行时 | [https://deepseek-harness.github.io/deepseek-harness/reference/subsystems/code-runtime](https://deepseek-harness.github.io/deepseek-harness/reference/subsystems/code-runtime) | `site/reference/subsystems/code-runtime.md` |
 | 用户命令 | [https://deepseek-harness.github.io/deepseek-harness/reference/subsystems/commands](https://deepseek-harness.github.io/deepseek-harness/reference/subsystems/commands) | `site/reference/subsystems/commands.md` |
 | 压缩（compaction） | [https://deepseek-harness.github.io/deepseek-harness/reference/subsystems/compaction](https://deepseek-harness.github.io/deepseek-harness/reference/subsystems/compaction) | `site/reference/subsystems/compaction.md` |
+| Conversation 组装 | [https://deepseek-harness.github.io/deepseek-harness/reference/subsystems/conversation](https://deepseek-harness.github.io/deepseek-harness/reference/subsystems/conversation) | `site/reference/subsystems/conversation.md` |
 | 核心 | [https://deepseek-harness.github.io/deepseek-harness/reference/subsystems/core](https://deepseek-harness.github.io/deepseek-harness/reference/subsystems/core) | `site/reference/subsystems/core.md` |
 | 用户凭据 | [https://deepseek-harness.github.io/deepseek-harness/reference/subsystems/credentials](https://deepseek-harness.github.io/deepseek-harness/reference/subsystems/credentials) | `site/reference/subsystems/credentials.md` |
 | 文件系统 | [https://deepseek-harness.github.io/deepseek-harness/reference/subsystems/filesystem](https://deepseek-harness.github.io/deepseek-harness/reference/subsystems/filesystem) | `site/reference/subsystems/filesystem.md` |
@@ -91,6 +96,7 @@
 | 用户设置 | [https://deepseek-harness.github.io/deepseek-harness/reference/subsystems/settings](https://deepseek-harness.github.io/deepseek-harness/reference/subsystems/settings) | `site/reference/subsystems/settings.md` |
 | Bash 执行器 | [https://deepseek-harness.github.io/deepseek-harness/reference/subsystems/shell](https://deepseek-harness.github.io/deepseek-harness/reference/subsystems/shell) | `site/reference/subsystems/shell.md` |
 | Skills | [https://deepseek-harness.github.io/deepseek-harness/reference/subsystems/skills](https://deepseek-harness.github.io/deepseek-harness/reference/subsystems/skills) | `site/reference/subsystems/skills.md` |
+| Web Client Slots | [https://deepseek-harness.github.io/deepseek-harness/reference/subsystems/slots](https://deepseek-harness.github.io/deepseek-harness/reference/subsystems/slots) | `site/reference/subsystems/slots.md` |
 | spill 存储 | [https://deepseek-harness.github.io/deepseek-harness/reference/subsystems/spill](https://deepseek-harness.github.io/deepseek-harness/reference/subsystems/spill) | `site/reference/subsystems/spill.md` |
 | 存储 | [https://deepseek-harness.github.io/deepseek-harness/reference/subsystems/storage](https://deepseek-harness.github.io/deepseek-harness/reference/subsystems/storage) | `site/reference/subsystems/storage.md` |
 | Subagent | [https://deepseek-harness.github.io/deepseek-harness/reference/subsystems/subagent](https://deepseek-harness.github.io/deepseek-harness/reference/subsystems/subagent) | `site/reference/subsystems/subagent.md` |
@@ -101,6 +107,7 @@
 | 工具 | [https://deepseek-harness.github.io/deepseek-harness/reference/subsystems/tools](https://deepseek-harness.github.io/deepseek-harness/reference/subsystems/tools) | `site/reference/subsystems/tools.md` |
 | Typert 远程调用 | [https://deepseek-harness.github.io/deepseek-harness/reference/subsystems/typert](https://deepseek-harness.github.io/deepseek-harness/reference/subsystems/typert) | `site/reference/subsystems/typert.md` |
 | 用户交互 | [https://deepseek-harness.github.io/deepseek-harness/reference/subsystems/user-questions](https://deepseek-harness.github.io/deepseek-harness/reference/subsystems/user-questions) | `site/reference/subsystems/user-questions.md` |
+| Web Client 架构 | [https://deepseek-harness.github.io/deepseek-harness/reference/subsystems/web-client](https://deepseek-harness.github.io/deepseek-harness/reference/subsystems/web-client) | `site/reference/subsystems/web-client.md` |
 | HTTP 服务器 | [https://deepseek-harness.github.io/deepseek-harness/reference/subsystems/web-server](https://deepseek-harness.github.io/deepseek-harness/reference/subsystems/web-server) | `site/reference/subsystems/web-server.md` |
 | Web 访问 | [https://deepseek-harness.github.io/deepseek-harness/reference/subsystems/web](https://deepseek-harness.github.io/deepseek-harness/reference/subsystems/web) | `site/reference/subsystems/web.md` |
 | 工作流 | [https://deepseek-harness.github.io/deepseek-harness/reference/subsystems/workflow](https://deepseek-harness.github.io/deepseek-harness/reference/subsystems/workflow) | `site/reference/subsystems/workflow.md` |
@@ -135,15 +142,19 @@
 | Event system | [https://deepseek-harness.github.io/deepseek-harness/en/develop/framework/events](https://deepseek-harness.github.io/deepseek-harness/en/develop/framework/events) | `site/en/develop/framework/events.md` |
 | Plugins and lifecycle | [https://deepseek-harness.github.io/deepseek-harness/en/develop/framework](https://deepseek-harness.github.io/deepseek-harness/en/develop/framework) | `site/en/develop/framework/index.md` |
 | Services and dependencies | [https://deepseek-harness.github.io/deepseek-harness/en/develop/framework/service](https://deepseek-harness.github.io/deepseek-harness/en/develop/framework/service) | `site/en/develop/framework/service.md` |
+| Extend a running agent with Cordis tools | [https://deepseek-harness.github.io/deepseek-harness/en/develop/practice/dynamic-cordis](https://deepseek-harness.github.io/deepseek-harness/en/develop/practice/dynamic-cordis) | `site/en/develop/practice/dynamic-cordis.md` |
 | Three-role capability design | [https://deepseek-harness.github.io/deepseek-harness/en/develop/practice](https://deepseek-harness.github.io/deepseek-harness/en/develop/practice) | `site/en/develop/practice/index.md` |
 | LLM adapters | [https://deepseek-harness.github.io/deepseek-harness/en/develop/practice/llm-adapter](https://deepseek-harness.github.io/deepseek-harness/en/develop/practice/llm-adapter) | `site/en/develop/practice/llm-adapter.md` |
+| Create review Sessions from GitHub webhooks | [https://deepseek-harness.github.io/deepseek-harness/en/guide/github-review](https://deepseek-harness.github.io/deepseek-harness/en/guide/github-review) | `site/en/guide/github-review.md` |
+| Connect a third-party memory MCP server | [https://deepseek-harness.github.io/deepseek-harness/en/guide/mcp-memory](https://deepseek-harness.github.io/deepseek-harness/en/guide/mcp-memory) | `site/en/guide/mcp-memory.md` |
 | Configure models | [https://deepseek-harness.github.io/deepseek-harness/en/guide/providers](https://deepseek-harness.github.io/deepseek-harness/en/guide/providers) | `site/en/guide/providers.md` |
 | Get started with the Python SDK | [https://deepseek-harness.github.io/deepseek-harness/en/guide/python-sdk](https://deepseek-harness.github.io/deepseek-harness/en/guide/python-sdk) | `site/en/guide/python-sdk.md` |
 | Use the Web UI | [https://deepseek-harness.github.io/deepseek-harness/en/guide/quickstart](https://deepseek-harness.github.io/deepseek-harness/en/guide/quickstart) | `site/en/guide/quickstart.md` |
+| Schedule session-local reminders | [https://deepseek-harness.github.io/deepseek-harness/en/guide/schedule](https://deepseek-harness.github.io/deepseek-harness/en/guide/schedule) | `site/en/guide/schedule.md` |
 | Agent Turn And Step Lifecycle | [https://deepseek-harness.github.io/deepseek-harness/en/reference/agent-lifecycle](https://deepseek-harness.github.io/deepseek-harness/en/reference/agent-lifecycle) | `site/en/reference/agent-lifecycle.md` |
+| API Gateway | [https://deepseek-harness.github.io/deepseek-harness/en/reference/api-gateway](https://deepseek-harness.github.io/deepseek-harness/en/reference/api-gateway) | `site/en/reference/api-gateway.md` |
 | Capability Seams And Core Services | [https://deepseek-harness.github.io/deepseek-harness/en/reference/capability-seams](https://deepseek-harness.github.io/deepseek-harness/en/reference/capability-seams) | `site/en/reference/capability-seams.md` |
 | Plugin Config Catalog | [https://deepseek-harness.github.io/deepseek-harness/en/reference/config-catalog](https://deepseek-harness.github.io/deepseek-harness/en/reference/config-catalog) | `site/en/reference/config-catalog.md` |
-| Add a Web Client conversation node | [https://deepseek-harness.github.io/deepseek-harness/en/reference/cookbook/adding-a-conversation-node](https://deepseek-harness.github.io/deepseek-harness/en/reference/cookbook/adding-a-conversation-node) | `site/en/reference/cookbook/adding-a-conversation-node.md` |
 | Cookbook: adding a workspace package | [https://deepseek-harness.github.io/deepseek-harness/en/reference/cookbook/adding-a-package](https://deepseek-harness.github.io/deepseek-harness/en/reference/cookbook/adding-a-package) | `site/en/reference/cookbook/adding-a-package.md` |
 | Cookbook: adding a settings card | [https://deepseek-harness.github.io/deepseek-harness/en/reference/cookbook/adding-a-settings-card](https://deepseek-harness.github.io/deepseek-harness/en/reference/cookbook/adding-a-settings-card) | `site/en/reference/cookbook/adding-a-settings-card.md` |
 | Tool authoring reference | [https://deepseek-harness.github.io/deepseek-harness/en/reference/cookbook/adding-a-tool](https://deepseek-harness.github.io/deepseek-harness/en/reference/cookbook/adding-a-tool) | `site/en/reference/cookbook/adding-a-tool.md` |
@@ -163,6 +174,7 @@
 | Code Runtime | [https://deepseek-harness.github.io/deepseek-harness/en/reference/subsystems/code-runtime](https://deepseek-harness.github.io/deepseek-harness/en/reference/subsystems/code-runtime) | `site/en/reference/subsystems/code-runtime.md` |
 | Human Commands | [https://deepseek-harness.github.io/deepseek-harness/en/reference/subsystems/commands](https://deepseek-harness.github.io/deepseek-harness/en/reference/subsystems/commands) | `site/en/reference/subsystems/commands.md` |
 | Compaction | [https://deepseek-harness.github.io/deepseek-harness/en/reference/subsystems/compaction](https://deepseek-harness.github.io/deepseek-harness/en/reference/subsystems/compaction) | `site/en/reference/subsystems/compaction.md` |
+| Conversation assembly | [https://deepseek-harness.github.io/deepseek-harness/en/reference/subsystems/conversation](https://deepseek-harness.github.io/deepseek-harness/en/reference/subsystems/conversation) | `site/en/reference/subsystems/conversation.md` |
 | Core | [https://deepseek-harness.github.io/deepseek-harness/en/reference/subsystems/core](https://deepseek-harness.github.io/deepseek-harness/en/reference/subsystems/core) | `site/en/reference/subsystems/core.md` |
 | User Credentials | [https://deepseek-harness.github.io/deepseek-harness/en/reference/subsystems/credentials](https://deepseek-harness.github.io/deepseek-harness/en/reference/subsystems/credentials) | `site/en/reference/subsystems/credentials.md` |
 | Filesystem | [https://deepseek-harness.github.io/deepseek-harness/en/reference/subsystems/filesystem](https://deepseek-harness.github.io/deepseek-harness/en/reference/subsystems/filesystem) | `site/en/reference/subsystems/filesystem.md` |
@@ -187,6 +199,7 @@
 | User Settings | [https://deepseek-harness.github.io/deepseek-harness/en/reference/subsystems/settings](https://deepseek-harness.github.io/deepseek-harness/en/reference/subsystems/settings) | `site/en/reference/subsystems/settings.md` |
 | Bash Executor | [https://deepseek-harness.github.io/deepseek-harness/en/reference/subsystems/shell](https://deepseek-harness.github.io/deepseek-harness/en/reference/subsystems/shell) | `site/en/reference/subsystems/shell.md` |
 | Skills | [https://deepseek-harness.github.io/deepseek-harness/en/reference/subsystems/skills](https://deepseek-harness.github.io/deepseek-harness/en/reference/subsystems/skills) | `site/en/reference/subsystems/skills.md` |
+| Web Client Slots | [https://deepseek-harness.github.io/deepseek-harness/en/reference/subsystems/slots](https://deepseek-harness.github.io/deepseek-harness/en/reference/subsystems/slots) | `site/en/reference/subsystems/slots.md` |
 | Spill Storage | [https://deepseek-harness.github.io/deepseek-harness/en/reference/subsystems/spill](https://deepseek-harness.github.io/deepseek-harness/en/reference/subsystems/spill) | `site/en/reference/subsystems/spill.md` |
 | Storage | [https://deepseek-harness.github.io/deepseek-harness/en/reference/subsystems/storage](https://deepseek-harness.github.io/deepseek-harness/en/reference/subsystems/storage) | `site/en/reference/subsystems/storage.md` |
 | Subagent | [https://deepseek-harness.github.io/deepseek-harness/en/reference/subsystems/subagent](https://deepseek-harness.github.io/deepseek-harness/en/reference/subsystems/subagent) | `site/en/reference/subsystems/subagent.md` |
@@ -197,6 +210,7 @@
 | Tools | [https://deepseek-harness.github.io/deepseek-harness/en/reference/subsystems/tools](https://deepseek-harness.github.io/deepseek-harness/en/reference/subsystems/tools) | `site/en/reference/subsystems/tools.md` |
 | Typert remote calls | [https://deepseek-harness.github.io/deepseek-harness/en/reference/subsystems/typert](https://deepseek-harness.github.io/deepseek-harness/en/reference/subsystems/typert) | `site/en/reference/subsystems/typert.md` |
 | User Interaction | [https://deepseek-harness.github.io/deepseek-harness/en/reference/subsystems/user-questions](https://deepseek-harness.github.io/deepseek-harness/en/reference/subsystems/user-questions) | `site/en/reference/subsystems/user-questions.md` |
+| Web Client architecture | [https://deepseek-harness.github.io/deepseek-harness/en/reference/subsystems/web-client](https://deepseek-harness.github.io/deepseek-harness/en/reference/subsystems/web-client) | `site/en/reference/subsystems/web-client.md` |
 | HTTP Server | [https://deepseek-harness.github.io/deepseek-harness/en/reference/subsystems/web-server](https://deepseek-harness.github.io/deepseek-harness/en/reference/subsystems/web-server) | `site/en/reference/subsystems/web-server.md` |
 | Web Access | [https://deepseek-harness.github.io/deepseek-harness/en/reference/subsystems/web](https://deepseek-harness.github.io/deepseek-harness/en/reference/subsystems/web) | `site/en/reference/subsystems/web.md` |
 | Workflow | [https://deepseek-harness.github.io/deepseek-harness/en/reference/subsystems/workflow](https://deepseek-harness.github.io/deepseek-harness/en/reference/subsystems/workflow) | `site/en/reference/subsystems/workflow.md` |
@@ -206,5 +220,5 @@
 
 ---
 
-*站点页面：168（中文 84，英文 84）*
+*站点页面：182（中文 91，英文 91）*
 

@@ -1,5 +1,16 @@
 # Changelog
 
+## [1.0.9] - 2026-08-30
+
+- 知识库同步至上游 master `cd5ef814`（2026-08-30）：站点镜像 168 → 182 页（中英 91/91），
+  101 页内容更新；新增 `guide/github-review`、`guide/schedule`、`guide/mcp-memory`、
+  `develop/practice/dynamic-cordis`、`reference/api-gateway`、`reference/subsystems/conversation|slots|web-client`
+  （各中英一对）；移除上游已下线的 `reference/cookbook/adding-a-conversation-node`。
+- 补充文档 52 → 56 篇：`api-gateway` 升入站点，新增 `deepseek-llm-api-wire-extensions`、
+  `subsystems/todo`、`subsystems/webhook`（各中英一对）。
+- 更新 `kb/meta/source.json` 与 `site-pages.txt`；重建检索索引（223 → 241 文件）与 INDEX.md；
+  `topics.md` 修复断链并新增「API Gateway 与服务接入」「使用指南进阶」主题。
+
 ## [1.0.8] - 2026-08-29
 
 - 文档：首屏数字带（168 页 · 52 篇 · 223 索引 · 0 依赖）；安装 yaml 标注「唯一的一步，复制即用」；新增「5 分钟验证」节；

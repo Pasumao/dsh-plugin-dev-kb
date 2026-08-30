@@ -3,11 +3,11 @@
   "source": "官方文档站点 https://deepseek-harness.github.io/deepseek-harness/ （VitePress）",
   "repository": "https://github.com/deepseek-ai/deepseek-harness",
   "branch": "master",
-  "commit": "b150a551b8d465e31e418e1b2eaf5e79bbb7d28e",
-  "fetchedAt": "2026-08-21T13:35:39.256Z",
+  "commit": "cd5ef8148158c3a752a658978873241fdf8e2bbc",
+  "fetchedAt": "2026-08-30T10:00:08.912Z",
   "siteBase": "https://deepseek-harness.github.io/deepseek-harness",
-  "publishedMarkdownPages": 168,
-  "siteFiles": 172,
+  "publishedMarkdownPages": 182,
+  "siteFiles": 186,
   "images": 4,
-  "extraFiles": 52
+  "extraFiles": 56
 }

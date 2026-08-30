@@ -12,7 +12,7 @@ Every event type that can appear in a session's durable event log: the complete 
 
 This file is GENERATED from source (`scripts/gen-persistence-catalog.ts`) and verified fresh by `pnpm run verify-persistence-catalog` (part of `doc-sync`) — do not edit it by hand. Declaration blocks retain the source declaration and nested property JSDoc, removing only the indentation imposed by a containing interface/module, and use a `ts persistence-catalog` fence (skipped by doc-typecheck because declarations reference types from their owning modules). Type names in a payload link to the page that documents them. See [the persistence-log-catalog Agent Note](https://github.com/deepseek-ai/deepseek-harness/blob/master/.agents/notes/archived/process/2026-07-04-persistence-log-catalog.md).
 
-The envelope declarations below compose each event's `type`, monotonic `seq`, epoch-ms `time`, `data`, the optional `ignorable` unknown-type skip marker, and the conditional `surfaceOp`/`sourceEventSeqs` fields. **surface** marks a `SurfaceEventType` member: it produces an LLM message and declares how it joins the surface list. **log-only** marks everything else: a durable, replayable record with no derived-history contribution. Every payload is JSON-serializable (enforced at `Session.append`), and the whole format is pinned at `SESSION_FORMAT_VERSION = 0` — pre-release, no compatibility implied ([the version stance](./subsystems/persistence.md)). Scope: the packages in this repo; a downstream plugin can merge further event types, which are outside this catalog by construction.
+The envelope declarations below compose each event's `type`, monotonic `seq`, epoch-ms `time`, `data`, and the conditional `surfaceOp`/`sourceEventSeqs` fields. **surface** marks a `SurfaceEventType` member: it produces an LLM message and declares how it joins the surface list. **log-only** marks everything else: a durable, replayable record with no derived-history contribution. Every payload is JSON-serializable (enforced at `Session.append`), and the whole format is pinned at `SESSION_FORMAT_VERSION = 0` — pre-release, no compatibility implied ([the version stance](./subsystems/persistence.md)). Scope: the packages in this repo; a downstream plugin can merge further event types, which are outside this catalog by construction.
 
 ## Event envelope
 
@@ -68,17 +68,6 @@ export type SessionEvent<T extends SessionEventType = SessionEventType> = {
     /** Unix epoch milliseconds. */
     time: number
     data: SessionEventMap[K]
-    /**
-     * Marks an event a reader may safely skip when it does not recognize
-     * `type`. Absent means required: a reader meeting an unrecognized type
-     * without this marker MUST refuse to reconstruct the session instead of
-     * silently dropping the event, because an unrecognized required event may
-     * change how the rest of the log is interpreted. A writer sets `true` only
-     * on purely informational records whose loss cannot affect reconstruction;
-     * defaulting to required means a forgotten marker over-refuses (an
-     * inconvenience) rather than silently resuming a gutted session.
-     */
-    ignorable?: true
   } & (K extends SurfaceEventType ? {
     /**
      * Seq numbers of earlier events that this event cites as sources
@@ -95,7 +84,7 @@ export type SessionEvent<T extends SessionEventType = SessionEventType> = {
 }[T]
 ```
 
-Sources: [`packages/core/session/src/types.ts:340`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/core/session/src/types.ts) · [`packages/core/session/src/types.ts:347`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/core/session/src/types.ts) · [`packages/core/session/src/types.ts:376`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/core/session/src/types.ts) · [`packages/core/session/src/types.ts:408`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/core/session/src/types.ts)
+Sources: [`packages/core/session/src/types.ts:328`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/core/session/src/types.ts) · [`packages/core/session/src/types.ts:335`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/core/session/src/types.ts) · [`packages/core/session/src/types.ts:364`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/core/session/src/types.ts) · [`packages/core/session/src/types.ts:396`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/core/session/src/types.ts)
 
 ## Events
 
@@ -120,7 +109,7 @@ Sources: [`packages/core/session/src/types.ts:340`](https://github.com/deepseek-
 }
 ```
 
-Source: [`packages/core/agent/src/types.ts:19`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/core/agent/src/types.ts)
+Source: [`packages/core/agent/src/types.ts:38`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/core/agent/src/types.ts)
 
 ### `agent-preset/*`
 
@@ -138,7 +127,7 @@ Source: [`packages/core/agent/src/types.ts:19`](https://github.com/deepseek-ai/d
 'agent-preset/selected': { agentPreset: string }
 ```
 
-Source: [`packages/preset/agent-presets/src/session.ts:26`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/preset/agent-presets/src/session.ts)
+Source: [`packages/preset/agent-presets/src/session.ts:28`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/preset/agent-presets/src/session.ts)
 
 ### `approval/*`
 
@@ -158,14 +147,14 @@ Source: [`packages/preset/agent-presets/src/session.ts:26`](https://github.com/d
 'approval/asked': {
   id: ApprovalRequestId
   toolName: string
-  callId?: CallId
+  callId?: ToolCallId
   reason?: string
 }
 ```
 
-Types: [CallId](./subsystems/core.md)
+Types: [ToolCallId](./subsystems/core.md)
 
-Source: [`packages/interaction/user-approval/src/index.ts:44`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/interaction/user-approval/src/index.ts)
+Source: [`packages/interaction/user-approval/src/types.ts:44`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/interaction/user-approval/src/types.ts)
 
 <a id="approvaldecided--log-only"></a>
 
@@ -183,7 +172,7 @@ Source: [`packages/interaction/user-approval/src/index.ts:44`](https://github.co
 }
 ```
 
-Source: [`packages/interaction/user-approval/src/index.ts:55`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/interaction/user-approval/src/index.ts)
+Source: [`packages/interaction/user-approval/src/types.ts:55`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/interaction/user-approval/src/types.ts)
 
 <a id="approvalpolicy--log-only"></a>
 
@@ -205,7 +194,7 @@ Source: [`packages/interaction/user-approval/src/index.ts:55`](https://github.co
 }
 ```
 
-Source: [`packages/interaction/user-approval/src/index.ts:67`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/interaction/user-approval/src/index.ts)
+Source: [`packages/interaction/user-approval/src/index.ts:32`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/interaction/user-approval/src/index.ts)
 
 ### `assistant/*`
 
@@ -220,7 +209,7 @@ Source: [`packages/interaction/user-approval/src/index.ts:67`](https://github.co
 
 Types: [StreamChunk](./subsystems/llm-streaming.md)
 
-Source: [`packages/core/session/src/types.ts:266`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/core/session/src/types.ts)
+Source: [`packages/core/session/src/types.ts:251`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/core/session/src/types.ts)
 
 <a id="assistantmessage--surface"></a>
 
@@ -242,7 +231,7 @@ Source: [`packages/core/session/src/types.ts:266`](https://github.com/deepseek-a
 
 Types: [TokenUsage](./subsystems/llm-streaming.md)
 
-Source: [`packages/core/session/src/types.ts:277`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/core/session/src/types.ts)
+Source: [`packages/core/session/src/types.ts:262`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/core/session/src/types.ts)
 
 ### `command/*`
 
@@ -503,6 +492,22 @@ Source: [`packages/llm/llm-retry/src/types.ts:9`](https://github.com/deepseek-ai
 
 Source: [`packages/llm/llm-retry/src/types.ts:11`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/llm/llm-retry/src/types.ts)
 
+### `model/*`
+
+<a id="modelselection--log-only"></a>
+
+#### `model/selection` — log-only
+
+```ts persistence-catalog
+/**
+ * Complete validated model selection requested for subsequent prompt
+ * assembly. Log-only: it never enters derived model history.
+ */
+'model/selection': ModelSelection
+```
+
+Source: [`packages/api/session-controller/src/types.ts:40`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/api/session-controller/src/types.ts)
+
 ### `permission/*`
 
 <a id="permissionpreset--log-only"></a>
@@ -552,7 +557,7 @@ Source: [`packages/plan/plan-mode/src/index.ts:53`](https://github.com/deepseek-
 'request/context': RequestContext
 ```
 
-Source: [`packages/core/session/src/types.ts:313`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/core/session/src/types.ts)
+Source: [`packages/core/session/src/types.ts:301`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/core/session/src/types.ts)
 
 <a id="requestheader--log-only"></a>
 
@@ -563,10 +568,15 @@ Source: [`packages/core/session/src/types.ts:313`](https://github.com/deepseek-a
  * Full header for the next request, appended inside its step before dispatch.
  * It is log-only; the latest snapshot reconstructs the request header.
  */
-'request/header': { header: EpochHeader; reason: RequestHeaderReason }
+'request/header': {
+  header: EpochHeader
+  reason: RequestHeaderReason
+  /** A changed header also begins a distinct model-message series. */
+  startsSeries?: true
+}
 ```
 
-Source: [`packages/core/session/src/types.ts:308`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/core/session/src/types.ts)
+Source: [`packages/core/session/src/types.ts:291`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/core/session/src/types.ts)
 
 ### `sandbox/*`
 
@@ -641,7 +651,7 @@ Source: [`packages/schedule/schedule/src/types.ts:219`](https://github.com/deeps
 'session/end-seed': Record<string, never>
 ```
 
-Source: [`packages/core/session/src/types.ts:336`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/core/session/src/types.ts)
+Source: [`packages/core/session/src/types.ts:324`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/core/session/src/types.ts)
 
 <a id="sessiontitle--log-only"></a>
 
@@ -672,6 +682,24 @@ Types: [SessionTitleLlmRequestEventData](./subsystems/session-title.md)
 
 Source: [`packages/session/session-title-llm/src/index.ts:43`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/session/session-title-llm/src/index.ts)
 
+### `session-log-deepseek/*`
+
+<a id="session-log-deepseekdelivery-accepted--log-only"></a>
+
+#### `session-log-deepseek/delivery-accepted` — log-only
+
+```ts persistence-catalog
+/** Records that the configured endpoint accepted one delivery through `throughSeq`. */
+'session-log-deepseek/delivery-accepted': {
+  /** Session identity the accepted delivery carried; inherited fork markers retain the parent's id. */
+  sessionId: import('@deepseek-ai/dsh-session/types').SessionId
+  /** Last canonical event included in the accepted request. */
+  throughSeq: number
+}
+```
+
+Source: [`packages/session/session-log-deepseek/src/types.ts:26`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/session/session-log-deepseek/src/types.ts)
+
 ### `step/*`
 
 <a id="stepend--log-only"></a>
@@ -683,7 +711,7 @@ Source: [`packages/session/session-title-llm/src/index.ts:43`](https://github.co
 'step/end': { turn: number; step: number }
 ```
 
-Source: [`packages/core/session/src/types.ts:256`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/core/session/src/types.ts)
+Source: [`packages/core/session/src/types.ts:241`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/core/session/src/types.ts)
 
 <a id="stepstart--log-only"></a>
 
@@ -694,7 +722,7 @@ Source: [`packages/core/session/src/types.ts:256`](https://github.com/deepseek-a
 'step/start': { turn: number; step: number }
 ```
 
-Source: [`packages/core/session/src/types.ts:254`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/core/session/src/types.ts)
+Source: [`packages/core/session/src/types.ts:239`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/core/session/src/types.ts)
 
 ### `subagent/*`
 
@@ -713,7 +741,26 @@ Source: [`packages/core/session/src/types.ts:254`](https://github.com/deepseek-a
 'subagent/descriptor': SubagentDescriptorData
 ```
 
-Source: [`packages/subagent/subagent/src/descriptor.ts:37`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/subagent/subagent/src/descriptor.ts)
+Source: [`packages/subagent/subagent/src/descriptor.ts:38`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/subagent/subagent/src/descriptor.ts)
+
+<a id="subagentmodel-selection-policy--log-only"></a>
+
+#### `subagent/model-selection-policy` — log-only
+
+```ts persistence-catalog
+/**
+ * Records that this session's delegation tool exposes child provider,
+ * model, and reasoning-effort selection. Appended before the first model
+ * request; absence means the fixed-route definition. Log-only: it carries
+ * no `surfaceOp` and never enters model history.
+ */
+'subagent/model-selection-policy': {
+  /** Exact routes this Session may select explicitly for a child. */
+  allowedModels: AllowedModelRoute[]
+}
+```
+
+Source: [`packages/subagent/tool-subagent/src/model-selection-state.ts:14`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/subagent/tool-subagent/src/model-selection-state.ts)
 
 ### `team/*`
 
@@ -728,7 +775,7 @@ Source: [`packages/subagent/subagent/src/descriptor.ts:37`](https://github.com/d
 
 Types: [TeamId](https://github.com/deepseek-ai/deepseek-harness/blob/master/docs/subsystems/agent-team.md) · [TeamMemberSnapshot](https://github.com/deepseek-ai/deepseek-harness/blob/master/docs/subsystems/agent-team.md)
 
-Source: [`packages/experimental/agent-team/src/types.ts:206`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/experimental/agent-team/src/types.ts)
+Source: [`packages/experimental/agent-team/src/types.ts:223`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/experimental/agent-team/src/types.ts)
 
 <a id="teammessagedelivered--log-only"></a>
 
@@ -746,7 +793,7 @@ Source: [`packages/experimental/agent-team/src/types.ts:206`](https://github.com
 
 Types: [TeamId](https://github.com/deepseek-ai/deepseek-harness/blob/master/docs/subsystems/agent-team.md) · [TeamMessageId](https://github.com/deepseek-ai/deepseek-harness/blob/master/docs/subsystems/agent-team.md)
 
-Source: [`packages/experimental/agent-team/src/types.ts:212`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/experimental/agent-team/src/types.ts)
+Source: [`packages/experimental/agent-team/src/types.ts:229`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/experimental/agent-team/src/types.ts)
 
 <a id="teammessagequeued--log-only"></a>
 
@@ -759,7 +806,7 @@ Source: [`packages/experimental/agent-team/src/types.ts:212`](https://github.com
 
 Types: [TeamId](https://github.com/deepseek-ai/deepseek-harness/blob/master/docs/subsystems/agent-team.md) · [TeamMessageSnapshot](https://github.com/deepseek-ai/deepseek-harness/blob/master/docs/subsystems/agent-team.md)
 
-Source: [`packages/experimental/agent-team/src/types.ts:210`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/experimental/agent-team/src/types.ts)
+Source: [`packages/experimental/agent-team/src/types.ts:227`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/experimental/agent-team/src/types.ts)
 
 <a id="teamtask--log-only"></a>
 
@@ -772,7 +819,7 @@ Source: [`packages/experimental/agent-team/src/types.ts:210`](https://github.com
 
 Types: [TeamId](https://github.com/deepseek-ai/deepseek-harness/blob/master/docs/subsystems/agent-team.md) · [TeamTaskSnapshot](https://github.com/deepseek-ai/deepseek-harness/blob/master/docs/subsystems/agent-team.md)
 
-Source: [`packages/experimental/agent-team/src/types.ts:208`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/experimental/agent-team/src/types.ts)
+Source: [`packages/experimental/agent-team/src/types.ts:225`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/experimental/agent-team/src/types.ts)
 
 ### `todo/*`
 
@@ -785,9 +832,9 @@ Source: [`packages/experimental/agent-team/src/types.ts:208`](https://github.com
 'todo/write': { todos: TodoItem[] }
 ```
 
-Types: [TodoItem](./subsystems/session.md)
+Types: [TodoItem](https://github.com/deepseek-ai/deepseek-harness/blob/master/docs/subsystems/todo.md)
 
-Source: [`packages/core/session/src/types.ts:303`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/core/session/src/types.ts)
+Source: [`packages/todo/tool-todo/src/types.ts:31`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/todo/tool-todo/src/types.ts)
 
 ### `tool/*`
 
@@ -801,12 +848,12 @@ Source: [`packages/core/session/src/types.ts:303`](https://github.com/deepseek-a
  * JSON string exactly as the model produced it (unparsed). `callId` pairs the
  * call with its `tool/result`.
  */
-'tool/call': { turn: number; step: number; callId: CallId; name: string; arguments: string }
+'tool/call': { turn: number; step: number; callId: ToolCallId; name: string; arguments: string }
 ```
 
-Types: [CallId](./subsystems/core.md)
+Types: [ToolCallId](./subsystems/core.md)
 
-Source: [`packages/core/session/src/types.ts:283`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/core/session/src/types.ts)
+Source: [`packages/core/session/src/types.ts:268`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/core/session/src/types.ts)
 
 <a id="toolcode-dispatch--log-only"></a>
 
@@ -828,7 +875,7 @@ Source: [`packages/core/session/src/types.ts:283`](https://github.com/deepseek-a
  * before returning), so its execution-enclosure relation holds by
  * construction.
  */
-'tool/code-dispatch': CodeDispatchEventData
+'tool/code-dispatch': PtcDispatchEventData
 ```
 
 Source: [`packages/core/tools/src/types.ts:56`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/core/tools/src/types.ts)
@@ -851,7 +898,7 @@ Source: [`packages/core/tools/src/types.ts:56`](https://github.com/deepseek-ai/d
  * with `tool/code-dispatch` by `subCallId` (timing = the two events'
  * `time` fields).
  */
-'tool/code-dispatch-start': CodeDispatchStartEventData
+'tool/code-dispatch-start': PtcDispatchStartEventData
 ```
 
 Source: [`packages/core/tools/src/types.ts:40`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/core/tools/src/types.ts)
@@ -881,7 +928,7 @@ Source: [`packages/core/tools/src/types.ts:40`](https://github.com/deepseek-ai/d
 }
 ```
 
-Source: [`packages/core/session/src/types.ts:295`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/core/session/src/types.ts)
+Source: [`packages/core/session/src/types.ts:280`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/core/session/src/types.ts)
 
 ### `tool-workflow/*`
 
@@ -961,7 +1008,7 @@ Source: [`packages/workflow/tool-workflow/src/types.ts:47`](https://github.com/d
 
 Types: [TurnEndReason](./subsystems/session.md)
 
-Source: [`packages/core/session/src/types.ts:252`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/core/session/src/types.ts)
+Source: [`packages/core/session/src/types.ts:237`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/core/session/src/types.ts)
 
 <a id="turnstart--log-only"></a>
 
@@ -977,7 +1024,7 @@ Source: [`packages/core/session/src/types.ts:252`](https://github.com/deepseek-a
 'turn/start': { turn: number }
 ```
 
-Source: [`packages/core/session/src/types.ts:243`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/core/session/src/types.ts)
+Source: [`packages/core/session/src/types.ts:228`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/core/session/src/types.ts)
 
 ### `user/*`
 
@@ -996,7 +1043,7 @@ Source: [`packages/core/session/src/types.ts:243`](https://github.com/deepseek-a
 'user/message': UserMessage
 ```
 
-Source: [`packages/core/session/src/types.ts:264`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/core/session/src/types.ts)
+Source: [`packages/core/session/src/types.ts:249`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/core/session/src/types.ts)
 
 ### `web/*`
 

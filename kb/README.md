@@ -11,11 +11,12 @@ knowledge/deepseek-harness/
 ├── INDEX.md          全部页面的 站点 URL ↔ 本地文件 对照索引（自动生成）
 ├── site/             线上站点的完整镜像（中英双语，链接已按站点路由重写）
 │   ├── index.md            中文首页（/deepseek-harness/）
-│   ├── guide/              入门：quickstart / providers / python-sdk
+│   ├── guide/              入门：quickstart / providers / python-sdk / github-review /
+│   │                       schedule / mcp-memory
 │   ├── develop/            开发：basic(第一个插件/tool/config/publish)、
 │   │                       framework(生命周期/service/事件)、practice、cordis-tutorial(7 章)
 │   ├── reference/          参考：架构、capability-seams、config-catalog、tool-catalog、
-│   │                       cordis-api、cookbook、subsystems(43 个子系统页)…
+│   │                       api-gateway、cordis-api、cookbook、subsystems(46 个子系统页)…
 │   └── en/                 英文站镜像（/deepseek-harness/en/...），结构同上
 ├── extra/            仓库 docs/ 中未发布到站点的补充文档（开发参考）
 │   ├── glossary.md         术语表（capability seam 等核心概念）
@@ -27,7 +28,7 @@ knowledge/deepseek-harness/
 │   └── i18n/               文档双语规范与术语
 └── meta/
     ├── source.json         来源信息：仓库 commit、抓取时间、统计
-    └── site-pages.txt      线上站点 hashmap.json 的页面清单（168 页）
+    └── site-pages.txt      线上站点页面清单（由投影结果生成，182 页）
 ```
 
 ## 插件开发学习路径（从 `site/` 开始）
@@ -37,13 +38,13 @@ knowledge/deepseek-harness/
 3. **插件配置** — `site/develop/basic/config.md`；**打包安装** — `site/develop/basic/publish.md`
 4. **框架能力** — `site/develop/framework/index.md`（生命周期）、`service.md`（服务与依赖注入）、`events.md`（事件系统）
 5. **Cordis 框架教程** — `site/develop/cordis-tutorial/`（7 章：插件/生命周期/服务/事件/配置/组合与热重载/进入 Harness）
-6. **实战** — `site/develop/practice/index.md`（能力三层拆分）、`llm-adapter.md`
+6. **实战** — `site/develop/practice/index.md`（能力三层拆分）、`llm-adapter.md`、`dynamic-cordis.md`（运行时动态装配 Cordis）
 7. **按需查阅** — `site/reference/`：
    - 架构总览 `reference/index.md`；能力服务 `reference/capability-seams.md`；Agent 生命周期 `reference/agent-lifecycle.md`
-   - 插件配置目录 `reference/config-catalog.md`；Tool Schema 目录 `reference/tool-catalog.md`；持久化事件 `reference/persistence-catalog.md`
+   - 插件配置目录 `reference/config-catalog.md`；Tool Schema 目录 `reference/tool-catalog.md`；持久化事件 `reference/persistence-catalog.md`；API Gateway `reference/api-gateway.md`（Typert Remote 方法/RPC 约定）
    - Cordis API `reference/cordis-api/`（Context / Events / Fiber / Registry / Service / 继承接口面）
-   - Cookbook `reference/cookbook/`（新增 package / tool / LLM adapter / 设置卡片 / 扩展模式 / Conversation Node）
-   - 子系统 `reference/subsystems/`（core / scope / session / tools / shell / filesystem / subagent / sandbox / approval … 共 43 页）
+   - Cookbook `reference/cookbook/`（新增 package / tool / LLM adapter / 设置卡片 / 扩展模式）
+   - 子系统 `reference/subsystems/`（core / scope / session / tools / shell / filesystem / subagent / sandbox / approval / conversation / slots / web-client … 共 46 页）
 
 ## 更新方法
 
@@ -75,6 +76,6 @@ node scripts/rebuild-index.mjs
 
 ## 统计
 
-- 站点页面：168 个 Markdown（中文 84 + 英文 84），4 张图片
-- 补充文档：52 个 Markdown（`extra/`）
-- 来源 commit：`b150a551b8d465e31e418e1b2eaf5e79bbb7d28e`（master）
+- 站点页面：182 个 Markdown（中文 91 + 英文 91），4 张图片
+- 补充文档：56 个 Markdown（`extra/`）
+- 来源 commit：`cd5ef8148158c3a752a658978873241fdf8e2bbc`（master）
