@@ -1,7 +1,13 @@
+<p align="center">
+  <img src="docs/banner.svg" alt="dsh-plugin-dev-kb banner" width="100%">
+</p>
+
 # dsh-plugin-dev-kb
 
 ![npm version](https://img.shields.io/npm/v/dsh-plugin-dev-kb)
+![npm downloads](https://img.shields.io/npm/dm/dsh-plugin-dev-kb)
 ![License](https://img.shields.io/github/license/Pasumao/dsh-plugin-dev-kb)
+![Stars](https://img.shields.io/github/stars/Pasumao/dsh-plugin-dev-kb?style=social)
 ![AI Assisted](https://img.shields.io/badge/AI-Assisted-8A2BE2)
 
 [**中文**](./README.md) | [English](./README.en.md)
@@ -132,6 +138,7 @@ npm run selfcheck   # 结构完整 + 入口 / bundle patch 存在性
 | [dsh-plugin-windows-guard](https://www.npmjs.com/package/dsh-plugin-windows-guard) | [GitHub 仓库](https://github.com/Pasumao/dsh-plugin-windows-guard) | Windows 环境防坑：守则技能 + 乱码检测 / 危险写拦截 / 编码诊断修复 |
 | [dsh-plugin-workbench](https://www.npmjs.com/package/dsh-plugin-workbench) | [GitHub 仓库](https://github.com/Pasumao/dsh-plugin-workbench) | VS Code 风格文件浏览器 + 可编辑预览 |
 
+| [dsh-plugin-context-trim](https://www.npmjs.com/package/dsh-plugin-context-trim) | [GitHub 仓库](https://github.com/Pasumao/dsh-plugin-context-trim) | 会话注入门控：skill / tool / 提示词段落按会话裁剪 |
 > 本系列其余插件见 [Pasumao · dsh 插件](https://github.com/Pasumao)；觉得好用欢迎到 GitHub 点 ⭐。
 
 ## AI 生成声明
@@ -141,4 +148,4 @@ npm run selfcheck   # 结构完整 + 入口 / bundle patch 存在性
 
 ## License
 
-MIT
+[MIT](./LICENSE)

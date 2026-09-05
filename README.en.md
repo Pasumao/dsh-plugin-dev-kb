@@ -1,10 +1,16 @@
-[中文](./README.md) | **English**
+<p align="center">
+  <img src="docs/banner.svg" alt="dsh-plugin-dev-kb banner" width="100%">
+</p>
 
 # dsh-plugin-dev-kb
 
 ![npm version](https://img.shields.io/npm/v/dsh-plugin-dev-kb)
+![npm downloads](https://img.shields.io/npm/dm/dsh-plugin-dev-kb)
 ![License](https://img.shields.io/github/license/Pasumao/dsh-plugin-dev-kb)
+![Stars](https://img.shields.io/github/stars/Pasumao/dsh-plugin-dev-kb?style=social)
 ![AI Assisted](https://img.shields.io/badge/AI-Assisted-8A2BE2)
+
+[中文](./README.md) | **English**
 
 > **184-page official mirror · 58 supplementary docs · 245-file search index · 0 runtime dependencies**
 
@@ -132,6 +138,7 @@ This plugin is part of **Pasumao's dsh plugin ecosystem**; other published plugi
 | [dsh-plugin-windows-guard](https://www.npmjs.com/package/dsh-plugin-windows-guard) | [GitHub repo](https://github.com/Pasumao/dsh-plugin-windows-guard) | Windows environment pitfall prevention: rule skills + mojibake detection / dangerous-write interception / encoding diagnosis & repair |
 | [dsh-plugin-workbench](https://www.npmjs.com/package/dsh-plugin-workbench) | [GitHub repo](https://github.com/Pasumao/dsh-plugin-workbench) | VS Code-style file explorer + editable preview |
 
+| [dsh-plugin-context-trim](https://www.npmjs.com/package/dsh-plugin-context-trim) | [GitHub](https://github.com/Pasumao/dsh-plugin-context-trim) | Per-session injection gate: trim skills / tools / prompt sections |
 > See [Pasumao · dsh plugins](https://github.com/Pasumao) for the rest of the series; if you find them useful, a ⭐ on GitHub is much appreciated.
 
 ## AI-generated content statement
