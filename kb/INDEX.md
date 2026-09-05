@@ -1,6 +1,6 @@
 # DeepSeek Harness 文档索引
 
-> 由 `scripts/rebuild-index.mjs` 自动生成。共 182 个站点页面（中英双语），另有 56 个补充文档在 `extra/`。
+> 由 `scripts/rebuild-index.mjs` 自动生成。共 184 个站点页面（中英双语），另有 58 个补充文档在 `extra/`。
 
 ## 中文站点（根路径）
 
@@ -16,6 +16,7 @@
 | --- | --- | --- |
 | 通过 GitHub Webhook 创建评审会话 | [https://deepseek-harness.github.io/deepseek-harness/guide/github-review](https://deepseek-harness.github.io/deepseek-harness/guide/github-review) | `site/guide/github-review.md` |
 | 连接第三方记忆 MCP 服务 | [https://deepseek-harness.github.io/deepseek-harness/guide/mcp-memory](https://deepseek-harness.github.io/deepseek-harness/guide/mcp-memory) | `site/guide/mcp-memory.md` |
+| 在网络代理后面运行 DSH | [https://deepseek-harness.github.io/deepseek-harness/guide/network-proxy](https://deepseek-harness.github.io/deepseek-harness/guide/network-proxy) | `site/guide/network-proxy.md` |
 | 配置模型 | [https://deepseek-harness.github.io/deepseek-harness/guide/providers](https://deepseek-harness.github.io/deepseek-harness/guide/providers) | `site/guide/providers.md` |
 | Python SDK 入门 | [https://deepseek-harness.github.io/deepseek-harness/guide/python-sdk](https://deepseek-harness.github.io/deepseek-harness/guide/python-sdk) | `site/guide/python-sdk.md` |
 | 使用 Web UI | [https://deepseek-harness.github.io/deepseek-harness/guide/quickstart](https://deepseek-harness.github.io/deepseek-harness/guide/quickstart) | `site/guide/quickstart.md` |
@@ -147,6 +148,7 @@
 | LLM adapters | [https://deepseek-harness.github.io/deepseek-harness/en/develop/practice/llm-adapter](https://deepseek-harness.github.io/deepseek-harness/en/develop/practice/llm-adapter) | `site/en/develop/practice/llm-adapter.md` |
 | Create review Sessions from GitHub webhooks | [https://deepseek-harness.github.io/deepseek-harness/en/guide/github-review](https://deepseek-harness.github.io/deepseek-harness/en/guide/github-review) | `site/en/guide/github-review.md` |
 | Connect a third-party memory MCP server | [https://deepseek-harness.github.io/deepseek-harness/en/guide/mcp-memory](https://deepseek-harness.github.io/deepseek-harness/en/guide/mcp-memory) | `site/en/guide/mcp-memory.md` |
+| Run DSH behind a network proxy | [https://deepseek-harness.github.io/deepseek-harness/en/guide/network-proxy](https://deepseek-harness.github.io/deepseek-harness/en/guide/network-proxy) | `site/en/guide/network-proxy.md` |
 | Configure models | [https://deepseek-harness.github.io/deepseek-harness/en/guide/providers](https://deepseek-harness.github.io/deepseek-harness/en/guide/providers) | `site/en/guide/providers.md` |
 | Get started with the Python SDK | [https://deepseek-harness.github.io/deepseek-harness/en/guide/python-sdk](https://deepseek-harness.github.io/deepseek-harness/en/guide/python-sdk) | `site/en/guide/python-sdk.md` |
 | Use the Web UI | [https://deepseek-harness.github.io/deepseek-harness/en/guide/quickstart](https://deepseek-harness.github.io/deepseek-harness/en/guide/quickstart) | `site/en/guide/quickstart.md` |
@@ -220,5 +222,5 @@
 
 ---
 
-*站点页面：182（中文 91，英文 91）*
+*站点页面：184（中文 92，英文 92）*
 

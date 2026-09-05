@@ -138,6 +138,7 @@ root
 │  │     │  ├─ conversation.chat.commandview
 │  │     │  ├─ conversation.chat.turnTail
 │  │     │  └─ tool.call.toolview
+│  │     │     ├─ tool.call.images
 │  │     │     └─ tool.view.cordis
 │  │     ├─ conversation.message.images
 │  │     └─ conversation.trajectory.images

@@ -1,5 +1,15 @@
 # Changelog
 
+## [1.1.0] - 2026-09-05
+
+- 知识库同步至上游 master `d347e703`（2026-09-05，对应 dsh `0.1.2-rc.1`）：站点镜像 182 → 184 页
+  （中英 92/92），89 页内容更新（config-catalog / tool-catalog / api-gateway / 全部 46 个子系统页 /
+  cookbook 3 篇 / guide providers+schedule / cordis-tutorial 07 / llm-adapter 等）；
+  新增 `guide/network-proxy`（代理后运行 DSH，中英一对）。
+- 补充文档 56 → 58 篇：新增 `cookbook/adding-a-remote-api`（ctx.remote 端点五步操作，中英一对）。
+- 更新 `kb/meta/source.json` 与 `site-pages.txt`；重建检索索引（241 → 245 文件）与 INDEX.md；
+  `topics.md` 新增 network-proxy 入口与 adding-a-remote-api 扩展条目。
+
 ## [1.0.9] - 2026-08-30
 
 - 知识库同步至上游 master `cd5ef814`（2026-08-30）：站点镜像 168 → 182 页（中英 91/91），

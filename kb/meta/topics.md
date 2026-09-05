@@ -59,7 +59,7 @@
 
 ## 12b. API Gateway 与服务接入
 - 核心：`site/reference/api-gateway.md`（Typert API Gateway：Remote 方法声明、Host/Client 约定、RPC 与 `/api` 路由复用）
-- 扩展：`extra/subsystems/webhook.md`（webhook 接入，仓库文档）、`site/reference/subsystems/typert.md`
+- 扩展：`extra/cookbook/adding-a-remote-api.md`（新增 Remote API 五步操作，中英各一）、`extra/subsystems/webhook.md`（webhook 接入，仓库文档）、`site/reference/subsystems/typert.md`
 
 ## 13. 系统提示词 / Token / 上下文压缩
 - `site/reference/subsystems/system-prompt.md`、`token-meter.md`、`compaction.md`
@@ -73,11 +73,11 @@
 ## 16. 中英对照
 - 英文站：`site/en/`（结构与中文站一致：`guide/`、`develop/`、`reference/`）；`INDEX.md` 有全部 URL ↔ 文件对照
 
-## 17. 使用指南进阶（GitHub Review / 定时任务 / MCP 记忆）
-- `site/guide/github-review.md`（用 dsh 做 GitHub 代码评审）、`site/guide/schedule.md`（定时任务）、`site/guide/mcp-memory.md`（MCP 与长期记忆）
+## 17. 使用指南进阶（GitHub Review / 定时任务 / MCP 记忆 / 网络代理）
+- `site/guide/github-review.md`（用 dsh 做 GitHub 代码评审）、`site/guide/schedule.md`（定时任务）、`site/guide/mcp-memory.md`（MCP 与长期记忆）、`site/guide/network-proxy.md`（代理后运行：HTTPS_PROXY 等环境变量、哪些路径保持直连）
 - 扩展：`site/reference/subsystems/schedule.md`、`extra/subsystems/todo.md`（仓库文档）
 
 ## 检索技巧
-- 全量索引：`meta/search-index.json`（241 个文件的 path/url/title/字符数）
+- 全量索引：`meta/search-index.json`（245 个文件的 path/url/title/字符数）
 - 大文件（config-catalog / tool-catalog / module-graph / subsystems/session 等 ≥100KB）先用 grep 定位关键行，再 read 局部，不要整读
 - 常用检索关键词：`ctx.effect`、`ctx.on`、`ctx.tools.register`、`inject`、`Service Definition`、`cordis.yml`、`SessionEventMap`
