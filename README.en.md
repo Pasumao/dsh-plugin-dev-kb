@@ -12,7 +12,7 @@
 
 [中文](./README.md) | **English**
 
-> **184-page official mirror · 58 supplementary docs · 245-file search index · 0 runtime dependencies**
+> **188-page official mirror · 62 supplementary docs · 253-file search index · 0 runtime dependencies**
 
 **The official docs at your side whenever you write dsh plugins**: the entire content of the DeepSeek Harness official documentation site
 <https://deepseek-harness.github.io/deepseek-harness/> is organized into a form natively usable by dsh —
@@ -21,16 +21,16 @@ once this plugin is installed, the agent automatically loads the knowledge base 
 ## What is this
 
 - **Complete site mirror**: the official docs (VitePress) are generated as a projection of the raw Markdown in
-  `docs/` of the `deepseek-ai/deepseek-harness` repository (links rewritten to site routes, verbatim identical to the live site). 184 pages in both Chinese and English.
-- **Supplementary docs**: 58 development references from the repo's `docs/` that were not published to the site (glossary, defensive patterns, module graph, testing strategy, incident postmortems, i18n specs, etc.).
+  `docs/` of the `deepseek-ai/deepseek-harness` repository (links rewritten to site routes, verbatim identical to the live site). 188 pages in both Chinese and English.
+- **Supplementary docs**: 62 development references from the repo's `docs/` that were not published to the site (glossary, defensive patterns, module graph, testing strategy, incident postmortems, i18n specs, etc.).
 - **Agent-friendly**: the `skills/dsh-plugin-dev-kb.md` skill lets dsh auto-load it during plugin development tasks, providing the knowledge base location,
   topic navigation, and search strategy; `kb/meta/topics.md` maps task scenarios to the files to read; `kb/meta/search-index.json` provides full search coverage.
 
 ## Features
 
 - **Complete mirror of the official docs**: the entire content of the deepseek-ai/deepseek-harness official documentation site, organized into a form natively usable by dsh,
-  184 pages in both Chinese and English, links rewritten to site routes, verbatim identical to the live site;
-- **Repo supplementary docs**: 58 development references not published to the site (glossary, defensive patterns, module graph, testing strategy, incident postmortems, i18n specs, etc.);
+  188 pages in both Chinese and English, links rewritten to site routes, verbatim identical to the live site;
+- **Repo supplementary docs**: 62 development references not published to the site (glossary, defensive patterns, module graph, testing strategy, incident postmortems, i18n specs, etc.);
 - **Agent-friendly**: the `dsh-plugin-dev-kb` skill lets dsh auto-load the knowledge base during plugin development tasks;
   `kb/meta/topics.md` maps task scenarios to the files to read, and `kb/meta/search-index.json` provides full search coverage;
 - **Human-usable**: browse the `kb/` directory directly, or open `kb/INDEX.md` to look things up by URL mapping;
@@ -96,7 +96,7 @@ dsh-plugin-dev-kb/
 │   ├── extra/         repo supplementary docs: glossary, defensive-patterns, module-graph, postmortem/, i18n/ …
 │   ├── meta/
 │   │   ├── topics.md         ★ topic navigation: task scenario → files
-│   │   ├── search-index.json full index (245 files)
+│   │   ├── search-index.json full index (253 files)
 │   │   ├── source.json       source commit / time / stats
 │   │   └── site-pages.txt    list of live site pages
 │   ├── INDEX.md        site URL ↔ local file mapping
@@ -137,7 +137,6 @@ This plugin is part of **Pasumao's dsh plugin ecosystem**; other published plugi
 | [dsh-plugin-table-zoom](https://www.npmjs.com/package/dsh-plugin-table-zoom) | [GitHub repo](https://github.com/Pasumao/dsh-plugin-table-zoom) | Floating viewer for long chat tables + one-click copy as Markdown |
 | [dsh-plugin-windows-guard](https://www.npmjs.com/package/dsh-plugin-windows-guard) | [GitHub repo](https://github.com/Pasumao/dsh-plugin-windows-guard) | Windows environment pitfall prevention: rule skills + mojibake detection / dangerous-write interception / encoding diagnosis & repair |
 | [dsh-plugin-workbench](https://www.npmjs.com/package/dsh-plugin-workbench) | [GitHub repo](https://github.com/Pasumao/dsh-plugin-workbench) | VS Code-style file explorer + editable preview |
-
 | [dsh-plugin-context-trim](https://www.npmjs.com/package/dsh-plugin-context-trim) | [GitHub](https://github.com/Pasumao/dsh-plugin-context-trim) | Per-session injection gate: trim skills / tools / prompt sections |
 > See [Pasumao · dsh plugins](https://github.com/Pasumao) for the rest of the series; if you find them useful, a ⭐ on GitHub is much appreciated.
 

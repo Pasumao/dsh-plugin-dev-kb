@@ -1,5 +1,21 @@
 # Changelog
 
+## [1.3.0] - 2026-09-10
+
+- 修复：移除每次加载覆写 `state.json` 的调试残留（纯数据插件本不需要持久化状态）；
+- 改进：日志改用 `ctx.logger` 标准输出；
+- 改进：清理逻辑改为 `ctx.effect` 标准模式（插件卸载自动撤销，零残留）；
+- 文档：相关插件段补齐 dsh-plugin-context-trim 行（修复表格断行）；npm files 补 `docs/`（README 引用的 banner）。
+
+## [1.2.0] - 2026-09-10
+
+- 知识库同步至上游 master `aa8262ec`（2026-09-10，距上次基线 `d347e703` 跨 1167 个 commit）：
+  站点镜像 184 → 188 页（中英 94/94）；上游 docs 重构进 `docs/user/` 子目录（发布清单
+  `website/docs.ts` 照常投影，站点路由不变）。
+- 补充文档 58 → 62 篇：新增 `cookbook/adding-a-session-format-version`（会话格式版本号新增流程，
+  中英一对）与 `session-format-status`（会话格式状态，中英一对）。
+- 更新 `kb/meta/source.json` 与 `site-pages.txt`；重建检索索引（245 → 253 文件）与 INDEX.md。
+
 ## [1.1.0] - 2026-09-05
 
 - 知识库同步至上游 master `d347e703`（2026-09-05，对应 dsh `0.1.2-rc.1`）：站点镜像 182 → 184 页

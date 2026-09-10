@@ -1,6 +1,6 @@
 # DeepSeek Harness 文档索引
 
-> 由 `scripts/rebuild-index.mjs` 自动生成。共 184 个站点页面（中英双语），另有 58 个补充文档在 `extra/`。
+> 由 `scripts/rebuild-index.mjs` 自动生成。共 188 个站点页面（中英双语），另有 62 个补充文档在 `extra/`。
 
 ## 中文站点（根路径）
 
@@ -69,6 +69,7 @@
 | 会话持久化事件目录 | [https://deepseek-harness.github.io/deepseek-harness/reference/persistence-catalog](https://deepseek-harness.github.io/deepseek-harness/reference/persistence-catalog) | `site/reference/persistence-catalog.md` |
 | 用户审批 | [https://deepseek-harness.github.io/deepseek-harness/reference/subsystems/approval](https://deepseek-harness.github.io/deepseek-harness/reference/subsystems/approval) | `site/reference/subsystems/approval.md` |
 | Client 模块 | [https://deepseek-harness.github.io/deepseek-harness/reference/subsystems/client-modules](https://deepseek-harness.github.io/deepseek-harness/reference/subsystems/client-modules) | `site/reference/subsystems/client-modules.md` |
+| 客户端资源 | [https://deepseek-harness.github.io/deepseek-harness/reference/subsystems/client-resources](https://deepseek-harness.github.io/deepseek-harness/reference/subsystems/client-resources) | `site/reference/subsystems/client-resources.md` |
 | 代码运行时 | [https://deepseek-harness.github.io/deepseek-harness/reference/subsystems/code-runtime](https://deepseek-harness.github.io/deepseek-harness/reference/subsystems/code-runtime) | `site/reference/subsystems/code-runtime.md` |
 | 用户命令 | [https://deepseek-harness.github.io/deepseek-harness/reference/subsystems/commands](https://deepseek-harness.github.io/deepseek-harness/reference/subsystems/commands) | `site/reference/subsystems/commands.md` |
 | 压缩（compaction） | [https://deepseek-harness.github.io/deepseek-harness/reference/subsystems/compaction](https://deepseek-harness.github.io/deepseek-harness/reference/subsystems/compaction) | `site/reference/subsystems/compaction.md` |
@@ -96,6 +97,7 @@
 | 会话 | [https://deepseek-harness.github.io/deepseek-harness/reference/subsystems/session](https://deepseek-harness.github.io/deepseek-harness/reference/subsystems/session) | `site/reference/subsystems/session.md` |
 | 用户设置 | [https://deepseek-harness.github.io/deepseek-harness/reference/subsystems/settings](https://deepseek-harness.github.io/deepseek-harness/reference/subsystems/settings) | `site/reference/subsystems/settings.md` |
 | Bash 执行器 | [https://deepseek-harness.github.io/deepseek-harness/reference/subsystems/shell](https://deepseek-harness.github.io/deepseek-harness/reference/subsystems/shell) | `site/reference/subsystems/shell.md` |
+| 右侧 Sidebar | [https://deepseek-harness.github.io/deepseek-harness/reference/subsystems/sidebar-right](https://deepseek-harness.github.io/deepseek-harness/reference/subsystems/sidebar-right) | `site/reference/subsystems/sidebar-right.md` |
 | Skills | [https://deepseek-harness.github.io/deepseek-harness/reference/subsystems/skills](https://deepseek-harness.github.io/deepseek-harness/reference/subsystems/skills) | `site/reference/subsystems/skills.md` |
 | Web Client Slots | [https://deepseek-harness.github.io/deepseek-harness/reference/subsystems/slots](https://deepseek-harness.github.io/deepseek-harness/reference/subsystems/slots) | `site/reference/subsystems/slots.md` |
 | spill 存储 | [https://deepseek-harness.github.io/deepseek-harness/reference/subsystems/spill](https://deepseek-harness.github.io/deepseek-harness/reference/subsystems/spill) | `site/reference/subsystems/spill.md` |
@@ -173,6 +175,7 @@
 | Session Persistence Event Catalog | [https://deepseek-harness.github.io/deepseek-harness/en/reference/persistence-catalog](https://deepseek-harness.github.io/deepseek-harness/en/reference/persistence-catalog) | `site/en/reference/persistence-catalog.md` |
 | User Approval | [https://deepseek-harness.github.io/deepseek-harness/en/reference/subsystems/approval](https://deepseek-harness.github.io/deepseek-harness/en/reference/subsystems/approval) | `site/en/reference/subsystems/approval.md` |
 | Client Modules | [https://deepseek-harness.github.io/deepseek-harness/en/reference/subsystems/client-modules](https://deepseek-harness.github.io/deepseek-harness/en/reference/subsystems/client-modules) | `site/en/reference/subsystems/client-modules.md` |
+| Client Resources | [https://deepseek-harness.github.io/deepseek-harness/en/reference/subsystems/client-resources](https://deepseek-harness.github.io/deepseek-harness/en/reference/subsystems/client-resources) | `site/en/reference/subsystems/client-resources.md` |
 | Code Runtime | [https://deepseek-harness.github.io/deepseek-harness/en/reference/subsystems/code-runtime](https://deepseek-harness.github.io/deepseek-harness/en/reference/subsystems/code-runtime) | `site/en/reference/subsystems/code-runtime.md` |
 | Human Commands | [https://deepseek-harness.github.io/deepseek-harness/en/reference/subsystems/commands](https://deepseek-harness.github.io/deepseek-harness/en/reference/subsystems/commands) | `site/en/reference/subsystems/commands.md` |
 | Compaction | [https://deepseek-harness.github.io/deepseek-harness/en/reference/subsystems/compaction](https://deepseek-harness.github.io/deepseek-harness/en/reference/subsystems/compaction) | `site/en/reference/subsystems/compaction.md` |
@@ -200,6 +203,7 @@
 | Sessions | [https://deepseek-harness.github.io/deepseek-harness/en/reference/subsystems/session](https://deepseek-harness.github.io/deepseek-harness/en/reference/subsystems/session) | `site/en/reference/subsystems/session.md` |
 | User Settings | [https://deepseek-harness.github.io/deepseek-harness/en/reference/subsystems/settings](https://deepseek-harness.github.io/deepseek-harness/en/reference/subsystems/settings) | `site/en/reference/subsystems/settings.md` |
 | Bash Executor | [https://deepseek-harness.github.io/deepseek-harness/en/reference/subsystems/shell](https://deepseek-harness.github.io/deepseek-harness/en/reference/subsystems/shell) | `site/en/reference/subsystems/shell.md` |
+| Right Sidebar | [https://deepseek-harness.github.io/deepseek-harness/en/reference/subsystems/sidebar-right](https://deepseek-harness.github.io/deepseek-harness/en/reference/subsystems/sidebar-right) | `site/en/reference/subsystems/sidebar-right.md` |
 | Skills | [https://deepseek-harness.github.io/deepseek-harness/en/reference/subsystems/skills](https://deepseek-harness.github.io/deepseek-harness/en/reference/subsystems/skills) | `site/en/reference/subsystems/skills.md` |
 | Web Client Slots | [https://deepseek-harness.github.io/deepseek-harness/en/reference/subsystems/slots](https://deepseek-harness.github.io/deepseek-harness/en/reference/subsystems/slots) | `site/en/reference/subsystems/slots.md` |
 | Spill Storage | [https://deepseek-harness.github.io/deepseek-harness/en/reference/subsystems/spill](https://deepseek-harness.github.io/deepseek-harness/en/reference/subsystems/spill) | `site/en/reference/subsystems/spill.md` |
@@ -222,5 +226,5 @@
 
 ---
 
-*站点页面：184（中文 92，英文 92）*
+*站点页面：188（中文 94，英文 94）*
 

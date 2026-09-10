@@ -30,7 +30,7 @@
 
 ## 7. 打包与发布插件
 - 核心：`site/develop/basic/publish.md`
-- 扩展：`extra/cookbook/adding-a-vendored-package.md`（vendored 包）
+- 扩展：`extra/cookbook/adding-a-vendored-package.md`（vendored 包）、`extra/cookbook/adding-a-session-format-version.md`（新增会话格式版本号）、`extra/session-format-status.md`（会话格式状态）
 
 ## 8. LLM 适配器
 - 核心：`site/develop/practice/llm-adapter.md`、`site/reference/cookbook/adding-an-llm-adapter.md`
@@ -78,6 +78,6 @@
 - 扩展：`site/reference/subsystems/schedule.md`、`extra/subsystems/todo.md`（仓库文档）
 
 ## 检索技巧
-- 全量索引：`meta/search-index.json`（245 个文件的 path/url/title/字符数）
+- 全量索引：`meta/search-index.json`（253 个文件的 path/url/title/字符数）
 - 大文件（config-catalog / tool-catalog / module-graph / subsystems/session 等 ≥100KB）先用 grep 定位关键行，再 read 局部，不要整读
 - 常用检索关键词：`ctx.effect`、`ctx.on`、`ctx.tools.register`、`inject`、`Service Definition`、`cordis.yml`、`SessionEventMap`
