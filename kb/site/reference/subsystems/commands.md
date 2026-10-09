@@ -1,11 +1,12 @@
 ---
 editSource: "docs/subsystems/commands.zh.md"
+rawMarkdownPath: "reference/subsystems/commands.md"
 outline: [2,3]
 ---
 
 # 用户命令
 
-[`dsh-commands`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/interaction/commands) 提供的用户命令注册表服务。交互式适配器用它发现插件拥有的命令，并针对确切的 agent（智能体）直接执行这些命令，而不创建模型消息。[命令 Agent Note](https://github.com/deepseek-ai/deepseek-harness/blob/master/.agents/notes/implemented/feature/2026-07-19-plugin-command-registration.zh.md) 负责分发与生命周期的决策依据；[包 README](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/interaction/commands/README.zh.md) 负责组合方式与限制。
+[`dsh-commands`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/interaction/commands) 提供的用户命令注册表服务。交互式适配器用它发现插件拥有的命令，并针对确切的 agent（智能体）直接执行这些命令，而不创建模型消息。[历史命令 Agent Note](https://github.com/deepseek-ai/deepseek-harness/blob/master/.agents/notes/archived/feature/2026-07-19-plugin-command-registration.md) 负责分发与生命周期的决策依据；[包 README](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/interaction/commands/README.zh.md) 负责组合方式与限制。
 
 来源：[`packages/interaction/commands/src/index.ts`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/interaction/commands/src/index.ts)
 
@@ -36,6 +37,8 @@ interface CommandInputDescriptor {
 ```ts type-equiv
 /** Plugin-owned command registration. */
 interface CommandDefinition {
+  /** Stable plugin-owned identity; absent for definitions without identity-based client behavior. */
+  readonly definitionId?: CommandDefinitionId
   /** Lowercase command name without the leading slash. */
   readonly name: string
   /** Human-readable summary used in discovery UI. */
@@ -100,6 +103,8 @@ type CommandResult =
 ```ts type-equiv
 /** Handler-free immutable command view returned to UI adapters. */
 interface CommandDescriptor {
+  /** Stable plugin-owned identity; absent for definitions without identity-based client behavior. */
+  readonly definitionId?: CommandDefinitionId
   /** Lowercase command name without the leading slash. */
   readonly name: string
   /** Human-readable summary used in discovery UI. */

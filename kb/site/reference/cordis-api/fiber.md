@@ -1,5 +1,6 @@
 ---
 editSource: "docs/cordis-api/fiber.zh.md"
+rawMarkdownPath: "reference/cordis-api/fiber.md"
 ---
 
 <!-- 英文源文件由 scripts/gen-cordis-catalog.ts 生成；本中文文件是通过双语配对维护的经评审对侧。
@@ -260,8 +261,8 @@ dispose 此插件，并立即使用其当前配置重新加载。
  *
  * @param config — the new raw config; validated before anything restarts.
  * @param noSave — hint for persistence hooks not to write the change back.
- * @returns the update waterfall result; the default restart returns a promise.
- * @throws when validation, an update listener, or the restarted plugin fails.
+ * @returns nothing; the restart runs behind the `internal/update` waterfall.
+ * @throws {ValidationError} when the new config fails validation.
  */
 update(config: any, noSave = false)
 ```
@@ -273,7 +274,7 @@ update(config: any, noSave = false)
 - `config`：新的原始配置；在任何内容重新启动前进行校验。
 - `noSave`：提示持久化钩子不要写回此变更。
 
-**返回**更新 waterfall 的结果；默认的重新启动操作返回一个 promise。
+**返回**无返回值；重启由 `internal/update` waterfall 执行。
 
 [源码](https://github.com/deepseek-ai/deepseek-harness/blob/master/vendor/cordis/src/fiber.ts#L736)
 

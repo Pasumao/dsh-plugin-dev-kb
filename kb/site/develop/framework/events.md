@@ -1,5 +1,6 @@
 ---
 editSource: "docs/user/develop/framework/events.zh.md"
+rawMarkdownPath: "develop/framework/events.md"
 ---
 
 # 事件系统

@@ -1,7 +1,7 @@
 {
   "name": "dsh-plugin-dev-kb",
-  "description": "dsh 插件开发知识库：DeepSeek Harness 官方文档站完整 Markdown 镜像（中英双语 188 页）+ 62 篇仓库补充开发参考 + 主题导航与 253 文件全量搜索索引；以 dsh-plugin-dev-kb 技能让 agent 在插件开发任务中自动加载定位文档。纯数据插件，零运行时依赖。",
-  "version": "1.3.0",
+  "description": "dsh 插件开发知识库：DeepSeek Harness 官方文档站完整 Markdown 镜像（中英双语 188 页）+ 182 篇仓库补充开发参考 + 主题导航与 373 文件全量搜索索引；以 dsh-plugin-dev-kb 技能让 agent 在插件开发任务中自动加载定位文档。纯数据插件，零运行时依赖。",
+  "version": "1.4.0",
   "type": "module",
   "main": "lib/index.js",
   "exports": {

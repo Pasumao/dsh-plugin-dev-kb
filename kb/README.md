@@ -23,8 +23,10 @@ knowledge/deepseek-harness/
 │   ├── defensive-patterns.md / testing.md / development.md / rescope.md …
 │   ├── module-graph.md     模块依赖全景图（125KB）
 │   ├── cookbook/           adding-a-vendored-package 等仓库内 cookbook
-│   ├── subsystems/         attachment / extensions / feedback
-│   ├── postmortem/         事故复盘（4 篇）
+│   ├── upgrade-guide/      各版本升级指南（0.1.7-rc.2 / 0.2.0-rc.2 …）
+│   ├── persistence-changes/ 持久化格式变更记录（releases/、historical-formats/）
+│   ├── subsystems/         未发布进站点的子系统文档（boot / browser-use / ssh / otel …）
+│   ├── postmortem/         事故复盘
 │   └── i18n/               文档双语规范与术语
 └── meta/
     ├── source.json         来源信息：仓库 commit、抓取时间、统计
@@ -77,5 +79,5 @@ node scripts/rebuild-index.mjs
 ## 统计
 
 - 站点页面：188 个 Markdown（中文 94 + 英文 94），4 张图片
-- 补充文档：62 个 Markdown（`extra/`）
-- 来源 commit：`aa8262ec091698bae9a6b04773a6b5b06ad4aef2`（master，2026-09-10 同步）
+- 补充文档：182 个 Markdown（`extra/`）
+- 来源 commit：`5badb15009ae1756c3afe0ae0cef1faafc290ccc`（master，2026-10-10 同步）

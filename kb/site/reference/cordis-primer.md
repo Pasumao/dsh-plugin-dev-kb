@@ -1,5 +1,6 @@
 ---
 editSource: "docs/cordis-primer.zh.md"
+rawMarkdownPath: "reference/cordis-primer.md"
 ---
 
 # Cordis 入门

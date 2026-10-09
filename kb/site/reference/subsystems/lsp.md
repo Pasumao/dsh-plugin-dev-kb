@@ -1,5 +1,6 @@
 ---
 editSource: "docs/subsystems/lsp.zh.md"
+rawMarkdownPath: "reference/subsystems/lsp.md"
 outline: [2,3]
 ---
 

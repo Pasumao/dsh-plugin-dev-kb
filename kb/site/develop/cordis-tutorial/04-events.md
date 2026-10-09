@@ -1,5 +1,6 @@
 ---
 editSource: "docs/cordis-tutorial/04-events.zh.md"
+rawMarkdownPath: "develop/cordis-tutorial/04-events.md"
 ---
 
 # 4. 事件

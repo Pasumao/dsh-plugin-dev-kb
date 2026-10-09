@@ -1,5 +1,6 @@
 ---
 editSource: "docs/cordis-tutorial/03-services.zh.md"
+rawMarkdownPath: "develop/cordis-tutorial/03-services.md"
 ---
 
 # 3. 服务

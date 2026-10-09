@@ -1,5 +1,20 @@
 # Changelog
 
+## [1.4.0] - 2026-10-10
+
+- 知识库同步至上游 master `5badb150`（2026-10-10，对应 dsh `0.2.0-rc.2` / `0.2.1-alpha` 时期）：
+  站点镜像维持 188 页（中英 94/94），全部页面内容刷新；页面集合变化：
+  `subsystems/code-runtime` → `subsystems/ptc-runtime`（dsh 0.2.0 更名）、`subsystems/invariants`
+  移除、新增 `guide/public-deployments`（公共部署，中英一对）、新增 `subsystems/sidebar-right`
+  与 `subsystems/client-resources`（中英一对）。
+- 补充文档 62 → 182 篇：新增 `upgrade-guide/`（0.1.7-rc.2 / 0.2.0-rc.2 升级指南，
+  schedule-bundle-retired / remove-runtime-invariants / subpath-plugin-display-manifest 等）、
+  `persistence-changes/`（持久化格式变更记录与历史格式）、`cookbook/reviewing-persistence-type-changes`、
+  `subsystems/`（boot / browser-use / claude-code-mods / computer-use / deliverables / mcp /
+  office-to-pdf / otel / product-telemetry / ssh / voice-input 等）。
+- 更新 `kb/meta/source.json` 与 `site-pages.txt`；重建检索索引（253 → 373 文件）与 INDEX.md；
+  `topics.md` 新增「版本升级与持久化变更」主题，子系统速查同步 ptc-runtime 更名与新页面。
+
 ## [1.3.0] - 2026-09-10
 
 - 修复：移除每次加载覆写 `state.json` 的调试残留（纯数据插件本不需要持久化状态）；

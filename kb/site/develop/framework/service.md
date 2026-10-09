@@ -1,5 +1,6 @@
 ---
 editSource: "docs/user/develop/framework/service.zh.md"
+rawMarkdownPath: "develop/framework/service.md"
 ---
 
 # 服务与依赖

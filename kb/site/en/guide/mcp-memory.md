@@ -1,5 +1,6 @@
 ---
 editSource: "docs/user/guide/mcp-memory.md"
+rawMarkdownPath: "en/guide/mcp-memory.md"
 ---
 
 # Connect a third-party memory MCP server

@@ -1,5 +1,6 @@
 ---
 editSource: "docs/subsystems/token-meter.md"
+rawMarkdownPath: "en/reference/subsystems/token-meter.md"
 outline: [2,3]
 ---
 

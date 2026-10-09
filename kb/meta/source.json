@@ -1,13 +1,13 @@
-{
-  "knowledgeBase": "DeepSeek Harness 官方文档知识库",
-  "source": "官方文档站点 https://deepseek-harness.github.io/deepseek-harness/ （VitePress）",
+﻿{
+  "knowledgeBase": "DeepSeek Harness 瀹樻柟鏂囨。鐭ヨ瘑搴?,
+  "source": "瀹樻柟鏂囨。绔欑偣 https://deepseek-harness.github.io/deepseek-harness/ 锛圴itePress锛?,
   "repository": "https://github.com/deepseek-ai/deepseek-harness",
   "branch": "master",
-  "commit": "aa8262ec091698bae9a6b04773a6b5b06ad4aef2",
-  "fetchedAt": "2026-09-10T06:41:07.124Z",
+  "commit": "5badb15009ae1756c3afe0ae0cef1faafc290ccc",
+  "fetchedAt": "2026-10-09T05:23:13.081Z",
   "siteBase": "https://deepseek-harness.github.io/deepseek-harness",
   "publishedMarkdownPages": 188,
   "siteFiles": 192,
   "images": 4,
-  "extraFiles": 62
+  "extraFiles": 182
 }

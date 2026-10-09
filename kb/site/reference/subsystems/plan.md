@@ -1,11 +1,12 @@
 ---
 editSource: "docs/subsystems/plan.zh.md"
+rawMarkdownPath: "reference/subsystems/plan.md"
 outline: [2,3]
 ---
 
 # 计划模式
 
-计划模式是 [dsh-plan-mode](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/plan/plan-mode) 拥有的、记录到日志的逐 agent（智能体）协作状态（`ctx.planMode`，`PlanModeController`）：激活期间，每个模型请求都会包含一段部署持有的指引。计划模式是**软性指引**。[沙箱模式](./sandbox.md)与[审批策略](./approval.md)分别强制限制；两者都不读写计划状态，因此部署需要分别配置它们。该包是可选项，agent loop（智能体循环）不依赖它。它贡献 `plan:policy` 提示词段落，并注册 `exit_plan_mode` 工具和 `/plan` 命令。[设计说明](https://github.com/deepseek-ai/deepseek-harness/blob/master/.agents/notes/implemented/simplification/2026-07-22-plan-specific-collaboration-state.zh.md)负责决策依据；[包 README](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/plan/plan-mode/README.zh.md)负责模型体验与限制细节。
+计划模式是 [dsh-plan-mode](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/plan/plan-mode) 拥有的、记录到日志的逐 agent（智能体）协作状态（`ctx.planMode`，`PlanModeController`）：激活期间，每个模型请求都会包含一段部署持有的指引。计划模式是**软性指引**。[沙箱模式](./sandbox.md)与[审批策略](./approval.md)分别强制限制；两者都不读写计划状态，因此部署需要分别配置它们。该包是可选项，agent loop（智能体循环）不依赖它。它贡献 `plan:policy` 提示词段落，并注册 `exit_plan_mode` 工具和 `/plan` 命令。[设计说明](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/plan/plan-mode/README.zh.md)负责决策依据；[包 README](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/plan/plan-mode/README.zh.md)负责模型体验与限制细节。
 
 源码：[`packages/plan/plan-mode/src/index.ts`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/plan/plan-mode/src/index.ts)
 

@@ -1,5 +1,6 @@
 ---
 editSource: "docs/user/develop/basic/index.md"
+rawMarkdownPath: "en/develop/basic/index.md"
 ---
 
 # Your first plugin

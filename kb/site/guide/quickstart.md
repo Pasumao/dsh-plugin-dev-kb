@@ -1,5 +1,6 @@
 ---
 editSource: "docs/user/guide/index.zh.md"
+rawMarkdownPath: "guide/quickstart.md"
 ---
 
 # 使用 Web UI
@@ -28,5 +29,6 @@ Agent（智能体）可以读取和编辑工作区文件、运行命令、委派
 
 - [配置模型](./providers.md)
 - [使用 Python SDK](./python-sdk.md)
+- [在反向代理之后发布 Web UI](./public-deployments.md)
 - [使用其他 CLI 模式](https://github.com/deepseek-ai/deepseek-harness/blob/master/apps/cli/README.zh.md)
 - [开发插件](../develop/basic/index.md)

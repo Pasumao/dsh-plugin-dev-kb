@@ -1,5 +1,6 @@
 ---
 editSource: "docs/user/guide/index.md"
+rawMarkdownPath: "en/guide/quickstart.md"
 ---
 
 # Use the Web UI
@@ -28,5 +29,6 @@ The agent can read and edit workspace files, run commands, delegate work, and ma
 
 - [Configure models](./providers.md)
 - [Use the Python SDK](./python-sdk.md)
+- [Publish the Web UI behind a reverse proxy](./public-deployments.md)
 - [Use other CLI modes](https://github.com/deepseek-ai/deepseek-harness/blob/master/apps/cli/README.md)
 - [Develop a plugin](../develop/basic/index.md)

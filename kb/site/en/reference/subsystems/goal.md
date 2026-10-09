@@ -1,11 +1,12 @@
 ---
 editSource: "docs/subsystems/goal.md"
+rawMarkdownPath: "en/reference/subsystems/goal.md"
 outline: [2,3]
 ---
 
 # Same-session goals
 
-Types shared by the event-sourced goal service and its policy consumers. The [goal-domain Agent Note](https://github.com/deepseek-ai/deepseek-harness/blob/master/.agents/notes/implemented/feature/2026-07-19-persisted-same-session-goal-domain.md) owns the persistence and activation decisions; this page records the exact fields and variants from [`packages/goal/goal/src/types.ts`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/goal/goal/src/types.ts).
+Types shared by the event-sourced goal service and its policy consumers. The [goal-domain reference](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/goal/goal/README.md) owns the persistence and activation decisions; this page records the exact fields and variants from [`packages/goal/goal/src/types.ts`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/goal/goal/src/types.ts).
 
 ## Identity and lifecycle
 

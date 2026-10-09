@@ -1,5 +1,6 @@
 ---
 editSource: "docs/subsystems/terminal.zh.md"
+rawMarkdownPath: "reference/subsystems/terminal.md"
 outline: [2,3]
 ---
 

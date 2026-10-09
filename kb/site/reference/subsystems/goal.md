@@ -1,11 +1,12 @@
 ---
 editSource: "docs/subsystems/goal.zh.md"
+rawMarkdownPath: "reference/subsystems/goal.md"
 outline: [2,3]
 ---
 
 # 同会话目标
 
-事件溯源目标服务及其策略消费方共享的类型。[目标领域 Agent Note](https://github.com/deepseek-ai/deepseek-harness/blob/master/.agents/notes/implemented/feature/2026-07-19-persisted-same-session-goal-domain.zh.md) 负责记录持久化与激活决策；本页记录 [`packages/goal/goal/src/types.ts`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/goal/goal/src/types.ts) 中的确切字段和变体。
+事件溯源目标服务及其策略消费方共享的类型。[目标领域 参考](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/goal/goal/README.zh.md) 负责记录持久化与激活决策；本页记录 [`packages/goal/goal/src/types.ts`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/goal/goal/src/types.ts) 中的确切字段和变体。
 
 ## 标识与生命周期
 

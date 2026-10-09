@@ -1,5 +1,6 @@
 ---
 editSource: "docs/subsystems/storage.md"
+rawMarkdownPath: "en/reference/subsystems/storage.md"
 outline: [2,3]
 ---
 
@@ -218,8 +219,7 @@ The mounted domain facility. Opens declared domains over routed backends; one fa
 async open<S extends DomainSpec>(spec: S): Promise<Domain<S>>
 
 /**
- * Look up an open domain by name, untyped. Diagnostic surface (the package
- * invariant cross-checks change events against live domain state); typed
+ * Look up an open domain by name, untyped. Diagnostic surface; typed
  * consumers hold the handle returned by {@link open}.
  * @param name - Domain name.
  * @returns the open domain runtime, or `undefined` when not open.

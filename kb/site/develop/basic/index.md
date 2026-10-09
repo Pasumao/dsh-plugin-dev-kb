@@ -1,5 +1,6 @@
 ---
 editSource: "docs/user/develop/basic/index.zh.md"
+rawMarkdownPath: "develop/basic/index.md"
 ---
 
 # 第一个插件

@@ -1,5 +1,6 @@
 ---
 editSource: "docs/subsystems/session-query.zh.md"
+rawMarkdownPath: "reference/subsystems/session-query.md"
 outline: [2,3]
 ---
 

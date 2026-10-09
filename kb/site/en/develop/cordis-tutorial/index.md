@@ -1,5 +1,6 @@
 ---
 editSource: "docs/cordis-tutorial/index.md"
+rawMarkdownPath: "en/develop/cordis-tutorial/index.md"
 ---
 
 # Cordis tutorial

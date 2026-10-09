@@ -1,5 +1,6 @@
 ---
 editSource: "docs/cordis-api/events.zh.md"
+rawMarkdownPath: "reference/cordis-api/events.md"
 ---
 
 <!-- 英文源文件由 scripts/gen-cordis-catalog.ts 生成；本中文文件是通过双语配对维护的经评审对侧。

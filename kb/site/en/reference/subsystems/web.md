@@ -1,5 +1,6 @@
 ---
 editSource: "docs/subsystems/web.md"
+rawMarkdownPath: "en/reference/subsystems/web.md"
 outline: [2,3]
 ---
 

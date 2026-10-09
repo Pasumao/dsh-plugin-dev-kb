@@ -1,5 +1,6 @@
 ---
 editSource: "docs/agent-lifecycle.zh.md"
+rawMarkdownPath: "reference/agent-lifecycle.md"
 ---
 
 <!-- 英文源文件由 scripts/gen-doc-graphs.ts 生成；本中文文件是通过双语配对维护的经评审对侧。

@@ -1,5 +1,6 @@
 ---
 editSource: "docs/user/develop/framework/index.md"
+rawMarkdownPath: "en/develop/framework/index.md"
 ---
 
 # Plugins and lifecycle
@@ -100,7 +101,7 @@ await fiber.dispose()
 
 ## Hot replacement (HMR)
 
-With `@deepseek-ai/cordis-plugin-hmr` loaded from `cordis.yml`, editing a plugin source file triggers:
+With `@deepseek-ai/dsh-hmr` loaded from `cordis.yml`, editing a plugin source file triggers:
 
 1. Unload the old plugin and clean up its registrations.
 2. Load the new code.

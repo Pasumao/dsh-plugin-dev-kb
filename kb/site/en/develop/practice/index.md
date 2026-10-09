@@ -1,5 +1,6 @@
 ---
 editSource: "docs/user/develop/practice/index.md"
+rawMarkdownPath: "en/develop/practice/index.md"
 ---
 
 # Three-role capability design

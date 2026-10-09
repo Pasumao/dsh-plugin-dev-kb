@@ -1,5 +1,6 @@
 ---
 editSource: "docs/user/develop/framework/index.zh.md"
+rawMarkdownPath: "develop/framework/index.md"
 ---
 
 # 插件与生命周期
@@ -100,7 +101,7 @@ await fiber.dispose()
 
 ## HMR（热模块替换）
 
-通过 `cordis.yml` 加载 `@deepseek-ai/cordis-plugin-hmr` 后，修改插件源文件会触发：
+通过 `cordis.yml` 加载 `@deepseek-ai/dsh-hmr` 后，修改插件源文件会触发：
 
 1. 卸载旧插件（清理所有注册）
 2. 重新加载新代码

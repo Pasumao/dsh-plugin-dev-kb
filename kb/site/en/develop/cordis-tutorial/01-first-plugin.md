@@ -1,5 +1,6 @@
 ---
 editSource: "docs/cordis-tutorial/01-first-plugin.md"
+rawMarkdownPath: "en/develop/cordis-tutorial/01-first-plugin.md"
 ---
 
 # 1. Your first plugin

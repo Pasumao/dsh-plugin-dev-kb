@@ -1,5 +1,6 @@
 ---
 editSource: "docs/cordis-tutorial/04-events.md"
+rawMarkdownPath: "en/develop/cordis-tutorial/04-events.md"
 ---
 
 # 4. Events

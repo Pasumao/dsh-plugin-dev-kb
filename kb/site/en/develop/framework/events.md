@@ -1,5 +1,6 @@
 ---
 editSource: "docs/user/develop/framework/events.md"
+rawMarkdownPath: "en/develop/framework/events.md"
 ---
 
 # Event system

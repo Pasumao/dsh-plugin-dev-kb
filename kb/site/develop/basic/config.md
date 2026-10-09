@@ -1,5 +1,6 @@
 ---
 editSource: "docs/user/develop/basic/config.zh.md"
+rawMarkdownPath: "develop/basic/config.md"
 ---
 
 # 插件配置

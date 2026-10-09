@@ -12,7 +12,7 @@
 
 [中文](./README.md) | **English**
 
-> **188-page official mirror · 62 supplementary docs · 253-file search index · 0 runtime dependencies**
+> **188-page official mirror · 182 supplementary docs · 373-file search index · 0 runtime dependencies**
 
 **The official docs at your side whenever you write dsh plugins**: the entire content of the DeepSeek Harness official documentation site
 <https://deepseek-harness.github.io/deepseek-harness/> is organized into a form natively usable by dsh —
@@ -22,7 +22,7 @@ once this plugin is installed, the agent automatically loads the knowledge base 
 
 - **Complete site mirror**: the official docs (VitePress) are generated as a projection of the raw Markdown in
   `docs/` of the `deepseek-ai/deepseek-harness` repository (links rewritten to site routes, verbatim identical to the live site). 188 pages in both Chinese and English.
-- **Supplementary docs**: 62 development references from the repo's `docs/` that were not published to the site (glossary, defensive patterns, module graph, testing strategy, incident postmortems, i18n specs, etc.).
+- **Supplementary docs**: 182 development references from the repo's `docs/` that were not published to the site (glossary, defensive patterns, module graph, testing strategy, incident postmortems, i18n specs, upgrade guides, persistence changes, etc.).
 - **Agent-friendly**: the `skills/dsh-plugin-dev-kb.md` skill lets dsh auto-load it during plugin development tasks, providing the knowledge base location,
   topic navigation, and search strategy; `kb/meta/topics.md` maps task scenarios to the files to read; `kb/meta/search-index.json` provides full search coverage.
 
@@ -30,7 +30,7 @@ once this plugin is installed, the agent automatically loads the knowledge base 
 
 - **Complete mirror of the official docs**: the entire content of the deepseek-ai/deepseek-harness official documentation site, organized into a form natively usable by dsh,
   188 pages in both Chinese and English, links rewritten to site routes, verbatim identical to the live site;
-- **Repo supplementary docs**: 62 development references not published to the site (glossary, defensive patterns, module graph, testing strategy, incident postmortems, i18n specs, etc.);
+- **Repo supplementary docs**: 182 development references not published to the site (glossary, defensive patterns, module graph, testing strategy, incident postmortems, i18n specs, upgrade guides, persistence changes, etc.);
 - **Agent-friendly**: the `dsh-plugin-dev-kb` skill lets dsh auto-load the knowledge base during plugin development tasks;
   `kb/meta/topics.md` maps task scenarios to the files to read, and `kb/meta/search-index.json` provides full search coverage;
 - **Human-usable**: browse the `kb/` directory directly, or open `kb/INDEX.md` to look things up by URL mapping;
@@ -96,7 +96,7 @@ dsh-plugin-dev-kb/
 │   ├── extra/         repo supplementary docs: glossary, defensive-patterns, module-graph, postmortem/, i18n/ …
 │   ├── meta/
 │   │   ├── topics.md         ★ topic navigation: task scenario → files
-│   │   ├── search-index.json full index (253 files)
+│   │   ├── search-index.json full index (373 files)
 │   │   ├── source.json       source commit / time / stats
 │   │   └── site-pages.txt    list of live site pages
 │   ├── INDEX.md        site URL ↔ local file mapping

@@ -1,5 +1,6 @@
 ---
 editSource: "docs/subsystems/slots.zh.md"
+rawMarkdownPath: "reference/subsystems/slots.md"
 outline: [2,3]
 ---
 
@@ -8,6 +9,10 @@ outline: [2,3]
 Slots 是 Web Client 的类型化 React 组合系统。[`dsh-client-ui-slots`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/client/ui-slots/README.zh.md)定义不依赖 React 的注册表与类型代数；[`dsh-client-ui-renderer`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/client/ui-renderer/README.zh.md)把可观测源绑定成钩子、渲染整棵树，并在内部拥有 React context。功能插件通过 `ctx.slots.register()` 贡献 UI，绝不导入其他功能插件的组件。
 
 本文记录 slot 的所有权、组件输入、扩展 API 与当前层级。外围的启动、Remote、Client model 与 Conversation 数据通路见 [Web Client 架构](./web-client.md)。
+
+`plugins.bundle.config` 以 npm 包名为 key，提供 Bundle 详情配置。`plugins.bundle.activation` 在用户显式启用后渲染可选引导，由拥有者提供关闭引导和打开该 Bundle 详情的回调。`conversation.input.activity` 提供模型选择器与发送按钮之间的单个活动控件，可展开工具栏并在卸载时释放展开状态。
+
+插件目录声明 `plugins.add.actions`，它是 root 作用域的 list，在添加插件菜单的安装项之后提供 `MenuItemButton` 行。owner 提供 `onDismiss()`，用于开始动作前关闭菜单。该 slot 遵循所属插件页面声明的生命周期。
 
 ## 声明与生命周期
 
@@ -55,8 +60,8 @@ Slot 声明固定两个相互独立的维度。
 | cardinality | `keyed` | owner 传入 `entryKey`；匹配 cell 以该 key 对应的 props 渲染。 |
 | cardinality | `chain` | 每个 entry 提供纯 `select(owner)` 函数；按 priority 顺序遇到的第一个非 null 结果获选，并以 `matched` 传给组件；全部拒绝时渲染 owner fallback。 |
 | scope | `root` | 一个 root 作用域组件和 store 实例。 |
-| scope | `session-maybe` | 跟随当前选择，但没有 Session 时仍可渲染；Session 值是可选的。 |
-| scope | `session` | 要求可解析的 Session binding，并收到确定存在的 Session 值。 |
+| scope | `session-maybe` | 继承外围 Provider binding，但没有 binding 时仍可渲染；Session 值是可选的。 |
+| scope | `session` | 要求可解析的外围 Provider binding，并收到确定存在的 Session 值。 |
 
 对于 `single`、`list` 和 `keyed` cell，`priority` 是遮蔽优先级；对于 `chain`，它是选举顺序。数值越小越先运行或渲染。普通增量贡献应选用新的 list `id` 或 keyed `key`；复用已有 cell 表示有意替换其展示。
 
@@ -73,7 +78,7 @@ Slot 声明固定两个相互独立的维度。
 | 本地化 `t` 函数 | 注册项的 `locale` namespace | `PropsLocale<N>` |
 | chain 选中的值 | 注册项的 `select` 结果 | 通过 `ComposedProps` 提供的 `matched` |
 
-当 entry 声明 strict Session child 时，`PropsRenderSlots` 还会提供 `SessionProvider`。它把子树绑定到当前 Session identity，并在 identity 改变时重新挂载 body。
+当 entry 声明 `session` 或 `session-maybe` child 时，`PropsRenderSlots` 还会提供 `SessionProvider`。不传 `session` prop 时，它继承外围 binding；显式传入 `SessionReference` 或 `undefined` 时，只覆盖该子树。Provider 不为整个 body 设置 key。严格 `session` entry 在 binding generation 改变时重新挂载。空白 `session-maybe` entry 接受首个 binding 时不重新挂载，后续 generation 变化或回到缺失状态时才重新挂载。
 
 组件绝不会收到 `ctx`。父组件在某次渲染时已经知道的值通过 `renderSlot` 的 owner 参数进入；共享视图状态使用声明的 store；service 与 model object 留在 `apply` closure 中，只向组件投影 callback 或 observable source。
 
@@ -83,7 +88,7 @@ Slot 声明固定两个相互独立的维度。
 
 | 可用范围 | Props | Owner |
 |---|---|---|
-| 所有 scope | `useSessions`、`useSessionPendingInteraction` | `ui-session` |
+| 所有 scope | `useSessions`、`useSessionStatus`、`useSessionRetainInfo` | `ui-session` |
 | 所有 scope | `useWorkspaces` | `ui-workspace` |
 | 所有作用域 | `usePanelInfo` | `ui-layout` |
 | `session` | `sessionId`、`useSession`、`useProjection` | `ui-session` |
@@ -119,7 +124,9 @@ root
 │  ├─ sidebar.panellist
 │  ├─ sidebar.footer.action
 │  ├─ sidebar.workspaces
-│  │  └─ sidebar.workspaces.directoryFlow
+│  │  ├─ sidebar.workspaces.directoryFlow
+│  │  ├─ sidebar.workspaces.session.menu.item
+│  │  └─ sidebar.workspaces.session.row.action
 │  └─ sidebar.settings
 │     ├─ settings.trigger
 │     ├─ settings.header
@@ -131,8 +138,14 @@ root
 │        ├─ settings.models.provider-card
 │        ├─ settings.models.footer
 │        └─ settings.plugins.tab
-│           └─ settings.plugin.item
 ├─ main
+│  ├─ plugins.add.actions
+│  ├─ plugins.item
+│  ├─ plugins.bundle.config
+│  ├─ plugins.row.config
+│  ├─ plugins.detail.actions
+│  ├─ plugins.detail.badge
+│  ├─ plugins.detail.section
 │  └─ main.conversation
 │     ├─ conversation.session
 │     │  └─ conversation.view
@@ -145,15 +158,19 @@ root
 │     │     │     └─ tool.view.cordis
 │     │     ├─ conversation.message.images
 │     │     └─ conversation.trajectory.images
-│     ├─ conversation.session.header
-│     │  ├─ conversation.session.header.lineage
-│     │  ├─ conversation.session.header.actions
-│     │  ├─ conversation.session.header.utilities
-│     │  └─ conversation.session.header.corner
+│     ├─ conversation.header
+│     │  ├─ conversation.header.leading
+│     │  └─ conversation.session.header
+│     │     ├─ conversation.session.header.lineage
+│     │     ├─ conversation.session.header.actions
+│     │     ├─ conversation.session.header.utilities
+│     │     └─ conversation.session.header.corner
 │     ├─ conversation.composer
-│     │  └─ conversation.approval.detail
+│     │  ├─ conversation.approval.detail
+│     │  └─ conversation.plan-review.actions
 │     ├─ conversation.composer.bar
 │     │  ├─ conversation.input.attachments
+│     │  ├─ conversation.input.permission
 │     │  ├─ conversation.input.plan
 │     │  └─ conversation.input.model
 │     ├─ conversation.input.overlay
@@ -168,10 +185,14 @@ root
 ├─ rightbar
 │  └─ rightbar.session
 │     ├─ sidebar.right.pane.tab
-│     │  └─ sidebar.right.tab.guide
+│     │  ├─ sidebar.right.tab.guide
+│     │  └─ sidebar.right.tab.guide.entry
 │     ├─ sidebar.right.pane.tab.title
 │     └─ sidebar.right.tab.menu.item
+├─ shell.bottom
+├─ shell.leading
 └─ shell.overlay
+   └─ shell.quota-notice
 ```
 
 生成的 Client inspect catalog 是每个 key 的完整参考，包含 cardinality、scope、owner props、标准 props、当前 occupant、声明 owner 与替换风险。运行中的动态包可以用 `cordis_inspect what:"client"` 查询实时树与某个精确 key；源码 catalog 由 `pnpm run gen-client-catalog` 根据 `SlotMap` 声明和 `slots.register()` 调用点生成。

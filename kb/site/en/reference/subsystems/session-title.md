@@ -1,5 +1,6 @@
 ---
 editSource: "docs/subsystems/session-title.md"
+rawMarkdownPath: "en/reference/subsystems/session-title.md"
 outline: [2,3]
 ---
 
@@ -20,7 +21,7 @@ type SessionTitleProviderId = Branded<'SessionTitleProviderId'>
 
 ```ts type-equiv
 /** Exact auxiliary model route that produced a title. */
-interface SessionTitleModelProvenance {
+interface SessionTitleModelIdentity {
   /** Registered LLM provider route. */
   readonly provider: string
   /** Provider model id. */
@@ -35,7 +36,7 @@ type SessionTitleSource =
   | {
     readonly kind: 'provider'
     readonly provider: SessionTitleProviderId
-    readonly model?: SessionTitleModelProvenance
+    readonly model?: SessionTitleModelIdentity
   }
   | {
     /** Explicit user rename: pins the title — automatic generation stops scheduling. */
@@ -77,7 +78,7 @@ interface SessionTitleLlmRequestEventData {
   /** Exact human `user/message` seqs represented in `messages`. */
   readonly messageSeqs: SessionSeq[]
   /** Exact auxiliary LLM route. */
-  readonly route: SessionTitleModelProvenance
+  readonly route: SessionTitleModelIdentity
   /** Exact auxiliary system prompt. */
   readonly system: string
   /** Exact auxiliary message list. */
@@ -114,7 +115,7 @@ interface SessionTitleProviderRequest {
   /** All eligible human messages through this generation revision. */
   readonly messages: readonly SessionTitleUserMessage[]
   /** Exact current logged main-request route, when one has been recorded. */
-  readonly route?: SessionTitleModelProvenance
+  readonly route?: SessionTitleModelIdentity
   /** Cancellation for supersession, disposal, timeout composition, or the explicit caller. */
   readonly signal: AbortSignal
 }
@@ -128,7 +129,7 @@ interface SessionTitleProviderResult {
   /** Exact seqs from `request.messages` used by this result. */
   readonly messageSeqs: readonly SessionSeq[]
   /** Auxiliary LLM route, when generation used a model. */
-  readonly model?: SessionTitleModelProvenance
+  readonly model?: SessionTitleModelIdentity
 }
 ```
 

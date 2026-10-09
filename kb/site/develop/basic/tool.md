@@ -1,5 +1,6 @@
 ---
 editSource: "docs/user/develop/basic/tool.zh.md"
+rawMarkdownPath: "develop/basic/tool.md"
 ---
 
 # 开发一个工具

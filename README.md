@@ -12,7 +12,7 @@
 
 [**中文**](./README.md) | [English](./README.en.md)
 
-> **188 页官方镜像 · 62 篇补充文档 · 253 文件搜索索引 · 0 运行时依赖**
+> **188 页官方镜像 · 182 篇补充文档 · 373 文件搜索索引 · 0 运行时依赖**
 
 **写 dsh 插件时的随身官方文档**：把 DeepSeek Harness 官方文档站点
 <https://deepseek-harness.github.io/deepseek-harness/> 的全部内容整理为 dsh 原生可用的形态——
@@ -22,7 +22,7 @@
 
 - **站点完整镜像**：官方文档（VitePress）由仓库 `deepseek-ai/deepseek-harness` 的 `docs/` 原始 Markdown
   投影生成（链接已按站点路由重写，与线上逐字一致）。中英双语共 188 页。
-- **补充文档**：仓库 `docs/` 中未发布到站点的 62 篇开发参考（术语表、防御模式、模块图、测试策略、事故复盘、i18n 规范等）。
+- **补充文档**：仓库 `docs/` 中未发布到站点的 182 篇开发参考（术语表、防御模式、模块图、测试策略、事故复盘、i18n 规范、升级指南、持久化变更等）。
 - **agent 友好**：`skills/dsh-plugin-dev-kb.md` 技能让 dsh 在插件开发任务中自动加载，获知知识库位置、
   主题导航与检索策略；`kb/meta/topics.md` 按任务场景映射要读的文件；`kb/meta/search-index.json` 提供全量检索。
 
@@ -30,7 +30,7 @@
 
 - **官方文档完整镜像**：deepseek-ai/deepseek-harness 官方文档站全部内容整理为 dsh 原生可用的形态，
   中英双语共 188 页，链接按站点路由重写，与线上逐字一致；
-- **仓库补充文档**：未发布到站点的 62 篇开发参考（术语表、防御模式、模块图、测试策略、事故复盘、i18n 规范等）；
+- **仓库补充文档**：未发布到站点的 182 篇开发参考（术语表、防御模式、模块图、测试策略、事故复盘、i18n 规范、升级指南、持久化变更等）；
 - **agent 友好**：`dsh-plugin-dev-kb` 技能让 dsh 在插件开发任务中自动加载知识库；
   `kb/meta/topics.md` 按任务场景映射要读的文件，`kb/meta/search-index.json` 提供全量检索；
 - **人侧可用**：直接浏览 `kb/` 目录，或打开 `kb/INDEX.md` 按 URL 对照查阅；
@@ -93,10 +93,10 @@ dsh-plugin-dev-kb/
 │   └── dsh-plugin-dev-kb.md   ★ 知识库使用指南（agent 加载此技能）
 ├── kb/
 │   ├── site/          站点镜像：guide/ develop/ reference/（+ en/ 英文站）
-│   ├── extra/         仓库补充文档：glossary、defensive-patterns、module-graph、postmortem/、i18n/ …
+│   ├── extra/         仓库补充文档：glossary、defensive-patterns、module-graph、upgrade-guide/、persistence-changes/、postmortem/、i18n/ …
 │   ├── meta/
 │   │   ├── topics.md         ★ 主题导航：任务场景 → 文件
-│   │   ├── search-index.json 全量索引（253 文件）
+│   │   ├── search-index.json 全量索引（373 文件）
 │   │   ├── source.json       来源 commit / 时间 / 统计
 │   │   └── site-pages.txt    线上页面清单
 │   ├── INDEX.md        站点 URL ↔ 本地文件 对照

@@ -1,13 +1,14 @@
 ---
 editSource: "docs/subsystems/skills.zh.md"
+rawMarkdownPath: "reference/subsystems/skills.md"
 outline: [2,3]
 ---
 
 # Skills
 
-[skill（技能）能力族](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/skill) 包含 Service Definition（[dsh-skill](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/skill/skill)，`ctx.skills`）、本地 Service Provider（[dsh-skill-filesystem](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/skill/skill-filesystem)）、可选的随包徽章提供方（[dsh-skill-badge](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/skill/skill-badge)）和 Consumer（[dsh-tool-skill](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/skill/tool-skill)）。注册表在其宿主层与各 scope 层之间合并各提供方的目录；提供方贡献本地或随包 skill；Consumer 拥有初始目录和替换目录，以及面向模型的 `skill` 工具。skill 是可选的指令而非会话事件，因此其词汇定义在此处而非 [core.md](./core.md)。
+[skill（技能）能力族](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/skill) 包含 Service Definition（[dsh-skill](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/skill/skill)，`ctx.skills`）、本地 Service Provider（[dsh-skill-filesystem](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/skill/skill-filesystem)）、可选的随包提供方（[dsh-skill-badge](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/skill/skill-badge)、[dsh-skill-office](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/skill/skill-office) 及 [dsh-sandbox-windows-acl](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/sandbox/sandbox-windows-acl) 中的 Windows ACL 诊断提供方）和 Consumer（[dsh-tool-skill](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/skill/tool-skill)）。注册表在其宿主层与各 scope 层之间合并各提供方的目录；提供方贡献本地或随包 skill；Consumer 拥有初始目录和替换目录，以及面向模型的 `skill` 工具。skill 是可选的指令而非会话事件，因此其词汇定义在此处而非 [core.md](./core.md)。
 
-源码：[`packages/skill/skill/src/index.ts`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/skill/skill/src/index.ts)、[`packages/skill/skill-filesystem/src/index.ts`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/skill/skill-filesystem/src/index.ts)、[`packages/skill/skill-badge/src/index.ts`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/skill/skill-badge/src/index.ts) 与 [`packages/skill/tool-skill/src/index.ts`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/skill/tool-skill/src/index.ts)。
+源码：[`packages/skill/skill/src/index.ts`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/skill/skill/src/index.ts)、[`packages/skill/skill-filesystem/src/index.ts`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/skill/skill-filesystem/src/index.ts)、[`packages/skill/skill-badge/src/index.ts`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/skill/skill-badge/src/index.ts)、[`packages/skill/skill-office/src/index.ts`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/skill/skill-office/src/index.ts)、[`packages/sandbox/sandbox-windows-acl/src/acl-skill.ts`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/sandbox/sandbox-windows-acl/src/acl-skill.ts) 与 [`packages/skill/tool-skill/src/index.ts`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/skill/tool-skill/src/index.ts)。
 
 ## 提供方注册表
 
@@ -109,6 +110,8 @@ interface SkillInvocationPolicy {
 ```ts type-equiv
 /** Invocation-neutral skill metadata returned by `ctx.skills.list()`. */
 interface SkillSummary {
+  /** Absolute instruction file path when supplied by the provider; absent for virtual skills. */
+  readonly path?: string
   /** Kebab-case identifier used to address the skill. */
   readonly name: string
   /** Short routing description shown by discovery consumers. */
@@ -149,8 +152,6 @@ interface SkillCandidate extends SkillSummary {
   readonly rank: number
   /** Opaque provider-owned handle passed back to `provider.get()`. */
   readonly locator: unknown
-  /** Absolute file path when the provider has one. */
-  readonly path?: string
   /** Parsed optional metadata object from provider-specific skill frontmatter. */
   readonly metadata?: Readonly<Record<string, unknown>>
 }
@@ -171,8 +172,6 @@ type SkillResourceBase =
 interface SkillDefinition extends SkillSummary {
   /** Markdown instruction body after any provider-specific metadata removal. */
   readonly content: string
-  /** Absolute file path when the skill came from disk. */
-  readonly path?: string
   /** Parsed optional metadata object from frontmatter. */
   readonly metadata?: Readonly<Record<string, unknown>>
 }

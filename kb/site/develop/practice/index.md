@@ -1,5 +1,6 @@
 ---
 editSource: "docs/user/develop/practice/index.zh.md"
+rawMarkdownPath: "develop/practice/index.md"
 ---
 
 # 能力的三种角色设计

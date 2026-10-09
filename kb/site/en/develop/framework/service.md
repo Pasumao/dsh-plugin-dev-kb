@@ -1,5 +1,6 @@
 ---
 editSource: "docs/user/develop/framework/service.md"
+rawMarkdownPath: "en/develop/framework/service.md"
 ---
 
 # Services and dependencies

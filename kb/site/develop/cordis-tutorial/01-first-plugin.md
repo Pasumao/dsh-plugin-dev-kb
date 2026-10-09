@@ -1,5 +1,6 @@
 ---
 editSource: "docs/cordis-tutorial/01-first-plugin.zh.md"
+rawMarkdownPath: "develop/cordis-tutorial/01-first-plugin.md"
 ---
 
 # 1. 编写第一个插件
