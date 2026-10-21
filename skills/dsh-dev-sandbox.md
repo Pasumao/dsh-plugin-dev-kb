@@ -17,8 +17,8 @@ whenToUse: 开发/调试 dsh 插件需要启动、重启、验证插件加载，
 ## 2. 沙箱不存在时：初始化（一次）
 
 ```powershell
-# 版本与主力 dsh 对齐（先查主力版本，当前 0.2.0-rc.2），add 会自动创建 profile
-npx -y "@deepseek-ai/dsh@0.2.0-rc.2" plugin --profile dev add file:/D/绝对路径/插件目录
+# 版本与目标 dsh 对齐：先用主力安装的实际版本号替换下面的 <ver>（插件自身 peerDependencies 也要覆盖它）
+npx -y "@deepseek-ai/dsh@<ver>" plugin --profile dev add file:/绝对路径/插件目录
 ```
 
 - `add` 走兼容闸门：peerDependencies 不覆盖当前 dsh 版本会整体拒绝并回滚——这不是网络问题，改 peer 或按提示 `allow-version` 豁免。
@@ -29,7 +29,7 @@ npx -y "@deepseek-ai/dsh@0.2.0-rc.2" plugin --profile dev add file:/D/绝对路�
 
 ```powershell
 # 后台启动（run_in_background），端口避开主力；日志里找 token 行与报错
-npx -y "@deepseek-ai/dsh@0.2.0-rc.2" web --profile dev --port 3081
+npx -y "@deepseek-ai/dsh@<ver>" web --profile dev --port 3081
 ```
 
 - 启动日志含 `dsh web: http://127.0.0.1:3081/?token=…`（token 每次启动轮换，用它开 GUI 验证 UI 类插件）。
@@ -45,14 +45,14 @@ npx -y "@deepseek-ai/dsh@0.2.0-rc.2" web --profile dev --port 3081
 一次性 headless 跑同 profile，验证插件能加载、工具能注册：
 
 ```powershell
-npx -y "@deepseek-ai/dsh@0.2.0-rc.2" --profile dev "列出你当前可用的工具，并调用 <插件工具名> 做一次最小调用"
+npx -y "@deepseek-ai/dsh@<ver>" --profile dev "列出你当前可用的工具，并调用 <插件工具名> 做一次最小调用"
 ```
 
 启动即崩（exit 非 0 / 打印异常栈）= 插件破坏了 profile 启动，直接读栈修代码，主 dsh 无恙。
 
 ## 5. 收尾：进主力 profile
 
-插件在沙箱里稳定后，才走正常流程挪进 `desktop`：同步版本与 peerDependencies → 改主力 profile → `pnpm install` → 自检 → 由用户重启主力 dsh（主力重启永远由用户决定）。发布前按 `docs/发布评分规范.md` 跑 `node D:\dsh\scripts\release-audit.mjs`。
+插件在沙箱里稳定后，才走正常流程挪进主力 profile：同步版本与 peerDependencies → 改主力 profile → `pnpm install` → 自检 → 由用户重启主力 dsh（主力重启永远由用户决定）。发布流程遵循该插件仓库自己的发布规范/CI。
 
 ## 6. 常见坑速查
 
@@ -64,4 +64,4 @@ npx -y "@deepseek-ai/dsh@0.2.0-rc.2" --profile dev "列出你当前可用的工�
 | 配置文件解析炸 | BOM / UTF-16 污染；只用编辑工具或 UTF-8 无 BOM 写 |
 | 依赖装了不生效 | 改 profile package.json 后忘 `pnpm install` |
 
-更多：dsh 能力与 API 查 `dsh-plugin-dev-kb` 技能的知识库；启动故障复盘见 `D:\dsh\docs\启动故障记录.md`。
+更多：dsh 能力与 API 查 `dsh-plugin-dev-kb` 技能的知识库。
