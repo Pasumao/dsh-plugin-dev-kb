@@ -12,19 +12,24 @@
 
 [**中文**](./README.md) | [English](./README.en.md)
 
-> **188 页官方镜像 · 182 篇补充文档 · 373 文件搜索索引 · 0 运行时依赖**
+> **192 页官方镜像 · 439 篇补充文档 · 634 文件搜索索引 · 0 运行时依赖**
 
-**写 dsh 插件时的随身官方文档**：把 DeepSeek Harness 官方文档站点
+**写 dsh 插件时的随身辅助**：① 把 DeepSeek Harness 官方文档站点
 <https://deepseek-harness.github.io/deepseek-harness/> 的全部内容整理为 dsh 原生可用的形态——
-装了这个插件，agent 写插件时自动加载知识库，按任务场景定位文档，不用再翻网页。
+装了这个插件，agent 写插件时自动加载知识库，按任务场景定位文档，不用再翻网页；
+② 附带 `dsh-dev-sandbox` 技能：独立 dev profile 开发沙箱工作流，开发中的插件隔离运行，
+agent 自主启动 / 重启 / 冒烟验证，插件崩了不影响主力 dsh。
 
 ## 这是什么
 
 - **站点完整镜像**：官方文档（VitePress）由仓库 `deepseek-ai/deepseek-harness` 的 `docs/` 原始 Markdown
-  投影生成（链接已按站点路由重写，与线上逐字一致）。中英双语共 188 页。
-- **补充文档**：仓库 `docs/` 中未发布到站点的 182 篇开发参考（术语表、防御模式、模块图、测试策略、事故复盘、i18n 规范、升级指南、持久化变更等）。
+  投影生成（链接已按站点路由重写，与线上逐字一致）。中英双语共 192 页。
+- **补充文档**：仓库 `docs/` 中未发布到站点的 439 篇开发参考（术语表、防御模式、模块图、测试策略、事故复盘、i18n 规范、升级指南、持久化变更等）。
 - **agent 友好**：`skills/dsh-plugin-dev-kb.md` 技能让 dsh 在插件开发任务中自动加载，获知知识库位置、
   主题导航与检索策略；`kb/meta/topics.md` 按任务场景映射要读的文件；`kb/meta/search-index.json` 提供全量检索。
+- **开发沙箱**：`skills/dsh-dev-sandbox.md` 技能提供独立 dev profile（`~/.dsh/profiles/dev`，可自定义）
+  沙箱工作流——初始化（兼容闸门 / link: 挂载）、后台启动（独立端口）、自主重启、headless 冒烟验证，
+  全程 agent 闭环，不要求用户重启。
 
 ## 功能
 
