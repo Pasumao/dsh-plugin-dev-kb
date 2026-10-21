@@ -1,6 +1,6 @@
 # DeepSeek Harness 文档索引
 
-> 由 `scripts/rebuild-index.mjs` 自动生成。共 188 个站点页面（中英双语），另有 182 个补充文档在 `extra/`。
+> 由 `scripts/rebuild-index.mjs` 自动生成。共 192 个站点页面（中英双语），另有 439 个补充文档在 `extra/`。
 
 ## 中文站点（根路径）
 
@@ -17,6 +17,7 @@
 | 通过 GitHub Webhook 创建评审会话 | [https://deepseek-harness.github.io/deepseek-harness/guide/github-review](https://deepseek-harness.github.io/deepseek-harness/guide/github-review) | `site/guide/github-review.md` |
 | 连接第三方记忆 MCP 服务 | [https://deepseek-harness.github.io/deepseek-harness/guide/mcp-memory](https://deepseek-harness.github.io/deepseek-harness/guide/mcp-memory) | `site/guide/mcp-memory.md` |
 | 在网络代理后面运行 DSH | [https://deepseek-harness.github.io/deepseek-harness/guide/network-proxy](https://deepseek-harness.github.io/deepseek-harness/guide/network-proxy) | `site/guide/network-proxy.md` |
+| 插件市场 | [https://deepseek-harness.github.io/deepseek-harness/guide/plugin-market](https://deepseek-harness.github.io/deepseek-harness/guide/plugin-market) | `site/guide/plugin-market.md` |
 | 配置模型 | [https://deepseek-harness.github.io/deepseek-harness/guide/providers](https://deepseek-harness.github.io/deepseek-harness/guide/providers) | `site/guide/providers.md` |
 | 在反向代理之后发布 Web UI | [https://deepseek-harness.github.io/deepseek-harness/guide/public-deployments](https://deepseek-harness.github.io/deepseek-harness/guide/public-deployments) | `site/guide/public-deployments.md` |
 | Python SDK 入门 | [https://deepseek-harness.github.io/deepseek-harness/guide/python-sdk](https://deepseek-harness.github.io/deepseek-harness/guide/python-sdk) | `site/guide/python-sdk.md` |
@@ -66,6 +67,7 @@
 | 注册表 | [https://deepseek-harness.github.io/deepseek-harness/reference/cordis-api/registry](https://deepseek-harness.github.io/deepseek-harness/reference/cordis-api/registry) | `site/reference/cordis-api/registry.md` |
 | Service | [https://deepseek-harness.github.io/deepseek-harness/reference/cordis-api/service](https://deepseek-harness.github.io/deepseek-harness/reference/cordis-api/service) | `site/reference/cordis-api/service.md` |
 | Cordis 入门 | [https://deepseek-harness.github.io/deepseek-harness/reference/cordis-primer](https://deepseek-harness.github.io/deepseek-harness/reference/cordis-primer) | `site/reference/cordis-primer.md` |
+| 实验性插件记录目录 | [https://deepseek-harness.github.io/deepseek-harness/reference/experimental-persistence-catalog](https://deepseek-harness.github.io/deepseek-harness/reference/experimental-persistence-catalog) | `site/reference/experimental-persistence-catalog.md` |
 | DeepSeek Harness 架构 | [https://deepseek-harness.github.io/deepseek-harness/reference](https://deepseek-harness.github.io/deepseek-harness/reference) | `site/reference/index.md` |
 | 会话持久化事件目录 | [https://deepseek-harness.github.io/deepseek-harness/reference/persistence-catalog](https://deepseek-harness.github.io/deepseek-harness/reference/persistence-catalog) | `site/reference/persistence-catalog.md` |
 | 用户审批 | [https://deepseek-harness.github.io/deepseek-harness/reference/subsystems/approval](https://deepseek-harness.github.io/deepseek-harness/reference/subsystems/approval) | `site/reference/subsystems/approval.md` |
@@ -102,7 +104,7 @@
 | Web Client Slots | [https://deepseek-harness.github.io/deepseek-harness/reference/subsystems/slots](https://deepseek-harness.github.io/deepseek-harness/reference/subsystems/slots) | `site/reference/subsystems/slots.md` |
 | spill 存储 | [https://deepseek-harness.github.io/deepseek-harness/reference/subsystems/spill](https://deepseek-harness.github.io/deepseek-harness/reference/subsystems/spill) | `site/reference/subsystems/spill.md` |
 | 存储 | [https://deepseek-harness.github.io/deepseek-harness/reference/subsystems/storage](https://deepseek-harness.github.io/deepseek-harness/reference/subsystems/storage) | `site/reference/subsystems/storage.md` |
-| Subagent | [https://deepseek-harness.github.io/deepseek-harness/reference/subsystems/subagent](https://deepseek-harness.github.io/deepseek-harness/reference/subsystems/subagent) | `site/reference/subsystems/subagent.md` |
+| 子代理 | [https://deepseek-harness.github.io/deepseek-harness/reference/subsystems/subagent](https://deepseek-harness.github.io/deepseek-harness/reference/subsystems/subagent) | `site/reference/subsystems/subagent.md` |
 | 子进程 | [https://deepseek-harness.github.io/deepseek-harness/reference/subsystems/subprocess](https://deepseek-harness.github.io/deepseek-harness/reference/subsystems/subprocess) | `site/reference/subsystems/subprocess.md` |
 | 系统提示词组装 | [https://deepseek-harness.github.io/deepseek-harness/reference/subsystems/system-prompt](https://deepseek-harness.github.io/deepseek-harness/reference/subsystems/system-prompt) | `site/reference/subsystems/system-prompt.md` |
 | 持久 PTY 会话 | [https://deepseek-harness.github.io/deepseek-harness/reference/subsystems/terminal](https://deepseek-harness.github.io/deepseek-harness/reference/subsystems/terminal) | `site/reference/subsystems/terminal.md` |
@@ -151,6 +153,7 @@
 | Create review Sessions from GitHub webhooks | [https://deepseek-harness.github.io/deepseek-harness/en/guide/github-review](https://deepseek-harness.github.io/deepseek-harness/en/guide/github-review) | `site/en/guide/github-review.md` |
 | Connect a third-party memory MCP server | [https://deepseek-harness.github.io/deepseek-harness/en/guide/mcp-memory](https://deepseek-harness.github.io/deepseek-harness/en/guide/mcp-memory) | `site/en/guide/mcp-memory.md` |
 | Run DSH behind a network proxy | [https://deepseek-harness.github.io/deepseek-harness/en/guide/network-proxy](https://deepseek-harness.github.io/deepseek-harness/en/guide/network-proxy) | `site/en/guide/network-proxy.md` |
+| Plugin markets | [https://deepseek-harness.github.io/deepseek-harness/en/guide/plugin-market](https://deepseek-harness.github.io/deepseek-harness/en/guide/plugin-market) | `site/en/guide/plugin-market.md` |
 | Configure models | [https://deepseek-harness.github.io/deepseek-harness/en/guide/providers](https://deepseek-harness.github.io/deepseek-harness/en/guide/providers) | `site/en/guide/providers.md` |
 | Publish the Web UI behind a reverse proxy | [https://deepseek-harness.github.io/deepseek-harness/en/guide/public-deployments](https://deepseek-harness.github.io/deepseek-harness/en/guide/public-deployments) | `site/en/guide/public-deployments.md` |
 | Get started with the Python SDK | [https://deepseek-harness.github.io/deepseek-harness/en/guide/python-sdk](https://deepseek-harness.github.io/deepseek-harness/en/guide/python-sdk) | `site/en/guide/python-sdk.md` |
@@ -172,6 +175,7 @@
 | Registry | [https://deepseek-harness.github.io/deepseek-harness/en/reference/cordis-api/registry](https://deepseek-harness.github.io/deepseek-harness/en/reference/cordis-api/registry) | `site/en/reference/cordis-api/registry.md` |
 | Service | [https://deepseek-harness.github.io/deepseek-harness/en/reference/cordis-api/service](https://deepseek-harness.github.io/deepseek-harness/en/reference/cordis-api/service) | `site/en/reference/cordis-api/service.md` |
 | Cordis Primer | [https://deepseek-harness.github.io/deepseek-harness/en/reference/cordis-primer](https://deepseek-harness.github.io/deepseek-harness/en/reference/cordis-primer) | `site/en/reference/cordis-primer.md` |
+| Experimental Plugin Record Catalog | [https://deepseek-harness.github.io/deepseek-harness/en/reference/experimental-persistence-catalog](https://deepseek-harness.github.io/deepseek-harness/en/reference/experimental-persistence-catalog) | `site/en/reference/experimental-persistence-catalog.md` |
 | DeepSeek Harness Architecture | [https://deepseek-harness.github.io/deepseek-harness/en/reference](https://deepseek-harness.github.io/deepseek-harness/en/reference) | `site/en/reference/index.md` |
 | Session Persistence Event Catalog | [https://deepseek-harness.github.io/deepseek-harness/en/reference/persistence-catalog](https://deepseek-harness.github.io/deepseek-harness/en/reference/persistence-catalog) | `site/en/reference/persistence-catalog.md` |
 | User Approval | [https://deepseek-harness.github.io/deepseek-harness/en/reference/subsystems/approval](https://deepseek-harness.github.io/deepseek-harness/en/reference/subsystems/approval) | `site/en/reference/subsystems/approval.md` |
@@ -208,7 +212,7 @@
 | Web Client Slots | [https://deepseek-harness.github.io/deepseek-harness/en/reference/subsystems/slots](https://deepseek-harness.github.io/deepseek-harness/en/reference/subsystems/slots) | `site/en/reference/subsystems/slots.md` |
 | Spill Storage | [https://deepseek-harness.github.io/deepseek-harness/en/reference/subsystems/spill](https://deepseek-harness.github.io/deepseek-harness/en/reference/subsystems/spill) | `site/en/reference/subsystems/spill.md` |
 | Storage | [https://deepseek-harness.github.io/deepseek-harness/en/reference/subsystems/storage](https://deepseek-harness.github.io/deepseek-harness/en/reference/subsystems/storage) | `site/en/reference/subsystems/storage.md` |
-| Subagent | [https://deepseek-harness.github.io/deepseek-harness/en/reference/subsystems/subagent](https://deepseek-harness.github.io/deepseek-harness/en/reference/subsystems/subagent) | `site/en/reference/subsystems/subagent.md` |
+| Subagents | [https://deepseek-harness.github.io/deepseek-harness/en/reference/subsystems/subagent](https://deepseek-harness.github.io/deepseek-harness/en/reference/subsystems/subagent) | `site/en/reference/subsystems/subagent.md` |
 | Subprocess | [https://deepseek-harness.github.io/deepseek-harness/en/reference/subsystems/subprocess](https://deepseek-harness.github.io/deepseek-harness/en/reference/subsystems/subprocess) | `site/en/reference/subsystems/subprocess.md` |
 | System Prompt Assembly | [https://deepseek-harness.github.io/deepseek-harness/en/reference/subsystems/system-prompt](https://deepseek-harness.github.io/deepseek-harness/en/reference/subsystems/system-prompt) | `site/en/reference/subsystems/system-prompt.md` |
 | Persistent PTY Sessions | [https://deepseek-harness.github.io/deepseek-harness/en/reference/subsystems/terminal](https://deepseek-harness.github.io/deepseek-harness/en/reference/subsystems/terminal) | `site/en/reference/subsystems/terminal.md` |
@@ -226,5 +230,5 @@
 
 ---
 
-*站点页面：188（中文 94，英文 94）*
+*站点页面：192（中文 96，英文 96）*
 

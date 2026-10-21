@@ -1,13 +1,14 @@
-﻿{
-  "knowledgeBase": "DeepSeek Harness 瀹樻柟鏂囨。鐭ヨ瘑搴?,
-  "source": "瀹樻柟鏂囨。绔欑偣 https://deepseek-harness.github.io/deepseek-harness/ 锛圴itePress锛?,
+{
+  "knowledgeBase": "DeepSeek Harness 官方文档知识库",
+  "source": "官方文档站点 https://deepseek-harness.github.io/deepseek-harness/（VitePress），由仓库 docs/ 原始 Markdown 投影重建",
   "repository": "https://github.com/deepseek-ai/deepseek-harness",
   "branch": "master",
-  "commit": "5badb15009ae1756c3afe0ae0cef1faafc290ccc",
-  "fetchedAt": "2026-10-09T05:23:13.081Z",
+  "commit": "687f282e8625c6b8d11ff58211a90524be2e4317",
+  "fetchedAt": "2026-10-21",
   "siteBase": "https://deepseek-harness.github.io/deepseek-harness",
-  "publishedMarkdownPages": 188,
-  "siteFiles": 192,
+  "publishedMarkdownPages": 192,
+  "siteFiles": 196,
   "images": 4,
-  "extraFiles": 182
+  "extraFiles": 439,
+  "note": "1.5.1 同步（2026-10-21）：site/ 全量替换为上游投影产物（188→192 页）；extra/ 以 docs/ 未发布 Markdown 差集重建（182→439 篇，上游 docs/ 大幅扩充）。本次同时修复了本文件自 1.x 起以 GBK 编码提交导致中文乱码、无法 JSON.parse 的历史问题（现为 UTF-8 无 BOM）。"
 }

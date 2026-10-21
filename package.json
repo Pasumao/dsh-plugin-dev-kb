@@ -1,7 +1,7 @@
 {
   "name": "dsh-plugin-dev-kb",
   "description": "dsh 插件辅助：① dsh-plugin-dev-kb 技能 = DeepSeek Harness 官方文档站完整 Markdown 镜像（中英双语 188 页）+ 182 篇仓库补充开发参考 + 主题导航与 373 文件全量搜索索引；② dsh-dev-sandbox 技能 = 独立 dev profile 开发沙箱工作流，开发中的插件隔离运行，agent 自主启动/重启/冒烟验证，插件崩了不影响主力 dsh。零运行时依赖。",
-  "version": "1.5.0",
+  "version": "1.5.1",
   "type": "module",
   "main": "lib/index.js",
   "exports": {
