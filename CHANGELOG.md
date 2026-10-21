@@ -1,5 +1,16 @@
 # Changelog
 
+## [1.5.0] - 2026-10-21
+
+- **定位升级为「dsh 插件辅助」**（插件 id / 包名 `dsh-plugin-dev-kb` 不变，避免破坏挂载与市场收录）。
+- 新增 `dsh-dev-sandbox` 技能：独立 dev profile 开发沙箱工作流——开发中的插件隔离装进
+  `~/.dsh/profiles/dev`（默认名，用户可指定），agent 自主后台启动（`dsh web --profile dev
+  --port 3081`，npx 拉与主力同版本的 dsh CLI）、自主重启（查端口 PID → Stop-Process → 起回）、
+  读 `skipping profile bundle` 警告与崩溃栈、headless 冒烟验证；插件崩了只崩沙箱，
+  绝不影响主力 dsh，全程不要求用户重启。含初始化（`plugin --profile dev add file:` /
+  `link:` 挂载 / 兼容闸门 / 双挂载禁令）与进主力 profile 的收尾流程。
+- `lib/index.js` 无需改动：skills/ 目录自动扫描，新技能文件即插即用。
+
 ## [1.4.0] - 2026-10-10
 
 - 知识库同步至上游 master `5badb150`（2026-10-10，对应 dsh `0.2.0-rc.2` / `0.2.1-alpha` 时期）：
