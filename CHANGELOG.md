@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.6.0] - 2026-10-30
+
+- **新增 `dsh_kb_search` 工具**：知识库本地打分检索（零 token、毫秒级、零运行时依赖）。
+  一次调用返回命中文件路径 + 行号 + 上下文片段（每文件最多 3 处，前后各 2 行），替代
+  agent 多轮 grep/read 检索 634 文件知识库。
+  - 参数：`query`（空白分词多词；空或 `"topics"` 返回主题导航）、`scope`（`api` 只搜
+    API 签名/目录类文档：tool-catalog / config-catalog / capability-seams / cordis-api /
+    subsystems 等）、`lang`（zh 默认；en 首次调用现场建索引）、`maxResults`（默认 8）。
+  - 打分：标题 ×8、路径 ×4、正文行命中平方和（多词同现加权）、路径子词弱匹配
+    （`ctx.tools.register` → tool.md）、`site/develop|guide/` 教程优先 +2。
+  - 索引惰性构建（首次调用时，~60ms / 314 个中文文件）、内存缓存、只读不写；
+    `searchTool: false` 可关闭。
+  - 技能 `dsh-plugin-dev-kb` 检索指南同步改为「工具优先，文件工具兜底」。
+
 ## [1.5.2] - 2026-10-21
 
 - `dsh-dev-sandbox` 技能去掉固定 `dev` profile 约定：**沙箱 profile 名由 agent 按任务自定**

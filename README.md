@@ -18,7 +18,8 @@
 <https://deepseek-harness.github.io/deepseek-harness/> 的全部内容整理为 dsh 原生可用的形态——
 装了这个插件，agent 写插件时自动加载知识库，按任务场景定位文档，不用再翻网页；
 ② 附带 `dsh-dev-sandbox` 技能：自建独立沙箱 profile 开发沙箱工作流（沙箱名由 agent 按任务自定），
-开发中的插件隔离运行，agent 自主启动 / 重启 / 冒烟验证，插件崩了不影响主力 dsh。
+开发中的插件隔离运行，agent 自主启动 / 重启 / 冒烟验证，插件崩了不影响主力 dsh；
+③ `dsh_kb_search` 工具（1.6.0 起）：知识库本地打分检索，一次调用返回命中文件 + 行号 + 上下文片段。
 
 ## 这是什么
 
@@ -30,6 +31,9 @@
 - **开发沙箱**：`skills/dsh-dev-sandbox.md` 技能提供自建独立沙箱 profile 工作流（沙箱名 agent 按任务
   自定，不与主力 profile 重名）——初始化（兼容闸门 / link: 挂载）、后台启动（自选空闲端口）、自主重启、headless 冒烟验证，
   全程 agent 闭环，不要求用户重启。
+- **本地检索工具**：`dsh_kb_search` 工具在知识库上做打分检索（标题 / 路径 / 正文多词加权），
+  一次调用返回命中文件路径、行号与上下文片段；支持 `scope: api`（只搜 API 签名/目录类文档）、
+  `lang: en`、空 query 返回主题导航。索引惰性构建于内存（约 60ms / 314 文件），只读不写。
 
 ## 功能
 
@@ -37,17 +41,19 @@
   中英双语共 188 页，链接按站点路由重写，与线上逐字一致；
 - **仓库补充文档**：未发布到站点的 182 篇开发参考（术语表、防御模式、模块图、测试策略、事故复盘、i18n 规范、升级指南、持久化变更等）；
 - **agent 友好**：`dsh-plugin-dev-kb` 技能让 dsh 在插件开发任务中自动加载知识库；
-  `kb/meta/topics.md` 按任务场景映射要读的文件，`kb/meta/search-index.json` 提供全量检索；
+  `dsh_kb_search` 工具一次调用完成检索定位；`kb/meta/topics.md` 按任务场景映射要读的文件，`kb/meta/search-index.json` 提供全量检索；
 - **人侧可用**：直接浏览 `kb/` 目录，或打开 `kb/INDEX.md` 按 URL 对照查阅；
-- 纯数据插件，零运行时依赖，不注册任何工具。
+- 零运行时依赖；唯一的工具 `dsh_kb_search` 为纯 Node 本地实现（不联网、不写文件）。
 
 ## 配置
 
-无需任何配置，安装即用：
+默认零配置，安装即用：
 
 - 不读取环境变量，不需要 API Key / token，不写配置文件；
 - 挂载后 `skills/dsh-plugin-dev-kb.md` 技能在会话启动时进入可用技能列表，自动生效；
-- 知识库更新走 `npm run rebuild-index`（见「更新知识库」），无手动配置项。
+- `dsh_kb_search` 工具随宿主启动注册，首次调用时构建索引（毫秒级）；如需关闭，
+  在 profile 的插件配置里设 `searchTool: false`（只保留技能，不注册工具）；
+- 知识库更新走 `npm run rebuild-index`（见「更新知识库」）。
 
 ## 安装 / 挂载
 
@@ -85,8 +91,8 @@ npm install
 
 > 帮我写一个最小的 dsh 插件
 
-agent 会自动加载 `dsh-plugin-dev-kb` 技能（技能清单里可见），按 `kb/meta/topics.md`
-定位文档后再动手——看到它引用 `kb/site/...` 路径即验证通过。
+agent 会自动加载 `dsh-plugin-dev-kb` 技能（技能清单里可见），调用 `dsh_kb_search`
+（或读 `kb/meta/topics.md`）定位文档后再动手——看到它引用 `kb/site/...` 路径即验证通过。
 
 ## 目录结构
 
@@ -112,7 +118,9 @@ dsh-plugin-dev-kb/
 ## 使用
 
 - **agent 侧**：写插件 / Tool / 配置 / 服务 / 事件 / 打包 / LLM 适配器时，加载
-  `dsh-plugin-dev-kb` 技能 → 读 `kb/meta/topics.md` 定位 → 按需 read/grep。
+  `dsh-plugin-dev-kb` 技能 → 首选调 `dsh_kb_search` 工具检索（一次拿命中文件 + 行号 + 片段，
+  `scope: api` 查 `ctx.*` API 签名）→ 用 read 按行号局部读原文；工具不可用时退回
+  grep `kb/` 兜底。
 - **人侧**：直接浏览 `kb/` 目录，或打开 `kb/INDEX.md` 按 URL 对照查阅。
 
 ## 自检

@@ -17,6 +17,7 @@
 **The official docs at your side whenever you write dsh plugins**: the entire content of the DeepSeek Harness official documentation site
 <https://deepseek-harness.github.io/deepseek-harness/> is organized into a form natively usable by dsh —
 once this plugin is installed, the agent automatically loads the knowledge base when writing plugins and locates docs by task scenario, so you never have to dig through web pages again.
+It also ships the `dsh_kb_search` tool (since 1.6.0): local scored search over the knowledge base that returns matched files, line numbers, and context snippets in a single call.
 
 ## What is this
 
@@ -25,6 +26,9 @@ once this plugin is installed, the agent automatically loads the knowledge base 
 - **Supplementary docs**: 439 development references from the repo's `docs/` that were not published to the site (glossary, defensive patterns, module graph, testing strategy, incident postmortems, i18n specs, upgrade guides, persistence changes, etc.).
 - **Agent-friendly**: the `skills/dsh-plugin-dev-kb.md` skill lets dsh auto-load it during plugin development tasks, providing the knowledge base location,
   topic navigation, and search strategy; `kb/meta/topics.md` maps task scenarios to the files to read; `kb/meta/search-index.json` provides full search coverage.
+- **Local search tool**: `dsh_kb_search` performs scored search over the knowledge base (title / path / body multi-term weighting) and returns
+  matched file paths, line numbers, and context snippets in a single call; supports `scope: api` (search only API-signature/catalog docs),
+  `lang: en`, and an empty query returning topic navigation. The index is built lazily in memory (~60ms / 314 files), read-only.
 
 ## Features
 
@@ -32,9 +36,9 @@ once this plugin is installed, the agent automatically loads the knowledge base 
   192 pages in both Chinese and English, links rewritten to site routes, verbatim identical to the live site;
 - **Repo supplementary docs**: 439 development references not published to the site (glossary, defensive patterns, module graph, testing strategy, incident postmortems, i18n specs, upgrade guides, persistence changes, etc.);
 - **Agent-friendly**: the `dsh-plugin-dev-kb` skill lets dsh auto-load the knowledge base during plugin development tasks;
-  `kb/meta/topics.md` maps task scenarios to the files to read, and `kb/meta/search-index.json` provides full search coverage;
+  the `dsh_kb_search` tool locates docs in a single call; `kb/meta/topics.md` maps task scenarios to the files to read, and `kb/meta/search-index.json` provides full search coverage;
 - **Human-usable**: browse the `kb/` directory directly, or open `kb/INDEX.md` to look things up by URL mapping;
-- Pure data plugin, zero runtime dependencies, registers no tools.
+- Zero runtime dependencies; the single tool `dsh_kb_search` is a pure local Node implementation (no network, no file writes).
 
 ## Configuration
 
@@ -80,8 +84,8 @@ After restarting, open a new session and simply ask:
 
 > Help me write a minimal dsh plugin
 
-The agent will automatically load the `dsh-plugin-dev-kb` skill (visible in the skill catalog), locate the docs via `kb/meta/topics.md`,
-and only then start working — if you see it referencing `kb/site/...` paths, the verification has passed.
+The agent will automatically load the `dsh-plugin-dev-kb` skill (visible in the skill catalog), locate the docs via the `dsh_kb_search` tool
+(or `kb/meta/topics.md`), and only then start working — if you see it referencing `kb/site/...` paths, the verification has passed.
 
 ## Directory structure
 
@@ -107,7 +111,8 @@ dsh-plugin-dev-kb/
 ## Usage
 
 - **Agent side**: when writing plugins / Tools / config / services / events / packaging / LLM adapters, load
-  the `dsh-plugin-dev-kb` skill → read `kb/meta/topics.md` to locate → read/grep as needed.
+  the `dsh-plugin-dev-kb` skill → prefer the `dsh_kb_search` tool (one call returns matched files + line numbers + snippets;
+  `scope: api` for `ctx.*` API signatures) → read the source locally by line number; fall back to grepping `kb/` if the tool is unavailable.
 - **Human side**: browse the `kb/` directory directly, or open `kb/INDEX.md` to look things up by URL mapping.
 
 ## Self-check

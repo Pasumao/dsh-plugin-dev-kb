@@ -22,6 +22,16 @@ for (const f of ["README.md", "LICENSE"]) {
   if (!existsSync(join(root, f))) failures.push(`缺 ${f}`);
 }
 
+// 1.6.0：检索工具完整性
+if (!existsSync(join(root, "lib", "kb-search.js"))) {
+  failures.push("缺 lib/kb-search.js（dsh_kb_search 工具实现）");
+} else {
+  const idxMod = readFileSync(join(root, "lib", "index.js"), "utf8");
+  if (!idxMod.includes("dsh_kb_search")) failures.push("lib/index.js 未注册 dsh_kb_search");
+  const skill = readFileSync(join(root, "skills", "dsh-plugin-dev-kb.md"), "utf8");
+  if (!skill.includes("dsh_kb_search")) failures.push("技能正文未提及 dsh_kb_search");
+}
+
 if (failures.length) {
   for (const f of failures) console.error(`[FAIL] ${f}`);
   console.error(`${failures.length} 项失败`);
