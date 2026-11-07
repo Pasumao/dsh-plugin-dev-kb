@@ -1,5 +1,16 @@
 # Changelog
 
+## [1.6.1] - 2026-11-07
+
+- **知识库内容同步至上游 master `fcc0ad4`**（2026-11-07）：`site/` 全量刷新（192 页不变，内容更新）；
+  `extra/` 以发布清单差集重建 **439 → 468 篇**（删除 191 篇过时文档，新增 0.2.1/0.2.2 系列升级指南、
+  2026-10/11 持久化变更记录、forge / computer-use / mcp 等子系统文档）；索引与 INDEX.md 已重建（663 文件）。
+- **新增 `npm run refresh-kb` 一键刷新脚本**（`scripts/refresh-kb.mjs`）：克隆上游 → 站点投影 →
+  覆盖 site/extra → 重建索引与 `meta/source.json`，全流程自动化。
+- **新增 GitHub Action 每周自动同步**（`.github/workflows/refresh-kb.yml`）：每周一从上游 master
+  刷新知识库，有变更即自动提交；README 顶部新增「kb sync」动态 badge（数据来自 `meta/source.json`）。
+- README（中英）统计更新，新增「30 秒验证装好了」段。
+
 ## [1.6.0] - 2026-10-30
 
 - **新增 `dsh_kb_search` 工具**：知识库本地打分检索（零 token、毫秒级、零运行时依赖）。
