@@ -17,7 +17,8 @@
 **The official docs at your side whenever you write dsh plugins**: the entire content of the DeepSeek Harness official documentation site
 <https://deepseek-harness.github.io/deepseek-harness/> is organized into a form natively usable by dsh —
 once this plugin is installed, the agent automatically loads the knowledge base when writing plugins and locates docs by task scenario, so you never have to dig through web pages again.
-It also ships the `dsh_kb_search` tool (since 1.6.0): local scored search over the knowledge base that returns matched files, line numbers, and context snippets in a single call.
+It also ships the `dsh_kb_search` tool (since 1.6.0): local scored search over the knowledge base that returns matched files, line numbers, and context snippets in a single call,
+and the `dsh-upgrade-assistant` skill (since 1.7.0): when you upgrade dsh, the agent reads the official per-version upgrade guides and persistence-change records, produces a migration checklist, flags plugin compatibility-gate risks, and plans a rollback path.
 
 ## What is this
 

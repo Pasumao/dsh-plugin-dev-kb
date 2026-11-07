@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.7.0] - 2026-11-07
+
+- **新增 `dsh-upgrade-assistant` 技能**：升级 dsh 版本时的迁移助手。agent 按标准流程工作——
+  确定当前/目标版本 → 读取知识库 `extra/upgrade-guide/` 区间内逐版本官方升级指南与
+  `extra/persistence-changes/` 持久化变更 → 输出备份/变更摘要/插件兼容闸门预判/回滚方案四段式
+  检查清单 → 升级后按「skipping profile bundle」警告与旧会话加载情况逐条验证。
+  明确红线：未备份不动 profile、不擅自用 allow-version 绕过兼容闸门、知识库快照缺目标版本时如实告知而非编造。
+
 ## [1.6.1] - 2026-11-07
 
 - **知识库内容同步至上游 master `fcc0ad4`**（2026-11-07）：`site/` 全量刷新（192 页不变，内容更新）；
