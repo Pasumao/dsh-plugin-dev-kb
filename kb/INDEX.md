@@ -1,6 +1,6 @@
 # DeepSeek Harness 文档索引
 
-> 由 `scripts/rebuild-index.mjs` 自动生成。共 192 个站点页面（中英双语），另有 439 个补充文档在 `extra/`。
+> 由 `scripts/rebuild-index.mjs` 自动生成。共 192 个站点页面（中英双语），另有 468 个补充文档在 `extra/`。
 
 ## 中文站点（根路径）
 
@@ -17,7 +17,7 @@
 | 通过 GitHub Webhook 创建评审会话 | [https://deepseek-harness.github.io/deepseek-harness/guide/github-review](https://deepseek-harness.github.io/deepseek-harness/guide/github-review) | `site/guide/github-review.md` |
 | 连接第三方记忆 MCP 服务 | [https://deepseek-harness.github.io/deepseek-harness/guide/mcp-memory](https://deepseek-harness.github.io/deepseek-harness/guide/mcp-memory) | `site/guide/mcp-memory.md` |
 | 在网络代理后面运行 DSH | [https://deepseek-harness.github.io/deepseek-harness/guide/network-proxy](https://deepseek-harness.github.io/deepseek-harness/guide/network-proxy) | `site/guide/network-proxy.md` |
-| 插件市场 | [https://deepseek-harness.github.io/deepseek-harness/guide/plugin-market](https://deepseek-harness.github.io/deepseek-harness/guide/plugin-market) | `site/guide/plugin-market.md` |
+| 插件索引 | [https://deepseek-harness.github.io/deepseek-harness/guide/plugin-market](https://deepseek-harness.github.io/deepseek-harness/guide/plugin-market) | `site/guide/plugin-market.md` |
 | 配置模型 | [https://deepseek-harness.github.io/deepseek-harness/guide/providers](https://deepseek-harness.github.io/deepseek-harness/guide/providers) | `site/guide/providers.md` |
 | 在反向代理之后发布 Web UI | [https://deepseek-harness.github.io/deepseek-harness/guide/public-deployments](https://deepseek-harness.github.io/deepseek-harness/guide/public-deployments) | `site/guide/public-deployments.md` |
 | Python SDK 入门 | [https://deepseek-harness.github.io/deepseek-harness/guide/python-sdk](https://deepseek-harness.github.io/deepseek-harness/guide/python-sdk) | `site/guide/python-sdk.md` |
@@ -153,7 +153,7 @@
 | Create review Sessions from GitHub webhooks | [https://deepseek-harness.github.io/deepseek-harness/en/guide/github-review](https://deepseek-harness.github.io/deepseek-harness/en/guide/github-review) | `site/en/guide/github-review.md` |
 | Connect a third-party memory MCP server | [https://deepseek-harness.github.io/deepseek-harness/en/guide/mcp-memory](https://deepseek-harness.github.io/deepseek-harness/en/guide/mcp-memory) | `site/en/guide/mcp-memory.md` |
 | Run DSH behind a network proxy | [https://deepseek-harness.github.io/deepseek-harness/en/guide/network-proxy](https://deepseek-harness.github.io/deepseek-harness/en/guide/network-proxy) | `site/en/guide/network-proxy.md` |
-| Plugin markets | [https://deepseek-harness.github.io/deepseek-harness/en/guide/plugin-market](https://deepseek-harness.github.io/deepseek-harness/en/guide/plugin-market) | `site/en/guide/plugin-market.md` |
+| Plugin indexes | [https://deepseek-harness.github.io/deepseek-harness/en/guide/plugin-market](https://deepseek-harness.github.io/deepseek-harness/en/guide/plugin-market) | `site/en/guide/plugin-market.md` |
 | Configure models | [https://deepseek-harness.github.io/deepseek-harness/en/guide/providers](https://deepseek-harness.github.io/deepseek-harness/en/guide/providers) | `site/en/guide/providers.md` |
 | Publish the Web UI behind a reverse proxy | [https://deepseek-harness.github.io/deepseek-harness/en/guide/public-deployments](https://deepseek-harness.github.io/deepseek-harness/en/guide/public-deployments) | `site/en/guide/public-deployments.md` |
 | Get started with the Python SDK | [https://deepseek-harness.github.io/deepseek-harness/en/guide/python-sdk](https://deepseek-harness.github.io/deepseek-harness/en/guide/python-sdk) | `site/en/guide/python-sdk.md` |

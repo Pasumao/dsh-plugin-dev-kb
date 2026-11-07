@@ -9,10 +9,11 @@
 ![License](https://img.shields.io/github/license/Pasumao/dsh-plugin-dev-kb)
 ![Stars](https://img.shields.io/github/stars/Pasumao/dsh-plugin-dev-kb?style=social)
 ![AI Assisted](https://img.shields.io/badge/AI-Assisted-8A2BE2)
+![kb sync](https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2FPasumao%2Fdsh-plugin-dev-kb%2Fmaster%2Fkb%2Fmeta%2Fsource.json)
 
 [**中文**](./README.md) | [English](./README.en.md)
 
-> **192 页官方镜像 · 439 篇补充文档 · 634 文件搜索索引 · 0 运行时依赖**
+> **192 页官方镜像 · 468 篇独占补充文档 · 每周自动同步上游 · 0 运行时依赖**
 
 **写 dsh 插件时的随身辅助**：① 把 DeepSeek Harness 官方文档站点
 <https://deepseek-harness.github.io/deepseek-harness/> 的全部内容整理为 dsh 原生可用的形态——
@@ -25,7 +26,7 @@
 
 - **站点完整镜像**：官方文档（VitePress）由仓库 `deepseek-ai/deepseek-harness` 的 `docs/` 原始 Markdown
   投影生成（链接已按站点路由重写，与线上逐字一致）。中英双语共 192 页。
-- **补充文档**：仓库 `docs/` 中未发布到站点的 439 篇开发参考（术语表、防御模式、模块图、测试策略、事故复盘、i18n 规范、升级指南、持久化变更等）。
+- **补充文档**：仓库 `docs/` 中未发布到站点的 468 篇开发参考（术语表、防御模式、模块图、测试策略、事故复盘、i18n 规范、升级指南、持久化变更等）——这部分是**官方仓库独占内容，线上站点看不到**。
 - **agent 友好**：`skills/dsh-plugin-dev-kb.md` 技能让 dsh 在插件开发任务中自动加载，获知知识库位置、
   主题导航与检索策略；`kb/meta/topics.md` 按任务场景映射要读的文件；`kb/meta/search-index.json` 提供全量检索。
 - **开发沙箱**：`skills/dsh-dev-sandbox.md` 技能提供自建独立沙箱 profile 工作流（沙箱名 agent 按任务
@@ -38,12 +39,22 @@
 ## 功能
 
 - **官方文档完整镜像**：deepseek-ai/deepseek-harness 官方文档站全部内容整理为 dsh 原生可用的形态，
-  中英双语共 188 页，链接按站点路由重写，与线上逐字一致；
-- **仓库补充文档**：未发布到站点的 182 篇开发参考（术语表、防御模式、模块图、测试策略、事故复盘、i18n 规范、升级指南、持久化变更等）；
+  中英双语共 192 页，链接按站点路由重写，与线上逐字一致；
+- **仓库补充文档**：未发布到站点的 468 篇开发参考（术语表、防御模式、模块图、测试策略、事故复盘、i18n 规范、升级指南、持久化变更等）；
+- **每周自动同步**：GitHub Action 定时从上游 master 刷新（见顶部「kb sync」badge 可查同步日期与 commit）；
 - **agent 友好**：`dsh-plugin-dev-kb` 技能让 dsh 在插件开发任务中自动加载知识库；
   `dsh_kb_search` 工具一次调用完成检索定位；`kb/meta/topics.md` 按任务场景映射要读的文件，`kb/meta/search-index.json` 提供全量检索；
 - **人侧可用**：直接浏览 `kb/` 目录，或打开 `kb/INDEX.md` 按 URL 对照查阅；
 - 零运行时依赖；唯一的工具 `dsh_kb_search` 为纯 Node 本地实现（不联网、不写文件）。
+
+## 30 秒验证装好了
+
+安装挂载后，随便开个会话问 agent：
+
+> dsh 0.2.0 的设置子系统（SettingsForms）和以前有什么不一样？
+
+- agent 用 `dsh_kb_search` 检索并答出 `SettingsForms` / `.volatile()` / 修订号冲突检测等细节 = **装好了**；
+- 答不上来或检索工具不存在 = 挂载没生效，回看「安装 / 挂载」一步。
 
 ## 配置
 

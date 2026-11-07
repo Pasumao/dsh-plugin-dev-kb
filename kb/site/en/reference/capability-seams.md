@@ -12,6 +12,15 @@ A service can be a core spine service, a swappable capability seam, a bundle/com
 
 ```mermaid
 flowchart LR
+  pkg_action_cards["action-cards"]
+  svc_actionCards["ctx.actionCards<br/>Optional action cards"]
+  pkg_creation_recommendations["creation-recommendations"]
+  pkg_client_ui_action_cards["client-ui-action-cards"]
+  pkg_plugin_recommendations["plugin-recommendations"]
+  svc_pluginRecommendations["ctx.pluginRecommendations<br/>Explicit-need plugin recommendations"]
+  pkg_client_ui_plugin_recommendations["client-ui-plugin-recommendations"]
+  pkg_headless["headless"]
+  svc_headlessStartup["ctx.headlessStartup<br/>Headless invocation options"]
   pkg_experimental_client_ui_cot_translation["experimental-client-ui-cot-translation"]
   svc_cotTranslation["ctx.cotTranslation<br/>Reasoning translation Remote"]
   pkg_experimental_translator["experimental-translator"]
@@ -32,6 +41,13 @@ flowchart LR
   svc_connection["ctx.connection<br/>Authenticated browser transport"]
   pkg_api_gateway["api-gateway"]
   pkg_host_frontend_static["host-frontend-static"]
+  pkg_experimental_forge["experimental-forge"]
+  svc_forge["ctx.forge<br/>Code host change requests"]
+  pkg_experimental_forge_github["experimental-forge-github"]
+  pkg_experimental_forge_session["experimental-forge-session"]
+  pkg_experimental_client_ui_forge["experimental-client-ui-forge"]
+  svc_forgeSession["ctx.forgeSession<br/>Session change request bindings"]
+  svc_forgePanel["ctx.forgePanel<br/>Forge panel Remote"]
   pkg_experimental_worktree["experimental-worktree"]
   svc_worktrees["ctx.worktrees<br/>Git worktree creation"]
   pkg_experimental_tool_worktree["experimental-tool-worktree"]
@@ -55,6 +71,8 @@ flowchart LR
   svc_computerUse["ctx.computerUse<br/>Computer-use provider registration"]
   pkg_experimental_computer_use_cua_driver_mcp["experimental-computer-use-cua-driver-mcp"]
   pkg_experimental_computer_use_cua_driver_native["experimental-computer-use-cua-driver-native"]
+  pkg_cua["cua"]
+  svc_cuaAccess["ctx.cuaAccess<br/>Computer Use permission controls"]
   pkg_office_to_pdf["office-to-pdf"]
   svc_officeToPdf["ctx.officeToPdf<br/>Office to PDF conversion"]
   pkg_client_ui_sidebar_documentpreview["client-ui-sidebar-documentpreview"]
@@ -71,9 +89,10 @@ flowchart LR
   pkg_llm_replay["llm-replay"]
   pkg_agent_loop["agent-loop"]
   pkg_compaction_basic["compaction-basic"]
+  pkg_session_log_deepseek["session-log-deepseek"]
+  svc_sessionLogDeepSeek["ctx.sessionLogDeepSeek<br/>Session-log upload policy"]
   pkg_deepseek_llm_api_extensions["deepseek-llm-api-extensions"]
   svc_deepseekLlmApiExtensions["ctx.deepseekLlmApiExtensions<br/>Official DeepSeek request extensions"]
-  pkg_session_log_deepseek["session-log-deepseek"]
   pkg_plugin_package_inventory_deepseek["plugin-package-inventory-deepseek"]
   pkg_token_meter["token-meter"]
   svc_tokenMeter["ctx.tokenMeter<br/>Replay token measurement"]
@@ -167,7 +186,7 @@ flowchart LR
   pkg_tools["tools"]
   pkg_tool_terminal["tool-terminal"]
   pkg_tool_web["tool-web"]
-  svc_tools["ctx.tools<br/>Tool registry and guarded execution pipeline"]
+  svc_tools["ctx.tools<br/>Scoped tool registry and executor selection"]
   pkg_tool_ask_user["tool-ask-user"]
   pkg_tool_cordis["tool-cordis"]
   pkg_tool_skill["tool-skill"]
@@ -193,10 +212,11 @@ flowchart LR
   svc_agents["ctx.agents<br/>Agent service"]
   pkg_acp["acp"]
   svc_agentDefaultModel["ctx.agentDefaultModel<br/>Default Agent model selection"]
-  pkg_headless["headless"]
   svc_agentLoop["ctx.agentLoop<br/>Concrete loop driver"]
   pkg_base["base"]
   pkg_sdk_minimal["sdk-minimal"]
+  pkg_mcp_manager["mcp-manager"]
+  svc_mcpManager["ctx.mcpManager<br/>Settings-driven MCP server fleet"]
   pkg_schedule["schedule"]
   svc_schedule["ctx.schedule<br/>Host scheduled messages"]
   pkg_goal["goal"]
@@ -237,6 +257,7 @@ flowchart LR
   svc_ptcRuntime["ctx.ptcRuntime<br/>PTC execution seam"]
   pkg_ptc_runtime_node["ptc-runtime-node"]
   pkg_experimental_ptc_runtime_python["experimental-ptc-runtime-python"]
+  pkg_tool_executor_ptc["tool-executor-ptc"]
   pkg_workflow_ptc["workflow-ptc"]
   pkg_fs["fs"]
   svc_fs["ctx.fs<br/>Filesystem provider seam"]
@@ -253,9 +274,9 @@ flowchart LR
   pkg_experimental_speech_to_text["experimental-speech-to-text"]
   svc_speechToText["ctx.speechToText<br/>Experimental speech recognition providers"]
   pkg_experimental_speech_to_text_sensevoice["experimental-speech-to-text-sensevoice"]
-  pkg_experimental_agent_team["experimental-agent-team"]
+  pkg_agent_team["agent-team"]
   svc_agentTeams["ctx.agentTeams<br/>Agent Teams coordination domain"]
-  pkg_experimental_tool_agent_team["experimental-tool-agent-team"]
+  pkg_tool_agent_team["tool-agent-team"]
   pkg_experimental_claude_code_mods["experimental-claude-code-mods"]
   svc_claudeCodeMods["ctx.claudeCodeMods<br/>Claude Code mods bridge"]
   pkg_inspector["inspector"]
@@ -266,8 +287,6 @@ flowchart LR
   pkg_tool_jobs["tool-jobs"]
   pkg_web["web"]
   svc_web["ctx.web<br/>Web access provider registry"]
-  pkg_web_search_exa["web-search-exa"]
-  pkg_web_search_perplexity["web-search-perplexity"]
   pkg_web_search_deepseek["web-search-deepseek"]
   pkg_web_deepseek_api["web-deepseek-api"]
   pkg_web_fetch_http["web-fetch-http"]
@@ -299,10 +318,14 @@ flowchart LR
   pkg_cordis_host_runner["cordis-host-runner"]
   svc_dynamicCordisRunner["ctx.dynamicCordisRunner<br/>Dynamic Cordis package host runner"]
   svc_cordisInspect["ctx.cordisInspect<br/>Dynamic Cordis inspect registry"]
+  pkg_experimental_liveshare["experimental-liveshare"]
+  svc_liveshareShares["ctx.liveshareShares<br/>Owner share management Remote"]
+  pkg_action_cards --> svc_actionCards
   pkg_agent --> svc_agents
   pkg_agent_default_model --> svc_agentDefaultModel
   pkg_agent_loop --> svc_agentLoop
   pkg_agent_preset_registry --> svc_agentPresets
+  pkg_agent_team --> svc_agentTeams
   pkg_api_gateway --> svc_typertGateway
   pkg_api_job_controller --> svc_jobController
   pkg_api_remote_access --> svc_remoteAccess
@@ -338,18 +361,23 @@ flowchart LR
   pkg_cordis_host_runner --> svc_dynamicCordisRunner
   pkg_credentials --> svc_credentials
   pkg_credentials_local --> svc_credentials
+  pkg_cua --> svc_cuaAccess
   pkg_deepseek_account --> svc_deepseekAccount
   pkg_deepseek_account_platform --> svc_deepseekAccount
   pkg_deepseek_llm_api_extensions --> svc_deepseekLlmApiExtensions
-  pkg_experimental_agent_team --> svc_agentTeams
   pkg_experimental_api_speech_to_text --> svc_speechController
   pkg_experimental_browser_use_chrome_devtools_mcp --> svc_browserUse
   pkg_experimental_browser_use_playwright_mcp --> svc_browserUse
   pkg_experimental_browser_use_stagehand_native --> svc_browserUse
   pkg_experimental_claude_code_mods --> svc_claudeCodeMods
   pkg_experimental_client_ui_cot_translation --> svc_cotTranslation
+  pkg_experimental_client_ui_forge --> svc_forgePanel
   pkg_experimental_computer_use_cua_driver_mcp --> svc_computerUse
   pkg_experimental_computer_use_cua_driver_native --> svc_computerUse
+  pkg_experimental_forge --> svc_forge
+  pkg_experimental_forge_github --> svc_forge
+  pkg_experimental_forge_session --> svc_forgeSession
+  pkg_experimental_liveshare --> svc_liveshareShares
   pkg_experimental_ptc_runtime_python --> svc_ptcRuntime
   pkg_experimental_speech_to_text --> svc_speechToText
   pkg_experimental_speech_to_text_sensevoice --> svc_speechToText
@@ -362,6 +390,7 @@ flowchart LR
   pkg_fs_sandbox --> svc_fs
   pkg_fs_ssh --> svc_fs
   pkg_goal --> svc_goals
+  pkg_headless --> svc_headlessStartup
   pkg_hmr --> svc_hmr
   pkg_host_directory_picker --> svc_directoryPicker
   pkg_host_directory_picker_browse --> svc_directoryPicker
@@ -378,6 +407,7 @@ flowchart LR
   pkg_lsp --> svc_lsp
   pkg_lsp_stdio --> svc_lsp
   pkg_mcp_client --> svc_mcpResources
+  pkg_mcp_manager --> svc_mcpManager
   pkg_mcp_resources --> svc_mcpResources
   pkg_message_feedback --> svc_messageFeedback
   pkg_office_to_pdf --> svc_officeToPdf
@@ -387,6 +417,7 @@ flowchart LR
   pkg_plugin_manager --> svc_pluginManager
   pkg_plugin_market --> svc_pluginMarket
   pkg_plugin_package_inventory_deepseek --> svc_deepseekLlmApiExtensions
+  pkg_plugin_recommendations --> svc_pluginRecommendations
   pkg_ptc_runtime --> svc_ptcRuntime
   pkg_ptc_runtime_node --> svc_ptcRuntime
   pkg_pwsh_local --> svc_shell
@@ -398,6 +429,7 @@ flowchart LR
   pkg_schedule --> svc_schedule
   pkg_session --> svc_sessions
   pkg_session_log_deepseek --> svc_deepseekLlmApiExtensions
+  pkg_session_log_deepseek --> svc_sessionLogDeepSeek
   pkg_session_persistence --> svc_sessionPersistence
   pkg_session_persistence_jsonl --> svc_sessionPersistence
   pkg_session_projection --> svc_sessionProjections
@@ -448,19 +480,19 @@ flowchart LR
   pkg_web_deepseek_api --> svc_web
   pkg_web_fetch_http --> svc_web
   pkg_web_search_deepseek --> svc_web
-  pkg_web_search_exa --> svc_web
-  pkg_web_search_perplexity --> svc_web
   pkg_webhook --> svc_webhookRuntime
   pkg_workflow --> svc_workflowEngine
   pkg_workflow_ptc --> svc_workflowEngine
   pkg_working_directory --> svc_workingDirectory
   pkg_workspace --> svc_workspaceRegistry
   pkg_workspace_changes --> svc_workspaceChanges
+  svc_actionCards --> pkg_client_ui_action_cards
+  svc_actionCards --> pkg_creation_recommendations
   svc_agentDefaultModel --> pkg_api_session_controller
   svc_agentDefaultModel --> pkg_headless
   svc_agentLoop --> pkg_base
   svc_agentLoop --> pkg_sdk_minimal
-  svc_agentTeams --> pkg_experimental_tool_agent_team
+  svc_agentTeams --> pkg_tool_agent_team
   svc_agents --> pkg_acp
   svc_agents --> pkg_agent_loop
   svc_agents --> pkg_subagent
@@ -487,6 +519,7 @@ flowchart LR
   svc_credentials --> pkg_api_settings_controller
   svc_credentials --> pkg_llm_deepseek
   svc_credentials --> pkg_llm_pi_ai
+  svc_cuaAccess --> pkg_cua
   svc_deepseekAccount --> pkg_api_account_controller
   svc_deepseekAccount --> pkg_llm_deepseek
   svc_deepseekLlmApiExtensions --> pkg_llm_deepseek
@@ -494,7 +527,11 @@ flowchart LR
   svc_dynamicCordisRunner --> pkg_tool_cordis
   svc_fileReferences --> pkg_api_session_controller
   svc_fileUploads --> pkg_api_session_controller
+  svc_forge --> pkg_experimental_client_ui_forge
+  svc_forge --> pkg_experimental_forge_session
+  svc_forgeSession --> pkg_experimental_client_ui_forge
   svc_fs --> pkg_tool_fs
+  svc_headlessStartup --> pkg_headless
   svc_hmr --> pkg_app_boot
   svc_jobs --> pkg_api_job_controller
   svc_jobs --> pkg_tool_bash
@@ -512,9 +549,10 @@ flowchart LR
   svc_pluginManager --> pkg_ui_settings_plugin_inventory
   svc_pluginMarket --> pkg_client_ui_plugin_market
   svc_pluginMarket --> pkg_plugin_market
+  svc_pluginRecommendations --> pkg_client_ui_plugin_recommendations
   svc_pluginRegistryProbe --> pkg_client_ui_plugin_manager
   svc_profileContext --> pkg_plugin_manager
-  svc_ptcRuntime --> pkg_tools
+  svc_ptcRuntime --> pkg_tool_executor_ptc
   svc_ptcRuntime --> pkg_workflow_ptc
   svc_remoteAccess --> pkg_api_gateway
   svc_remoteAccess --> pkg_api_session_controller
@@ -616,6 +654,9 @@ flowchart LR
 
 | ctx key | Role | Owner | Implementations | Direct consumers | Companion plugins | Note |
 | --- | --- | --- | --- | --- | --- | --- |
+| `ctx.actionCards` | `service` | [`action-cards`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/experimental/action-cards) | - | [`creation-recommendations`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/experimental/creation-recommendations), [`client-ui-action-cards`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/experimental/client-ui-action-cards) | - | Owns the card tool, card state, user actions and status notices; card kinds register their actions and handlers. |
+| `ctx.pluginRecommendations` | `service` | [`plugin-recommendations`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/experimental/plugin-recommendations) | - | [`client-ui-plugin-recommendations`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/experimental/client-ui-plugin-recommendations) | - | Reads the current catalog text of an official plugin card and enables the plugin through the profile plugin manager after a click. |
+| `ctx.headlessStartup` | `core` | [`headless`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/bundle/headless) | - | [`headless`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/bundle/headless) | - | Supplies parsed task and run options to the headless runner and its sandbox-policy configuration. |
 | `ctx.cotTranslation` | `service` | [`experimental-client-ui-cot-translation`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/experimental/client-ui-cot-translation) | - | - | - | Serves reasoning translations, reuses saved results, and joins ordinary Session activation for uncached inactive Sessions. |
 | `ctx.translator` | `service` | [`experimental-translator`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/experimental/translator) | - | [`experimental-client-ui-cot-translation`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/experimental/client-ui-cot-translation) | - | Resolves Google or Bing requests and retains shared experimental records through the active Session writer. |
 | `ctx.hmr` | `core` | [`hmr`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/boot/hmr) | - | [`app-boot`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/boot/app-boot) | - | Owns module and exact configuration watchers; application mutations share its queue and automatic reloads await the application file lock. |
@@ -624,15 +665,20 @@ flowchart LR
 | `ctx.pluginMarket` | `core` | [`plugin-market`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/boot/plugin-market) | - | [`client-ui-plugin-market`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/client/ui-plugin-market), [`plugin-market`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/boot/plugin-market) | - | Fetches and validates the index sources the user configures; installation goes through the plugin manager. |
 | `ctx.profileContext` | `core` | [`app-boot`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/boot/app-boot) | - | [`plugin-manager`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/boot/plugin-manager) | - | The dsh launcher supplies data-only profile locations and composition inputs; reload scheduling belongs to dsh-hmr. |
 | `ctx.connection` | `core` | [`client-connection`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/client/connection) | - | [`api-gateway`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/api/gateway), [`host-frontend-static`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/host/frontend-static) | - | Owns browser authentication and shared HTTP request dispatch; API adapters register endpoints and streams. |
+| `ctx.forge` | `seam` | [`experimental-forge`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/experimental/forge) | [`experimental-forge-github`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/experimental/forge-github) | [`experimental-forge-session`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/experimental/forge-session), [`experimental-client-ui-forge`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/experimental/client-ui-forge) | - | Providers map remote and change request URLs, look up change requests by head branch, and read status in batches; watchers of one change request share one polling loop. |
+| `ctx.forgeSession` | `service` | [`experimental-forge-session`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/experimental/forge-session) | - | [`experimental-client-ui-forge`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/experimental/client-ui-forge) | - | A Session projection derives bindings from shell results and binding records and publishes their URLs without status to clients; push results trigger head-branch discovery, and Session watchers poll bound change requests through the forge registry. |
+| `ctx.forgePanel` | `service` | [`experimental-client-ui-forge`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/experimental/client-ui-forge) | - | - | - | Streams one panel state per followed Session: Git inspection using Session permissions, the recognized code host and its sign-in, and the bound change requests with polled status. |
 | `ctx.worktrees` | `seam` | [`experimental-worktree`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/experimental/worktree) | [`experimental-worktree`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/experimental/worktree) | [`experimental-tool-worktree`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/experimental/tool-worktree) | - | Explicit experimental creation from a pinned local commit. Existing write permissions govern checkout and shared Git metadata; the working-directory service owns the resulting Session directory. |
 | `ctx.workingDirectory` | `seam` | [`working-directory`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/session/working-directory) | [`working-directory`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/session/working-directory) | [`tool-working-directory`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/session/tool-working-directory), [`tool-fs`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/fs/tool-fs), [`tool-bash`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/shell/tool-bash), [`tool-pwsh`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/shell/tool-pwsh), [`subagent`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/subagent/subagent), [`sdk-jsonrpc-server`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/sdk/server) | - | One Session projection owns the effective execution directory. The filesystem validates changes; user context reports them while original metadata and write grants stay fixed. |
 | `ctx.mcpResources` | `seam` | [`mcp-resources`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/mcp/mcp-resources) | [`mcp-client`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/mcp/mcp-client) | [`mcp-resources`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/mcp/mcp-resources) | - | Connection-owned providers serve shared resource tools in the calling agent scope. |
 | `ctx.browserUse` | `seam` | [`browser-use`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/browser-use/browser-use) | [`experimental-browser-use-playwright-mcp`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/experimental/browser-use-playwright-mcp), [`experimental-browser-use-chrome-devtools-mcp`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/experimental/browser-use-chrome-devtools-mcp), [`experimental-browser-use-stagehand-native`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/experimental/browser-use-stagehand-native) | [`experimental-browser-use-playwright-mcp`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/experimental/browser-use-playwright-mcp), [`experimental-browser-use-chrome-devtools-mcp`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/experimental/browser-use-chrome-devtools-mcp), [`experimental-browser-use-stagehand-native`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/experimental/browser-use-stagehand-native) | - | One provider-owned name per service instance. Providers own their tools and browser resources per live Session; the shared service has no browser operation API. |
 | `ctx.computerUse` | `seam` | [`computer-use`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/computer-use/computer-use) | [`experimental-computer-use-cua-driver-mcp`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/experimental/computer-use-cua-driver-mcp), [`experimental-computer-use-cua-driver-native`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/experimental/computer-use-cua-driver-native) | [`experimental-computer-use-cua-driver-mcp`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/experimental/computer-use-cua-driver-mcp), [`experimental-computer-use-cua-driver-native`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/experimental/computer-use-cua-driver-native) | - | One provider-owned name per service instance. Each provider also owns its model tools; the service has no common action API, runtime selection, or Session workflow lock. |
+| `ctx.cuaAccess` | `core` | [`cua`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/experimental/cua) | - | [`cua`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/experimental/cua) | - | The native provider owns application consent and cancellation; the optional Client page queries and changes those decisions through its Remote. |
 | `ctx.officeToPdf` | `core` | [`office-to-pdf`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/document/office-to-pdf) | - | [`client-ui-sidebar-documentpreview`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/client/ui-sidebar-documentpreview) | - | Authorized Office bytes are converted on the Host using the declared native target engine, or Node WASM when no native target is declared. |
 | `ctx.attachments` | `seam` | [`attachment`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/attachment/attachment) | [`attachment-local`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/attachment/attachment-local) | [`api-session-controller`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/api/session-controller), [`tool-fs`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/fs/tool-fs), [`llm-pi-ai`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/llm/llm-pi-ai), [`llm-deepseek`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/llm/llm-deepseek) | - | The host commits accepted images before session events; provider adapters resolve authorized durable references into provider-native content. |
 | `ctx.fileUploads` | `core` | [`client-file-upload`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/client/file-upload) | - | [`api-session-controller`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/api/session-controller) | - | Owns streaming intake, durable storage, and staged receipt lifetime; the Session controller binds receipts to accepted submissions. |
 | `ctx.llm` | `seam` | [`llm`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/llm/llm) | [`llm-deepseek`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/llm/llm-deepseek), [`llm-pi-ai`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/llm/llm-pi-ai), [`llm-replay`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/test-support/llm-replay) | [`agent-loop`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/core/agent-loop), [`compaction-basic`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/compaction/compaction-basic) | - | Adapters register provider implementations; the loop and compaction call the provider-neutral stream service. |
+| `ctx.sessionLogDeepSeek` | `core` | [`session-log-deepseek`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/session/session-log-deepseek) | - | - | - | Plugins register caller-owned exclusions before the canonical Session-log request contribution is prepared; unmatched requests use normal upload eligibility. |
 | `ctx.deepseekLlmApiExtensions` | `seam` | [`deepseek-llm-api-extensions`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/llm/deepseek-llm-api-extensions) | [`session-log-deepseek`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/session/session-log-deepseek), [`plugin-package-inventory-deepseek`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/llm/plugin-package-inventory-deepseek) | [`llm-deepseek`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/llm/llm-deepseek) | - | Plugins prepare independent top-level fields; the official adapter merges them and commits their delivery state after HTTP acceptance. |
 | `ctx.tokenMeter` | `core` | [`token-meter`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/llm/token-meter) | - | [`compaction-basic`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/compaction/compaction-basic) | - | Owns isolated per-session replay folds; pressure consumers share immutable revisioned measurements. |
 | `ctx.toolResultPruner` | `core` | [`compaction-tool-result-pruner`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/compaction/compaction-tool-result-pruner) | - | [`compaction-basic`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/compaction/compaction-basic) | - | Rewrites oversized current tool results through replayable single-node surface replacements before summary compaction. |
@@ -673,7 +719,7 @@ flowchart LR
 | `ctx.sessionReferenceResolver` | `core` | [`session-reference`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/context/session-reference) | - | - | - | Projects bounded current-surface conversation snapshots into durable untrusted message context; host adapters own mention syntax. |
 | `ctx.sessionTitle` | `seam` | [`session-title`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/session/session-title) | [`session-title-first-prompt-llm`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/session/session-title-first-prompt-llm), [`session-title-all-prompts-llm`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/experimental/session-title-all-prompts-llm) | - | - | Owns the deterministic fallback, latest-title fold, and sole optional asynchronous provider registration. |
 | `ctx.systemPrompt` | `core` | [`system-prompt`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/core/system-prompt) | - | [`agent-loop`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/core/agent-loop), [`tools`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/core/tools), [`tool-fs`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/fs/tool-fs), [`tool-terminal`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/experimental/tool-terminal), [`tool-web`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/web/tool-web) | - | Collects prompt sections and model-facing tool schemas for each step. |
-| `ctx.tools` | `core` | [`tools`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/core/tools) | - | [`agent-loop`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/core/agent-loop), [`tool-ask-user`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/interaction/tool-ask-user), [`tool-bash`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/shell/tool-bash), [`tool-cordis`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/extensions/tool-cordis), [`tool-fs`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/fs/tool-fs), [`tool-terminal`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/experimental/tool-terminal), [`tool-skill`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/skill/tool-skill), [`tool-subagent`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/subagent/tool-subagent), [`tool-todo`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/todo/tool-todo), [`tool-web`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/web/tool-web) | - | Registers capabilities, owns PTC mode transport, and routes calls through pre-policy, monotonic guards, around dispatch, post-policy, and final-result observation. |
+| `ctx.tools` | `core` | [`tools`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/core/tools) | - | [`agent-loop`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/core/agent-loop), [`tool-ask-user`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/interaction/tool-ask-user), [`tool-bash`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/shell/tool-bash), [`tool-cordis`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/extensions/tool-cordis), [`tool-fs`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/fs/tool-fs), [`tool-terminal`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/experimental/tool-terminal), [`tool-skill`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/skill/tool-skill), [`tool-subagent`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/subagent/tool-subagent), [`tool-todo`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/todo/tool-todo), [`tool-web`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/web/tool-web) | - | Registers capabilities and scoped executors. Native and PTC providers own descriptions and complete raw call batches; their optional shared pipeline handles tool policy and dispatch. |
 | `ctx.userQuestions` | `seam` | [`user-questions`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/interaction/user-questions) | - | [`tool-ask-user`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/interaction/tool-ask-user) | - | UI front ends provide the active human-answer provider; tool-ask-user pauses a tool call on the provider-neutral ask() promise. |
 | `ctx.planMode` | `core` | [`plan-mode`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/plan/plan-mode) | - | - | - | Folds logged plan/mode state, flushes user selections at turn boundaries, renders deployment-owned guidance, registers /plan, and keeps the plan-exit schema stable across transitions. |
 | `ctx.agentPresets` | `core` | [`agent-preset-registry`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/preset/agent-preset-registry) | - | - | - | Eagerly mounts YAML-declared preset revisions, binds Agents and cold readers to scoped contributions, and retains retired revisions until their last user releases them. |
@@ -684,7 +730,8 @@ flowchart LR
 | `ctx.agents` | `core` | [`agent`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/core/agent) | - | [`agent-loop`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/core/agent-loop), [`acp`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/acp/acp), [`subagent`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/subagent/subagent) | - | Owns live Agent handles, the create/resume factory seam, and process-local initiator propagation. |
 | `ctx.agentDefaultModel` | `core` | [`agent-default-model`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/core/agent-default-model) | - | [`api-session-controller`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/api/session-controller), [`headless`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/bundle/headless) | - | Reads the default ModelSelection from volatile Config and saves selections through the profile editor. |
 | `ctx.agentLoop` | `bundle` | [`agent-loop`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/core/agent-loop) | - | [`base`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/bundle/base), [`sdk-minimal`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/bundle/sdk-minimal) | - | The one concrete loop plugin; extension packages depend on dsh-agent events and services, not on this package. |
-| `ctx.schedule` | `core` | [`schedule`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/schedule/schedule) | - | - | - | Stores tasks independently of Session activation and queues due messages in the original Session. |
+| `ctx.mcpManager` | `core` | [`mcp-manager`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/mcp/mcp-manager) | - | - | - | Reconciles mcp-client instances against its volatile servers configuration, aggregates their connection statuses, and serves restart and probe to management surfaces. |
+| `ctx.schedule` | `core` | [`schedule`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/schedule/schedule) | - | - | - | Stores tasks independently of Session activation and queues due messages in each task's target Session. |
 | `ctx.goals` | `core` | [`goal`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/goal/goal) | - | - | - | Folds revisioned objective state from the session log and keeps live continuation activation process-local. |
 | `ctx.ssh` | `core` | [`ssh`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/ssh/ssh) | - | [`fs-ssh`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/ssh/fs-ssh), [`subprocess-ssh`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/ssh/subprocess-ssh), [`sandbox-ssh`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/ssh/sandbox-ssh) | - | Owns one authenticated OpenSSH connection, installed helper identity, independent program streams and disconnect cleanup for the paired remote providers. |
 | `ctx.subprocess` | `seam` | [`subprocess`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/subprocess/subprocess) | [`subprocess-local`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/subprocess/subprocess-local), [`subprocess-ssh`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/ssh/subprocess-ssh) | [`bash-local`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/shell/bash-local), [`bash-sandbox`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/shell/bash-sandbox), [`terminal-bash`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/terminal/terminal-bash), [`lsp-stdio`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/lsp/lsp-stdio), [`subagent-acp`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/subagent/subagent-acp), [`subagent-codex`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/subagent/subagent-codex), [`subagent-claude-code`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/subagent/subagent-claude-code) | - | The bash executors, the PTY shell backend, the LSP host, and the out-of-process ACP, Codex, and Claude Code subagent backends spawn through ctx.subprocess; the service owns process coordinates, tree/session lifetime, stdio dispositions, terminal mechanics, and kill escalation. |
@@ -695,16 +742,16 @@ flowchart LR
 | `ctx.sandboxPolicy` | `core` | [`sandbox-policy`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/sandbox/sandbox-policy) | - | [`bash-sandbox`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/shell/bash-sandbox), [`fs-sandbox`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/fs/fs-sandbox), [`terminal-bash`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/terminal/terminal-bash) | - | The one home for the deployment default mode + workspace root; only the sandboxed executor and provider read the service (the tool layers use the pure `sandbox/mode` fold it also exports). Both enforcing families read it so bash and fs cannot confine to different roots. |
 | `ctx.approval` | `seam` | [`user-approval`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/interaction/user-approval) | - | [`tools`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/core/tools), [`tool-bash`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/shell/tool-bash), [`acp`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/acp/acp) | - | One-shot permission decisions dispatched over the `approval/request` waterfall; answerers are listeners (the ACP bridge for its own agents), absence fails closed to `unavailable`. |
 | `ctx.permissionPresets` | `core` | [`permission-presets`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/interaction/permission-presets) | - | - | - | User-facing preset table (`workspace-write`/`danger-full-access`) bundling the sandbox-mode and approval-policy knobs; a switch writes one `permission/preset` event through to both knob events. |
-| `ctx.ptcRuntime` | `seam` | [`ptc-runtime`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/ptc-runtime/ptc-runtime) | [`ptc-runtime-node`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/ptc-runtime/ptc-runtime-node), [`experimental-ptc-runtime-python`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/experimental/ptc-runtime-python) | [`tools`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/core/tools), [`workflow-ptc`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/workflow/workflow-ptc) | - | Runs programs against host-provided async bindings; tools owns PTC presentation and workflow-ptc owns workflow orchestration. |
+| `ctx.ptcRuntime` | `seam` | [`ptc-runtime`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/ptc-runtime/ptc-runtime) | [`ptc-runtime-node`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/ptc-runtime/ptc-runtime-node), [`experimental-ptc-runtime-python`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/experimental/ptc-runtime-python) | [`tool-executor-ptc`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/core/tool-executor-ptc), [`workflow-ptc`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/workflow/workflow-ptc) | - | Runs programs against host-provided async bindings; tool-executor-ptc owns PTC presentation and workflow-ptc owns workflow orchestration. |
 | `ctx.fs` | `seam` | [`fs`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/fs/fs) | [`fs-local`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/fs/fs-local), [`fs-sandbox`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/fs/fs-sandbox), [`fs-ssh`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/ssh/fs-ssh) | [`tool-fs`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/fs/tool-fs) | [`fs-observation-policy`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/fs/fs-observation-policy) | tool-fs executes read/write/edit through ctx.fs; fs-sandbox fences mutations by the shared sandbox mode; fs-observation-policy contributes observed-state checks through the fs/* event gate. |
 | `ctx.compaction` | `seam` | [`compaction`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/compaction/compaction) | [`compaction-basic`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/compaction/compaction-basic) | [`compaction-basic`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/compaction/compaction-basic) | - | The basic backend consumes post-step pressure and request-error recovery events; there is no model-facing compact tool. |
 | `ctx.subagents` | `seam` | [`subagent`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/subagent/subagent) | [`subagent-spawn-in-process`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/subagent/subagent-spawn-in-process), [`subagent-fork-in-process`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/subagent/subagent-fork-in-process), [`subagent-acp`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/subagent/subagent-acp), [`subagent-codex`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/subagent/subagent-codex), [`subagent-claude-code`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/subagent/subagent-claude-code), [`subagent-dsh-sdk`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/subagent/subagent-dsh-sdk) | [`tool-subagent`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/subagent/tool-subagent), [`tool-subagent-control`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/subagent/tool-subagent-control), [`tool-ralph`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/experimental/tool-ralph) | - | Providers prepare local children or execute external tasks; one activation manager owns both lifecycles. The delegation tool selects a backend, control tools deliver local follow-ups, and workflows await activation results. |
 | `ctx.speechToText` | `seam` | [`experimental-speech-to-text`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/experimental/speech-to-text) | [`experimental-speech-to-text-sensevoice`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/experimental/speech-to-text-sensevoice) | [`experimental-api-speech-to-text`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/experimental/api-speech-to-text) | - | Routes explicit recognizers; the browser uses the authenticated Remote and keeps transcripts in the draft until submission. |
-| `ctx.agentTeams` | `core` | [`experimental-agent-team`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/experimental/agent-team) | - | [`experimental-tool-agent-team`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/experimental/tool-agent-team) | - | Owns the implicit-root roster, direct peer inbox delivery, shared task DAG, and continuable-child lifecycle; tool-agent-team contributes model controls. |
+| `ctx.agentTeams` | `core` | [`agent-team`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/team/agent-team) | - | [`tool-agent-team`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/team/tool-agent-team) | - | Owns the shared task DAG for a subagent tree; tool-agent-team contributes task controls. |
 | `ctx.claudeCodeMods` | `core` | [`experimental-claude-code-mods`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/experimental/claude-code-mods) | - | - | - | Loads mods that defineMod plugins add, raises their hook chains from harness extension points, and draws the band above the prompt over its Remote. |
 | `ctx.inspector` | `core` | `inspector` | - | - | - | Owns the Worker-hosted CDP target and the transport-independent Host and Client observation and Cordis-tree query API. |
 | `ctx.jobs` | `seam` | [`jobs`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/jobs/jobs) | [`jobs-local`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/jobs/jobs-local) | [`tool-bash`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/shell/tool-bash), [`tool-pwsh`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/shell/tool-pwsh), [`tool-terminal`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/experimental/tool-terminal), [`tool-jobs`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/jobs/tool-jobs), [`api-job-controller`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/api/job-controller) | - | Producers (background bash/pwsh and PTY sends) register running work; record-declaring jobs additionally stream raw output for non-consuming observers; tool-jobs is the model-facing controller that reads, lists, and kills it; jobs-local is the process-local registry. |
-| `ctx.web` | `seam` | [`web`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/web/web) | [`web-search-exa`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/web/web-search-exa), [`web-search-perplexity`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/web/web-search-perplexity), [`web-search-deepseek`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/web/web-search-deepseek), [`web-deepseek-api`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/web/web-deepseek-api), [`web-fetch-http`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/web/web-fetch-http) | [`tool-web`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/web/tool-web) | - | Search and fetch providers register into one ctx.web seam; tool-web owns the stable model-facing names. |
+| `ctx.web` | `seam` | [`web`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/web/web) | [`web-search-deepseek`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/web/web-search-deepseek), [`web-deepseek-api`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/web/web-deepseek-api), [`web-fetch-http`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/web/web-fetch-http) | [`tool-web`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/web/tool-web) | - | Search and fetch providers register into one ctx.web seam; tool-web owns the stable model-facing names. |
 | `ctx.spillStore` | `seam` | [`spill`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/spill/spill) | [`spill-local`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/spill/spill-local) | [`spill-policy`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/spill/spill-policy) | - | The backend saves oversized tool text and returns a model-facing locator plus retrieval hint; spill-policy is the tools/post-execute consumer that decides when to spill. |
 | `ctx.directoryPicker` | `seam` | [`host-directory-picker`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/host/directory-picker) | [`host-directory-picker-native`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/host/directory-picker-native), [`host-directory-picker-browse`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/host/directory-picker-browse) | [`api-workspace-controller`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/api/workspace-controller) | - | Discriminated interaction capability: the native backend opens one OS chooser on the host display, the browse backend serves listing/creation primitives for the in-app browser; dual-face backends fill ui-workspace directory-flow slots from their browser halves (no wire advertisement). |
 | `ctx.webServer` | `core` | [`host-webserver`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/host/webserver) | - | [`client-connection`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/client/connection), [`client-modules`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/client/modules), [`client-hmr`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/client/hmr) | - | Plain node:http carrier: named-route registry, index transform taps, and the static dist fallback; web-transport plugins register their own routes. |
@@ -715,5 +762,6 @@ flowchart LR
 | `ctx.lsp` | `seam` | [`lsp`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/lsp/lsp) | [`lsp-stdio`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/lsp/lsp-stdio) | [`tool-lsp`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/lsp/tool-lsp) | - | Provider registration and selection plus normalized query execution over exactly four operations; the seam offers no protocol escape hatch, so a backend translates into the normalized request and result. |
 | `ctx.dynamicCordisRunner` | `core` | [`cordis-host-runner`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/extensions/cordis-host-runner) | - | [`tool-cordis`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/extensions/tool-cordis) | - | Owns the in-memory definition registry, the vm sandbox for host halves, and the request-run round trip; browser pages reach the same service over the wire through its remote namespace. |
 | `ctx.cordisInspect` | `core` | [`cordis-host-runner`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/extensions/cordis-host-runner) | - | [`tool-cordis`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/extensions/tool-cordis) | - | Registers host inspect providers, mirrors the client provider manifest, and routes client queries through the dynamic Cordis transport. |
+| `ctx.liveshareShares` | `service` | [`experimental-liveshare`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/experimental/liveshare) | - | - | - | Publishes the owner share-management operations as one Typert Remote namespace that the owner client face calls; every method delegates to the same operations the same-origin routes used. |
 
 Maintenance mode: hybrid: services are discovered from Cordis declarations; interface/implementation/consumer roles are classified in `scripts/gen-doc-graphs.ts` with a completeness guard.

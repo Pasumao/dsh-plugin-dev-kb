@@ -22,7 +22,8 @@
   ],
   "scripts": {
     "selfcheck": "node scripts/selfcheck.mjs",
-    "rebuild-index": "node scripts/rebuild-index.mjs"
+    "rebuild-index": "node scripts/rebuild-index.mjs",
+    "refresh-kb": "node scripts/refresh-kb.mjs"
   },
   "keywords": [
     "dsh",

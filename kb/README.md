@@ -50,7 +50,12 @@ knowledge/deepseek-harness/
 
 ## 更新方法
 
-知识库与仓库 `master` 分支对齐（见 `meta/source.json` 的 commit）。需要刷新时：
+**一键刷新（推荐）**：`npm run refresh-kb`（克隆上游 → 投影 → 覆盖 site/extra → 重建索引与元数据），
+完成后 `npm run selfcheck` 自检。GitHub Action（`.github/workflows/refresh-kb.yml`）每周一自动执行同一
+脚本，有变更即自动提交；README 顶部「kb sync」badge 数据来自 `meta/source.json`。
+
+以下为手动步骤（理解流程 / 非 Windows 环境参考）。知识库与仓库 `master` 分支对齐
+（见 `meta/source.json` 的 commit）。需要刷新时：
 
 ```sh
 # 1. 重新克隆仓库
@@ -78,6 +83,6 @@ node scripts/rebuild-index.mjs
 
 ## 统计
 
-- 站点页面：188 个 Markdown（中文 94 + 英文 94），4 张图片
-- 补充文档：182 个 Markdown（`extra/`）
-- 来源 commit：`5badb15009ae1756c3afe0ae0cef1faafc290ccc`（master，2026-10-10 同步）
+- 站点页面：192 个 Markdown，4 张图片
+- 补充文档：468 个 Markdown（`extra/`）
+- 来源 commit：`fcc0ad462172522aaf5c93a7b2e01f6b9f0b0159`（master，2026-11-07 同步）

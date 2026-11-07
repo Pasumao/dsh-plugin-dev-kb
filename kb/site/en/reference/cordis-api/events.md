@@ -31,7 +31,7 @@ Dispatch an event, running all listeners concurrently.
 
 **Returns** a promise resolving once every listener has settled.
 
-[Source](https://github.com/deepseek-ai/deepseek-harness/blob/master/vendor/cordis/src/events.ts#L44)
+[Source](https://github.com/deepseek-ai/deepseek-harness/blob/master/vendor/cordis/src/events.ts#L43)
 
 ### ctx.emit(name, ...args)
 
@@ -51,7 +51,7 @@ Dispatch an event synchronously, ignoring listener return values.
 - `name` — the event name.
 - `args` — arguments passed to every listener.
 
-[Source](https://github.com/deepseek-ai/deepseek-harness/blob/master/vendor/cordis/src/events.ts#L53)
+[Source](https://github.com/deepseek-ai/deepseek-harness/blob/master/vendor/cordis/src/events.ts#L52)
 
 ### ctx.serial(name, ...args)
 
@@ -74,7 +74,7 @@ Dispatch an event, awaiting listeners in order until one bails.
 
 **Returns** the first bail value (non-null, non-false, non-undefined), if any.
 
-[Source](https://github.com/deepseek-ai/deepseek-harness/blob/master/vendor/cordis/src/events.ts#L63)
+[Source](https://github.com/deepseek-ai/deepseek-harness/blob/master/vendor/cordis/src/events.ts#L62)
 
 ### ctx.bail(name, ...args)
 
@@ -97,7 +97,7 @@ Dispatch an event, calling listeners in order until one bails.
 
 **Returns** the first bail value (non-null, non-false, non-undefined), if any.
 
-[Source](https://github.com/deepseek-ai/deepseek-harness/blob/master/vendor/cordis/src/events.ts#L73)
+[Source](https://github.com/deepseek-ai/deepseek-harness/blob/master/vendor/cordis/src/events.ts#L72)
 
 ### ctx.waterfall(name, ...args)
 
@@ -125,7 +125,7 @@ Each listener wraps the rest of the chain: calling `next()` invokes the next lis
 
 **Returns** the outermost listener's return value.
 
-[Source](https://github.com/deepseek-ai/deepseek-harness/blob/master/vendor/cordis/src/events.ts#L86)
+[Source](https://github.com/deepseek-ai/deepseek-harness/blob/master/vendor/cordis/src/events.ts#L85)
 
 ### ctx.on(name, listener, options?)
 
@@ -149,7 +149,7 @@ Register an event listener owned by the current fiber.
 
 **Returns** a disposer removing the listener; `true` if it was still registered.
 
-[Source](https://github.com/deepseek-ai/deepseek-harness/blob/master/vendor/cordis/src/events.ts#L97)
+[Source](https://github.com/deepseek-ai/deepseek-harness/blob/master/vendor/cordis/src/events.ts#L96)
 
 ### ctx.once(name, listener, options?)
 
@@ -173,7 +173,7 @@ Same as `on()`, but the listener disposes itself after its first call.
 
 **Returns** a disposer removing the listener; `true` if it was still registered.
 
-[Source](https://github.com/deepseek-ai/deepseek-harness/blob/master/vendor/cordis/src/events.ts#L106)
+[Source](https://github.com/deepseek-ai/deepseek-harness/blob/master/vendor/cordis/src/events.ts#L105)
 
 ## EventOptions
 
@@ -189,7 +189,7 @@ interface EventOptions {
 }
 ```
 
-[Source](https://github.com/deepseek-ai/deepseek-harness/blob/master/vendor/cordis/src/events.ts#L112)
+[Source](https://github.com/deepseek-ai/deepseek-harness/blob/master/vendor/cordis/src/events.ts#L111)
 
 ## DispatchMode
 
@@ -209,4 +209,4 @@ Event dispatch strategy used by the event service.
 type DispatchMode = 'emit' | 'parallel' | 'serial' | 'bail' | 'waterfall'
 ```
 
-[Source](https://github.com/deepseek-ai/deepseek-harness/blob/master/vendor/cordis/src/events.ts#L32)
+[Source](https://github.com/deepseek-ai/deepseek-harness/blob/master/vendor/cordis/src/events.ts#L31)

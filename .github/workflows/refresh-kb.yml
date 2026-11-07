@@ -1,0 +1,43 @@
+# Weekly auto-sync of the knowledge base from upstream deepseek-harness master.
+# Runs on Windows because scripts/refresh-kb.mjs uses robocopy for mirroring.
+# Requires repo setting: Settings → Actions → General → Workflow permissions →
+# "Read and write permissions" (or add a PAT as KB_SYNC_TOKEN secret).
+name: refresh-kb
+
+on:
+  schedule:
+    - cron: '17 3 * * 1' # Mondays 03:17 UTC
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: refresh-kb
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+
+      - name: Refresh knowledge base
+        run: node scripts/refresh-kb.mjs
+
+      - name: Selfcheck
+        run: npm run selfcheck
+
+      - name: Commit & push if changed
+        run: |
+          git diff --quiet -- kb/ && echo "No content changes" && exit 0
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add kb/
+          git commit -m "kb: auto-sync from upstream deepseek-harness master"
+          git push
+        shell: bash

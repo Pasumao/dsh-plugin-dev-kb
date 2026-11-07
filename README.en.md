@@ -12,7 +12,7 @@
 
 [中文](./README.md) | **English**
 
-> **192-page official mirror · 439 supplementary docs · 634-file search index · 0 runtime dependencies**
+> **192-page official mirror · 468 exclusive supplementary docs · weekly auto-sync from upstream · 0 runtime dependencies**
 
 **The official docs at your side whenever you write dsh plugins**: the entire content of the DeepSeek Harness official documentation site
 <https://deepseek-harness.github.io/deepseek-harness/> is organized into a form natively usable by dsh —
@@ -23,7 +23,7 @@ It also ships the `dsh_kb_search` tool (since 1.6.0): local scored search over t
 
 - **Complete site mirror**: the official docs (VitePress) are generated as a projection of the raw Markdown in
   `docs/` of the `deepseek-ai/deepseek-harness` repository (links rewritten to site routes, verbatim identical to the live site). 192 pages in both Chinese and English.
-- **Supplementary docs**: 439 development references from the repo's `docs/` that were not published to the site (glossary, defensive patterns, module graph, testing strategy, incident postmortems, i18n specs, upgrade guides, persistence changes, etc.).
+- **Supplementary docs**: 468 development references from the repo's `docs/` that were not published to the site (glossary, defensive patterns, module graph, testing strategy, incident postmortems, i18n specs, upgrade guides, persistence changes, etc.) — this is **exclusive content from the official repo that you won't find on the live site**.
 - **Agent-friendly**: the `skills/dsh-plugin-dev-kb.md` skill lets dsh auto-load it during plugin development tasks, providing the knowledge base location,
   topic navigation, and search strategy; `kb/meta/topics.md` maps task scenarios to the files to read; `kb/meta/search-index.json` provides full search coverage.
 - **Local search tool**: `dsh_kb_search` performs scored search over the knowledge base (title / path / body multi-term weighting) and returns
@@ -34,11 +34,21 @@ It also ships the `dsh_kb_search` tool (since 1.6.0): local scored search over t
 
 - **Complete mirror of the official docs**: the entire content of the deepseek-ai/deepseek-harness official documentation site, organized into a form natively usable by dsh,
   192 pages in both Chinese and English, links rewritten to site routes, verbatim identical to the live site;
-- **Repo supplementary docs**: 439 development references not published to the site (glossary, defensive patterns, module graph, testing strategy, incident postmortems, i18n specs, upgrade guides, persistence changes, etc.);
+- **Repo supplementary docs**: 468 development references not published to the site (glossary, defensive patterns, module graph, testing strategy, incident postmortems, i18n specs, upgrade guides, persistence changes, etc.);
+- **Weekly auto-sync**: a GitHub Action refreshes the knowledge base from upstream master on schedule (see the "kb sync" badge above for the sync date and commit);
 - **Agent-friendly**: the `dsh-plugin-dev-kb` skill lets dsh auto-load the knowledge base during plugin development tasks;
   the `dsh_kb_search` tool locates docs in a single call; `kb/meta/topics.md` maps task scenarios to the files to read, and `kb/meta/search-index.json` provides full search coverage;
 - **Human-usable**: browse the `kb/` directory directly, or open `kb/INDEX.md` to look things up by URL mapping;
 - Zero runtime dependencies; the single tool `dsh_kb_search` is a pure local Node implementation (no network, no file writes).
+
+## Verify in 30 seconds
+
+After installation, ask the agent in any session:
+
+> What changed in the dsh 0.2.0 settings subsystem (SettingsForms) compared to before?
+
+- If the agent uses `dsh_kb_search` and answers with details like `SettingsForms` / `.volatile()` / revision conflict detection, it is **installed correctly**;
+- If it cannot answer or the search tool is missing, the mount did not take effect — recheck the "Install" step.
 
 ## Configuration
 
@@ -100,7 +110,7 @@ dsh-plugin-dev-kb/
 │   ├── extra/         repo supplementary docs: glossary, defensive-patterns, module-graph, postmortem/, i18n/ …
 │   ├── meta/
 │   │   ├── topics.md         ★ topic navigation: task scenario → files
-│   │   ├── search-index.json full index (634 files)
+│   │   ├── search-index.json full index (663 files)
 │   │   ├── source.json       source commit / time / stats
 │   │   └── site-pages.txt    list of live site pages
 │   ├── INDEX.md        site URL ↔ local file mapping

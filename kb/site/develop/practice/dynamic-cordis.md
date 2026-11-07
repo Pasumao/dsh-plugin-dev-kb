@@ -5,7 +5,7 @@ rawMarkdownPath: "develop/practice/dynamic-cordis.md"
 
 # 通过提示词配置持久化插件
 
-创造模式提供 [Plugin Manager](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/boot/plugin-manager/README.zh.md) 和只读[运行时检查](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/extensions/tool-cordis/README.zh.md)。插件配置属于当前 profile，影响其会话，并在进程重启后保留。
+标准模式和创造模式提供 [Plugin Manager](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/boot/plugin-manager/README.zh.md)；创造模式还提供只读[运行时检查](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/extensions/tool-cordis/README.zh.md)。插件配置属于当前 profile，影响其会话，并在进程重启后保留。
 
 ## 连接 MCP 服务器
 
