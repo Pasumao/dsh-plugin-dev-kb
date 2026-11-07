@@ -32,6 +32,24 @@ if (!existsSync(join(root, "lib", "kb-search.js"))) {
   if (!skill.includes("dsh_kb_search")) failures.push("技能正文未提及 dsh_kb_search");
 }
 
+// 1.8.0：局部阅读工具 + 版本感知 + starter 技能
+if (!existsSync(join(root, "lib", "kb-version.js"))) {
+  failures.push("缺 lib/kb-version.js（宿主版本探测）");
+} else {
+  const idxMod = readFileSync(join(root, "lib", "index.js"), "utf8");
+  if (!idxMod.includes("dsh_kb_read")) failures.push("lib/index.js 未注册 dsh_kb_read");
+  if (!idxMod.includes("kb-version.js")) failures.push("lib/index.js 未接入版本探测");
+}
+if (!existsSync(join(root, "skills", "dsh-plugin-starter.md"))) {
+  failures.push("缺 skills/dsh-plugin-starter.md（脚手架技能）");
+} else {
+  const starter = readFileSync(join(root, "skills", "dsh-plugin-starter.md"), "utf8");
+  if (!starter.includes("dsh.bundle.patch")) failures.push("starter 技能未覆盖 dsh.bundle.patch 门槛");
+  if (!starter.includes("{{KB_ROOT}}")) failures.push("starter 技能缺 KB_ROOT 占位符");
+}
+const mainSkill = readFileSync(join(root, "skills", "dsh-plugin-dev-kb.md"), "utf8");
+if (!mainSkill.includes("dsh_kb_read")) failures.push("技能正文未提及 dsh_kb_read");
+
 if (failures.length) {
   for (const f of failures) console.error(`[FAIL] ${f}`);
   console.error(`${failures.length} 项失败`);

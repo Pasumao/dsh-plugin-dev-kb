@@ -37,9 +37,10 @@ kb/
 
 ## 2. 使用流程（从快到慢，优先用工具）
 
-1. **dsh_kb_search 工具检索（首选）**：调用本插件的 `dsh_kb_search` 工具，一次拿到命中文件路径 + 行号 + 上下文片段，再用 read 工具按行号局部读原文。参数：`query`（关键词，空白分词；空或 `"topics"` 返回主题导航）、`scope`（`api` = 只搜 API 签名/目录类文档，查 `ctx.*` API 用）、`lang`（默认 zh）、`maxResults`。
-2. **文件工具兜底**（工具不可用时）：读 `{{KB_ROOT}}/meta/topics.md` 按主题找文件；或对 `{{KB_ROOT}}/meta/search-index.json` / `{{KB_ROOT}}/site/` 用 grep 定位。
-3. **按 URL 反查**：已知线上页面 URL 时，在 `{{KB_ROOT}}/INDEX.md` 查对应本地文件。
+1. **dsh_kb_search 工具检索（首选）**：调用本插件的 `dsh_kb_search` 工具，一次拿到命中文件路径 + 行号 + 上下文片段。参数：`query`（关键词，空白分词；空或 `"topics"` 返回主题导航）、`scope`（`api` = 只搜 API 签名/目录类文档，查 `ctx.*` API 用）、`lang`（默认 zh）、`maxResults`。输出自带**版本横幅**（宿主 dsh 版本 vs 知识库 master 快照 + 对应 upgrade-guide 路径），横幅提示版本差异时务必读指南。
+2. **dsh_kb_read 工具按行号窗口读原文（1.8.0 起，次选）**：拿到 path + 命中行号后用 `dsh_kb_read`（参数 `path` / `offset` / `limit`）带行号窗口读上下文，输出自动提示中英对照路径与续读位置；替代通用 read 工具，防大文件整读。
+3. **文件工具兜底**（工具不可用时）：读 `{{KB_ROOT}}/meta/topics.md` 按主题找文件；或对 `{{KB_ROOT}}/meta/search-index.json` / `{{KB_ROOT}}/site/` 用 grep 定位。
+4. **按 URL 反查**：已知线上页面 URL 时，在 `{{KB_ROOT}}/INDEX.md` 查对应本地文件。
 
 ## 3. 阅读原则
 

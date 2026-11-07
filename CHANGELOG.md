@@ -1,5 +1,23 @@
 # Changelog
 
+## [1.8.0] - 2026-11-07
+
+- **新增 `dsh_kb_read` 工具**：知识库局部阅读——按知识库相对路径 + 行号窗口（`path`/`offset`/`limit`，
+  单窗口上限 400 行）读原文，输出带行号，自动防大文件整读、拒绝目录越界与非 .md 文件；
+  自动提示中英对照版本的对应路径（`site/` ↔ `site/en/`、`extra/*.zh.md` ↔ `extra/*.md`）与续读位置。
+  与 `dsh_kb_search` 形成检索→阅读闭环，替代用通用 read 工具手动定位。
+- **新增版本感知横幅**（`lib/kb-version.js`）：宿主加载插件时探测 `@deepseek-ai/dsh`（或 dsh-base）
+  实际版本，`dsh_kb_search` / `dsh_kb_read` 输出自带「知识库快照同步自上游 master，可能领先宿主」
+  提示 + 对应 `extra/upgrade-guide/<vX.Y.Z>` 指南路径（精确命中优先，否则取 ≤ 宿主版本的最大指南目录）。
+  探测失败安全（拿不到版本只少横幅，不影响工具可用性）。
+- **新增 `dsh-plugin-starter` 技能**：从零新建合规 dsh 插件的脚手架指南——骨架文件清单
+  （package.json 含 `dsh.bundle.patch` 与 peer 显式预发布范围、cordis.patch.yml、双语 README
+  含安装命令/双标题/相关插件段、selfcheck、CHANGELOG）、命名与 needsConfig 反向检测红线、
+  GitHub description/homepage/topics 补齐命令、沙箱冒烟验证闭环（与 dsh-dev-sandbox 联动）。
+- `scripts/selfcheck.mjs` 扩展 1.8.0 断言（kb_read 注册 / 版本探测接入 / starter 技能完整性）；
+  新增 `scripts/smoke.mjs` 离线冒烟（假 harness 真执行两个工具的 execute，26 项断言）。
+- 主技能正文使用流程更新为「search → kb_read → 文件工具兜底」三段式。
+
 ## [1.7.0] - 2026-11-07
 
 - **新增 `dsh-upgrade-assistant` 技能**：升级 dsh 版本时的迁移助手。agent 按标准流程工作——

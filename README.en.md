@@ -19,6 +19,7 @@
 once this plugin is installed, the agent automatically loads the knowledge base when writing plugins and locates docs by task scenario, so you never have to dig through web pages again.
 It also ships the `dsh_kb_search` tool (since 1.6.0): local scored search over the knowledge base that returns matched files, line numbers, and context snippets in a single call,
 and the `dsh-upgrade-assistant` skill (since 1.7.0): when you upgrade dsh, the agent reads the official per-version upgrade guides and persistence-change records, produces a migration checklist, flags plugin compatibility-gate risks, and plans a rollback path.
+Since 1.8.0 it also ships a version-aware banner plus the `dsh_kb_read` tool (tool output flags "knowledge-base snapshot vs host dsh version" drift and points at the matching upgrade guide; line-numbered windowed reading prevents whole-file reads of huge docs) and the `dsh-plugin-starter` skill (a scaffold guide for creating compliant dsh plugins from scratch: file checklist, marketplace/awesome gates, verification loop).
 
 ## What is this
 
@@ -30,6 +31,11 @@ and the `dsh-upgrade-assistant` skill (since 1.7.0): when you upgrade dsh, the a
 - **Local search tool**: `dsh_kb_search` performs scored search over the knowledge base (title / path / body multi-term weighting) and returns
   matched file paths, line numbers, and context snippets in a single call; supports `scope: api` (search only API-signature/catalog docs),
   `lang: en`, and an empty query returning topic navigation. The index is built lazily in memory (~60ms / 314 files), read-only.
+- **Version awareness (since 1.8.0)**: tool output carries a banner — host dsh version vs the knowledge-base
+  master snapshot may drift on APIs, with the matching `extra/upgrade-guide/<vX.Y.Z>` guide path; detection
+  degrades gracefully (no banner, no error).
+- **Windowed reading tool (since 1.8.0)**: `dsh_kb_read` reads originals by `path`/`offset`/`limit` line windows,
+  with numbered output, whole-file-read protection, path-escape rejection, automatic zh↔en counterpart hints, and continuation pointers.
 
 ## Features
 
@@ -40,7 +46,7 @@ and the `dsh-upgrade-assistant` skill (since 1.7.0): when you upgrade dsh, the a
 - **Agent-friendly**: the `dsh-plugin-dev-kb` skill lets dsh auto-load the knowledge base during plugin development tasks;
   the `dsh_kb_search` tool locates docs in a single call; `kb/meta/topics.md` maps task scenarios to the files to read, and `kb/meta/search-index.json` provides full search coverage;
 - **Human-usable**: browse the `kb/` directory directly, or open `kb/INDEX.md` to look things up by URL mapping;
-- Zero runtime dependencies; the single tool `dsh_kb_search` is a pure local Node implementation (no network, no file writes).
+- Zero runtime dependencies; two tools (`dsh_kb_search` / `dsh_kb_read`), pure local Node implementations (no network, no file writes).
 
 ## Verify in 30 seconds
 
