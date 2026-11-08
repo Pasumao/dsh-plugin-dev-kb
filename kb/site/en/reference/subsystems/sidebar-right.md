@@ -48,7 +48,7 @@ Tab identity is the pair `(kind, address)`: the registry's claim uses the addres
 | `canOpen(address)` | Optional synchronous veto of a glob match; it runs on every routing decision. |
 | `title(address)` | The chip's text, captured into the layout record when the tab opens and never rewritten. |
 | `keepMounted` | Optional lazy retention of visited bodies across hiding, Session switches and docking; the owning View holds the Session reference. |
-| `guide` | Optional entry boxes for the guide page: `{ order, title(), description?(), icon? }`. Picking a box opens the contributing type as a page; omit to stay off the page. |
+| `guide` | An **array** of entry boxes for the guide page: `[{ id, order, title(), description?(), icon? }, …]` — each entry carries its own `id` (the registry checks entries for duplicates). Picking a box opens the contributing type as a page; omit (or pass an empty array) to stay off the page. ⚠️ Passing a single object throws "entries.map is not a function" (the client entry fails into FAILED → the web boot gate refuses to start) — the 0.2.x live contract is an array; do not use the legacy single-object form. Local fix (2026-11-08, verified on dsh 0.2.1-rc.3; a later upstream `npm run refresh-kb` sync may overwrite this line). |
 
 Whole-address patterns match the raw address: picomatch globstar (`**`) excludes standalone `.` and `..` segments even with `dot: true`, which includes dotfiles but does not change that exclusion. Resource-specific code parses addresses; the Host enforces file-read permissions.
 
