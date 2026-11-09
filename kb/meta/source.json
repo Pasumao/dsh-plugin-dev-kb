@@ -4,15 +4,15 @@
   "repository": "https://github.com/deepseek-ai/deepseek-harness",
   "branch": "master",
   "commit": "fcc0ad462172522aaf5c93a7b2e01f6b9f0b0159",
-  "fetchedAt": "2026-11-07",
+  "fetchedAt": "2026-11-09",
   "siteBase": "https://deepseek-harness.github.io/deepseek-harness",
   "publishedMarkdownPages": 192,
   "siteFiles": 196,
   "images": 4,
   "extraFiles": 468,
-  "note": "内容同步（2026-11-07）：site/ 与 extra/ 刷新至上游 master @ fcc0ad4（refresh-kb.mjs 自动执行），extra 共 468 篇。",
+  "note": "内容同步（2026-11-09）：site/ 与 extra/ 刷新至上游 master @ fcc0ad4（refresh-kb.mjs 自动执行），extra 共 468 篇。",
   "schemaVersion": 1,
   "label": "kb sync",
-  "message": "2026-11-07 @ fcc0ad4",
+  "message": "2026-11-09 @ fcc0ad4",
   "color": "blue"
 }
