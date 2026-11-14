@@ -1,6 +1,6 @@
 # DeepSeek Harness 文档索引
 
-> 由 `scripts/rebuild-index.mjs` 自动生成。共 192 个站点页面（中英双语），另有 468 个补充文档在 `extra/`。
+> 由 `scripts/rebuild-index.mjs` 自动生成。共 194 个站点页面（中英双语），另有 554 个补充文档在 `extra/`。
 
 ## 中文站点（根路径）
 
@@ -14,6 +14,7 @@
 
 | 页面 | 站点 URL | 本地文件 |
 | --- | --- | --- |
+| 卸载 DSH 桌面端 | [https://deepseek-harness.github.io/deepseek-harness/guide/desktop-uninstall-cleanup](https://deepseek-harness.github.io/deepseek-harness/guide/desktop-uninstall-cleanup) | `site/guide/desktop-uninstall-cleanup.md` |
 | 通过 GitHub Webhook 创建评审会话 | [https://deepseek-harness.github.io/deepseek-harness/guide/github-review](https://deepseek-harness.github.io/deepseek-harness/guide/github-review) | `site/guide/github-review.md` |
 | 连接第三方记忆 MCP 服务 | [https://deepseek-harness.github.io/deepseek-harness/guide/mcp-memory](https://deepseek-harness.github.io/deepseek-harness/guide/mcp-memory) | `site/guide/mcp-memory.md` |
 | 在网络代理后面运行 DSH | [https://deepseek-harness.github.io/deepseek-harness/guide/network-proxy](https://deepseek-harness.github.io/deepseek-harness/guide/network-proxy) | `site/guide/network-proxy.md` |
@@ -150,6 +151,7 @@
 | Configure persistent plugins from a prompt | [https://deepseek-harness.github.io/deepseek-harness/en/develop/practice/dynamic-cordis](https://deepseek-harness.github.io/deepseek-harness/en/develop/practice/dynamic-cordis) | `site/en/develop/practice/dynamic-cordis.md` |
 | Three-role capability design | [https://deepseek-harness.github.io/deepseek-harness/en/develop/practice](https://deepseek-harness.github.io/deepseek-harness/en/develop/practice) | `site/en/develop/practice/index.md` |
 | LLM adapters | [https://deepseek-harness.github.io/deepseek-harness/en/develop/practice/llm-adapter](https://deepseek-harness.github.io/deepseek-harness/en/develop/practice/llm-adapter) | `site/en/develop/practice/llm-adapter.md` |
+| Uninstall DSH Desktop | [https://deepseek-harness.github.io/deepseek-harness/en/guide/desktop-uninstall-cleanup](https://deepseek-harness.github.io/deepseek-harness/en/guide/desktop-uninstall-cleanup) | `site/en/guide/desktop-uninstall-cleanup.md` |
 | Create review Sessions from GitHub webhooks | [https://deepseek-harness.github.io/deepseek-harness/en/guide/github-review](https://deepseek-harness.github.io/deepseek-harness/en/guide/github-review) | `site/en/guide/github-review.md` |
 | Connect a third-party memory MCP server | [https://deepseek-harness.github.io/deepseek-harness/en/guide/mcp-memory](https://deepseek-harness.github.io/deepseek-harness/en/guide/mcp-memory) | `site/en/guide/mcp-memory.md` |
 | Run DSH behind a network proxy | [https://deepseek-harness.github.io/deepseek-harness/en/guide/network-proxy](https://deepseek-harness.github.io/deepseek-harness/en/guide/network-proxy) | `site/en/guide/network-proxy.md` |
@@ -230,5 +232,5 @@
 
 ---
 
-*站点页面：192（中文 96，英文 96）*
+*站点页面：194（中文 97，英文 97）*
 

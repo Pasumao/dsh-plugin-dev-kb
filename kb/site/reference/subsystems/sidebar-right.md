@@ -48,7 +48,7 @@ tab 身份是 `(kind, address)` 二元组：注册表的认领把地址原文用
 | `canOpen(address)` | 可选的同步否决，对 glob 命中生效；每次路由决策都会调用。 |
 | `title(address)` | chip 文本，在 tab 打开时捕获进布局记录，之后不再改写。 |
 | `keepMounted` | 可选的懒保活：已访问正文跨隐藏、Session 切换与停靠切换保留，由所属 View 持有 Session reference。 |
-| `guide` | 可选的引导页入口框**数组**：`[{ id, order, title(), description?(), icon? }, …]`——每项自带 `id`（注册表逐项查重复）。点一框即把贡献它的类型作为页面打开；省略（空数组或缺席）即不上引导页。⚠️ 传单个对象会抛 "entries.map is not a function"（客户端 entry 炸成 FAILED → web boot 门禁拒绝启动）——0.2.x 实况契约为数组，旧版单对象写法勿再使用。本地修正（2026-11-08，dsh 0.2.1-rc.3 实测；上游官方文档更新前 `npm run refresh-kb` 同步可能覆盖本行）。 |
+| `guide` | 可选的引导页入口框：`{ order, title(), description?(), icon? }`。点一框即把贡献它的类型作为页面打开；省略即不上引导页。 |
 
 完整地址模式匹配地址原文：picomatch 的 globstar（`**`）即使启用 `dot: true` 也排除独立的 `.` 和 `..` 段；该选项允许匹配 dotfile，不改变点段排除规则。地址由资源业务代码解析，文件读取仍受 Host 文件系统权限限制。
 
@@ -127,7 +127,7 @@ Sidebar 声明四个扩展 slot；其文档 tab 另行声明下表中的 keyed �
 
 Preview 记录已载入版本和读取开始时的观察版本。自动刷新默认开启；成员首次元数据只建立基线，后续变化才重新加载 tab。刷新只重读当前 tab，不改变共享元数据或其他 tab 的内容。读取不具备事务性；版本是不透明的相等性令牌，不是可排序的时间戳（[资源观察与 Preview RPC](https://github.com/deepseek-ai/deepseek-harness/blob/master/.agents/notes/implemented/architecture/2026-09-08-document-preview-operations.zh.md)）。
 
-自行加载的渲染器接收 `{ kind: 'renderer', revision, loaded, failed, reload }`，而不是文件字节。正文调用自己的注入 face，在 revision 变化和卸载时取消请求，并通过 `loaded(version)` 报告已展示的源版本。加载失败时调用 `failed()`，使后续文件变化能够触发重试。父组件忽略过期报告，保留共享的重新加载与源文件变更控件。Office 使用此模式请求 [Host 渲染的 PDF](https://github.com/deepseek-ai/deepseek-harness/blob/master/docs/subsystems/office-to-pdf.zh.md)；其 face 将转换字节、字体元数据和失败写入自己的 store，正文渲染嵌套 PDF 视图。`OfficeFontAction` 通过 `sidebar.right.tab.document.action` 在刷新按钮前显示缺失字体警告。[包 README](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/client/ui-sidebar-documentpreview/README.zh.md#what-it-registers)定义加载生命周期。
+自行加载的渲染器接收 `{ kind: 'renderer', revision, loaded, failed, reload }`，而不是文件字节。正文调用自己的注入 face，在 revision 变化和卸载时取消请求，并通过 `loaded(version)` 报告已展示的源版本。加载失败时调用 `failed()`，使后续文件变化能够触发重试。父组件忽略过期报告，保留共享的重新加载与源文件变更控件。Office 使用此模式请求 [Host 渲染的 PDF](https://github.com/deepseek-ai/deepseek-harness/blob/master/docs/subsystems/office-kit.zh.md)；其 face 将转换字节、字体元数据和失败写入自己的 store，正文渲染嵌套 PDF 视图。`OfficeFontAction` 通过 `sidebar.right.tab.document.action` 在刷新按钮前显示缺失字体警告。[包 README](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/client/ui-sidebar-documentpreview/README.zh.md#what-it-registers)定义加载生命周期。
 
 ## 资源模型
 
@@ -139,7 +139,7 @@ Preview 记录已载入版本和读取开始时的观察版本。自动刷新默
 
 ## Workspace Files
 
-Host 的 `ctx.workspaceFiles` 服务与生成的 `workspaceFiles` Remote 命名空间读取 Session 文件系统后端允许的文件：`stat(path)` 返回 `{ absolutePath, version, bytes? }`；`read(path, { offset?, limit? })` 返回一页行（`offset` 1 起，`limit` 受配置页长限制），形如 `{ …stat, offset, text, eof }`；`readBytes(path, { range?, baseFile? })` 在 `maxFileBytes` 上限内返回完整文件，或在 `maxBytes` 上限内返回字节窗口，形如 `{ …stat, offset, data, eof }`，其中 `data` 为原生 `Uint8Array`。可选 `range` 使用 0 起算的 `offset` 与字节数 `length`；`baseFile` 从另一文件所在目录解析相对目标。`list(path)` 仍限定在工作区根内，返回目录的直接子项（`name`、`type: 'file' | 'directory' | 'other'`、`size?`），按配置上限截断并置 `truncated`。`changes(path)` 监听一个目标，由 Host 判断目标类型并将目录限制在工作区。订阅就绪后产出 `{ kind: 'ready' }`，随后产出 `{ kind: 'change', change }` 帧，其载荷为 `{ absolutePath, version }` 或 `{ absolutePath, absent: true }`（[README](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/api/workspace-files/README.zh.md#use-this-package)）。文件读取拒绝末端符号链接并执行传输上限；`read` 还要求 UTF-8 文本。失败使用 `workspace-file/*` 错误码（[失败](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/api/workspace-files/README.zh.md)）。
+Host 的 `ctx.workspaceFiles` 服务与生成的 `workspaceFiles` Remote 命名空间读取 Session 文件系统后端允许的文件：`stat(path)` 返回 `{ absolutePath, version, bytes? }`；`read(path, { offset?, limit? })` 返回一页行（`offset` 1 起，`limit` 受配置页长限制），形如 `{ …stat, offset, text, eof }`；`readBytes(path, { range?, baseFile? })` 在 `maxFileBytes` 上限内返回完整文件，或在 `maxBytes` 上限内返回字节窗口，形如 `{ …stat, offset, data, eof }`，其中 `data` 为原生 `Uint8Array`。可选 `range` 使用 0 起算的 `offset` 与字节数 `length`；`baseFile` 从另一文件所在目录解析相对目标。`list(path)` 仍限定在工作区根内，返回目录的直接子项（`name`、`type: 'file' | 'directory' | 'other'`、`size?`），按配置上限截断并置 `truncated`。`search({ query, excludedPaths, includeHidden, respectGitignore })` 通过打包的 rg 搜索文件与推导的祖先目录，返回平铺的 `{ path, type }` 工作区相对路径匹配；原生忽略规则、上限与错误语义见[搜索说明](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/api/workspace-files/README.zh.md#search)。`changes(path)` 监听一个目标，由 Host 判断目标类型并将目录限制在工作区。订阅就绪后产出 `{ kind: 'ready' }`，随后产出 `{ kind: 'change', change }` 帧，其载荷为 `{ absolutePath, version }` 或 `{ absolutePath, absent: true }`（[README](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/api/workspace-files/README.zh.md#use-this-package)）。文件读取拒绝末端符号链接并执行传输上限；`read` 还要求 UTF-8 文本。失败使用 `workspace-file/*` 错误码（[失败](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/api/workspace-files/README.zh.md)）。
 
 [`dsh-api-workspace-files`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/api/workspace-files/README.zh.md) 注册 `file` 提供方，`ResourceProtocolMap.file` 直接是 `WorkspaceFileStat`。Session 地址携带授权 Session 与相对或绝对路径，Host 原样接收并解析。提供方在 stat 前等待 Host 的 `ready` 帧，并按 `stat.absolutePath` 过滤变更。裸 `absolute` 地址没有授权 Session，以 `workspace-file/unknown-workspace` 失败，不借用当前或 Tab Session。任何 UI（包括 Global）访问同一完整地址都共享观察。Preview 的 Remote 回调使用地址中的 Session；`remote.workspaceFiles.readBytes` 通过 Connection 的二进制 RPC 传输返回原生字节。
 

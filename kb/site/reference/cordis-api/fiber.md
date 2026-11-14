@@ -39,7 +39,7 @@ effect(execute: () => Effect, label?: string): AsyncDisposable<Promise<void>>
 
 **返回**一个用于撤销该作用的清理函数，并在清理完成后结算。
 
-[源码](https://github.com/deepseek-ai/deepseek-harness/blob/master/vendor/cordis/src/fiber.ts#L421)
+[源码](https://github.com/deepseek-ai/deepseek-harness/blob/master/vendor/cordis/src/fiber.ts#L443)
 
 ### ctx.fiber
 
@@ -58,7 +58,7 @@ fiber: Fiber
 
 fiber 会跟踪 `ctx.plugin()` 返回的插件上下文所对应的依赖状态、原始配置与有效配置、生命周期作用和清理操作。
 
-[源码](https://github.com/deepseek-ai/deepseek-harness/blob/master/vendor/cordis/src/fiber.ts#L184)
+[源码](https://github.com/deepseek-ai/deepseek-harness/blob/master/vendor/cordis/src/fiber.ts#L214)
 
 ### fiber.uid
 
@@ -69,7 +69,7 @@ public uid: number | null
 
 在注册表中的唯一 id；根 fiber 的 id 为 0，dispose 后为 `null`。
 
-[源码](https://github.com/deepseek-ai/deepseek-harness/blob/master/vendor/cordis/src/fiber.ts#L186)
+[源码](https://github.com/deepseek-ai/deepseek-harness/blob/master/vendor/cordis/src/fiber.ts#L216)
 
 ### fiber.ctx
 
@@ -80,7 +80,7 @@ public readonly ctx: Context
 
 此 fiber 的插件运行所在的上下文（扩展自父上下文）。
 
-[源码](https://github.com/deepseek-ai/deepseek-harness/blob/master/vendor/cordis/src/fiber.ts#L188)
+[源码](https://github.com/deepseek-ai/deepseek-harness/blob/master/vendor/cordis/src/fiber.ts#L218)
 
 ### fiber.config
 
@@ -91,7 +91,7 @@ public config: any
 
 为下次激活保留的原始插件输入。
 
-[源码](https://github.com/deepseek-ai/deepseek-harness/blob/master/vendor/cordis/src/fiber.ts#L190)
+[源码](https://github.com/deepseek-ai/deepseek-harness/blob/master/vendor/cordis/src/fiber.ts#L220)
 
 ### fiber.state
 
@@ -102,7 +102,7 @@ public state
 
 当前生命周期状态；状态转换会发出 `internal/status`。
 
-[源码](https://github.com/deepseek-ai/deepseek-harness/blob/master/vendor/cordis/src/fiber.ts#L192)
+[源码](https://github.com/deepseek-ai/deepseek-harness/blob/master/vendor/cordis/src/fiber.ts#L222)
 
 ### fiber.dispose
 
@@ -113,7 +113,7 @@ public readonly dispose: () => Promise<void>
 
 dispose 此 fiber：卸载插件，并在清理完成后结算。
 
-[源码](https://github.com/deepseek-ai/deepseek-harness/blob/master/vendor/cordis/src/fiber.ts#L194)
+[源码](https://github.com/deepseek-ai/deepseek-harness/blob/master/vendor/cordis/src/fiber.ts#L224)
 
 ### fiber.committed
 
@@ -124,7 +124,7 @@ public committed: Readonly<Dict<Impl>> | undefined
 
 在依赖方清理完成前保留的所需服务实现。
 
-[源码](https://github.com/deepseek-ai/deepseek-harness/blob/master/vendor/cordis/src/fiber.ts#L196)
+[源码](https://github.com/deepseek-ai/deepseek-harness/blob/master/vendor/cordis/src/fiber.ts#L226)
 
 ### fiber.provisions
 
@@ -135,7 +135,7 @@ public readonly provisions: Set<Impl>
 
 此 fiber 拥有的服务实现，包括隔离域中的服务。
 
-[源码](https://github.com/deepseek-ai/deepseek-harness/blob/master/vendor/cordis/src/fiber.ts#L198)
+[源码](https://github.com/deepseek-ai/deepseek-harness/blob/master/vendor/cordis/src/fiber.ts#L228)
 
 ### fiber.inertia
 
@@ -146,7 +146,7 @@ public inertia: Promise<void> | undefined
 
 当前正在进行的加载或卸载转换；如果没有此类转换，则为 undefined。
 
-[源码](https://github.com/deepseek-ai/deepseek-harness/blob/master/vendor/cordis/src/fiber.ts#L200)
+[源码](https://github.com/deepseek-ai/deepseek-harness/blob/master/vendor/cordis/src/fiber.ts#L230)
 
 ### fiber.name
 
@@ -157,7 +157,7 @@ get name()
 
 插件的显示名称，继承自最近的具名祖先；如果不存在，则为 `'root'`。
 
-[源码](https://github.com/deepseek-ai/deepseek-harness/blob/master/vendor/cordis/src/fiber.ts#L342)
+[源码](https://github.com/deepseek-ai/deepseek-harness/blob/master/vendor/cordis/src/fiber.ts#L364)
 
 ### fiber.assertActive()
 
@@ -175,7 +175,7 @@ assertActive()
 
 **返回**：fiber 仍处于活动状态时不返回任何内容。
 
-[源码](https://github.com/deepseek-ai/deepseek-harness/blob/master/vendor/cordis/src/fiber.ts#L357)
+[源码](https://github.com/deepseek-ai/deepseek-harness/blob/master/vendor/cordis/src/fiber.ts#L379)
 
 ### fiber.effect(execute, label?)
 
@@ -206,7 +206,7 @@ effect(execute: () => Effect, label?: string): AsyncDisposable<Promise<void>>
 
 **返回**一个用于撤销该作用的清理函数，并在清理完成后结算。
 
-[源码](https://github.com/deepseek-ai/deepseek-harness/blob/master/vendor/cordis/src/fiber.ts#L421)
+[源码](https://github.com/deepseek-ai/deepseek-harness/blob/master/vendor/cordis/src/fiber.ts#L443)
 
 ### fiber.getEffects()
 
@@ -223,7 +223,7 @@ getEffects()
 
 **返回**：每个带标签的活动作用对应一棵 `EffectMeta` 树。
 
-[源码](https://github.com/deepseek-ai/deepseek-harness/blob/master/vendor/cordis/src/fiber.ts#L574)
+[源码](https://github.com/deepseek-ai/deepseek-harness/blob/master/vendor/cordis/src/fiber.ts#L596)
 
 ### fiber.rawConfig
 
@@ -235,7 +235,7 @@ get rawConfig(): unknown
 
 保留供下次激活使用的原始输入，不执行表达式求值或验证。
 
-[源码](https://github.com/deepseek-ai/deepseek-harness/blob/master/vendor/cordis/src/fiber.ts#L649)
+[源码](https://github.com/deepseek-ai/deepseek-harness/blob/master/vendor/cordis/src/fiber.ts#L671)
 
 ### fiber.effectiveConfig
 
@@ -250,7 +250,7 @@ get effectiveConfig(): unknown
 
 传给插件激活过程或最近一次成功保留实例的更新的对象。候选配置求值不发布结果；volatile 更新保留其中的引用。激活前为 undefined，卸载后仍可读取；需要运行中实例的调用方还应检查 `state`。
 
-[源码](https://github.com/deepseek-ai/deepseek-harness/blob/master/vendor/cordis/src/fiber.ts#L664)
+[源码](https://github.com/deepseek-ai/deepseek-harness/blob/master/vendor/cordis/src/fiber.ts#L686)
 
 ### fiber.resolveConfig(config)
 
@@ -273,7 +273,7 @@ resolveConfig(config: unknown): unknown
 
 **返回**候选配置的解析结果，保留 schema 返回对象的身份。
 
-[源码](https://github.com/deepseek-ai/deepseek-harness/blob/master/vendor/cordis/src/fiber.ts#L676)
+[源码](https://github.com/deepseek-ai/deepseek-harness/blob/master/vendor/cordis/src/fiber.ts#L698)
 
 ### fiber.await()
 
@@ -291,7 +291,7 @@ async await()
 
 **返回**：进入稳定状态后的此 fiber。
 
-[源码](https://github.com/deepseek-ai/deepseek-harness/blob/master/vendor/cordis/src/fiber.ts#L754)
+[源码](https://github.com/deepseek-ai/deepseek-harness/blob/master/vendor/cordis/src/fiber.ts#L776)
 
 ### fiber.restart()
 
@@ -309,7 +309,7 @@ dispose 此插件，并立即使用其当前配置重新加载。
 
 **返回**一个在重新加载完成后兑现的 promise。
 
-[源码](https://github.com/deepseek-ai/deepseek-harness/blob/master/vendor/cordis/src/fiber.ts#L768)
+[源码](https://github.com/deepseek-ai/deepseek-harness/blob/master/vendor/cordis/src/fiber.ts#L790)
 
 ### fiber.update(config, noSave?)
 
@@ -331,7 +331,7 @@ update(config: any, noSave = false): Awaitable<void>
 
 **返回** 可等待的更新或重启结果；同步监听器处理更新时为 undefined。
 
-[源码](https://github.com/deepseek-ai/deepseek-harness/blob/master/vendor/cordis/src/fiber.ts#L783)
+[源码](https://github.com/deepseek-ai/deepseek-harness/blob/master/vendor/cordis/src/fiber.ts#L805)
 
 ## Effect
 
@@ -352,7 +352,7 @@ type Effect<T = any> =
   | AsyncEffect<T>
 ```
 
-[源码](https://github.com/deepseek-ai/deepseek-harness/blob/master/vendor/cordis/src/fiber.ts#L83)
+[源码](https://github.com/deepseek-ai/deepseek-harness/blob/master/vendor/cordis/src/fiber.ts#L113)
 
 ## Disposable
 
@@ -370,7 +370,7 @@ type Effect<T = any> =
 type Disposable<T = any> = () => T
 ```
 
-[源码](https://github.com/deepseek-ai/deepseek-harness/blob/master/vendor/cordis/src/fiber.ts#L74)
+[源码](https://github.com/deepseek-ai/deepseek-harness/blob/master/vendor/cordis/src/fiber.ts#L104)
 
 ## EffectMeta
 
@@ -386,7 +386,7 @@ interface EffectMeta {
 }
 ```
 
-[源码](https://github.com/deepseek-ai/deepseek-harness/blob/master/vendor/cordis/src/fiber.ts#L96)
+[源码](https://github.com/deepseek-ai/deepseek-harness/blob/master/vendor/cordis/src/fiber.ts#L126)
 
 ## CordisError
 
@@ -412,7 +412,7 @@ namespace CordisError {
 }
 ```
 
-[源码](https://github.com/deepseek-ai/deepseek-harness/blob/master/vendor/cordis/src/fiber.ts#L157)
+[源码](https://github.com/deepseek-ai/deepseek-harness/blob/master/vendor/cordis/src/fiber.ts#L187)
 
 ## ValidationError
 
@@ -428,7 +428,31 @@ class ValidationError extends TypeError {
    *
    * @param issues — the standard-schema issues, one message line each.
    */
-  constructor(issues: readonly StandardSchemaV1.Issue[])
+  constructor(public issues: readonly StandardSchemaV1.Issue[])
+
+  /**
+   * Test whether a value is a config `ValidationError`, including one from another copy of Cordis.
+   *
+   * @param error — the value to test.
+   * @returns `true` if `error` carries the global validation-error brand.
+   */
+  static is(error: unknown): error is ValidationError
+
+  /**
+   * Convert an issue path to plain property keys.
+   *
+   * @param path — the standard-schema issue path; segments may be `{ key }` objects.
+   * @returns the property keys, or an empty array when the issue has no path.
+   */
+  static normalizePath(path: StandardSchemaV1.Issue['path'] = [])
+
+  /**
+   * Format an issue path as a dotted string.
+   *
+   * @param path — the standard-schema issue path.
+   * @returns the keys joined with `.`.
+   */
+  static formatPath(path: StandardSchemaV1.Issue['path'])
 }
 ```
 
