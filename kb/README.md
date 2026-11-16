@@ -85,4 +85,4 @@ node scripts/rebuild-index.mjs
 
 - 站点页面：192 个 Markdown，4 张图片
 - 补充文档：554 个 Markdown（`extra/`）
-- 来源 commit：`39163dd30f703a79079e2d2446545cff3c453738`（master，2026-11-14 同步）
+- 来源 commit：`39163dd30f703a79079e2d2446545cff3c453738`（master，2026-11-16 同步）
