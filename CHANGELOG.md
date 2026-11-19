@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.8.4] - 2026-11-19
+
+- 全文校对批（宿主已升级到 dsh 0.2.2-rc.5，dist-tags：latest=rc.1 / next=rc.5）：
+  - **dsh-upgrade-assistant 技能**：目标版本不再只看 `npm view … version`（`latest` tag
+    停在 rc.1，会误导追预发布的用户）→ 改查 `dist-tags`（`next`）；当前版本明确
+    「desktop 形态以关于页/版本横幅（app.asar 探测）为准，profile 层共享副本会落后」。
+  - **dsh-dev-sandbox 技能**：补实测配方——与主力 desktop 并行时共写 `~/.dsh` 会锁竞争挂死，
+    设独立 `DSH_HOME` 或直接 `node …/lib/bin.js` 启动；常见坑表补对应行。
+  - 主技能树与 topics.md 补漏掉的 guide 页：plugin-market（插件市场与收录）、
+    desktop-uninstall-cleanup。
+  - README（中英）检索索引描述 314 → 400 文件（实测中文索引 400 文件 / 57ms；
+    805 为 search-index.json 双语总量，索引按语言分册是设计行为）。
+- 工具（dsh_kb_search / dsh_kb_read）与 starter 技能逐字核对，无变化。
+
 ## [1.8.3] - 2026-11-19
 
 - **版本感知横幅支持 desktop 形态真实版本**：新增零依赖 app.asar 探测——从宿主进程可执行文件

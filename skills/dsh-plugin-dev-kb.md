@@ -17,7 +17,7 @@ whenToUse: 开发 dsh 插件、查询 dsh 能力与 API、写 Tool、配置 cord
 ```
 kb/
 ├── site/            线上站点完整镜像（中英双语 194 页，优先读这里）
-│   ├── guide/       入门：quickstart / providers / python-sdk / github-review / schedule / mcp-memory / network-proxy / public-deployments
+│   ├── guide/       入门：quickstart / providers / python-sdk / plugin-market / github-review / schedule / mcp-memory / network-proxy / public-deployments / desktop-uninstall-cleanup
 │   ├── develop/     basic(第一个插件/tool/config/publish)、framework(生命周期/服务/事件)、
 │   │                practice(能力分层/LLM适配器/动态装配)、cordis-tutorial(7章)
 │   ├── reference/   index(架构)、cordis-primer、capability-seams、agent-lifecycle、

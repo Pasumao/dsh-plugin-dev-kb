@@ -14,6 +14,10 @@ whenToUse: 开发/调试 dsh 插件需要启动、重启、验证插件加载，
 - 建之前先列 `~/.dsh/profiles/`：**不得与现有 profile 重名**（尤其 `web` / `desktop` 这类主力 profile，绝不复用、绝不写入）；重名就换一个名字。
 - 一次性验证可用完即删（删 profile 目录即可，沙箱与主力完全隔离）；跨天持续开发的插件保留同名沙箱复用。
 - 沙箱与主力 profile 完全隔离：插件、patch、会话、设置各一份；provider/模型配置可从主力 profile 的 `cordis.patch.yml` 拷贝 provider 段过来（用编辑工具，UTF-8 无 BOM，勿用 PowerShell 重定向写）。
+- **与主力并行时的锁竞争**：主力 desktop 正在运行时，多个 dsh 实例共写 `~/.dsh` 可能启动挂死。
+  实测配方（2026-11，rc5 上验证）：给沙箱进程设独立的 `DSH_HOME`（如 `%TEMP%\dsh-sb-home`，
+  profiles 建在其下），或绕开 npx 直接 `node "<npx 缓存>/@deepseek-ai/dsh/lib/bin.js" web --profile <沙箱名> …`；
+  二者可并用，沙箱与主力彻底无共享状态。
 
 ## 2. 沙箱不存在时：初始化（一次）
 
@@ -66,5 +70,6 @@ npx -y "@deepseek-ai/dsh@<ver>" --profile <沙箱名> "列出你当前可用的�
 | `installation rejected: incompatible` | 兼容闸门拒绝安装并回滚，改 peer 或 allow-version |
 | 配置文件解析炸 | BOM / UTF-16 污染；只用编辑工具或 UTF-8 无 BOM 写 |
 | 依赖装了不生效 | 改 profile package.json 后忘 `pnpm install` |
+| 启动长时间无输出挂死 | 与主力 desktop 锁竞争共写 `~/.dsh`——按 §1 用独立 `DSH_HOME` 隔离 |
 
 更多：dsh 能力与 API 查 `dsh-plugin-dev-kb` 技能的知识库。

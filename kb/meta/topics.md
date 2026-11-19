@@ -74,7 +74,7 @@
 - 英文站：`site/en/`（结构与中文站一致：`guide/`、`develop/`、`reference/`）；`INDEX.md` 有全部 URL ↔ 文件对照
 
 ## 17. 使用指南进阶（GitHub Review / 定时任务 / MCP 记忆 / 网络代理）
-- `site/guide/github-review.md`（用 dsh 做 GitHub 代码评审）、`site/guide/schedule.md`（定时任务）、`site/guide/mcp-memory.md`（MCP 与长期记忆）、`site/guide/network-proxy.md`（代理后运行：HTTPS_PROXY 等环境变量、哪些路径保持直连）、`site/guide/public-deployments.md`（公共部署）
+- `site/guide/github-review.md`（用 dsh 做 GitHub 代码评审）、`site/guide/schedule.md`（定时任务）、`site/guide/mcp-memory.md`（MCP 与长期记忆）、`site/guide/network-proxy.md`（代理后运行：HTTPS_PROXY 等环境变量、哪些路径保持直连）、`site/guide/public-deployments.md`（公共部署）、`site/guide/plugin-market.md`（插件市场与收录）、`site/guide/desktop-uninstall-cleanup.md`（Desktop 卸载清理）
 - 扩展：`site/reference/subsystems/schedule.md`、`extra/subsystems/todo.md`（仓库文档）
 
 ## 17b. 版本升级与持久化变更（dsh 0.1.x → 0.2.x 重点）

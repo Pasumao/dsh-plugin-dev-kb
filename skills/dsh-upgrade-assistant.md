@@ -18,9 +18,12 @@ whenToUse: 用户要升级 dsh / DeepSeek Harness 版本，或升级后插件不
 
 ### 第一步：确定版本区间
 
-1. **当前版本**：读用户 profile 的安装信息（如 `%LOCALAPPDATA%` / profile 目录下的
-   `package.json` 中 `@deepseek-ai/dsh` 的版本，或让用户看 Desktop 关于页）。
-2. **目标版本**：`npm view @deepseek-ai/dsh version`（latest）或用户指定版本。
+1. **当前版本**：**desktop 形态以 Desktop 关于页为准**——profile 层 `package.json` 里
+   `@deepseek-ai/dsh` 是共享副本，实测会落后于桌面壳真实核心；dsh_kb_search / dsh_kb_read
+   输出的版本横幅（1.8.3 起读桌面壳 app.asar）也可直接采信。
+2. **目标版本**：`npm view @deepseek-ai/dsh dist-tags --json`——**别只看 `latest`**，
+   它是稳定 tag、可能远落后于预发布通道（如 latest=0.2.2-rc.1 而 next=0.2.2-rc.5）；
+   用户在跑预发布版时取 `next` 或用户实报版本。
 3. 列出区间内的版本号，形如 `v0.2.0-rc.2 → v0.2.1-rc.4`。
 
 ### 第二步：读变更（知识库检索）
