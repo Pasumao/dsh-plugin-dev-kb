@@ -1,5 +1,21 @@
 # Changelog
 
+## [1.8.3] - 2026-11-19
+
+- **版本感知横幅支持 desktop 形态真实版本**：新增零依赖 app.asar 探测——从宿主进程可执行文件
+  附近找 `resources/app.asar`，直接解析 asar 头读壳内 `@deepseek-ai/dsh` 的真实版本，
+  优先于 profile 层共享 node_modules 副本（后者实测落后于桌面壳真实核心，横幅会误报旧版本）。
+  非 desktop 形态（node 直跑/沙箱）该探测安全落空，回退原有目录逐层查找，行为不变；
+  `dsh_kb_search` / `dsh_kb_read` 输出的横幅来源标注变为 `desktop app.asar`。
+- selfcheck 新增合成最小 asar 的解析单元断言（含壳自身 package.json 诱饵，验证选中 @deepseek-ai/dsh）。
+- **refresh-kb.yml 防 Action 撞车**：checkout 改 `fetch-depth: 0`，push 前先
+  `git pull --rebase -X theirs origin main`（本地手动同步刚推过时自动 rebase，冲突以新鲜同步为准；
+  2026-11-19 本地同步即撞上 11-16 的 Action 自动提交，此前需手工处理）。
+- 过时文案修正：topics.md 检索索引 373 → 805 文件、upgrade-guide 清单改为「以目录实际清单为准」
+  并补充 0.2.2-rc.3/rc.4 要点（working-directory 工具移除、create_worktree 合并为 enter/exit_worktree）、
+  子系统速查补 `account.md`（DeepSeek 账号/凭据）；主技能 subsystems 计数 46+ → 47（含 account）；
+  dsh-upgrade-assistant 技能去掉会过时的版本区间硬编码。
+
 ## [1.8.2] - 2026-11-19
 
 - **知识库内容同步至上游 master `2e39e70`**（2026-11-19）：`site/` 全量刷新（194 页不变，

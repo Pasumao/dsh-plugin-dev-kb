@@ -32,7 +32,7 @@ Since 1.8.0 it also ships a version-aware banner plus the `dsh_kb_read` tool (to
   matched file paths, line numbers, and context snippets in a single call; supports `scope: api` (search only API-signature/catalog docs),
   `lang: en`, and an empty query returning topic navigation. The index is built lazily in memory (~60ms / 314 files), read-only.
 - **Version awareness (since 1.8.0)**: tool output carries a banner — host dsh version vs the knowledge-base
-  master snapshot may drift on APIs, with the matching `extra/upgrade-guide/<vX.Y.Z>` guide path; detection
+  master snapshot may drift on APIs, with the matching `extra/upgrade-guide/<vX.Y.Z>` guide path; since 1.8.3 the desktop form reads the real core version from the shell's `app.asar` first (the shared node_modules copy can lag behind the actual desktop core); detection
   degrades gracefully (no banner, no error).
 - **Windowed reading tool (since 1.8.0)**: `dsh_kb_read` reads originals by `path`/`offset`/`limit` line windows,
   with numbered output, whole-file-read protection, path-escape rejection, automatic zh↔en counterpart hints, and continuation pointers.

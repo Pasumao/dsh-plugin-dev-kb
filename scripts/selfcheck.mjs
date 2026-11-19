@@ -1,6 +1,7 @@
 // 最小自检：发布前验证结构完整（离线、零依赖）。node scripts/selfcheck.mjs
 import { readFileSync, existsSync } from "node:fs";
 import { join, dirname } from "node:path";
+import { pathToFileURL } from "node:url";
 import { fileURLToPath } from "node:url";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
@@ -49,6 +50,40 @@ if (!existsSync(join(root, "skills", "dsh-plugin-starter.md"))) {
 }
 const mainSkill = readFileSync(join(root, "skills", "dsh-plugin-dev-kb.md"), "utf8");
 if (!mainSkill.includes("dsh_kb_read")) failures.push("技能正文未提及 dsh_kb_read");
+
+// 1.8.3：desktop app.asar 版本探测——用合成最小 asar 验证头部解析与 @deepseek-ai/dsh 选中
+try {
+  const { writeFileSync, unlinkSync } = await import("node:fs");
+  const tmpAsar = join(root, ".selfcheck-tmp.asar");
+  const dshPkg = Buffer.from(JSON.stringify({ name: "@deepseek-ai/dsh", version: "0.2.2-rc.4" }));
+  const appPkg = Buffer.from(JSON.stringify({ name: "dsh-desktop", version: "9.9.9" }));
+  const mk = (files) => ({ files });
+  const tree = mk({
+    "package.json": { size: appPkg.length, offset: String(dshPkg.length) }, // 诱饵：壳自身 package.json
+    node_modules: mk({ "@deepseek-ai": mk({ dsh: mk({ "package.json": { size: dshPkg.length, offset: "0" } }) }) }),
+  });
+  const json = Buffer.from(JSON.stringify(tree));
+  const pad = (4 - (json.length % 4)) % 4;
+  const headerLen = 8 + json.length + pad; // headerPickle 总长 = 4(前缀) + 4(jsonLen) + 载荷
+  const head = Buffer.alloc(16);
+  head.writeUInt32LE(4, 0);
+  head.writeUInt32LE(headerLen, 4);
+  head.writeUInt32LE(4 + json.length + pad, 8);
+  head.writeUInt32LE(json.length, 12);
+  writeFileSync(tmpAsar, Buffer.concat([head, json, Buffer.alloc(pad), Buffer.alloc(headerLen - 8 - json.length - pad), dshPkg, appPkg]));
+  const { readAsarCoreVersion, detectHostVersion } = await import(
+    pathToFileURL(join(root, "lib", "kb-version.js")).href
+  );
+  const got = readAsarCoreVersion(tmpAsar);
+  if (got !== "0.2.2-rc.4") failures.push(`asar 版本解析错：得到 ${JSON.stringify(got)}，期望 0.2.2-rc.4`);
+  if (readAsarCoreVersion(join(root, "不存在的.asar")) !== null) failures.push("asar 解析对不存在文件未返回 null");
+  unlinkSync(tmpAsar);
+  // 探测主入口仍可用（本机环境探测结果不断言，只断言不抛错且形态合法）
+  const det = detectHostVersion(root);
+  if (det !== null && (!det.version || !det.source)) failures.push("detectHostVersion 返回形态非法");
+} catch (e) {
+  failures.push(`asar 探测自检异常：${e?.message || e}`);
+}
 
 if (failures.length) {
   for (const f of failures) console.error(`[FAIL] ${f}`);

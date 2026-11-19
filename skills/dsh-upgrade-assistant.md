@@ -26,8 +26,8 @@ whenToUse: 用户要升级 dsh / DeepSeek Harness 版本，或升级后插件不
 ### 第二步：读变更（知识库检索）
 
 1. 对区间内**每个版本**读一份指南：
-   `{{KB_ROOT}}/extra/upgrade-guide/<版本>/`（目录按 `v0.1.7-rc.2` … `v0.2.2-alpha.3` 组织，
-   每个子目录是一篇 guide.md / guide.zh.md，读中文版）。
+   `{{KB_ROOT}}/extra/upgrade-guide/<版本>/`（目录按版本号持续追加、自 v0.1.7-rc.2 起逐版组织，
+   **以 `ls` 目录实际清单为准**；每个子目录是一篇 guide.md / guide.zh.md，读中文版）。
 2. 持久化/会话格式变更：列出 `{{KB_ROOT}}/extra/persistence-changes/` 中日期晚于当前版本
    发布日的条目（文件名即日期），只读标题相关条目判断「历史会话会不会丢/迁移」。
 3. 快速定位也可用 `dsh_kb_search` 工具，如 query=`升级 upgrade-guide v0.2.1`。

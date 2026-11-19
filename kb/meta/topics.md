@@ -50,7 +50,7 @@
 - 模型与上下文：`llm-streaming.md`、`token-meter.md`、`system-prompt.md`、`compaction.md`（上下文压缩）
 - 执行与工具：`tools.md`、`shell.md`（Bash）、`subprocess.md`、`terminal.md`（PTY）、`jobs.md`（后台任务）、`filesystem.md`、`lsp.md`、`ptc-runtime.md`（原 code-runtime，dsh 0.2.0 更名）、`web.md`、`skills.md`、`workflow.md`、`subagent.md`
 - 策略与交互：`approval.md`（审批）、`permission-presets.md`、`sandbox.md`、`plan.md`（计划模式）、`user-questions.md`、`commands.md`、`goal.md`、`schedule.md`
-- 平台与接入：`web-server.md`（HTTP 服务器）、`web-client.md`（Web 客户端注入）、`slots.md`（UI 插槽系统）、`typert.md`、`client-modules.md`、`client-resources.md`、`storage.md`、`workspace.md`、`settings.md`、`credentials.md`、`sidebar-right.md`
+- 平台与接入：`web-server.md`（HTTP 服务器）、`web-client.md`（Web 客户端注入）、`slots.md`（UI 插槽系统）、`typert.md`、`client-modules.md`、`client-resources.md`、`storage.md`、`workspace.md`、`settings.md`、`credentials.md`、`sidebar-right.md`、`account.md`（DeepSeek 账号/凭据，中文版在 `extra/subsystems/account.zh.md`）
 - 以上均在 `site/reference/subsystems/` 下（如 `site/reference/subsystems/session.md`）
 
 ## 12. 架构与核心概念
@@ -78,10 +78,10 @@
 - 扩展：`site/reference/subsystems/schedule.md`、`extra/subsystems/todo.md`（仓库文档）
 
 ## 17b. 版本升级与持久化变更（dsh 0.1.x → 0.2.x 重点）
-- `extra/upgrade-guide/`（各版本升级指南：0.1.7-rc.2 / 0.2.0-rc.2，含 schedule-bundle-retired、remove-runtime-invariants、subpath-plugin-display-manifest 等）
+- `extra/upgrade-guide/`（逐版本升级指南目录，自 v0.1.7-rc.2 起持续追加，**以目录实际清单为准、最新版读最新目录**；含 schedule-bundle-retired、remove-runtime-invariants、subpath-plugin-display-manifest、working-directory 工具移除、create_worktree 合并为 enter/exit_worktree 等变更）
 - `extra/persistence-changes/`（持久化格式变更记录与历史格式，含 releases/、historical-formats/）
 
 ## 检索技巧
-- 全量索引：`meta/search-index.json`（373 个文件的 path/url/title/字符数）
+- 全量索引：`meta/search-index.json`（805 个文件的 path/url/title/字符数）
 - 大文件（config-catalog / tool-catalog / module-graph / subsystems/session 等 ≥100KB）先用 grep 定位关键行，再 read 局部，不要整读
 - 常用检索关键词：`ctx.effect`、`ctx.on`、`ctx.tools.register`、`inject`、`Service Definition`、`cordis.yml`、`SessionEventMap`

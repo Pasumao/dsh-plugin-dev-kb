@@ -21,6 +21,8 @@ jobs:
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # 保证 push 前能 rebase 到最新 origin/main（防与本地手动同步撞车）
 
       - uses: actions/setup-node@v4
         with:
@@ -39,5 +41,7 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add kb/
           git commit -m "kb: auto-sync from upstream deepseek-harness master"
+          # push 前先 rebase 到远程最新（本地手动同步可能刚推过）；-X theirs = 冲突以本次新鲜同步为准
+          git pull --rebase -X theirs origin main
           git push
         shell: bash
