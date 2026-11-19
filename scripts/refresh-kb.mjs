@@ -139,8 +139,10 @@ fs.writeFileSync(path.join(KB, 'meta', 'source.json'), JSON.stringify(source, nu
 const readmePath = path.join(KB, 'README.md');
 let readme = fs.readFileSync(readmePath, 'utf8');
 readme = readme
-  .replace(/- 站点页面：\d+ 个 Markdown（中文 \d+ \+ 英文 \d+），\d+ 张图片/,
+  .replace(/- 站点页面：\d+ 个 Markdown，\d+ 张图片/,
     `- 站点页面：${siteMd} 个 Markdown，${siteImages} 张图片`)
+  .replace(/（由投影结果生成，\d+ 页）/,
+    `（由投影结果生成，${siteMd} 页）`)
   .replace(/- 补充文档：\d+ 个 Markdown（`extra\/`）/,
     `- 补充文档：${extraMd} 个 Markdown（\`extra/\`）`)
   .replace(/- 来源 commit：`[0-9a-f]+`（master，[\d-]+ 同步）/,

@@ -1,5 +1,16 @@
 # Changelog
 
+## [1.8.2] - 2026-11-19
+
+- **知识库内容同步至上游 master `2e39e70`**（2026-11-19）：`site/` 全量刷新（194 页不变，
+  54 个文件内容更新，含 tool-catalog 大改、多篇 subsystems 参考、quickstart/providers/
+  plugin-market/python-sdk/schedule 等 guide 页）；`extra/` 以发布清单差集重建 **554 → 608 篇**
+  （新增 v0.2.2-rc.3 升级指南 22 篇变更、v0.2.2-rc.4 升级指南 3 篇变更、account 子系统中英文档、
+  2026-11-13 workspace-root/change 持久化变更——Host 移动 Session 目录改记新事件，
+  旧读者会拒绝含该行的日志）；索引与 INDEX.md 已重建（805 文件）。
+- 技能/README/工具描述统计数字同步更新（194 页 / 608 篇 / 805 文件）；
+  修复 refresh-kb.mjs 对 kb/README.md「站点页面」行的正则失配（此前停留在 192）。
+
 ## [1.8.1] - 2026-11-14
 
 - **知识库内容同步至上游 master `39163dd`**（2026-11-14）：`site/` 全量刷新 **192 → 194 页**

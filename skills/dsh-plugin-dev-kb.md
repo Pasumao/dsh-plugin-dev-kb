@@ -24,12 +24,12 @@ kb/
 │   │                config-catalog、tool-catalog、api-gateway、cordis-api/(6)、cookbook/(5)、subsystems/(46+，含 office-kit)、
 │   │                guide/（含 desktop-uninstall-cleanup）
 │   └── en/          英文站镜像（结构与中文站一致）
-├── extra/           仓库内未发布到站点的补充文档（554 篇）：glossary、defensive-patterns、
+├── extra/           仓库内未发布到站点的补充文档（608 篇）：glossary、defensive-patterns、
 │                    module-graph、testing、postmortem/、i18n/、cookbook 与 subsystems 扩展、
 │                    upgrade-guide/(各版本升级指南)、persistence-changes/(持久化格式变更)
 ├── meta/
 │   ├── topics.md    ★ 主题导航：任务场景 → 要读的文件（先用这个）
-│   ├── search-index.json  全量检索索引（751 文件：path/url/title/字符数）
+│   ├── search-index.json  全量检索索引（805 文件：path/url/title/字符数）
 │   ├── source.json  来源信息（commit/时间/统计）
 │   └── site-pages.txt     线上站点页面清单
 ├── INDEX.md         全部 站点 URL ↔ 本地文件 对照

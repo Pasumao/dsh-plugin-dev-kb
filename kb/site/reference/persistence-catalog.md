@@ -90,6 +90,7 @@ outline: "deep"
 | `event:user/message` | event | `fb6a6e338625067ac582f55dde412a583040cd738bb8fc6820cb0b941c59f05a` | [`{ type: "user/message" }`](#persistence-type-sha256-fb6a6e338625067ac582f55dde412a583040cd738bb8fc6820cb0b941c59f05a) |
 | `event:web/deepseek-search-llm-request` | event | `0c556c9b9f2a96238a6b9bbb99e748206cbff2ed6203041c9571f04ae5802f52` | [`{ type: "web/deepseek-search-llm-request" }`](#persistence-type-sha256-0c556c9b9f2a96238a6b9bbb99e748206cbff2ed6203041c9571f04ae5802f52) |
 | `event:working-directory/change` | event | `124aa62078ca3311353b39cc3bf6c75da281338be6bbf672f8b361d828cddca3` | [`{ type: "working-directory/change" }`](#persistence-type-sha256-124aa62078ca3311353b39cc3bf6c75da281338be6bbf672f8b361d828cddca3) |
+| `event:workspace-root/change` | event | `025f11632cd02aaecc23a46c3b5bf43b9009d88293ed9b35ccbc1139d73334dc` | [`{ type: "workspace-root/change" }`](#persistence-type-sha256-025f11632cd02aaecc23a46c3b5bf43b9009d88293ed9b35ccbc1139d73334dc) |
 | `event:workspace/changes` | event | `e308ccf867a5398e316e0af8cb6ce238a8d33a63b9b384c8250a686786285f72` | [`{ type: "workspace/changes" }`](#persistence-type-sha256-e308ccf867a5398e316e0af8cb6ce238a8d33a63b9b384c8250a686786285f72) |
 
 ## 事件信封
@@ -167,7 +168,7 @@ export type SessionEvent<T extends SessionEventType = SessionEventType> = {
 }[T]
 ```
 
-来源：[`packages/core/session/src/types.ts:439`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/core/session/src/types.ts) · [`packages/core/session/src/types.ts:447`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/core/session/src/types.ts) · [`packages/core/session/src/types.ts:470`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/core/session/src/types.ts) · [`packages/core/session/src/types.ts:506`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/core/session/src/types.ts)
+来源：[`packages/core/session/src/types.ts:443`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/core/session/src/types.ts) · [`packages/core/session/src/types.ts:451`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/core/session/src/types.ts) · [`packages/core/session/src/types.ts:474`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/core/session/src/types.ts) · [`packages/core/session/src/types.ts:510`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/core/session/src/types.ts)
 
 ## 事件
 
@@ -296,7 +297,7 @@ export type SessionEvent<T extends SessionEventType = SessionEventType> = {
 'assistant/attempt': { turn: number; step: number; stream: AssistantStreamRecord[] }
 ```
 
-来源：[`packages/core/session/src/types.ts:363`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/core/session/src/types.ts)
+来源：[`packages/core/session/src/types.ts:367`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/core/session/src/types.ts)
 
 <a id="assistantmessage--surface"></a>
 
@@ -326,7 +327,7 @@ export type SessionEvent<T extends SessionEventType = SessionEventType> = {
 
 类型：[TokenUsage](./subsystems/llm-streaming.md)
 
-来源：[`packages/core/session/src/types.ts:349`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/core/session/src/types.ts)
+来源：[`packages/core/session/src/types.ts:353`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/core/session/src/types.ts)
 
 ### `command/*`
 
@@ -514,7 +515,7 @@ export type SessionEvent<T extends SessionEventType = SessionEventType> = {
 }
 ```
 
-来源：[`packages/core/session/src/types.ts:317`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/core/session/src/types.ts)
+来源：[`packages/core/session/src/types.ts:321`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/core/session/src/types.ts)
 
 ### `feedback/*`
 
@@ -724,7 +725,7 @@ export type SessionEvent<T extends SessionEventType = SessionEventType> = {
 'permission/preset': { preset: string }
 ```
 
-来源：[`packages/interaction/permission-presets/src/index.ts:54`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/interaction/permission-presets/src/index.ts)
+来源：[`packages/interaction/permission-presets/src/index.ts:61`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/interaction/permission-presets/src/index.ts)
 
 ### `plan/*`
 
@@ -759,7 +760,7 @@ export type SessionEvent<T extends SessionEventType = SessionEventType> = {
 'request/context': RequestContext
 ```
 
-来源：[`packages/core/session/src/types.ts:410`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/core/session/src/types.ts)
+来源：[`packages/core/session/src/types.ts:414`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/core/session/src/types.ts)
 
 <a id="requestheader--log-only"></a>
 
@@ -778,7 +779,7 @@ export type SessionEvent<T extends SessionEventType = SessionEventType> = {
 }
 ```
 
-来源：[`packages/core/session/src/types.ts:398`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/core/session/src/types.ts)
+来源：[`packages/core/session/src/types.ts:402`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/core/session/src/types.ts)
 
 ### `sandbox/*`
 
@@ -855,7 +856,7 @@ export type SessionEvent<T extends SessionEventType = SessionEventType> = {
 'session/end-seed': { inherited?: true }
 ```
 
-来源：[`packages/core/session/src/types.ts:435`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/core/session/src/types.ts)
+来源：[`packages/core/session/src/types.ts:439`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/core/session/src/types.ts)
 
 <a id="sessiontitle--log-only"></a>
 
@@ -871,7 +872,7 @@ export type SessionEvent<T extends SessionEventType = SessionEventType> = {
 
 类型：[SessionTitleEventData](./subsystems/session-title.md)
 
-来源：[`packages/session/session-title/src/index.ts:77`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/session/session-title/src/index.ts)
+来源：[`packages/session/session-title/src/index.ts:78`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/session/session-title/src/index.ts)
 
 <a id="sessiontitle-llm-request--log-only"></a>
 
@@ -917,7 +918,7 @@ export type SessionEvent<T extends SessionEventType = SessionEventType> = {
 'step/end': { turn: number; step: number }
 ```
 
-来源：[`packages/core/session/src/types.ts:307`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/core/session/src/types.ts)
+来源：[`packages/core/session/src/types.ts:311`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/core/session/src/types.ts)
 
 <a id="stepstart--log-only"></a>
 
@@ -928,7 +929,7 @@ export type SessionEvent<T extends SessionEventType = SessionEventType> = {
 'step/start': { turn: number; step: number }
 ```
 
-来源：[`packages/core/session/src/types.ts:305`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/core/session/src/types.ts)
+来源：[`packages/core/session/src/types.ts:309`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/core/session/src/types.ts)
 
 ### `subagent/*`
 
@@ -969,18 +970,17 @@ export type SessionEvent<T extends SessionEventType = SessionEventType> = {
 
 ```ts persistence-catalog
 /**
- * Records this Session’s authorized child provider/model routes. Appended
- * before the first model request; absence restricts explicit selection
- * to the current parent route. Log-only: it carries
- * no `surfaceOp` and never enters model history.
+ * Child provider/model routes recorded by earlier releases. Current
+ * releases neither append nor read it: delegation reads the Host setting
+ * at each call. Log-only: it carries no `surfaceOp` and never enters model history.
  */
 'subagent/model-selection-policy': {
-  /** Exact routes this Session may select explicitly for a child. */
+  /** Exact routes the Session could select explicitly for a child. */
   allowedModels: AllowedModelRoute[]
 }
 ```
 
-来源：[`packages/subagent/tool-subagent/src/model-selection-state.ts:17`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/subagent/tool-subagent/src/model-selection-state.ts)
+来源：[`packages/subagent/tool-subagent/src/model-selection-state.ts:12`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/subagent/tool-subagent/src/model-selection-state.ts)
 
 ### `system/*`
 
@@ -1006,7 +1006,7 @@ export type SessionEvent<T extends SessionEventType = SessionEventType> = {
 'system/message': { turn: number; step: number; message: SystemMessage }
 ```
 
-来源：[`packages/core/session/src/types.ts:338`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/core/session/src/types.ts)
+来源：[`packages/core/session/src/types.ts:342`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/core/session/src/types.ts)
 
 ### `team/*`
 
@@ -1110,7 +1110,7 @@ export type SessionEvent<T extends SessionEventType = SessionEventType> = {
 
 类型：[ToolCallId](./subsystems/core.md)
 
-来源：[`packages/core/session/src/types.ts:369`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/core/session/src/types.ts)
+来源：[`packages/core/session/src/types.ts:373`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/core/session/src/types.ts)
 
 <a id="toolptc-dispatch--log-only"></a>
 
@@ -1191,7 +1191,7 @@ export type SessionEvent<T extends SessionEventType = SessionEventType> = {
 }
 ```
 
-来源：[`packages/core/session/src/types.ts:383`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/core/session/src/types.ts)
+来源：[`packages/core/session/src/types.ts:387`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/core/session/src/types.ts)
 
 ### `tool-workflow/*`
 
@@ -1271,7 +1271,7 @@ export type SessionEvent<T extends SessionEventType = SessionEventType> = {
 
 类型：[TurnEndReason](./subsystems/session.md)
 
-来源：[`packages/core/session/src/types.ts:303`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/core/session/src/types.ts)
+来源：[`packages/core/session/src/types.ts:307`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/core/session/src/types.ts)
 
 <a id="turnstart--log-only"></a>
 
@@ -1287,7 +1287,7 @@ export type SessionEvent<T extends SessionEventType = SessionEventType> = {
 'turn/start': { turn: number }
 ```
 
-来源：[`packages/core/session/src/types.ts:294`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/core/session/src/types.ts)
+来源：[`packages/core/session/src/types.ts:298`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/core/session/src/types.ts)
 
 ### `user/*`
 
@@ -1306,7 +1306,7 @@ export type SessionEvent<T extends SessionEventType = SessionEventType> = {
 'user/message': UserMessage
 ```
 
-来源：[`packages/core/session/src/types.ts:315`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/core/session/src/types.ts)
+来源：[`packages/core/session/src/types.ts:319`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/core/session/src/types.ts)
 
 ### `web/*`
 
@@ -1319,7 +1319,7 @@ export type SessionEvent<T extends SessionEventType = SessionEventType> = {
 'web/deepseek-search-llm-request': DeepSeekSearchLlmRequest
 ```
 
-来源：[`packages/web/web-search-deepseek/src/provider.ts:89`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/web/web-search-deepseek/src/provider.ts)
+来源：[`packages/web/web-search-deepseek/src/provider.ts:90`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/web/web-search-deepseek/src/provider.ts)
 
 ### `working-directory/*`
 
@@ -1328,14 +1328,20 @@ export type SessionEvent<T extends SessionEventType = SessionEventType> = {
 #### `working-directory/change` — log-only
 
 ```ts persistence-catalog
-/** Effective working directory; the immutable Session header retains the original project. */
+/**
+ * Directory change recorded by releases whose model could move the directory. Readers ignore it: a
+ * Session that holds one resumes in its original project, or in the directory of its last
+ * `workspace-root/change`.
+ * @deprecated No writer records this event. `WorkingDirectoryService.set` records
+ * `workspace-root/change`.
+ */
 'working-directory/change': {
-  /** Absolute directory used by subsequent directory-based operations. */
+  /** Absolute directory the Session worked in after the change. */
   cwd: string
 }
 ```
 
-来源：[`packages/session/working-directory/src/index.ts:55`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/session/working-directory/src/index.ts)
+来源：[`packages/session/working-directory/src/index.ts:62`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/session/working-directory/src/index.ts)
 
 ### `workspace/*`
 
@@ -1353,6 +1359,22 @@ export type SessionEvent<T extends SessionEventType = SessionEventType> = {
 ```
 
 来源：[`packages/deliverables/workspace-changes/src/types.ts:106`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/deliverables/workspace-changes/src/types.ts)
+
+### `workspace-root/*`
+
+<a id="workspace-rootchange--log-only"></a>
+
+#### `workspace-root/change` — log-only
+
+```ts persistence-catalog
+/** Host move of the Session's directory; the immutable Session header retains the original project. */
+'workspace-root/change': {
+  /** Absolute directory the Session works in from this event on. */
+  cwd: string
+}
+```
+
+来源：[`packages/session/working-directory/src/index.ts:67`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/session/working-directory/src/index.ts)
 
 ## 已解析的持久化类型
 
@@ -3084,6 +3106,14 @@ SHA-256: `d4c799e3d51cae1040362ba4968efc484739e14416c9c1df20c2f108b4ef2eb5`
 
 `"working-directory/change"`
 
+<a id="persistence-type-sha256-5f22f22ce033e6ce2913445ff1fd80e5dab629a9ac9c19bcffdde8a895b163dd"></a>
+
+### `"workspace-root/change"`
+
+SHA-256: `5f22f22ce033e6ce2913445ff1fd80e5dab629a9ac9c19bcffdde8a895b163dd`
+
+`"workspace-root/change"`
+
 <a id="persistence-type-sha256-a3edd1efd1fef21b72c55e213c8a8b24196b091abde2b89db52be0b2aaae3cfa"></a>
 
 ### `"workspace-write"`
@@ -3297,7 +3327,7 @@ SHA-256: `84bbfdce7d2eab5b0c53e72ff7406db856c8bfd621b965b72fd86598ba493bf7`
 
 SHA-256: `ada310bf0bdb8fed51f3b56ea63f6ea6b18bbd587f04fccb63a14ab0b2a24e05`
 
-来源：[`packages/core/session/src/types.ts:195`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/core/session/src/types.ts) · [`packages/interaction/commands/src/types.ts:75`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/interaction/commands/src/types.ts) · [`packages/interaction/commands/src/types.ts:79`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/interaction/commands/src/types.ts) · [`packages/llm/llm/src/message.ts:110`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/llm/llm/src/message.ts) · [`packages/session/session-title/src/types.ts:35`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/session/session-title/src/types.ts)
+来源：[`packages/core/session/src/types.ts:199`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/core/session/src/types.ts) · [`packages/interaction/commands/src/types.ts:75`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/interaction/commands/src/types.ts) · [`packages/interaction/commands/src/types.ts:79`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/interaction/commands/src/types.ts) · [`packages/llm/llm/src/message.ts:110`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/llm/llm/src/message.ts) · [`packages/session/session-title/src/types.ts:35`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/session/session-title/src/types.ts)
 
 | 属性 | 存在性 | 类型 |
 |---|---|---|
@@ -3432,7 +3462,7 @@ SHA-256: `6487b10ba7542f3c447b1e41a1c6a590b7bfafe0b9b66b49f34028da85bb970f`
 
 SHA-256: `abd6ca62a5ab166553848324a23fef90eed7f59c8021bd63e7ea5bc6fd666b0c`
 
-来源：[`packages/web/web-search-deepseek/src/provider.ts:55`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/web/web-search-deepseek/src/provider.ts)
+来源：[`packages/web/web-search-deepseek/src/provider.ts:56`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/web/web-search-deepseek/src/provider.ts)
 
 | 属性 | 存在性 | 类型 |
 |---|---|---|
@@ -3473,7 +3503,7 @@ SHA-256: `010783c095f1d9bddbdd2000f3f0a2d31e2ba4a687f2dabf169c5703b98c9def`
 
 SHA-256: `9a930283b91d493d6347146f2475bb107294b379415ca02162354f46a64164f7`
 
-来源：[`packages/core/session/src/types.ts:246`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/core/session/src/types.ts)
+来源：[`packages/core/session/src/types.ts:250`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/core/session/src/types.ts)
 
 | 属性 | 存在性 | 类型 |
 |---|---|---|
@@ -3901,7 +3931,7 @@ SHA-256: `e3056e0dda3a379e895386e368c3ce42131460ea65e410e1d091cca98a347305`
 
 SHA-256: `750a2b129d67704df675c06823c20c80b65cbae89d5aaa914fd5a72e3df395b5`
 
-来源：[`packages/jobs/jobs/src/types.ts:247`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/jobs/jobs/src/types.ts)
+来源：[`packages/jobs/jobs/src/types.ts:253`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/jobs/jobs/src/types.ts)
 
 以下类型之一：
 
@@ -4596,7 +4626,7 @@ SHA-256: `0acd94fe8794574c9ae72c7855ee16d29c546096d4af760d16d1225385764555`
 
 SHA-256: `b158f3ff6923714807c0d73882f0b05dc87f8fa85c9e90814852d48bbc866081`
 
-来源：[`packages/core/session/src/types.ts:260`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/core/session/src/types.ts)
+来源：[`packages/core/session/src/types.ts:264`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/core/session/src/types.ts)
 
 | 属性 | 存在性 | 类型 |
 |---|---|---|
@@ -4615,7 +4645,7 @@ SHA-256: `b158f3ff6923714807c0d73882f0b05dc87f8fa85c9e90814852d48bbc866081`
 
 SHA-256: `530da6c0267813bb4511af72883cc518834e624e3b3220a7062955fd57a788a6`
 
-来源：[`packages/core/session/src/types.ts:279`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/core/session/src/types.ts)
+来源：[`packages/core/session/src/types.ts:283`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/core/session/src/types.ts)
 
 以下类型之一：
 
@@ -4975,7 +5005,7 @@ SHA-256: `848639f8787f035b480ec53cb5686850897c5e8006d87ca231cd8a9ee8634936`
 
 SHA-256: `335e242de1fcc17b6ca920fc420d71bec2d76e53e37955c00948b65ab77f05c5`
 
-来源：[`packages/core/session/src/types.ts:470`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/core/session/src/types.ts)
+来源：[`packages/core/session/src/types.ts:474`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/core/session/src/types.ts)
 
 以下类型之一：
 
@@ -5150,7 +5180,7 @@ SHA-256: `b2d2a01e51341a3bfec809198952c8c830a7899f4cb6ecd3c1dc0b5d9a2af943`
 
 SHA-256: `4e887768586528565381dadbddee6cef555874148089f4579e0b4b1ad096fc9c`
 
-来源：[`packages/llm/llm/src/types.ts:69`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/llm/llm/src/types.ts) · [`packages/web/web-search-deepseek/src/provider.ts:66`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/web/web-search-deepseek/src/provider.ts)
+来源：[`packages/llm/llm/src/types.ts:69`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/llm/llm/src/types.ts) · [`packages/web/web-search-deepseek/src/provider.ts:67`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/web/web-search-deepseek/src/provider.ts)
 
 | 属性 | 存在性 | 类型 |
 |---|---|---|
@@ -5421,7 +5451,7 @@ SHA-256: `a6da9ad5d42ae83a6833a8288b076688e8e0801633ea36cbdd8a30a6d9f3160c`
 
 SHA-256: `1f8c126cfab3df812cd115cfc23e3256f0fa2383400f4ce91ecad313577e59b0`
 
-来源：[`packages/core/session/src/types.ts:201`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/core/session/src/types.ts)
+来源：[`packages/core/session/src/types.ts:205`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/core/session/src/types.ts)
 
 | kind | form 属性 | 其他必需字段 | 完整定义 |
 |---|---|---|---|
@@ -5441,7 +5471,7 @@ SHA-256: `1f8c126cfab3df812cd115cfc23e3256f0fa2383400f4ce91ecad313577e59b0`
 
 SHA-256: `f1687f982fa3d41ef29e159feed154ecd13af4dd209acaee16038f223f2e9402`
 
-来源：[`packages/core/session/src/types.ts:238`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/core/session/src/types.ts)
+来源：[`packages/core/session/src/types.ts:242`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/core/session/src/types.ts)
 
 | kind | form 属性 | 其他必需字段 | 完整定义 |
 |---|---|---|---|
@@ -5672,7 +5702,7 @@ SHA-256: `5d03ba38734809bcbd2a55221bd938b3b3fc34b49bb686c6113e9e4931e3aa78`
 
 SHA-256: `4cd48f3e5108bd6ebedf7301c3638839b8b2b9db8dbd493974177fbdeb91a01b`
 
-来源：[`packages/api/session-controller/src/types.ts:391`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/api/session-controller/src/types.ts) · [`packages/attachment/attachment/src/brand.ts:6`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/attachment/attachment/src/brand.ts) · [`packages/compaction/compaction/src/brand.ts:4`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/compaction/compaction/src/brand.ts) · [`packages/core/session/src/types.ts:21`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/core/session/src/types.ts) · [`packages/experimental/webhook/src/brand.ts:12`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/experimental/webhook/src/brand.ts) · [`packages/experimental/webhook/src/brand.ts:6`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/experimental/webhook/src/brand.ts) · [`packages/experimental/webhook/src/brand.ts:9`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/experimental/webhook/src/brand.ts) · [`packages/feedback/message-feedback/src/types.ts:14`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/feedback/message-feedback/src/types.ts) · [`packages/goal/goal/src/types.ts:17`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/goal/goal/src/types.ts) · [`packages/interaction/commands/src/brand.ts:22`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/interaction/commands/src/brand.ts) · [`packages/interaction/user-approval/src/types.ts:17`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/interaction/user-approval/src/types.ts) · [`packages/jobs/jobs/src/brand.ts:9`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/jobs/jobs/src/brand.ts) · [`packages/llm/llm-retry/src/brand.ts:4`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/llm/llm-retry/src/brand.ts) · [`packages/llm/llm/src/brand.ts:16`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/llm/llm/src/brand.ts) · [`packages/llm/llm/src/brand.ts:31`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/llm/llm/src/brand.ts) · [`packages/llm/llm/src/brand.ts:43`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/llm/llm/src/brand.ts) · [`packages/llm/llm/src/brand.ts:67`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/llm/llm/src/brand.ts) · [`packages/schedule/schedule/src/types.ts:14`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/schedule/schedule/src/types.ts) · [`packages/session/session-title/src/types.ts:17`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/session/session-title/src/types.ts) · [`packages/team/agent-team/src/types.ts:20`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/team/agent-team/src/types.ts) · [`packages/team/agent-team/src/types.ts:32`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/team/agent-team/src/types.ts) · [`packages/team/agent-team/src/types.ts:8`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/team/agent-team/src/types.ts) · [`packages/workflow/workflow/src/types.ts:14`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/workflow/workflow/src/types.ts)
+来源：[`packages/api/session-controller/src/types.ts:383`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/api/session-controller/src/types.ts) · [`packages/attachment/attachment/src/brand.ts:6`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/attachment/attachment/src/brand.ts) · [`packages/compaction/compaction/src/brand.ts:4`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/compaction/compaction/src/brand.ts) · [`packages/core/session/src/types.ts:21`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/core/session/src/types.ts) · [`packages/experimental/webhook/src/brand.ts:12`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/experimental/webhook/src/brand.ts) · [`packages/experimental/webhook/src/brand.ts:6`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/experimental/webhook/src/brand.ts) · [`packages/experimental/webhook/src/brand.ts:9`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/experimental/webhook/src/brand.ts) · [`packages/feedback/message-feedback/src/types.ts:14`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/feedback/message-feedback/src/types.ts) · [`packages/goal/goal/src/types.ts:17`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/goal/goal/src/types.ts) · [`packages/interaction/commands/src/brand.ts:22`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/interaction/commands/src/brand.ts) · [`packages/interaction/user-approval/src/types.ts:17`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/interaction/user-approval/src/types.ts) · [`packages/jobs/jobs/src/brand.ts:9`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/jobs/jobs/src/brand.ts) · [`packages/llm/llm-retry/src/brand.ts:4`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/llm/llm-retry/src/brand.ts) · [`packages/llm/llm/src/brand.ts:16`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/llm/llm/src/brand.ts) · [`packages/llm/llm/src/brand.ts:31`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/llm/llm/src/brand.ts) · [`packages/llm/llm/src/brand.ts:43`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/llm/llm/src/brand.ts) · [`packages/llm/llm/src/brand.ts:67`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/llm/llm/src/brand.ts) · [`packages/schedule/schedule/src/types.ts:14`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/schedule/schedule/src/types.ts) · [`packages/session/session-title/src/types.ts:17`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/session/session-title/src/types.ts) · [`packages/team/agent-team/src/types.ts:20`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/team/agent-team/src/types.ts) · [`packages/team/agent-team/src/types.ts:32`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/team/agent-team/src/types.ts) · [`packages/team/agent-team/src/types.ts:8`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/team/agent-team/src/types.ts) · [`packages/workflow/workflow/src/types.ts:14`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/workflow/workflow/src/types.ts)
 
 `string`
 
@@ -5907,7 +5937,7 @@ SHA-256: `6e52dd55a1d48954ed5464ec46fe34d9eb65f709baabc9561e7a279910b0c406`
 
 SHA-256: `0d47a8f3d847243c4488e755ad4cab7a04ac5d4621b9c81865524cf3f4d8536f`
 
-来源：[`packages/subagent/tool-subagent/src/model-selection-state.ts:17`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/subagent/tool-subagent/src/model-selection-state.ts)
+来源：[`packages/subagent/tool-subagent/src/model-selection-state.ts:12`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/subagent/tool-subagent/src/model-selection-state.ts)
 
 | 属性 | 存在性 | 类型 |
 |---|---|---|
@@ -5934,7 +5964,7 @@ SHA-256: `a853902cfab417b8f08aa51ad6855fea46f34ed4588a74e47403035111d0fb86`
 
 SHA-256: `e4c18e294232c3ba6c9f1999f168263cc55956147cfe4121720899be8e52edd1`
 
-来源：[`packages/core/session/src/types.ts:369`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/core/session/src/types.ts)
+来源：[`packages/core/session/src/types.ts:373`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/core/session/src/types.ts)
 
 | 属性 | 存在性 | 类型 |
 |---|---|---|
@@ -6123,7 +6153,7 @@ SHA-256: `cbbe8377ee744964537dbafd83607219e58ba79a13f6db0d0645c7ad3d5e8a09`
 
 SHA-256: `a81059ca06999da1e712414520c2c65e491d052fcf9640fae20aa38f0a5dc735`
 
-来源：[`packages/core/session/src/types.ts:391`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/core/session/src/types.ts) · [`packages/core/tool-executor-ptc/src/types.ts:27`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/core/tool-executor-ptc/src/types.ts)
+来源：[`packages/core/session/src/types.ts:395`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/core/session/src/types.ts) · [`packages/core/tool-executor-ptc/src/types.ts:27`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/core/tool-executor-ptc/src/types.ts)
 
 | 属性 | 存在性 | 类型 |
 |---|---|---|
@@ -6222,7 +6252,7 @@ SHA-256: `3e4e7683b0192c9f0e6a75c59076108f017892cdb302a98032c2632fd79c356f`
 
 SHA-256: `da60ed58a8fa23d7aa4920ab5c1f4e3d28109cb0797ef9e5c8b125721b847582`
 
-来源：[`packages/session/working-directory/src/index.ts:55`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/session/working-directory/src/index.ts)
+来源：[`packages/session/working-directory/src/index.ts:62`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/session/working-directory/src/index.ts) · [`packages/session/working-directory/src/index.ts:67`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/session/working-directory/src/index.ts)
 
 | 属性 | 存在性 | 类型 |
 |---|---|---|
@@ -6370,7 +6400,7 @@ SHA-256: `9e41386b3a0c9572b0d63078492ebb3997da7d3a830d44e0259418bd02f4bcb2`
 
 SHA-256: `bcf0caf62d964b2fcf5404bd5c909cfa9a21c3f3c96e6b7e36d9e33565223825`
 
-来源：[`packages/core/session/src/types.ts:472`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/core/session/src/types.ts)
+来源：[`packages/core/session/src/types.ts:476`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/core/session/src/types.ts)
 
 | 属性 | 存在性 | 类型 |
 |---|---|---|
@@ -6384,7 +6414,7 @@ SHA-256: `bcf0caf62d964b2fcf5404bd5c909cfa9a21c3f3c96e6b7e36d9e33565223825`
 
 SHA-256: `79650cfa10aa3c52440328d85e8a25f0ffadc8d7efd784e3c0819d8bb74a1985`
 
-来源：[`packages/core/session/src/types.ts:218`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/core/session/src/types.ts)
+来源：[`packages/core/session/src/types.ts:222`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/core/session/src/types.ts)
 
 | 属性 | 存在性 | 类型 |
 |---|---|---|
@@ -6397,7 +6427,7 @@ SHA-256: `79650cfa10aa3c52440328d85e8a25f0ffadc8d7efd784e3c0819d8bb74a1985`
 
 SHA-256: `5302e763151277614b97e77f00e3b326694c6c1247b916a20503c344dc970777`
 
-来源：[`packages/core/session/src/types.ts:383`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/core/session/src/types.ts)
+来源：[`packages/core/session/src/types.ts:387`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/core/session/src/types.ts)
 
 | 属性 | 存在性 | 类型 |
 |---|---|---|
@@ -6439,7 +6469,7 @@ SHA-256: `693f4952fb5565da96c06bace8924b098ac2fbc915fde0ff8019701183abc057`
 
 SHA-256: `ad0c38a0adb82a94c925456df41586d9b5f9202fca18593eae2213d4445b4585`
 
-来源：[`packages/core/session/src/types.ts:398`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/core/session/src/types.ts)
+来源：[`packages/core/session/src/types.ts:402`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/core/session/src/types.ts)
 
 | 属性 | 存在性 | 类型 |
 |---|---|---|
@@ -6453,7 +6483,7 @@ SHA-256: `ad0c38a0adb82a94c925456df41586d9b5f9202fca18593eae2213d4445b4585`
 
 SHA-256: `129f610271310df606674a5ce5c28b444bbf42c231b0f48ad26a0104ffeb6fde`
 
-来源：[`packages/core/session/src/types.ts:317`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/core/session/src/types.ts)
+来源：[`packages/core/session/src/types.ts:321`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/core/session/src/types.ts)
 
 | 属性 | 存在性 | 类型 |
 |---|---|---|
@@ -6536,7 +6566,7 @@ SHA-256: `e3e77b26f0148755a505f5b8ea843a3be117827d4703bb5754d9dc8ddbef521f`
 
 SHA-256: `17d1afb770d9941936130996da00dc86782cfef731d8d6526162c301256a4ac3`
 
-来源：[`packages/core/session/src/types.ts:435`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/core/session/src/types.ts)
+来源：[`packages/core/session/src/types.ts:439`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/core/session/src/types.ts)
 
 | 属性 | 存在性 | 类型 |
 |---|---|---|
@@ -6564,7 +6594,7 @@ SHA-256: `261128de68865c1f92f2bfa2ccd21f362d6e624cb00fc0cf5558d9d7b82302c5`
 
 SHA-256: `1ccb56061942f5ccb0d30c9e4f2883b9d115ff906560029de637b61d3cde896d`
 
-来源：[`packages/core/session/src/types.ts:349`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/core/session/src/types.ts)
+来源：[`packages/core/session/src/types.ts:353`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/core/session/src/types.ts)
 
 | 属性 | 存在性 | 类型 |
 |---|---|---|
@@ -6581,7 +6611,7 @@ SHA-256: `1ccb56061942f5ccb0d30c9e4f2883b9d115ff906560029de637b61d3cde896d`
 
 SHA-256: `0a30c3be336cdd4f8f34e66543a3d46d611c43986edd9b3ce6cbb9b721d3b5d3`
 
-来源：[`packages/core/session/src/types.ts:209`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/core/session/src/types.ts)
+来源：[`packages/core/session/src/types.ts:213`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/core/session/src/types.ts)
 
 | 属性 | 存在性 | 类型 |
 |---|---|---|
@@ -6679,7 +6709,7 @@ SHA-256: `3247e566f4340029325b70e4366b56fa9719977f1e39033b769a2ec221ab22a9`
 
 SHA-256: `023a355b2be0d688fb6e4df8388dadb942761d46cfe96d0f499aae9631a159d4`
 
-来源：[`packages/core/session/src/types.ts:211`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/core/session/src/types.ts)
+来源：[`packages/core/session/src/types.ts:215`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/core/session/src/types.ts)
 
 | 属性 | 存在性 | 类型 |
 |---|---|---|
@@ -6691,7 +6721,7 @@ SHA-256: `023a355b2be0d688fb6e4df8388dadb942761d46cfe96d0f499aae9631a159d4`
 
 SHA-256: `b6ef9c6210be8350cd465f485cf520031fffa6bf3809c61a1e713e834c5982d0`
 
-来源：[`packages/core/session/src/types.ts:207`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/core/session/src/types.ts)
+来源：[`packages/core/session/src/types.ts:211`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/core/session/src/types.ts)
 
 | 属性 | 存在性 | 类型 |
 |---|---|---|
@@ -6715,7 +6745,7 @@ SHA-256: `02b2c23f2d94b028c9588a8faace3fce1217405db346da3389368b495457bf79`
 
 SHA-256: `4bb451330ff699f36b45539ceb0eb2606ead72084e2c5bb637c36cc80e2252db`
 
-来源：[`packages/core/session/src/types.ts:198`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/core/session/src/types.ts)
+来源：[`packages/core/session/src/types.ts:202`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/core/session/src/types.ts)
 
 | 属性 | 存在性 | 类型 |
 |---|---|---|
@@ -6817,7 +6847,7 @@ SHA-256: `1b5649238876e28811e80f10ec67a00c197ad3babd4ecc61a22b09064b88c597`
 
 SHA-256: `ec8b5ff7c77ca6893ac7ba5a0c5b2aefeb52f12c64450b7359660c2a7e8a53d7`
 
-来源：[`packages/core/session/src/types.ts:234`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/core/session/src/types.ts)
+来源：[`packages/core/session/src/types.ts:238`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/core/session/src/types.ts)
 
 | 属性 | 存在性 | 类型 |
 |---|---|---|
@@ -6829,7 +6859,7 @@ SHA-256: `ec8b5ff7c77ca6893ac7ba5a0c5b2aefeb52f12c64450b7359660c2a7e8a53d7`
 
 SHA-256: `6c5a37d42ebdb12db4410699259335f1e149e3a0260425684c00b153afc8990d`
 
-来源：[`packages/core/session/src/types.ts:197`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/core/session/src/types.ts)
+来源：[`packages/core/session/src/types.ts:201`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/core/session/src/types.ts)
 
 | 属性 | 存在性 | 类型 |
 |---|---|---|
@@ -6998,7 +7028,7 @@ SHA-256: `88841202942c7683b3b7e5ea6a796047ec326b6701ac23e58cc236d85613b9fa`
 
 SHA-256: `56b7c047694875a843ba020dfea3c8380d54ae4ff88ab349e72004dc21e07c23`
 
-来源：[`packages/core/session/src/types.ts:227`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/core/session/src/types.ts)
+来源：[`packages/core/session/src/types.ts:231`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/core/session/src/types.ts)
 
 | 属性 | 存在性 | 类型 |
 |---|---|---|
@@ -7010,7 +7040,7 @@ SHA-256: `56b7c047694875a843ba020dfea3c8380d54ae4ff88ab349e72004dc21e07c23`
 
 SHA-256: `eaa71be0fbf0f702df8ea6c11d0aa2f9782263d45a10d0fb14eda662f4bfe04c`
 
-来源：[`packages/core/session/src/types.ts:201`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/core/session/src/types.ts)
+来源：[`packages/core/session/src/types.ts:205`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/core/session/src/types.ts)
 
 | 属性 | 存在性 | 类型 |
 |---|---|---|
@@ -7022,7 +7052,7 @@ SHA-256: `eaa71be0fbf0f702df8ea6c11d0aa2f9782263d45a10d0fb14eda662f4bfe04c`
 
 SHA-256: `ab7ec5f9eb2c6dfacca5da4c37cf7ba85d04172053ee6b1ebf1709ffcd99c1a7`
 
-来源：[`packages/core/session/src/types.ts:220`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/core/session/src/types.ts) · [`packages/llm/llm/src/types.ts:166`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/llm/llm/src/types.ts)
+来源：[`packages/core/session/src/types.ts:224`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/core/session/src/types.ts) · [`packages/llm/llm/src/types.ts:166`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/llm/llm/src/types.ts)
 
 | 属性 | 存在性 | 类型 |
 |---|---|---|
@@ -7124,7 +7154,7 @@ SHA-256: `deebfc7c62177ea840f23c6362b8615bc78ffa93377dd5d243c04e541c413af5`
 
 SHA-256: `6c03546143cdf6ae88f1745ac98c5139efa1588d1415249bbc5f3104d32ab800`
 
-来源：[`packages/core/session/src/types.ts:196`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/core/session/src/types.ts)
+来源：[`packages/core/session/src/types.ts:200`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/core/session/src/types.ts)
 
 | 属性 | 存在性 | 类型 |
 |---|---|---|
@@ -7318,7 +7348,7 @@ SHA-256: `db06ef35b27a38425046b2228fa6bce9582abe140d781d363137eb2f4d233a1c`
 
 SHA-256: `8f1062573ea9184129dfdec43df1e8136eb5808746fd809bf6b539f3fd11362e`
 
-来源：[`packages/api/session-controller/src/types.ts:402`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/api/session-controller/src/types.ts)
+来源：[`packages/api/session-controller/src/types.ts:394`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/api/session-controller/src/types.ts)
 
 | 属性 | 存在性 | 类型 |
 |---|---|---|
@@ -7851,7 +7881,7 @@ SHA-256: `8fcb0b44a575e998665c053643d1ab04c82f39253ebd190ac0c975b78e40b543`
 
 SHA-256: `a4afec59b75aad5d13ef82d6931f35cc2d98918503916cf069355b77c5e42302`
 
-来源：[`packages/api/session-controller/src/types.ts:400`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/api/session-controller/src/types.ts)
+来源：[`packages/api/session-controller/src/types.ts:392`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/api/session-controller/src/types.ts)
 
 | 属性 | 存在性 | 类型 |
 |---|---|---|
@@ -7976,7 +8006,7 @@ SHA-256: `9edc162949abf93bd5ff049191b345454ba104f583937ce5580fb50f067d2b94`
 
 SHA-256: `2235d957bf4b7c6cf959231d480f0ba1f3a6d72d82981493fb6c7c963021d3d5`
 
-来源：[`packages/session/working-directory/src/index.ts:48`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/session/working-directory/src/index.ts)
+来源：[`packages/session/working-directory/src/index.ts:49`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/session/working-directory/src/index.ts)
 
 | 属性 | 存在性 | 类型 |
 |---|---|---|
@@ -7988,7 +8018,7 @@ SHA-256: `2235d957bf4b7c6cf959231d480f0ba1f3a6d72d82981493fb6c7c963021d3d5`
 
 SHA-256: `9c001ecb5e1d3c3894410db2a1e383842e5f8454fb52182338686158abc1b3ee`
 
-来源：[`packages/web/web-search-deepseek/src/provider.ts:61`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/web/web-search-deepseek/src/provider.ts)
+来源：[`packages/web/web-search-deepseek/src/provider.ts:62`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/web/web-search-deepseek/src/provider.ts)
 
 | 属性 | 存在性 | 类型 |
 |---|---|---|
@@ -8018,7 +8048,7 @@ SHA-256: `b1ebd5cda47d90d980bb05bffc3f970c51537b9aff15b3bc3d639811727741b1`
 
 SHA-256: `6bc8e51124d0874bc89e1d0ceff381a9c3cd0fc240667d69f841ce4f60f65fe5`
 
-来源：[`packages/core/session/src/types.ts:338`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/core/session/src/types.ts)
+来源：[`packages/core/session/src/types.ts:342`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/core/session/src/types.ts)
 
 | 属性 | 存在性 | 类型 |
 |---|---|---|
@@ -8087,7 +8117,7 @@ SHA-256: `11f70b595aa76897fc4e25a352bfa718c659f44b799e5aa14e84e5a38fe72912`
 
 SHA-256: `8a9c990773f798eac10ca8878e6bcc531ee080bc589cac956730e462cc6a09ad`
 
-来源：[`packages/interaction/permission-presets/src/index.ts:54`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/interaction/permission-presets/src/index.ts)
+来源：[`packages/interaction/permission-presets/src/index.ts:61`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/interaction/permission-presets/src/index.ts)
 
 | 属性 | 存在性 | 类型 |
 |---|---|---|
@@ -8099,7 +8129,7 @@ SHA-256: `8a9c990773f798eac10ca8878e6bcc531ee080bc589cac956730e462cc6a09ad`
 
 SHA-256: `e481c46af3813e0010558e93f578b2986acd658404cec2d1679e3ac2a6c48654`
 
-来源：[`packages/core/session/src/types.ts:303`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/core/session/src/types.ts)
+来源：[`packages/core/session/src/types.ts:307`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/core/session/src/types.ts)
 
 | 属性 | 存在性 | 类型 |
 |---|---|---|
@@ -8112,7 +8142,7 @@ SHA-256: `e481c46af3813e0010558e93f578b2986acd658404cec2d1679e3ac2a6c48654`
 
 SHA-256: `9a2a9029f8d7ede05336980d8342737557f487b913bfd28853d0ab5214600ab5`
 
-来源：[`packages/web/web-search-deepseek/src/provider.ts:64`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/web/web-search-deepseek/src/provider.ts)
+来源：[`packages/web/web-search-deepseek/src/provider.ts:65`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/web/web-search-deepseek/src/provider.ts)
 
 | 属性 | 存在性 | 类型 |
 |---|---|---|
@@ -8153,7 +8183,7 @@ SHA-256: `5dd766ccd1702a1142ad8b4bd44f2242f8e8a6752669ad3de0a5d224329b1438`
 
 SHA-256: `54f9276a1617d7c12594722c89cfe864bcbe4517e9a6f9c98bab14f199a135e0`
 
-来源：[`packages/core/session/src/types.ts:363`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/core/session/src/types.ts)
+来源：[`packages/core/session/src/types.ts:367`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/core/session/src/types.ts)
 
 | 属性 | 存在性 | 类型 |
 |---|---|---|
@@ -8167,7 +8197,7 @@ SHA-256: `54f9276a1617d7c12594722c89cfe864bcbe4517e9a6f9c98bab14f199a135e0`
 
 SHA-256: `ef11a3b7fa2033ae4279545ff8a8a2ee4e301b9b73e5b91654c48e6d08283545`
 
-来源：[`packages/core/session/src/types.ts:305`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/core/session/src/types.ts) · [`packages/core/session/src/types.ts:307`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/core/session/src/types.ts)
+来源：[`packages/core/session/src/types.ts:309`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/core/session/src/types.ts) · [`packages/core/session/src/types.ts:311`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/core/session/src/types.ts)
 
 | 属性 | 存在性 | 类型 |
 |---|---|---|
@@ -8218,7 +8248,7 @@ SHA-256: `79ddc907312f97cf9553d4841e8b3fc937097bd8d97900a790efad3c05255e99`
 
 SHA-256: `f90eb4ab2d3897bc20c521a038e3119d581f791ec974b1a0004f63a8ab9e232d`
 
-来源：[`packages/core/session/src/types.ts:294`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/core/session/src/types.ts) · [`packages/deliverables/workspace-changes/src/types.ts:106`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/deliverables/workspace-changes/src/types.ts)
+来源：[`packages/core/session/src/types.ts:298`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/core/session/src/types.ts) · [`packages/deliverables/workspace-changes/src/types.ts:106`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/deliverables/workspace-changes/src/types.ts)
 
 | 属性 | 存在性 | 类型 |
 |---|---|---|
@@ -8515,7 +8545,7 @@ SHA-256: `7ee5a828196d9e4b1672f94f977e68f37125da4297c23029dd682823c09e12fd`
 
 SHA-256: `37ff65426bcf130f045d3a59ef2a4648eb170cd30280cbd024108a2e9b4401d1`
 
-来源：[`packages/web/web-search-deepseek/src/provider.ts:82`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/web/web-search-deepseek/src/provider.ts)
+来源：[`packages/web/web-search-deepseek/src/provider.ts:83`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/web/web-search-deepseek/src/provider.ts)
 
 | 属性 | 存在性 | 类型 |
 |---|---|---|
@@ -9390,7 +9420,7 @@ SHA-256: `0c556c9b9f2a96238a6b9bbb99e748206cbff2ed6203041c9571f04ae5802f52`
 
 SHA-256: `2d11ca7b0d4493e244b74eba093227866b33249841e59a1e9bf56afed38604c3`
 
-来源：[`packages/web/web-search-deepseek/src/provider.ts:71`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/web/web-search-deepseek/src/provider.ts)
+来源：[`packages/web/web-search-deepseek/src/provider.ts:72`](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/web/web-search-deepseek/src/provider.ts)
 
 | 属性 | 存在性 | 类型 |
 |---|---|---|
@@ -9413,6 +9443,22 @@ SHA-256: `124aa62078ca3311353b39cc3bf6c75da281338be6bbf672f8b361d828cddca3`
 | `seq` | 必需 | `number` |
 | `time` | 必需 | `number` |
 | `type` | 必需 | `"working-directory/change"` |
+
+<a id="persistence-type-sha256-025f11632cd02aaecc23a46c3b5bf43b9009d88293ed9b35ccbc1139d73334dc"></a>
+
+<a id="persistence-type-eventworkspace-rootchange"></a>
+
+### `{ type: "workspace-root/change" }`
+
+SHA-256: `025f11632cd02aaecc23a46c3b5bf43b9009d88293ed9b35ccbc1139d73334dc`
+
+| 属性 | 存在性 | 类型 |
+|---|---|---|
+| `data` | 必需 | [`{ cwd }`](#persistence-type-sha256-da60ed58a8fa23d7aa4920ab5c1f4e3d28109cb0797ef9e5c8b125721b847582) |
+| `ignorable` | 可选 | `true` |
+| `seq` | 必需 | `number` |
+| `time` | 必需 | `number` |
+| `type` | 必需 | `"workspace-root/change"` |
 
 <a id="persistence-type-sha256-e308ccf867a5398e316e0af8cb6ce238a8d33a63b9b384c8250a686786285f72"></a>
 

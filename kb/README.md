@@ -30,7 +30,7 @@ knowledge/deepseek-harness/
 │   └── i18n/               文档双语规范与术语
 └── meta/
     ├── source.json         来源信息：仓库 commit、抓取时间、统计
-    └── site-pages.txt      线上站点页面清单（由投影结果生成，188 页）
+    └── site-pages.txt      线上站点页面清单（由投影结果生成，194 页）
 ```
 
 ## 插件开发学习路径（从 `site/` 开始）
@@ -83,6 +83,6 @@ node scripts/rebuild-index.mjs
 
 ## 统计
 
-- 站点页面：192 个 Markdown，4 张图片
-- 补充文档：554 个 Markdown（`extra/`）
-- 来源 commit：`39163dd30f703a79079e2d2446545cff3c453738`（master，2026-11-16 同步）
+- 站点页面：194 个 Markdown，4 张图片
+- 补充文档：608 个 Markdown（`extra/`）
+- 来源 commit：`2e39e70496aa02986ca6a820c5d497e816b69d7e`（master，2026-11-19 同步）
