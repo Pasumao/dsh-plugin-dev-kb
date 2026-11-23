@@ -1,5 +1,42 @@
 # Changelog
 
+## [1.8.5] - 2026-11-23
+
+- **知识库内容同步至上游 master `4b399c3`**（2026-11-23，refresh-kb 一键执行）：
+  `site/` **194 → 198 页**（新增 session-control「向另一个 Session 发消息」、
+  cookbook/contributing-system-messages「向系统提示词贡献指令」中英 4 页；46 个文件内容更新，
+  含 tool-catalog / config-catalog / persistence-catalog 与多篇 subsystems 参考）；
+  `extra/` **608 → 658 篇**（35 个文件更新 + 50 新文件：core-guidelines/ 编码准则 10 篇、
+  v0.2.2-rc.5 升级指南 14 项变更 28 篇、v0.2.3-alpha.1 升级指南「Node 门槛抬到
+  ^24.22.3 || >=26.13.1」、5 条新持久化变更记录——system-section-admissions /
+  sdk-prompt-time-zone / action-card-decision-event / cua-activity-context / cua-input-notices）；
+  索引与 INDEX.md 重建（**805 → 859 文件**）。
+- **修复 desktop 版本横幅自 1.8.3 起从未真正命中的 asar 探测**：1.8.3 假设壳内核心包在
+  顶层 `node_modules/`（扁平布局），但真实桌面壳一直把 dsh 应用树打包在 `dsh/` 子目录下
+  （嵌套布局，asar 修改时间 11-18 早于 1.8.3 发布——布局从未变过，是探测假设从未命中），
+  于是静默回退到 profile 层陈旧副本、横幅持续误报旧版本。现改为**在 asar 文件树里按层
+  广度优先搜索 `node_modules/@deepseek-ai/{dsh,dsh-base}`，最浅命中为准**，不再依赖壳的
+  打包布局；壳在但读不到核心包时**回退不再静默**——横幅来源明说「已回退、可能落后」。
+  实测真实桌面壳读到 `0.2.2-rc.5`（约 25ms，仅启动时跑一次；全树未命中遍历约 3ms）。
+- **补上 1.8.3 缺的端到端测试**：`detectHostVersion` 支持注入 asar 路径；新增
+  `scripts/asar-fixture.mjs` 合成 asar 夹具；selfcheck / smoke 新增嵌套布局、最浅优先、
+  条目损坏回退等断言（已验证区分力：同一组用例旧实现 3 项失败、新实现全过；smoke 29 项全绿）。
+- **文档全面对齐新快照**：
+  - topics.md：修 `extra/defensive-patterns.md` 断链（上游已拆分为目录，入口
+    `defensive-patterns/general.md`）；补 session-control / contributing-system-messages /
+    core-guidelines / web-server（remoteConnection）条目；索引数字 859。
+  - kb/README.md：目录树、子系统页数、core-guidelines 条目。
+  - 4 个技能：主技能路径前缀 / 大文件清单 / 数字；upgrade-assistant 改查 dist-tags
+    三 tag（latest / next / alpha 可能相差多个预发布版本）+ Node 运行环境门槛 +
+    兼容闸门先读 `engines.dsh` 再读 peer 的现行优先级；sandbox 补 Node 门槛坑表行；
+    starter 补 `engines.dsh` 声明规则（声明了就只看它、忽略 peer）。
+  - README 中英：**删掉会导致双挂载崩溃的「手动 insert」安装指引**（本插件自带 bundle，
+    `dsh plugin add` 自动挂载）；统计数字 198 / 658 / 859；「更新知识库」改为
+    `npm run refresh-kb` 一键流程 + 每周 Action；英文版补 kb sync badge、
+    相关插件表移除已弃用的 workbench、补 future-session 与 agentos（npm 已发布、
+    GitHub 仓库未公开）、dsh-notify 描述去掉托盘字样（对 npm 0.1.7 与未发布的 0.2.0 都成立）。
+  - cordis.patch.yml 注释修正（「插件无 JS 代码」早已过时）。
+
 ## [1.8.4] - 2026-11-19
 
 - 全文校对批（宿主已升级到 dsh 0.2.2-rc.5，dist-tags：latest=rc.1 / next=rc.5）：

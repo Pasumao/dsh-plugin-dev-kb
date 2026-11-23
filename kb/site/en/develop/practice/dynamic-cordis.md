@@ -5,7 +5,7 @@ rawMarkdownPath: "en/develop/practice/dynamic-cordis.md"
 
 # Configure persistent plugins from a prompt
 
-Standard and Creator modes provide [Plugin Manager](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/boot/plugin-manager/README.md) and read-only [runtime inspection](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/extensions/tool-cordis/README.md). Plugin configuration belongs to the current profile, affects its sessions, and survives process restarts.
+Standard, PTC, and Creator modes provide [Plugin Manager](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/boot/plugin-manager/README.md); Standard and Creator also provide read-only [runtime inspection](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/extensions/tool-cordis/README.md). Plugin configuration belongs to the current profile, affects its sessions, and survives process restarts.
 
 ## Connect an MCP server
 

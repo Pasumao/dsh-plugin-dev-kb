@@ -26,7 +26,7 @@
 
 ## 6. 生命周期与副作用
 - 核心：`site/develop/framework/index.md`、`site/develop/cordis-tutorial/02-lifecycle-and-effects.md`
-- 扩展：`site/reference/agent-lifecycle.md`、`site/reference/cordis-api/context.md`、`extra/defensive-patterns.md`（生命周期/并发/子进程防御模式）
+- 扩展：`site/reference/agent-lifecycle.md`、`site/reference/cordis-api/context.md`、`extra/defensive-patterns/general.md`（时序/状态归属/清理/回调/子进程等防御规则；按制品分页见同目录 `README.zh.md`）
 
 ## 7. 打包与发布插件
 - 核心：`site/develop/basic/publish.md`
@@ -38,7 +38,7 @@
 
 ## 9. 扩展点与能力分层
 - 核心：`site/develop/practice/index.md`（能力三层拆分）、`site/reference/capability-seams.md`
-- 扩展：`site/reference/cookbook/extension-cookbook.md`（扩展模式）、`site/develop/practice/dynamic-cordis.md`（运行时动态装配 Cordis）
+- 扩展：`site/reference/cookbook/extension-cookbook.md`（扩展模式）、`site/develop/practice/dynamic-cordis.md`（运行时动态装配 Cordis）、`site/reference/cookbook/contributing-system-messages.md`（`ctx.systemPrompt.section()` 向系统提示词贡献具名指令）
 
 ## 10. 新增 Package / 设置卡片
 - 核心：`site/reference/cookbook/adding-a-package.md`、`site/reference/cookbook/adding-a-settings-card.md`
@@ -59,22 +59,24 @@
 
 ## 12b. API Gateway 与服务接入
 - 核心：`site/reference/api-gateway.md`（Typert API Gateway：Remote 方法声明、Host/Client 约定、RPC 与 `/api` 路由复用）
-- 扩展：`extra/cookbook/adding-a-remote-api.md`（新增 Remote API 五步操作，中英各一）、`extra/subsystems/webhook.md`（webhook 接入，仓库文档）、`site/reference/subsystems/typert.md`
+- 扩展：`extra/cookbook/adding-a-remote-api.md`（新增 Remote API 五步操作，中英各一）、`extra/subsystems/webhook.md`（webhook 接入，仓库文档）、`site/reference/subsystems/typert.md`、`site/reference/subsystems/web-server.md`（HTTP 服务器 + `ctx.remoteConnection` 浏览器远程登录邀请）
 
 ## 13. 系统提示词 / Token / 上下文压缩
 - `site/reference/subsystems/system-prompt.md`、`token-meter.md`、`compaction.md`
+- 向系统提示词贡献指令：`site/reference/cookbook/contributing-system-messages.md`
 
 ## 14. 测试与防御
-- `extra/testing.md`（测试策略：快照/e2e/单测边界）、`extra/defensive-patterns.md`、`extra/postmortem/`（事故复盘，含沙箱/进程故障模式）
+- `extra/testing.md`（测试策略：快照/e2e/单测边界）、`extra/defensive-patterns/`（评审强制执行的防御规则，按制品分页：general / conversation-and-session / client-components / package-surface / remote-and-api，入口 `README.zh.md`）、`extra/postmortem/`（事故复盘，含沙箱/进程故障模式）
 
 ## 15. 文档规范与贡献
 - `extra/AGENTS.md`（文档分层标准：tutorial/reference、字数预算）、`extra/development.md`（开发环境与工作流）、`extra/i18n/`（双语规范与术语）
+- 编码准则：`extra/core-guidelines/`（通用 / 前端 / 后端 / 数据交换，规则带稳定编号如 G.2；入口 `README.zh.md`）
 
 ## 16. 中英对照
 - 英文站：`site/en/`（结构与中文站一致：`guide/`、`develop/`、`reference/`）；`INDEX.md` 有全部 URL ↔ 文件对照
 
 ## 17. 使用指南进阶（GitHub Review / 定时任务 / MCP 记忆 / 网络代理）
-- `site/guide/github-review.md`（用 dsh 做 GitHub 代码评审）、`site/guide/schedule.md`（定时任务）、`site/guide/mcp-memory.md`（MCP 与长期记忆）、`site/guide/network-proxy.md`（代理后运行：HTTPS_PROXY 等环境变量、哪些路径保持直连）、`site/guide/public-deployments.md`（公共部署）、`site/guide/plugin-market.md`（插件市场与收录）、`site/guide/desktop-uninstall-cleanup.md`（Desktop 卸载清理）
+- `site/guide/github-review.md`（用 dsh 做 GitHub 代码评审）、`site/guide/schedule.md`（定时任务）、`site/guide/mcp-memory.md`（MCP 与长期记忆）、`site/guide/network-proxy.md`（代理后运行：HTTPS_PROXY 等环境变量、哪些路径保持直连）、`site/guide/public-deployments.md`（公共部署）、`site/guide/plugin-market.md`（插件市场与收录）、`site/guide/desktop-uninstall-cleanup.md`（Desktop 卸载清理）、`site/guide/session-control.md`（向另一个 Session 发消息：Web profile 启用 `session_send_message`，默认关闭）
 - 扩展：`site/reference/subsystems/schedule.md`、`extra/subsystems/todo.md`（仓库文档）
 
 ## 17b. 版本升级与持久化变更（dsh 0.1.x → 0.2.x 重点）
@@ -82,6 +84,6 @@
 - `extra/persistence-changes/`（持久化格式变更记录与历史格式，含 releases/、historical-formats/）
 
 ## 检索技巧
-- 全量索引：`meta/search-index.json`（805 个文件的 path/url/title/字符数）
-- 大文件（config-catalog / tool-catalog / module-graph / subsystems/session 等 ≥100KB）先用 grep 定位关键行，再 read 局部，不要整读
+- 全量索引：`meta/search-index.json`（859 个文件的 path/url/title/字符数）
+- 大文件先用 grep 定位关键行，再 read 局部（或 `dsh_kb_read` 按行号窗口读），不要整读：`site/reference/persistence-catalog.md`（约 385KB，最大）、`site/reference/config-catalog.md`（约 295KB）、`extra/subsystems/forge.zh.md`（约 160KB）、`extra/module-graph.md`（约 145KB）、`site/reference/tool-catalog.md`（约 115KB）；`extra/persistence-changes/historical-formats/` 各版历史格式亦达 170KB 以上
 - 常用检索关键词：`ctx.effect`、`ctx.on`、`ctx.tools.register`、`inject`、`Service Definition`、`cordis.yml`、`SessionEventMap`

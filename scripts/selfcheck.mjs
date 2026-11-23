@@ -51,32 +51,43 @@ if (!existsSync(join(root, "skills", "dsh-plugin-starter.md"))) {
 const mainSkill = readFileSync(join(root, "skills", "dsh-plugin-dev-kb.md"), "utf8");
 if (!mainSkill.includes("dsh_kb_read")) failures.push("技能正文未提及 dsh_kb_read");
 
-// 1.8.3：desktop app.asar 版本探测——用合成最小 asar 验证头部解析与 @deepseek-ai/dsh 选中
+// 1.8.3 / 1.8.5：desktop app.asar 版本探测——用合成 asar 验证头部解析、核心包落点搜索与选中
 try {
   const { writeFileSync, unlinkSync } = await import("node:fs");
-  const tmpAsar = join(root, ".selfcheck-tmp.asar");
-  const dshPkg = Buffer.from(JSON.stringify({ name: "@deepseek-ai/dsh", version: "0.2.2-rc.4" }));
-  const appPkg = Buffer.from(JSON.stringify({ name: "dsh-desktop", version: "9.9.9" }));
-  const mk = (files) => ({ files });
-  const tree = mk({
-    "package.json": { size: appPkg.length, offset: String(dshPkg.length) }, // 诱饵：壳自身 package.json
-    node_modules: mk({ "@deepseek-ai": mk({ dsh: mk({ "package.json": { size: dshPkg.length, offset: "0" } }) }) }),
-  });
-  const json = Buffer.from(JSON.stringify(tree));
-  const pad = (4 - (json.length % 4)) % 4;
-  const headerLen = 8 + json.length + pad; // headerPickle 总长 = 4(前缀) + 4(jsonLen) + 载荷
-  const head = Buffer.alloc(16);
-  head.writeUInt32LE(4, 0);
-  head.writeUInt32LE(headerLen, 4);
-  head.writeUInt32LE(4 + json.length + pad, 8);
-  head.writeUInt32LE(json.length, 12);
-  writeFileSync(tmpAsar, Buffer.concat([head, json, Buffer.alloc(pad), Buffer.alloc(headerLen - 8 - json.length - pad), dshPkg, appPkg]));
+  const { packAsar } = await import("./asar-fixture.mjs");
   const { readAsarCoreVersion, detectHostVersion } = await import(
     pathToFileURL(join(root, "lib", "kb-version.js")).href
   );
-  const got = readAsarCoreVersion(tmpAsar);
-  if (got !== "0.2.2-rc.4") failures.push(`asar 版本解析错：得到 ${JSON.stringify(got)}，期望 0.2.2-rc.4`);
-  if (readAsarCoreVersion(join(root, "不存在的.asar")) !== null) failures.push("asar 解析对不存在文件未返回 null");
+  const pkg = (version) => Buffer.from(JSON.stringify({ version }));
+  const tmpAsar = join(root, ".selfcheck-tmp.asar");
+  const expectAsar = (label, files, expected) => {
+    writeFileSync(tmpAsar, packAsar(files));
+    const got = readAsarCoreVersion(tmpAsar);
+    if (got !== expected) failures.push(`asar 版本解析错（${label}）：得到 ${JSON.stringify(got)}，期望 ${expected}`);
+  };
+  // 壳自身 package.json 与 @deepseek-ai 下的非核心包都是诱饵，不得被选中
+  expectAsar("嵌套布局（真实桌面壳）", {
+    "package.json": pkg("9.9.9"),
+    "node_modules/@deepseek-ai/dsh-brand/package.json": pkg("0.0.0"),
+    "dsh/node_modules/@deepseek-ai/dsh/package.json": pkg("0.2.2-rc.5"),
+  }, "0.2.2-rc.5");
+  expectAsar("扁平布局", {
+    "package.json": pkg("9.9.9"),
+    "node_modules/@deepseek-ai/dsh-base/package.json": pkg("0.2.1-rc.2"),
+    "node_modules/@deepseek-ai/dsh/package.json": pkg("0.2.2-rc.4"),
+  }, "0.2.2-rc.4");
+  expectAsar("最浅落点优先", {
+    "aaa/lib/node_modules/x/node_modules/@deepseek-ai/dsh/package.json": pkg("0.2.0-rc.2"), // 依赖私有嵌套的旧副本
+    "dsh/node_modules/@deepseek-ai/dsh/package.json": pkg("0.2.2-rc.5"), // 应用自己的依赖树
+  }, "0.2.2-rc.5");
+  expectAsar("条目损坏回退", {
+    "dsh/node_modules/@deepseek-ai/dsh/package.json": Buffer.from("{ not json"),
+    "dsh/node_modules/@deepseek-ai/dsh-base/package.json": pkg("0.2.2-rc.5"),
+  }, "0.2.2-rc.5");
+  expectAsar("无核心包", {
+    "package.json": pkg("9.9.9"),
+    "node_modules/@deepseek-ai/dsh-brand/package.json": pkg("0.0.0"),
+  }, null);
   unlinkSync(tmpAsar);
   // 探测主入口仍可用（本机环境探测结果不断言，只断言不抛错且形态合法）
   const det = detectHostVersion(root);

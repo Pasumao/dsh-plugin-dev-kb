@@ -6,22 +6,25 @@
 ## 目录结构
 
 ```
-knowledge/deepseek-harness/
+kb/
 ├── README.md         本文件：总览与使用指南
 ├── INDEX.md          全部页面的 站点 URL ↔ 本地文件 对照索引（自动生成）
 ├── site/             线上站点的完整镜像（中英双语，链接已按站点路由重写）
 │   ├── index.md            中文首页（/deepseek-harness/）
-│   ├── guide/              入门：quickstart / providers / python-sdk / github-review /
-│   │                       schedule / mcp-memory
+│   ├── guide/              入门：quickstart / providers / python-sdk / github-review / schedule /
+│   │                       mcp-memory / network-proxy / public-deployments / plugin-market /
+│   │                       desktop-uninstall-cleanup / session-control
 │   ├── develop/            开发：basic(第一个插件/tool/config/publish)、
 │   │                       framework(生命周期/service/事件)、practice、cordis-tutorial(7 章)
 │   ├── reference/          参考：架构、capability-seams、config-catalog、tool-catalog、
-│   │                       api-gateway、cordis-api、cookbook、subsystems(46 个子系统页)…
+│   │                       api-gateway、cordis-api、cookbook、subsystems(47 个子系统页)…
 │   └── en/                 英文站镜像（/deepseek-harness/en/...），结构同上
 ├── extra/            仓库 docs/ 中未发布到站点的补充文档（开发参考）
 │   ├── glossary.md         术语表（capability seam 等核心概念）
-│   ├── defensive-patterns.md / testing.md / development.md / rescope.md …
-│   ├── module-graph.md     模块依赖全景图（125KB）
+│   ├── defensive-patterns/  评审强制执行的防御规则（按制品分页，入口 README.zh.md）
+│   ├── core-guidelines/    编码准则：通用 / 前端 / 后端 / 数据交换（规则带稳定编号）
+│   ├── testing.md / development.md / rescope.md …
+│   ├── module-graph.md     模块依赖全景图（约 145KB）
 │   ├── cookbook/           adding-a-vendored-package 等仓库内 cookbook
 │   ├── upgrade-guide/      各版本升级指南（0.1.7-rc.2 / 0.2.0-rc.2 …）
 │   ├── persistence-changes/ 持久化格式变更记录（releases/、historical-formats/）
@@ -29,8 +32,10 @@ knowledge/deepseek-harness/
 │   ├── postmortem/         事故复盘
 │   └── i18n/               文档双语规范与术语
 └── meta/
+    ├── topics.md           主题导航：任务场景 → 要读的文件
+    ├── search-index.json   全量检索索引（path / url / title / 字符数）
     ├── source.json         来源信息：仓库 commit、抓取时间、统计
-    └── site-pages.txt      线上站点页面清单（由投影结果生成，194 页）
+    └── site-pages.txt      线上站点页面清单（由投影结果生成，198 页）
 ```
 
 ## 插件开发学习路径（从 `site/` 开始）
@@ -42,11 +47,11 @@ knowledge/deepseek-harness/
 5. **Cordis 框架教程** — `site/develop/cordis-tutorial/`（7 章：插件/生命周期/服务/事件/配置/组合与热重载/进入 Harness）
 6. **实战** — `site/develop/practice/index.md`（能力三层拆分）、`llm-adapter.md`、`dynamic-cordis.md`（运行时动态装配 Cordis）
 7. **按需查阅** — `site/reference/`：
-   - 架构总览 `reference/index.md`；能力服务 `reference/capability-seams.md`；Agent 生命周期 `reference/agent-lifecycle.md`
-   - 插件配置目录 `reference/config-catalog.md`；Tool Schema 目录 `reference/tool-catalog.md`；持久化事件 `reference/persistence-catalog.md`；API Gateway `reference/api-gateway.md`（Typert Remote 方法/RPC 约定）
-   - Cordis API `reference/cordis-api/`（Context / Events / Fiber / Registry / Service / 继承接口面）
-   - Cookbook `reference/cookbook/`（新增 package / tool / LLM adapter / 设置卡片 / 扩展模式）
-   - 子系统 `reference/subsystems/`（core / scope / session / tools / shell / filesystem / subagent / sandbox / approval / conversation / slots / web-client … 共 46 页）
+   - 架构总览 `site/reference/index.md`；能力服务 `site/reference/capability-seams.md`；Agent 生命周期 `site/reference/agent-lifecycle.md`
+   - 插件配置目录 `site/reference/config-catalog.md`；Tool Schema 目录 `site/reference/tool-catalog.md`；持久化事件 `site/reference/persistence-catalog.md`；API Gateway `site/reference/api-gateway.md`（Typert Remote 方法/RPC 约定）
+   - Cordis API `site/reference/cordis-api/`（Context / Events / Fiber / Registry / Service / 继承接口面）
+   - Cookbook `site/reference/cookbook/`（新增 package / tool / LLM adapter / 设置卡片 / 扩展模式 / 贡献系统消息）
+   - 子系统 `site/reference/subsystems/`（core / scope / session / tools / shell / filesystem / subagent / sandbox / approval / conversation / slots / web-client … 共 47 页）
 
 ## 更新方法
 
@@ -83,6 +88,6 @@ node scripts/rebuild-index.mjs
 
 ## 统计
 
-- 站点页面：194 个 Markdown，4 张图片
-- 补充文档：608 个 Markdown（`extra/`）
-- 来源 commit：`2e39e70496aa02986ca6a820c5d497e816b69d7e`（master，2026-11-19 同步）
+- 站点页面：198 个 Markdown，4 张图片
+- 补充文档：658 个 Markdown（`extra/`）
+- 来源 commit：`4b399c39a6d1479cd84ca591b4d7c88e24d38a96`（master，2026-11-23 同步）

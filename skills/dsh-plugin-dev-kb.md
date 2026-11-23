@@ -16,20 +16,20 @@ whenToUse: 开发 dsh 插件、查询 dsh 能力与 API、写 Tool、配置 cord
 
 ```
 kb/
-├── site/            线上站点完整镜像（中英双语 194 页，优先读这里）
-│   ├── guide/       入门：quickstart / providers / python-sdk / plugin-market / github-review / schedule / mcp-memory / network-proxy / public-deployments / desktop-uninstall-cleanup
+├── site/            线上站点完整镜像（中英双语 198 页，优先读这里）
+│   ├── guide/       入门：quickstart / providers / python-sdk / plugin-market / github-review / schedule / mcp-memory / network-proxy / public-deployments / desktop-uninstall-cleanup / session-control
 │   ├── develop/     basic(第一个插件/tool/config/publish)、framework(生命周期/服务/事件)、
 │   │                practice(能力分层/LLM适配器/动态装配)、cordis-tutorial(7章)
 │   ├── reference/   index(架构)、cordis-primer、capability-seams、agent-lifecycle、
-│   │                config-catalog、tool-catalog、api-gateway、cordis-api/(6)、cookbook/(5)、subsystems/(47，含 office-kit / account)、
-│   │                guide/（含 desktop-uninstall-cleanup）
+│   │                config-catalog、tool-catalog、api-gateway、cordis-api/(6)、cookbook/(6)、subsystems/(47，含 office-kit / account)、
+│   │                guide/（含 desktop-uninstall-cleanup、session-control）
 │   └── en/          英文站镜像（结构与中文站一致）
-├── extra/           仓库内未发布到站点的补充文档（608 篇）：glossary、defensive-patterns、
+├── extra/           仓库内未发布到站点的补充文档（658 篇）：glossary、defensive-patterns/、core-guidelines/、
 │                    module-graph、testing、postmortem/、i18n/、cookbook 与 subsystems 扩展、
 │                    upgrade-guide/(各版本升级指南)、persistence-changes/(持久化格式变更)
 ├── meta/
 │   ├── topics.md    ★ 主题导航：任务场景 → 要读的文件（先用这个）
-│   ├── search-index.json  全量检索索引（805 文件：path/url/title/字符数）
+│   ├── search-index.json  全量检索索引（859 文件：path/url/title/字符数）
 │   ├── source.json  来源信息（commit/时间/统计）
 │   └── site-pages.txt     线上站点页面清单
 ├── INDEX.md         全部 站点 URL ↔ 本地文件 对照
@@ -46,7 +46,7 @@ kb/
 ## 3. 阅读原则
 
 - **中文优先**：默认读 `site/` 下中文文件；需要英文原文时读 `site/en/` 对应路径。
-- **大文件局部读**：`reference/config-catalog.md`、`reference/tool-catalog.md`、`extra/module-graph.md`、`reference/subsystems/session.md` 等超过 100KB，先用 grep 定位再 read 局部，禁止整读。
+- **大文件局部读**：`site/reference/persistence-catalog.md`（约 385KB）、`site/reference/config-catalog.md`（约 295KB）、`extra/subsystems/forge.zh.md`、`extra/module-graph.md`、`site/reference/tool-catalog.md` 等超过 100KB，先用 grep 定位再用 `dsh_kb_read` 按行号窗口读，禁止整读。
 - **代码示例可直接引用**：文档中的 `apply(ctx)` 插件骨架、`ctx.tools.register`、`inject` 声明等可直接用于新代码；但需注意知识库是 commit 快照，若与当前安装版本 API 不一致，以实际安装包为准。
 - **常见检索关键词**：`ctx.effect`、`ctx.on`、`ctx.tools.register`、`inject`、`Service Definition`、`cordis.yml`、`SessionEventMap`、`Branded`。
 
@@ -65,7 +65,11 @@ kb/
 | 动态装配 Cordis | `site/develop/practice/dynamic-cordis.md` |
 | API Gateway / Remote 方法 | `site/reference/api-gateway.md` |
 | 子系统能力 | `site/reference/subsystems/index.md` → 对应子系统页 |
+| 向系统提示词贡献指令 | `site/reference/cookbook/contributing-system-messages.md` + `site/reference/subsystems/system-prompt.md` |
+| 跨 Session 发消息 | `site/guide/session-control.md` |
+| 防御规则 / 编码准则 | `extra/defensive-patterns/README.zh.md` / `extra/core-guidelines/README.zh.md` |
 
 ## 5. 更新知识库
 
-见 `kb/README.md` 的更新方法（重新克隆 `deepseek-ai/deepseek-harness` 并运行站点投影器）。
+仓库根目录 `npm run refresh-kb` 一键刷新（克隆上游 → 站点投影 → 覆盖 site/ 与 extra/ → 重建索引与元数据），
+GitHub Action 每周一自动执行同一脚本；手动步骤与非 Windows 环境的做法见 `kb/README.md`「更新方法」。

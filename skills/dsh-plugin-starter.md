@@ -21,7 +21,7 @@ whenToUse: 用户要从零开始新建一个 dsh 插件，或问「插件骨架�
 
 | 文件 | 要点 |
 |---|---|
-| `package.json` | `"main": "./lib/index.js"`；`files` 数组**必须含 main 入口所在目录**；`license: "MIT"`；`homepage` 指 GitHub 仓库 `#readme`；`repository.url`；`keywords ≥3`（含 `dsh` / `dsh-plugin` / `deepseek-harness`）；**`dsh: { bundle: { patch: "./cordis.patch.yml" } }`**（只声明 `dsh.client` 会被 awesome CI 拒）；`engines.node >=18`；`peerDependencies` 若引 `@deepseek-ai/*`，**范围必须显式覆盖预发布分支**（如 `"^4.0.1"` 对 cordis 可行，对 dsh 主包要写 `">=0.2.0-rc.1 <0.3.0-0"` 形态，否则预发布构建被静默排除）；`scripts.selfcheck` 指向最小自检 |
+| `package.json` | `"main": "./lib/index.js"`；`files` 数组**必须含 main 入口所在目录**；`license: "MIT"`；`homepage` 指 GitHub 仓库 `#readme`；`repository.url`；`keywords ≥3`（含 `dsh` / `dsh-plugin` / `deepseek-harness`）；**`dsh: { bundle: { patch: "./cordis.patch.yml" } }`**（只声明 `dsh.client` 会被 awesome CI 拒）；`engines.node >=18`；**`engines.dsh`** 声明支持的 DSH 版本范围（如 `">=0.2.0 <0.3.0"`）——现行规则是声明了它就**只看它、忽略 peer**，不能写 `workspace:` 值；不写 `engines.dsh` 时才改查 `@deepseek-ai/dsh*` 的 `peerDependencies`，此时若引 `@deepseek-ai/*`，**范围必须显式覆盖预发布分支**（如 `"^4.0.1"` 对 cordis 可行，对 dsh 主包要写 `">=0.2.0-rc.1 <0.3.0-0"` 形态，否则预发布构建被静默排除）；`scripts.selfcheck` 指向最小自检 |
 | `cordis.patch.yml` | 插件自注册声明（`dsh.profile.bundles` 挂载用）；含 Config 时在此声明配置 schema |
 | `lib/index.js` | `export function apply(ctx, config)`；零 `@deepseek-ai/*` 运行时 import（插件以 link:/file: 装入 profile，外部依赖按 realpath 解析不到——用原始 definition 形状注册工具，参照 dsh-plugin-windows-guard 先例）；每个注册动作包 `ctx.effect(() => ..., '说明')` |
 | `README.md` | ① 顶部标题 + 一句话描述；② `## 安装` 段**必须含标准安装命令**（`git clone` / `npm install` 等——market ease 项）；③ `## 功能` + `## 配置`/`## 示例` 双标题；④ ≥2 个代码块；⑤ `## 相关插件` 互相引用段（列同系列全部**已发布**插件：npm 链 + GitHub 链 + 一句话）；⑥ 长度 >2000 字更佳；⑦ 需要 `AI 生成声明` 段 |

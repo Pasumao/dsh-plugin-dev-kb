@@ -5,7 +5,7 @@ rawMarkdownPath: "reference/cookbook/extension-cookbook.md"
 
 # 实操手册：扩展插件形态
 
-harness 扩展的参考模式。代码片段省略了 import 和辅助实现，无法直接复制运行。具体编写路径见[包检查清单](./adding-a-package.md)、[第一个工具教程](../../develop/basic/tool.md)、[工具参考](./adding-a-tool.md)、[LLM（大语言模型）适配器指南](./adding-an-llm-adapter.md)和 [Session 格式版本教程](https://github.com/deepseek-ai/deepseek-harness/blob/master/docs/cookbook/adding-a-session-format-version.zh.md)；系统与扩展点映射由[架构文档](../index.md)负责。
+harness 扩展的参考模式。代码片段省略了 import 和辅助实现，无法直接复制运行。具体编写路径见[包检查清单](./adding-a-package.md)、[第一个工具教程](../../develop/basic/tool.md)、[工具参考](./adding-a-tool.md)、[系统消息实践指南](./contributing-system-messages.md)、[LLM（大语言模型）适配器指南](./adding-an-llm-adapter.md)和 [Session 格式版本教程](https://github.com/deepseek-ai/deepseek-harness/blob/master/docs/cookbook/adding-a-session-format-version.zh.md)；系统与扩展点映射由[架构文档](../index.md)负责。
 
 ## 工具插件
 

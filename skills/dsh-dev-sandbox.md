@@ -22,11 +22,12 @@ whenToUse: 开发/调试 dsh 插件需要启动、重启、验证插件加载，
 ## 2. 沙箱不存在时：初始化（一次）
 
 ```powershell
-# 版本与目标 dsh 对齐：先用主力安装的实际版本号替换下面的 <ver>（插件自身 peerDependencies 也要覆盖它）
+# 版本与目标 dsh 对齐：先用主力安装的实际版本号替换下面的 <ver>（插件自身 engines.dsh / peerDependencies 也要覆盖它）
 npx -y "@deepseek-ai/dsh@<ver>" plugin --profile <沙箱名> add file:/绝对路径/插件目录
 ```
 
-- `add` 走兼容闸门：peerDependencies 不覆盖当前 dsh 版本会整体拒绝并回滚——这不是网络问题，改 peer 或按提示 `allow-version` 豁免。
+- **先核对本机 Node**：`npx` 用的是本机 Node，必须满足目标版本的 `engines.node`（v0.2.3-alpha.1 起为 `^24.22.3 || >=26.13.1`）；桌面端自带运行时，主力能跑不代表本机 `npx` 能跑。`node --version` 不够就先升级 Node。
+- `add` 走兼容闸门：先看插件自己的 `engines.dsh`，没有才看 `@deepseek-ai/dsh*` 的 `peerDependencies`；不覆盖当前 dsh 版本会整体拒绝并回滚——这不是网络问题，改范围或按提示 `allow-version` 豁免。
 - 开发中插件优先用 `link:`（目录 junction）依赖挂进沙箱 profile 的 `package.json`：**改 lib 后重启沙箱即生效**，不用反复 add。
 - 改完 profile 的 `package.json` / `cordis.patch.yml` 后必须 `pnpm install`（在 profile 目录里）再启动；同一插件严禁双挂载（进 bundles 就不要再 insert）。
 
@@ -67,7 +68,8 @@ npx -y "@deepseek-ai/dsh@<ver>" --profile <沙箱名> "列出你当前可用的�
 |---|---|
 | 插件没加载也没报错 | 被 `skipping profile bundle` 跳过（peer 不兼容）；或 inject 的服务无 provider 静默 PENDING |
 | 启动即崩 `duplicate loader entry id` | 双挂载：既进 bundles 又被 insert |
-| `installation rejected: incompatible` | 兼容闸门拒绝安装并回滚，改 peer 或 allow-version |
+| `installation rejected: incompatible` | 兼容闸门拒绝安装并回滚，改 `engines.dsh` / peer 范围或 allow-version |
+| 本机 Node 低于目标版本要求 | 目标版本 `engines.node` 抬高（v0.2.3-alpha.1 起 `^24.22.3 || >=26.13.1`）；npx / npm 方式受影响，先 `node --version` 再升级 Node |
 | 配置文件解析炸 | BOM / UTF-16 污染；只用编辑工具或 UTF-8 无 BOM 写 |
 | 依赖装了不生效 | 改 profile package.json 后忘 `pnpm install` |
 | 启动长时间无输出挂死 | 与主力 desktop 锁竞争共写 `~/.dsh`——按 §1 用独立 `DSH_HOME` 隔离 |

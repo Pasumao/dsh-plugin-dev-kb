@@ -1,6 +1,6 @@
 # DeepSeek Harness 文档索引
 
-> 由 `scripts/rebuild-index.mjs` 自动生成。共 194 个站点页面（中英双语），另有 608 个补充文档在 `extra/`。
+> 由 `scripts/rebuild-index.mjs` 自动生成。共 198 个站点页面（中英双语），另有 658 个补充文档在 `extra/`。
 
 ## 中文站点（根路径）
 
@@ -24,6 +24,7 @@
 | Python SDK 入门 | [https://deepseek-harness.github.io/deepseek-harness/guide/python-sdk](https://deepseek-harness.github.io/deepseek-harness/guide/python-sdk) | `site/guide/python-sdk.md` |
 | 使用 Web UI | [https://deepseek-harness.github.io/deepseek-harness/guide/quickstart](https://deepseek-harness.github.io/deepseek-harness/guide/quickstart) | `site/guide/quickstart.md` |
 | Schedule 提醒 | [https://deepseek-harness.github.io/deepseek-harness/guide/schedule](https://deepseek-harness.github.io/deepseek-harness/guide/schedule) | `site/guide/schedule.md` |
+| 向另一个 Session 发送消息 | [https://deepseek-harness.github.io/deepseek-harness/guide/session-control](https://deepseek-harness.github.io/deepseek-harness/guide/session-control) | `site/guide/session-control.md` |
 
 ### 开发（/develop/）
 
@@ -60,6 +61,7 @@
 | 实践指南：即时配置表单 | [https://deepseek-harness.github.io/deepseek-harness/reference/cookbook/adding-a-settings-card](https://deepseek-harness.github.io/deepseek-harness/reference/cookbook/adding-a-settings-card) | `site/reference/cookbook/adding-a-settings-card.md` |
 | 工具编写参考 | [https://deepseek-harness.github.io/deepseek-harness/reference/cookbook/adding-a-tool](https://deepseek-harness.github.io/deepseek-harness/reference/cookbook/adding-a-tool) | `site/reference/cookbook/adding-a-tool.md` |
 | 实操手册：添加 LLM（大语言模型）适配器 | [https://deepseek-harness.github.io/deepseek-harness/reference/cookbook/adding-an-llm-adapter](https://deepseek-harness.github.io/deepseek-harness/reference/cookbook/adding-an-llm-adapter) | `site/reference/cookbook/adding-an-llm-adapter.md` |
+| 实践指南：贡献系统消息 | [https://deepseek-harness.github.io/deepseek-harness/reference/cookbook/contributing-system-messages](https://deepseek-harness.github.io/deepseek-harness/reference/cookbook/contributing-system-messages) | `site/reference/cookbook/contributing-system-messages.md` |
 | 实操手册：扩展插件形态 | [https://deepseek-harness.github.io/deepseek-harness/reference/cookbook/extension-cookbook](https://deepseek-harness.github.io/deepseek-harness/reference/cookbook/extension-cookbook) | `site/reference/cookbook/extension-cookbook.md` |
 | 上下文 | [https://deepseek-harness.github.io/deepseek-harness/reference/cordis-api/context](https://deepseek-harness.github.io/deepseek-harness/reference/cordis-api/context) | `site/reference/cordis-api/context.md` |
 | 事件 | [https://deepseek-harness.github.io/deepseek-harness/reference/cordis-api/events](https://deepseek-harness.github.io/deepseek-harness/reference/cordis-api/events) | `site/reference/cordis-api/events.md` |
@@ -161,6 +163,7 @@
 | Get started with the Python SDK | [https://deepseek-harness.github.io/deepseek-harness/en/guide/python-sdk](https://deepseek-harness.github.io/deepseek-harness/en/guide/python-sdk) | `site/en/guide/python-sdk.md` |
 | Use the Web UI | [https://deepseek-harness.github.io/deepseek-harness/en/guide/quickstart](https://deepseek-harness.github.io/deepseek-harness/en/guide/quickstart) | `site/en/guide/quickstart.md` |
 | Schedule reminders | [https://deepseek-harness.github.io/deepseek-harness/en/guide/schedule](https://deepseek-harness.github.io/deepseek-harness/en/guide/schedule) | `site/en/guide/schedule.md` |
+| Send a message to another Session | [https://deepseek-harness.github.io/deepseek-harness/en/guide/session-control](https://deepseek-harness.github.io/deepseek-harness/en/guide/session-control) | `site/en/guide/session-control.md` |
 | Agent Turn And Step Lifecycle | [https://deepseek-harness.github.io/deepseek-harness/en/reference/agent-lifecycle](https://deepseek-harness.github.io/deepseek-harness/en/reference/agent-lifecycle) | `site/en/reference/agent-lifecycle.md` |
 | API Gateway | [https://deepseek-harness.github.io/deepseek-harness/en/reference/api-gateway](https://deepseek-harness.github.io/deepseek-harness/en/reference/api-gateway) | `site/en/reference/api-gateway.md` |
 | Capability Seams And Core Services | [https://deepseek-harness.github.io/deepseek-harness/en/reference/capability-seams](https://deepseek-harness.github.io/deepseek-harness/en/reference/capability-seams) | `site/en/reference/capability-seams.md` |
@@ -169,6 +172,7 @@
 | Cookbook: live configuration forms | [https://deepseek-harness.github.io/deepseek-harness/en/reference/cookbook/adding-a-settings-card](https://deepseek-harness.github.io/deepseek-harness/en/reference/cookbook/adding-a-settings-card) | `site/en/reference/cookbook/adding-a-settings-card.md` |
 | Tool authoring reference | [https://deepseek-harness.github.io/deepseek-harness/en/reference/cookbook/adding-a-tool](https://deepseek-harness.github.io/deepseek-harness/en/reference/cookbook/adding-a-tool) | `site/en/reference/cookbook/adding-a-tool.md` |
 | Cookbook: adding an LLM adapter | [https://deepseek-harness.github.io/deepseek-harness/en/reference/cookbook/adding-an-llm-adapter](https://deepseek-harness.github.io/deepseek-harness/en/reference/cookbook/adding-an-llm-adapter) | `site/en/reference/cookbook/adding-an-llm-adapter.md` |
+| Cookbook: contributing system messages | [https://deepseek-harness.github.io/deepseek-harness/en/reference/cookbook/contributing-system-messages](https://deepseek-harness.github.io/deepseek-harness/en/reference/cookbook/contributing-system-messages) | `site/en/reference/cookbook/contributing-system-messages.md` |
 | Cookbook: extension plugin shapes | [https://deepseek-harness.github.io/deepseek-harness/en/reference/cookbook/extension-cookbook](https://deepseek-harness.github.io/deepseek-harness/en/reference/cookbook/extension-cookbook) | `site/en/reference/cookbook/extension-cookbook.md` |
 | Context | [https://deepseek-harness.github.io/deepseek-harness/en/reference/cordis-api/context](https://deepseek-harness.github.io/deepseek-harness/en/reference/cordis-api/context) | `site/en/reference/cordis-api/context.md` |
 | Events | [https://deepseek-harness.github.io/deepseek-harness/en/reference/cordis-api/events](https://deepseek-harness.github.io/deepseek-harness/en/reference/cordis-api/events) | `site/en/reference/cordis-api/events.md` |
@@ -232,5 +236,5 @@
 
 ---
 
-*站点页面：194（中文 97，英文 97）*
+*站点页面：198（中文 99，英文 99）*
 

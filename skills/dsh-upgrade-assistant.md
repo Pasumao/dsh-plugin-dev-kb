@@ -21,9 +21,10 @@ whenToUse: 用户要升级 dsh / DeepSeek Harness 版本，或升级后插件不
 1. **当前版本**：**desktop 形态以 Desktop 关于页为准**——profile 层 `package.json` 里
    `@deepseek-ai/dsh` 是共享副本，实测会落后于桌面壳真实核心；dsh_kb_search / dsh_kb_read
    输出的版本横幅（1.8.3 起读桌面壳 app.asar）也可直接采信。
-2. **目标版本**：`npm view @deepseek-ai/dsh dist-tags --json`——**别只看 `latest`**，
-   它是稳定 tag、可能远落后于预发布通道（如 latest=0.2.2-rc.1 而 next=0.2.2-rc.5）；
-   用户在跑预发布版时取 `next` 或用户实报版本。
+2. **目标版本**：`npm view @deepseek-ai/dsh dist-tags --json`——三个 tag 都看、**别只看 `latest`**：
+   `latest` / `next` 可能相差好几个预发布版本，`alpha` 是更靠前的通道（2026-11-23 实测：
+   latest=next=0.2.2-rc.5、alpha=0.2.3-alpha.2）。tag 之间不一致时别替用户挑，以用户实报版本
+   或桌面「关于」页为准。
 3. 列出区间内的版本号，形如 `v0.2.0-rc.2 → v0.2.1-rc.4`。
 
 ### 第二步：读变更（知识库检索）
@@ -42,8 +43,12 @@ whenToUse: 用户要升级 dsh / DeepSeek Harness 版本，或升级后插件不
 清单必须包含：
 
 - **备份**：升级前备份 profile 的 `package.json` 与 `pnpm-lock.yaml`
+- **运行环境门槛**：查区间内指南对 Node.js / pnpm 版本的要求，并在目标环境 `node --version` 核对
+  （如 v0.2.3-alpha.1 起要求 Node `^24.22.3 || >=26.13.1`——影响 npm/npx 安装、源码检出与
+  `DSH_RUNTIME_MODE=node` 的 Python SDK；打包的桌面应用自带运行时，不受影响）
 - **变更摘要**：区间内每个版本的破坏性变更，逐条说明「影响你吗」
-- **插件兼容**：dsh 有插件兼容闸门——`peerDependencies` 不覆盖目标版本的插件会被
+- **插件兼容**：dsh 有插件兼容闸门——先看插件自己的 `engines.dsh` 范围，没有该字段才看
+  `@deepseek-ai/dsh*` 的 `peerDependencies`；不覆盖目标版本的插件会被
   **整体拒绝安装**或**启动时跳过（静默失效）**；把用户已装插件与目标版本对照，
   预先列出需要升级/移除/豁免（allow-version）的插件
 - **回滚方案**：保留旧版本安装包/备份路径，回滚 = 恢复备份 + 重装旧版

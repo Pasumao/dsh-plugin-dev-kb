@@ -15,6 +15,7 @@ check(compareVersions('0.2.0-rc.2', '0.2.0-rc.10') === -1, 'compareVersions rc.2
 check(compareVersions('0.2.1-alpha.1', '0.2.0-rc.2') === 1, 'compareVersions 0.2.1-alpha > 0.2.0-rc')
 check(compareVersions('v0.2.0-rc.2', '0.2.0-rc.2') === 0, 'compareVersions v 前缀等价')
 check(compareVersions('1.0.0', '1.0.0-rc.1') === 1, 'compareVersions 正式版 > rc')
+check(compareVersions('0.2.3-alpha.1', '0.2.3-alpha.2') === -1, 'compareVersions alpha.1 < alpha.2')
 
 const host = detectHostVersion(root)
 console.log(`   （信息）宿主版本探测: ${host ? host.version + ' @ ' + host.source : 'null（本仓库开发目录拿不到属正常）'}`)
@@ -32,6 +33,30 @@ check(matchUpgradeGuide(kbDir, host2.version) === 'v0.2.0-rc.2', `matchUpgradeGu
 check(matchUpgradeGuide(kbDir, '0.2.1-rc.99') === 'v0.2.1-rc.4', 'matchUpgradeGuide 取 ≤ 宿主的最大指南（rc.99 → rc.4）')
 const banner = versionBanner(kbDir, host2)
 check(!!banner && banner.includes('0.2.0-rc.2') && banner.includes('upgrade-guide'), 'versionBanner 含版本 + 指南路径')
+check(matchUpgradeGuide(kbDir, '0.2.2-rc.5') === 'v0.2.2-rc.5', 'matchUpgradeGuide 精确命中 v0.2.2-rc.5')
+check(compareVersions('0.2.3-alpha.1', '0.2.2-rc.5') === 1, 'compareVersions 0.2.3-alpha > 0.2.2-rc')
+check(matchUpgradeGuide(kbDir, '0.2.3-alpha.9') === 'v0.2.3-alpha.1', 'matchUpgradeGuide 预发布序取 ≤ 宿主的最大指南（alpha.9 → alpha.1）')
+
+// ── 1.8.5 desktop 分支端到端：注入合成 app.asar ─────────────────
+// fakeRoot 里的 0.2.0-rc.2 充当「落后的 profile 层副本」：壳内读到核心时必须以壳为准；
+// 壳在却读不到核心时才回退，且必须在来源里说明（1.8.3–1.8.4 是静默回退，横幅把旧副本当成真实版本）。
+const { packAsar } = await import('./asar-fixture.mjs')
+const pkgOf = (version) => Buffer.from(JSON.stringify({ version }))
+const tmpAsar = join(root, '.smoke-tmp', 'shell.asar')
+mkdirSync(join(root, '.smoke-tmp'), { recursive: true })
+writeFileSync(tmpAsar, packAsar({
+  'package.json': pkgOf('9.9.9'),
+  'node_modules/@deepseek-ai/dsh-brand/package.json': pkgOf('0.0.0'),
+  'dsh/node_modules/@deepseek-ai/dsh/package.json': pkgOf('0.2.2-rc.5'),
+}))
+const host3 = detectHostVersion(fakeRoot, tmpAsar)
+check(host3?.version === '0.2.2-rc.5' && host3?.source === 'desktop app.asar',
+  `detectHostVersion 壳内核心优先于 profile 副本（${host3?.version} @ ${host3?.source}）`)
+check(versionBanner(kbDir, host3).includes('upgrade-guide/v0.2.2-rc.5/'), '壳内版本 rc.5 的横幅指向 v0.2.2-rc.5 指南')
+writeFileSync(tmpAsar, packAsar({ 'package.json': pkgOf('9.9.9') }))
+const host4 = detectHostVersion(fakeRoot, tmpAsar)
+check(host4?.version === '0.2.0-rc.2' && host4?.source.includes('已回退'),
+  `detectHostVersion 壳内读不到核心包时回退并说明来源（${host4?.source}）`)
 rmSync(join(root, '.smoke-tmp'), { recursive: true, force: true })
 
 // ── 假 harness 跑 apply ──────────────────────────────────────
