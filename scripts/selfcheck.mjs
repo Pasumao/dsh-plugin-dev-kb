@@ -1,5 +1,5 @@
 // 最小自检：发布前验证结构完整（离线、零依赖）。node scripts/selfcheck.mjs
-import { readFileSync, existsSync } from "node:fs";
+import { readFileSync, existsSync, readdirSync } from "node:fs";
 import { join, dirname } from "node:path";
 import { pathToFileURL } from "node:url";
 import { fileURLToPath } from "node:url";
@@ -50,6 +50,25 @@ if (!existsSync(join(root, "skills", "dsh-plugin-starter.md"))) {
 }
 const mainSkill = readFileSync(join(root, "skills", "dsh-plugin-dev-kb.md"), "utf8");
 if (!mainSkill.includes("dsh_kb_read")) failures.push("技能正文未提及 dsh_kb_read");
+
+// 1.8.6：派生清单与镜像一致（kb/meta/site-pages.txt、search-index.json 都由 rebuild-index.mjs 生成，
+// 手改知识库后忘了重建、或清单残留 BOM 时在这里拦下）
+try {
+  const countMd = (dir) => readdirSync(dir, { withFileTypes: true }).reduce((n, e) =>
+    n + (e.isDirectory() ? countMd(join(dir, e.name)) : e.name.endsWith(".md") ? 1 : 0), 0);
+  const kbDir = join(root, "kb");
+  const siteMd = countMd(join(kbDir, "site"));
+  const pagesBuf = readFileSync(join(kbDir, "meta", "site-pages.txt"));
+  if (pagesBuf[0] === 0xef && pagesBuf[1] === 0xbb && pagesBuf[2] === 0xbf) failures.push("kb/meta/site-pages.txt 带 BOM（应为 UTF-8 无 BOM）");
+  const pages = pagesBuf.toString("utf8").replace(/^\uFEFF/, "").split(/\r?\n/).filter(Boolean);
+  if (pages.length !== siteMd) failures.push(`site-pages.txt 与 kb/site 不一致：清单 ${pages.length} 行，实际 ${siteMd} 页（跑 npm run rebuild-index）`);
+  for (const p of pages) if (!existsSync(join(kbDir, "site", ...p.split("/")))) { failures.push(`site-pages.txt 指向不存在的页面：${p}`); break; }
+  const index = JSON.parse(readFileSync(join(kbDir, "meta", "search-index.json"), "utf8"));
+  const allMd = countMd(kbDir);
+  if (!Array.isArray(index) || index.length !== allMd) failures.push(`search-index.json 与 kb/ 不一致：索引 ${Array.isArray(index) ? index.length : "?"} 条，实际 ${allMd} 个 Markdown（跑 npm run rebuild-index）`);
+} catch (e) {
+  failures.push(`派生清单核对异常：${e?.message || e}`);
+}
 
 // 1.8.3 / 1.8.5：desktop app.asar 版本探测——用合成 asar 验证头部解析、核心包落点搜索与选中
 try {

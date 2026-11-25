@@ -21,7 +21,7 @@ once this plugin is installed, the agent automatically loads the knowledge base 
 It also ships the `dsh-dev-sandbox` skill: a self-built isolated sandbox-profile development workflow (the agent picks the sandbox name per task) where the plugin under development runs in isolation and the agent starts / restarts / smoke-tests it autonomously — a crashing plugin never takes down your main dsh.
 The `dsh_kb_search` tool (since 1.6.0) does local scored search over the knowledge base, returning matched files, line numbers, and context snippets in a single call,
 and the `dsh-upgrade-assistant` skill (since 1.7.0): when you upgrade dsh, the agent reads the official per-version upgrade guides and persistence-change records, produces a migration checklist, flags plugin compatibility-gate risks, and plans a rollback path.
-Since 1.8.0 it also ships a version-aware banner plus the `dsh_kb_read` tool (tool output flags "knowledge-base snapshot vs host dsh version" drift and points at the matching upgrade guide; since 1.8.5 the desktop form reads the real core version from the shell's `app.asar`, and the banner says so when it has to fall back; line-numbered windowed reading prevents whole-file reads of huge docs) and the `dsh-plugin-starter` skill (a scaffold guide for creating compliant dsh plugins from scratch: file checklist, marketplace/awesome gates, verification loop).
+Since 1.8.0 it also ships a version-aware banner plus the `dsh_kb_read` tool (tool output flags "knowledge-base snapshot vs host dsh version" drift and points at the matching upgrade guide; the desktop form reads the real core version from the shell's `app.asar` so a stale profile-level shared copy cannot misreport, and the banner says so when it has to fall back; since 1.8.6 the CLI / web form reads the version from the host process entry) and the `dsh-plugin-starter` skill (a scaffold guide for creating compliant dsh plugins from scratch: file checklist, compatibility gate, marketplace/awesome gates, verification loop).
 
 ## What is this
 
@@ -33,9 +33,10 @@ Since 1.8.0 it also ships a version-aware banner plus the `dsh_kb_read` tool (to
 - **Development sandbox**: the `skills/dsh-dev-sandbox.md` skill provides a self-built isolated sandbox-profile workflow (the agent picks the sandbox name per task, never colliding with your main profile) — initialization (compatibility gate / link: mount), background startup on a free port, autonomous restarts, headless smoke verification; the whole loop is agent-driven and never asks the user to restart.
 - **Local search tool**: `dsh_kb_search` performs scored search over the knowledge base (title / path / body multi-term weighting) and returns
   matched file paths, line numbers, and context snippets in a single call; supports `scope: api` (search only API-signature/catalog docs),
-  `lang: en`, and an empty query returning topic navigation. The index is built lazily in memory (~55ms / 427 files for the Chinese index), read-only.
+  `lang: en`, and an empty query returning topic navigation. The index is built lazily in memory (427 files in the Chinese index, built in roughly 60–80ms), read-only.
 - **Version awareness (since 1.8.0)**: tool output carries a banner — host dsh version vs the knowledge-base
-  master snapshot may drift on APIs, with the matching `extra/upgrade-guide/<vX.Y.Z>` guide path; since 1.8.5 the desktop form reads the real core version from the shell's `app.asar` (searching the archive tree layer by layer, independent of the shell's packaging layout), and when the core package cannot be read the banner explicitly says it fell back to a possibly stale copy; detection
+  master snapshot may drift on APIs, with the matching `extra/upgrade-guide/<vX.Y.Z>` guide path (that directory
+  collects the changes introduced *after* this version, some of which may not have reached the current host yet); detection
   degrades gracefully (no banner, no error).
 - **Windowed reading tool (since 1.8.0)**: `dsh_kb_read` reads originals by `path`/`offset`/`limit` line windows,
   with numbered output, whole-file-read protection, path-escape rejection, automatic zh↔en counterpart hints, and continuation pointers.
@@ -65,12 +66,30 @@ After installation, ask the agent in any session:
 No configuration required — it works right after installation:
 
 - Reads no environment variables, needs no API key / token, writes no config files;
-- After mounting, the `skills/dsh-plugin-dev-kb.md` skill enters the available skills list at session startup and takes effect automatically;
-- The `dsh_kb_search` tool is registered at host startup and builds its index on first call (milliseconds); to disable it,
-  set `searchTool: false` in the profile's plugin config (keeps the skill, skips tool registration);
+- After mounting, the 4 skills (`skills/dsh-plugin-dev-kb.md` and friends) enter the available skills list at session startup and take effect automatically;
+- The two tools `dsh_kb_search` / `dsh_kb_read` are registered at host startup and build their index on first call (milliseconds);
+- The two switches are independent; with both `false` only the skills remain. To turn them off, add an override
+  row with **the same id as this plugin's bundle row** to the profile's `cordis.patch.yml`
+  (or the `$DSH_HOME/cordis.patch.yml` shared by all profiles):
+
+  ```yaml
+  - id: dsh-plugin-dev-kb
+    config:
+      searchTool: false   # do not register dsh_kb_search
+      readTool: false     # do not register dsh_kb_read
+  ```
+
+  An id-targeted entry overrides that row — it is not a double mount; a later layer replaces the whole `config`
+  value, so list every key you need.
 - Knowledge base updates go through the repo's `npm run refresh-kb` (see "Updating the knowledge base"); the plugin runtime itself needs no configuration.
 
 ## Install / Mount
+
+**DSH Desktop**: the `desktop` profile is managed exclusively by the client (the CLI refuses:
+`profile "desktop" is managed exclusively by the Electron application`), so install the npm package
+`dsh-plugin-dev-kb` through the client's own plugin manager.
+
+**CLI / Web** (the `dsh` command line; `web` used as the example profile name):
 
 ```powershell
 # npm (recommended)
@@ -83,17 +102,18 @@ Install from source (local development / debugging):
 
 ```bash
 git clone https://github.com/Pasumao/dsh-plugin-dev-kb.git
-# mount the local directory into a profile (also via dsh plugin add)
+# mount the local directory into a profile (also via dsh plugin add; --profile must precede the pnpm arguments)
 dsh plugin --profile <name> add file:/absolute/path/dsh-plugin-dev-kb
 ```
 
 This plugin ships its own bundle (`package.json` declares `dsh.bundle.patch` → `cordis.patch.yml`), and `dsh plugin add`
-automatically adds it to the profile's `dsh.profile.bundles` to complete the mount — you **neither need nor should**
-manually `insert` a plugin row with the same id into the profile's `cordis.patch.yml`: the bundle layer already
-registers it once, and inserting again is a double mount that crashes startup with `duplicate loader entry id`.
-Use `dsh --profile <name> --dump-config` to confirm the `# == dsh-plugin-dev-kb` layer appears.
+automatically adds it to the profile's `dsh.profile.bundles` to complete the mount — no manual `insert` is needed.
+**Do not `insert` the same package name again under a different id** — that *is* a double mount: the second
+instance fails to activate because of the duplicate tool name
+(`tool "dsh_kb_search" is already registered`), and older hosts crash at startup. Use
+`dsh --profile <name> --dump-config` to confirm the `# == dsh-plugin-dev-kb` layer appears.
 
-> Only after restarting / creating a new dsh session will the `dsh-plugin-dev-kb` skill appear in the available skills list (the skill catalog is snapshotted at session startup).
+> If the `dsh-plugin-dev-kb` skill does not show up in the current session right after installing, start a new session (the skill catalog is re-observed before subsequent model steps).
 
 ## 5-minute verification
 
@@ -134,15 +154,16 @@ dsh-plugin-dev-kb/
 
 - **Agent side**: when writing plugins / Tools / config / services / events / packaging / LLM adapters, load
   the `dsh-plugin-dev-kb` skill → prefer the `dsh_kb_search` tool (one call returns matched files + line numbers + snippets;
-  `scope: api` for `ctx.*` API signatures) → read the source locally by line number; fall back to grepping `kb/` if the tool is unavailable.
+  `scope: api` for `ctx.*` API signatures) → then use `dsh_kb_read` to read the context in a line-numbered window; fall back to grepping `kb/` if the tools are unavailable.
 - **Human side**: browse the `kb/` directory directly, or open `kb/INDEX.md` to look things up by URL mapping.
 
 ## Self-check
 
-Run the structural self-check before publishing (offline, zero dependencies):
+Run the structural self-check and the offline smoke test before publishing (zero dependencies, no repo files modified):
 
 ```powershell
-npm run selfcheck   # structural integrity + entry / bundle patch existence
+npm run selfcheck   # structural integrity + entry / bundle patch existence + derived lists match the mirror
+npm run smoke        # fake harness really executes both tools: version detection, skill / tool registration, argument fallbacks
 ```
 
 ## Updating the knowledge base
@@ -153,9 +174,9 @@ One command from this plugin's root directory (Windows; requires git / node / ro
 npm run refresh-kb   # = node scripts/refresh-kb.mjs
 ```
 
-The script automatically: shallow-clones upstream `deepseek-ai/deepseek-harness` (master) → installs the projection
+The script automatically: shallow-clones upstream `deepseek-ai/deepseek-harness` (master; public repository, no token required) → installs the projection
 dependencies → runs `projectDocs()` to generate the site projection → mirrors it over `kb/site/` → rebuilds `kb/extra/`
-from the publishing checklist → rebuilds the index and INDEX.md, and updates the commit / stats in `kb/meta/source.json`.
+from the publishing checklist → rebuilds the index and INDEX.md (including the `kb/meta/site-pages.txt` page list), and updates the commit / stats in `kb/meta/source.json`.
 The repo also ships a GitHub Action (`.github/workflows/refresh-kb.yml`) that syncs from upstream master weekly and commits;
 the "kb sync" badge above reads `source.json` to show the latest sync date and commit.
 
@@ -166,13 +187,13 @@ This plugin is part of **Pasumao's dsh plugin ecosystem**; other published plugi
 | Plugin (npm) | GitHub | Description |
 |---|---|---|
 | [dsh-notify](https://www.npmjs.com/package/dsh-notify) | [GitHub repo](https://github.com/Pasumao/dsh-plugin-notify) | Native Windows notifications |
-| [dsh-plugin-choice-refresh](https://www.npmjs.com/package/dsh-plugin-choice-refresh) | [GitHub repo](https://github.com/Pasumao/dsh-plugin-choice-refresh) | Choice enhancement: regenerate options / more options |
 | [dsh-plugin-image-tools](https://www.npmjs.com/package/dsh-plugin-image-tools) | [GitHub repo](https://github.com/Pasumao/dsh-plugin-image-tools) | Image choice cards + inline images in replies + image handoff for blind models |
 | [dsh-plugin-table-zoom](https://www.npmjs.com/package/dsh-plugin-table-zoom) | [GitHub repo](https://github.com/Pasumao/dsh-plugin-table-zoom) | Floating viewer for long chat tables + one-click copy as Markdown |
 | [dsh-plugin-windows-guard](https://www.npmjs.com/package/dsh-plugin-windows-guard) | [GitHub repo](https://github.com/Pasumao/dsh-plugin-windows-guard) | Windows environment pitfall prevention: rule skills + mojibake detection / dangerous-write interception / encoding diagnosis & repair |
 | [dsh-plugin-context-trim](https://www.npmjs.com/package/dsh-plugin-context-trim) | [GitHub repo](https://github.com/Pasumao/dsh-plugin-context-trim) | Per-session injection gate: trim skills / tools / prompt sections |
 | [dsh-plugin-future-session](https://www.npmjs.com/package/dsh-plugin-future-session) | [GitHub repo](https://github.com/Pasumao/dsh-plugin-future-session) | Real/future sessions: tool calls are executed by a future session inheriting the full context; the main context keeps only "one call + one conclusion" |
-| [dsh-plugin-agentos](https://www.npmjs.com/package/dsh-plugin-agentos) | Not public (private repo) | Agent OS scheduling gateway: concurrent scheduling / mixed channels / task manager |
+| [dsh-plugin-agentos](https://www.npmjs.com/package/dsh-plugin-agentos) | [GitHub repo](https://github.com/Pasumao/dsh-plugin-agentos) | Agent OS scheduling gateway: concurrency / queues / retries / graceful shutdown + mixed-channel smart scheduling |
+
 > See [Pasumao · dsh plugins](https://github.com/Pasumao) for the rest of the series; if you find them useful, a ⭐ on GitHub is much appreciated.
 
 ## AI-generated content statement

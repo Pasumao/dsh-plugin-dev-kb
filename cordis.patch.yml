@@ -1,9 +1,18 @@
 # dsh-plugin-dev-kb bundle patch：DeepSeek Harness 官方文档知识库
 #
-# 挂载为 profile 根层的一个插件行（与 dsh-base / dsh-web-app 同一平面）。
-# lib/ 注册 dsh_kb_search / dsh_kb_read 两个本地工具；skills/ 下的技能进入全局层，
-# 每个会话的 agent 在插件开发 / 查询 dsh 能力 / 写 Tool / 配置 cordis.yml 类任务时，
-# 会根据技能 description 自动加载本技能，从而获知知识库位置与阅读路径。
+# 本文件是插件的 bundle 层：dsh plugin add 会把本包加进 profile 的 dsh.profile.bundles，
+# 启动时作为一个组合包层应用（排在 dsh-base 之后、用户自己的 cordis.patch.yml 之前）。
+# lib/ 注册 dsh_kb_search / dsh_kb_read 两个本地工具；skills/ 下的 4 个技能进入全局层，
+# 会话的 agent 在插件开发 / 查询 dsh 能力 / 升级 dsh 等任务中按技能 description 自动加载。
+#
+# 给本插件传配置：在 profile 的 cordis.patch.yml（或各 profile 共享的 $DSH_HOME/cordis.patch.yml）
+# 里用「相同的 id」写一条覆盖行——后应用的层按行整体替换 config，这样写是覆盖、不是重复挂载。
+# 例如只保留技能、不注册两个工具：
+#   - id: dsh-plugin-dev-kb
+#     config:
+#       searchTool: false
+#       readTool: false
+# 不要用别的 id 再 insert 同一个包名（那才是双挂载：第二个实例会因工具重名激活失败）。
 #
 # 知识库数据在插件内 kb/ 目录（site/ 站点镜像 + extra/ 补充文档 + meta/ 主题导航与索引）。
 # 更新知识库：仓库根目录 npm run refresh-kb（一键同步上游，详见 README「更新知识库」）。

@@ -1,4 +1,5 @@
-// Rebuilds kb/INDEX.md (site URL ↔ local file) and kb/meta/search-index.json.
+// Rebuilds kb/INDEX.md (site URL ↔ local file), kb/meta/search-index.json and
+// kb/meta/site-pages.txt (the kb/site page list).
 // Run from the plugin root:  node scripts/rebuild-index.mjs
 import { readdirSync, readFileSync, writeFileSync, statSync, mkdirSync } from 'node:fs'
 import { dirname, join } from 'node:path'
@@ -45,7 +46,10 @@ const entries = []
 for (const abs of walk(KB)) {
   if (!abs.endsWith('.md')) continue
   const rel = abs.replace(/\\/g, '/').replace(KB + '/', '')
-  const text = readFileSync(abs, 'utf8')
+  // 统一成 LF 再量：否则标题提取与字符数会随工作区换行符变化——autocrlf 检出成 CRLF 时
+  // /^#\s+(.+)$/ 匹配不到行尾带 \r 的标题（标题变空）、chars 多算行数，本地与 CI 各跑一次
+  // 就产生无意义的 diff。
+  const text = readFileSync(abs, 'utf8').replace(/\r\n/g, '\n')
   entries.push({
     path: `kb/${rel}`,
     url: rel.startsWith('site/') ? routeToUrl(rel.slice(5)) : '',
@@ -86,4 +90,8 @@ md.push('### 全部英文页面（/en/...）', '', table(group(rel => en(rel) &&
 md.push('---', '', `*站点页面：${siteRows.length}（中文 ${siteRows.filter(r => !en(r.rel)).length}，英文 ${siteRows.filter(r => en(r.rel)).length}）*`, '')
 writeFileSync(join(KB, 'INDEX.md'), md.join('\n') + '\n', 'utf8')
 
-console.log(`rebuilt INDEX.md + search-index.json (${entries.length} files)`)
+// ---- site-pages.txt（线上站点页面清单，随每次重建同步；路径相对 site/，代码点序）----
+const sitePages = siteRows.map((r) => r.rel.slice('site/'.length)).sort()
+writeFileSync(join(KB, 'meta', 'site-pages.txt'), sitePages.join('\n') + '\n', 'utf8')
+
+console.log(`rebuilt INDEX.md + search-index.json (${entries.length} files) + site-pages.txt (${sitePages.length} pages)`)

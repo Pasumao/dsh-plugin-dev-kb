@@ -1,5 +1,60 @@
 # Changelog
 
+## [1.8.6] - 2026-11-25
+
+现代化 + 校对批，全部在宿主 dsh `0.2.2-rc.5` 上核实。**知识库内容没有变化**：`npm run refresh-kb`
+重跑后上游 master HEAD 仍是 `4b399c3`（与 1.8.5 同步点相同），`site/` 198 页、`extra/` 658 篇、
+索引 859 文件不变；只有 `kb/meta/source.json` 与 `kb/README.md` 的同步日期更新为 2026-11-25。
+
+- **修复 `searchTool: false` 不生效**：1.8.0–1.8.5 的实现在 `readTool` 开启（默认）时会把 `dsh_kb_search`
+  一并注册。现两个开关相互独立，都为 `false` 时只保留技能（沙箱实测：profile patch 里按 id 写
+  `searchTool: false` 后只剩 `dsh_kb_read`）。
+- **版本横幅补上 CLI / web 形态**（`lib/kb-version.js`）：当前宿主把 `dsh-base` / `dsh-web-app` 等 bundle
+  固定从 dsh 安装目录解析、不再装进 profile，沿祖先目录找核心包的旧探测落空，横幅随之消失。新增「宿主
+  进程入口」探测（`process.argv[1]` 落在核心包目录内），排在桌面 `app.asar` 之后、祖先目录里的副本之前；
+  dsh 0.2.2-rc.5 的 CLI 下实测横幅报 `0.2.2-rc.5（探测自 cli entry）`。`detectHostVersion` 的 JSDoc 写明
+  参数是「已安装副本目录」，传源码检出目录返回 `null` 属设计内行为。
+- **横幅与技能写清升级指南的目录语义**：`extra/upgrade-guide/vX/` 收录的是 vX **之后**引入的变更，
+  不是 vX 已含的变更（实测：`v0.2.3-alpha.1/node-24-22-3` 的 Node 门槛实际落在 0.2.3-alpha.2；
+  rc.3 / rc.5 目录写明「已移除」的 `working_directory` 工具与 `ctx.sessionQuery.inspectSession`，在
+  0.2.2-rc.5 的包里仍然存在）。此前横幅说「含 vX 前后的变更」，容易把尚未进入宿主的变更当成现状。
+- **工具入参兜底**——原始 JSON Schema 工具的入参不经宿主校验（rc.5 实测：类型错误、非法 JSON 都原样
+  进入 `execute`）：`dsh_kb_search` 收到非数字 `maxResults` 时不再清空命中、误报「无命中」（回退默认 8，
+  沙箱实测）；`dsh_kb_read` 的 `offset` / `limit` 为小数时截断为整数（此前行号会输出成小数）。
+- **工具描述订正**：`dsh_kb_search` 不再写死「站点 194 页」（实际 198，且每次同步都会过时）；
+  `dsh_kb_read` 的 `path` 示例换成真实存在的路径（原示例 `extra/upgrade-guide/v0.2.0-rc.2/guide.zh.md`
+  并不存在）。
+- **`scripts/rebuild-index.mjs`**：统一按 LF 提取标题与字符数。此前被 autocrlf 检出成 CRLF 的文件提取不到
+  标题（如 `kb/README.md` 在索引里标题为空），本地与 CI 各跑一次就产生无意义的 diff。同时重新生成
+  `kb/meta/site-pages.txt`：此前靠手维护、停在 188 页且带 BOM，现与镜像同步（198 页、无 BOM）。
+- **`scripts/smoke.mjs`**：30 → 47 项。删掉一条恒真的断言（`|| true`），补上开关独立性、`{{KB_ROOT}}`
+  替换、CLI 入口探测、入参兜底、示例路径存在性、描述不写死页数等断言；同一套冒烟跑 1.8.5 的 `lib/`
+  有 9 项真实失败，确认断言有区分力。`scripts/selfcheck.mjs` 新增「派生清单与镜像一致」核对。
+- **`.gitignore`** 补 `.refresh-tmp/`、`.smoke-tmp/`、`.selfcheck-tmp.asar`：脚本中途失败留下的残片此前
+  会以未跟踪文件出现，`git add -A` 会把整个上游克隆带进提交。
+- **4 个技能按 rc.5 实测订正**：
+  - `dsh-dev-sandbox`：启动语法改为 `dsh --profile <沙箱名> --port 0 --no-open`（原写法
+    `dsh web --profile X` 在 rc.5 报 `select a profile only once`）；补独立 `DSH_HOME`、用
+    `--from-default-profile web` 一步建出能跑 Web UI 的沙箱、`file:` 副本与 `link:` junction 的差别、
+    HMR profile 的 `already-installed`、闸门拒绝文案、双挂载与 `desktop` profile 的实测表现；坑表 7 → 12 行。
+  - `dsh-plugin-starter`：写清兼容闸门与 peer 的现行规则（声明了 `engines.dsh` 就只看它；预发布宿主上
+    `^0.2.2` 被拒、`>=0.2.0 <0.3.0` 通过）；「零 `@deepseek-ai/*` import」由硬规则改为两种受支持的工具
+    写法（`defineTool` + peer 声明 / 原始 JSON Schema + 自行校验入参）；新增 Config schema 行；
+    `cordis.patch.yml` 一行不再说「在此声明配置 schema」；`engines.node` 不再一律写 `>=18`。
+  - `dsh-upgrade-assistant`：写清指南的目录结构与目录语义；Node 门槛 `^24.22.3 || >=26.13.1` 的生效版本
+    由 0.2.3-alpha.1 订正为 0.2.3-alpha.2；补 `npm view … versions`、`@deepseek-ai/dsh-base` 的 `latest`
+    是陈旧值、以及「某条变更是否已在宿主里」的核对方法。
+  - `dsh-plugin-dev-kb`：删掉目录树里多挂在 `reference/` 下的 `guide/` 行；新增「知识库可能领先宿主」的
+    阅读原则。
+  - 三个技能的 `description` 去掉对 `nonebot-plugin-dev-kb` 的引用（未上 npm、已不再维护）。
+- **README 中英对齐**：安装段区分 Desktop（`desktop` profile 由客户端独占管理，CLI 会拒绝）与 CLI / Web；
+  配置段给出按 id 覆盖的完整写法，并写明两个开关独立（原文「`searchTool: false` 只保留技能，不注册工具」
+  与代码不符）；双挂载的描述改为 rc.5 的实测表现（同 id 的条目是覆盖、不是重复挂载；
+  `duplicate loader entry id` 启动即崩是旧宿主的行为）；「使用」补 `dsh_kb_read`，「自检」补 `smoke`；
+  索引构建耗时按实测改为约 60–80ms；相关插件表前后补空行。英文版同步全部改动。
+- `package.json`：`description` 补上 starter / upgrade-assistant 两个技能与 `dsh_kb_read`；
+  `keywords` 补 `deepseek-harness`。`cordis.patch.yml` 只改注释（写明按 id 覆盖传配置的写法）。
+
 ## [1.8.5] - 2026-11-23
 
 - **知识库内容同步至上游 master `4b399c3`**（2026-11-23，refresh-kb 一键执行）：

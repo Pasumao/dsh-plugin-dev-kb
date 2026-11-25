@@ -10,6 +10,11 @@ dist/
 *.rej
 .vscode/
 
+# Maintainer tooling scratch (refresh-kb clone, smoke / selfcheck temp; a failed run may leave them behind)
+.refresh-tmp/
+.smoke-tmp/
+.selfcheck-tmp.asar
+
 # Logs & misc
 *.log
 npm-debug.log*
